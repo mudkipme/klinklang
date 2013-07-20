@@ -1,0 +1,44 @@
+<form class="custom">
+  <div class="row">
+    <div class="large-5 small-6 columns">
+      <label for="language-from-select">源语言</label>  
+      <select id="language-from-select" class="small">
+        <% _.each(lngs, function(name, key){ %>
+          <option value="<%= key %>"><%= name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="large-5 small-6 columns">
+      <label for="language-to-select">目标语言</label>  
+      <select id="language-to-select" class="small">
+        <% _.each(lngs, function(name, key){ %>
+          <option value="<%= key %>"><%= name %></option>
+        <% }) %>
+      </select>
+    </div>
+    <div class="large-2 columns">
+      <a id="replace-button" class="button expand">立即转换</a>
+    </div>
+  </div>
+  <div class="row select-text">
+    <% _.each(texts, function(name, key){ %>
+      <div class="large-2 small-4 columns">
+        <label for="text-<%= key %>"><input type="checkbox" id="text-<%= key %>" value="<%= key %>" style="display: none;"><span class="custom checkbox"></span> <%= name %></label>
+      </div>
+    <% }) %>
+    <div class="large-2 small-4 columns">
+      <label for="text-all"><input type="checkbox" id="text-all" style="display: none;"><span class="custom checkbox"></span> 全选</label>
+    </div>
+  </div>
+  <div class="row">
+    <hr />
+    <div class="large-6 columns">
+      <label for="replace-source">源内容</label>
+      <textarea id="replace-source"></textarea>
+    </div>
+    <div class="large-6 columns">
+      <label for="replace-result">结果</label>
+      <div id="replace-result"></div>
+    </div>
+  </div>
+</form>

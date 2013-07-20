@@ -1,0 +1,23 @@
+<form class="custom">
+  <div class="row select-type">
+    <% _.each(types, function(name, key){ %>
+      <div class="columns small-6 large-3">
+        <label for="type-<%= key %>"><input type="radio" name="type" id="type-<%= key %>" value="<%= key %>" style="display:none;"><span class="custom radio"></span> <%= name %></label>
+      </div>
+    <% }) %>
+    <div class="columns large-2">
+      <a id="translate-button" class="button expand small">立即翻译</a>
+    </div>
+  </div>
+  <div class="row">
+    <hr />
+    <div class="large-6 columns">
+      <label for="translate-source">源内容</label>
+      <textarea id="translate-source"></textarea>
+    </div>
+    <div class="large-6 columns">
+      <label for="translate-result">结果</label>
+      <div id="translate-result"></div>
+    </div>
+  </div>
+</form>

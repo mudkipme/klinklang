@@ -1,0 +1,7 @@
+.sass-cache
+node_modules
+public/components
+config.json
+public/stylesheets/*.css
+*.sublime-project
+*.sublime-workspace

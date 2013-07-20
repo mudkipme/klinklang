@@ -1,0 +1,22 @@
+#replacer {
+  .select-text {
+    .columns {
+      float: left;
+    }
+  }
+
+  #replace-source {
+    resize: vertical;
+  }
+
+  #replace-result {
+    @include form-element;
+    background-color: $input-disabled-bg;
+    white-space: pre-wrap;
+    overflow: auto;
+  }
+
+  #replace-source, #replace-result {
+    height: 10em;
+  }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>神奇宝贝百科工具台</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <script data-main="javascripts/main" src="/components/requirejs/require.js"></script>
+</head>
+<body>
+  <div id="top-bar" class="contain-to-grid sticky">
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name">
+          <h1><a href="/">神奇宝贝百科工具台</a></h1>
+        </li>
+        <li class="toggle-topbar menu-icon"><a href="#"><span></span></a></li>
+      </ul>
+
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="divider"></li>
+          <li><a href="http://wiki.52poke.com/">神奇宝贝百科</a></li>
+          <li class="divider"></li>
+          <li><a data-route="replacer" href="/">名词转换器</a></li>
+          <li class="divider"></li>
+          <li><a data-route="translator" href="/translator">翻译器</a></li>
+          <li class="divider"></li>
+          <li><a data-route="card" href="/card">卡片生成器</a></li>
+          <li class="divider"></li>
+          <li><a data-route="scss" href="/scss">层叠样式表转换器</a></li>
+          <li class="divider"></li>
+        </ul>
+      </section>
+    </nav>
+  </div>
+  <main></main>
+  <div class="row">
+    <footer class="columns">
+      &copy; <a href="http://wiki.52poke.com/">神奇宝贝百科</a>
+    </footer>
+  </div>
+</body>
+</html>
