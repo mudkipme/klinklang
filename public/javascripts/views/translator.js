@@ -50,7 +50,7 @@ define([
     }
 
     ,syncHeight: function(e){
-      this.$('#replace-result').height($(e.target).height());
+      this.$('#translate-result').height($(e.target).height());
     }
   });
 

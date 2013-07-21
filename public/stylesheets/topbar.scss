@@ -1,5 +1,7 @@
 #top-bar {
-  &.fixed .top-bar {
-    margin-bottom: 0;
+  .name {
+    h1 a {
+      width: auto;
+    }
   }
 }
