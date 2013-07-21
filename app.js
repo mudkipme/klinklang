@@ -29,7 +29,7 @@ if ('development' == app.get('env')) {
 }
 
 if ('production' == app.get('env')) {
-  app.use(sass({ src: __dirname + '/public', style: 'compressed' }));
+  app.use(sass({ src: __dirname + '/dist', style: 'compressed' }));
   app.use(express.static(path.join(__dirname, 'dist')));
 }
 
