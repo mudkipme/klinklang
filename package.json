@@ -9,6 +9,7 @@
     "express": "*",
     "csv": "*",
     "async": "*",
-    "underscore": "*"
+    "underscore": "*",
+    "sass-middleware": "*"
   }
 }

@@ -6,7 +6,7 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , sass = require('./middlewares/sass-middleware');
+  , sass = require('sass-middleware');
 
 var app = express();
 
@@ -29,7 +29,6 @@ if ('development' == app.get('env')) {
 }
 
 if ('production' == app.get('env')) {
-  app.use(sass({ src: __dirname + '/dist', style: 'compressed' }));
   app.use(express.static(path.join(__dirname, 'dist')));
 }
 
