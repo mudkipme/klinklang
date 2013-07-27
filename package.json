@@ -10,6 +10,9 @@
     "csv": "*",
     "async": "*",
     "underscore": "*",
-    "sass-middleware": "*"
+    "sass-middleware": "*",
+    "commander": "*",
+    "sqlite": "*",
+    "request": "*"
   }
 }

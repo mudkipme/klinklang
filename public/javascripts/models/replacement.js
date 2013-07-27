@@ -26,7 +26,7 @@ define([
         ,nature: '性格'
         ,'trainer-type': '训练家类型'
         ,'location-type': '地点类型'
-        ,warriors: '武将'
+        ,warrior: '武将'
         ,other: '其他'
       }
     }
