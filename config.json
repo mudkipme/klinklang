@@ -1,0 +1,15 @@
+{
+  "wiki": {
+    "api": "http://wiki.52poke.com/api.php"
+  }
+  ,"translation": [
+    ["pokemon_species", "pokemon"]
+    ,["ability", "ability"]
+    ,["item", "item"]
+    ,["location", "location"]
+    ,["move", "move"]
+    ,["nature", "nature"]
+    ,["type", "type"]
+    ,["conquest_warrior", "warrior"]
+  ]
+}

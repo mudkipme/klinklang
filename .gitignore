@@ -1,7 +1,6 @@
 .sass-cache
 node_modules
 public/components
-config.json
 public/stylesheets/*.css
 database/base.sqlite3
 database/cookie-jar.txt
