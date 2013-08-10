@@ -3,13 +3,13 @@
     "api": "http://wiki.52poke.com/api.php"
   }
   ,"translation": [
-    ["pokemon_species", "pokemon"]
-    ,["ability", "ability"]
-    ,["item", "item"]
-    ,["location", "location"]
-    ,["move", "move"]
-    ,["nature", "nature"]
-    ,["type", "type"]
-    ,["conquest_warrior", "warrior"]
+    ["pokemon_species", "pokemon", "pokemon_species_id"]
+    ,["ability", "ability", "ability_id"]
+    ,["item", "item", "item_id"]
+    ,["location", "location", "location_id"]
+    ,["move", "move", "move_id"]
+    ,["nature", "nature", "nature_id"]
+    ,["type", "type", "type_id"]
+    ,["conquest_warrior", "warrior", "warrior_id"]
   ]
 }

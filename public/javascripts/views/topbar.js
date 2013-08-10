@@ -8,7 +8,7 @@ define([
     el: '#top-bar'
 
     ,events: {
-      'click a[data-route]': 'navigate'
+      'click a:not(.external)': 'navigate'
     }
 
     ,render: function(){
@@ -23,7 +23,7 @@ define([
 
     ,navigate: function(e){
       e.preventDefault();
-      Backbone.history.navigate('/' + $(e.target).data('route'), {trigger: true});
+      Backbone.history.navigate(e.target.pathname, {trigger: true});
     }
   });
 

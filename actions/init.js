@@ -47,7 +47,7 @@ var importTable = function(tableName, callback){
   });
 };
 
-var importTranslation = function(tableName, csvFile, callback){
+var importTranslation = function(tableName, csvFile, idField, callback){
   db.serialize(function(){
     db.run('BEGIN TRANSACTION');
     db.run('DELETE FROM ' + tableName + '_names WHERE local_language_id = 4');
@@ -70,7 +70,7 @@ var importTranslation = function(tableName, csvFile, callback){
                   mark.push('?');
                   values.push('');
                 }
-                values[0] = row[tableName + '_id'];
+                values[0] = row[idField];
                 values[1] = 4;
                 values[2] = data[0];
                 mark = mark.join(',');
@@ -118,7 +118,7 @@ exports.initTranslation = function(callback){
 
   _.each(translation, function(row){
     actions.push(function(next){
-      importTranslation(row[0], row[1], next);
+      importTranslation(row[0], row[1], row[2], next);
     });
   });
 

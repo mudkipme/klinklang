@@ -221,4 +221,47 @@ Wiki.prototype.edit = function(title, content, options, callback){
   });
 };
 
+Wiki.prototype.getPagesInCategory = function(category, callback){
+  var pages = [], me = this;
+
+  var fetch = function(next){
+    me.request(_.extend({
+      action: 'query'
+      ,list: 'categorymembers'
+      ,cmtitle: 'Category:' + category
+      ,cmlimit: 5000
+    }, next), function(err, data, next){
+      if (err) return callback(err);
+
+      pages = pages.concat(data && data.categorymembers || []);
+
+      if (next) {
+        fetch(next);
+      } else {
+        callback(null, pages);
+      }
+    });
+  };
+
+  fetch();
+};
+
+Wiki.prototype.addAttrs = function(content, template, attrs){
+  var matches = content.match(new RegExp('{{' + template + '([^}]*?)}}'));
+  var newAttrs = [];
+
+  if (!matches || !matches[1]) return false;
+
+    _.each(attrs, function(value, key){
+    if (matches[1].indexOf('|' + key + '=') == -1) {
+      newAttrs.push('|' + key + '=' + value);
+    }
+  });
+
+  if (!newAttrs.length) return false;
+
+  return content.split(matches[0])
+    .join('{{' + template + '\n' + matches[1].trim() + '\n' + newAttrs.join('\n') + '\n}}');
+};
+
 module.exports = Wiki;

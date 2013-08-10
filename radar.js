@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
+var fs = require('fs');
 var program = require('commander');
 var request = require('request');
-var fs = require('fs');
+var _ = require('underscore');
 var Wiki = require('./models/wiki');
 var jar = request.jar();
 
@@ -14,7 +15,7 @@ if (fs.existsSync(__dirname + '/database/cookie-jar.txt')){
     ,{encoding: 'utf8'}
   ));
 
-  cookies.forEach(function(cookie){
+  _.each(cookies, function(cookie){
     jar.add(request.cookie(cookie));
   });
 };
@@ -22,9 +23,8 @@ if (fs.existsSync(__dirname + '/database/cookie-jar.txt')){
 var wiki = new Wiki({jar: jar});
 
 var saveCookie = function(){
-  var cookies = [];
-  jar.cookies.forEach(function(cookie){
-    cookies.push(cookie.str);
+  var cookies = _.map(jar.cookies, function(cookie){
+    return cookie.str;
   });
   fs.writeFileSync(
     __dirname + '/database/cookie-jar.txt'
@@ -90,12 +90,32 @@ program
 });
 
 program
+.command('pages-in-category <category>')
+.description('List the members of a category.')
+.action(function(category){
+  wiki.getPagesInCategory(category, function(err, pages){
+    if (err) return console.log(err.message);
+    console.log(pages);
+  });
+});
+
+program
 .command('conquest-add-move-power')
-.description('Add conquest move power.')
+.description('Add Pokémon Conquest move power.')
 .action(function(){
   require('./actions/conquest').addMovePower(wiki, function(err){
     if (err) return console.log(err.message);
     console.log('Finish adding conquest move power.');
+  });
+});
+
+program
+.command('conquest-add-pokemon-link')
+.description('Add Pokémon Conquest Pokémon max links.')
+.action(function(speciesName){
+  require('./actions/conquest').addPokemonLink(wiki, function(err, result){
+    if (err) return console.log(err.message);
+    console.log(result);
   });
 });
 
