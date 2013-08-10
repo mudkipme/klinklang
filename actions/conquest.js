@@ -52,17 +52,16 @@ var addPokemonLink = function(wiki, title, callback){
         return callback(null);
       }
 
-      var newContent = wiki.addAttrs(content, '神奇宝贝信长的野望信息框', {
+      content = wiki.addAttrs(content, '神奇宝贝信长的野望信息框', {
         HPStat: result.stats.hp
         ,ATKStat: result.stats.attack
         ,DEFStat: result.stats.defense
         ,SPStat: result.stats.speed
       });
 
-      if (!newContent) {
+      if (!content) {
         console.log('Failed adding ' + title + ' stats.');
-      } else {
-        content = newContent;
+        return callback(null);
       }
 
       var lines = ['===连接武将==='];
@@ -86,7 +85,7 @@ var addPokemonLink = function(wiki, title, callback){
 // 给百科中的信长的野望技能条目增加威力
 exports.addMovePower = function(wiki, callback){
   db.all('SELECT power, name FROM conquest_move_data JOIN move_names ON conquest_move_data.move_id = move_names.move_id WHERE local_language_id = 4', function(err, rows){
-    if (err) callback(err);
+    if (err) return callback(err);
 
     async.eachSeries(rows, function(row, callback){
       addPower(wiki, row.name, row.power, callback);
@@ -97,6 +96,8 @@ exports.addMovePower = function(wiki, callback){
 // 信长的野望神奇宝贝中的连接武将
 exports.addPokemonLink = function(wiki, callback){
   wiki.getPagesInCategory('神奇宝贝（信长的野望）', function(err, pages){
+    if (err) return callback(err);
+
     async.eachSeries(pages, function(page, callback){
       addPokemonLink(wiki, page.title, callback);
     }, callback);
