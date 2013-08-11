@@ -293,4 +293,18 @@ Wiki.prototype.attrs = function(content, template){
   return result;
 };
 
+Wiki.prototype.imgUrl = function(filename, callback){
+  this.request({
+    action: 'query'
+    ,titles: 'File:' + filename
+    ,prop: 'imageinfo'
+    ,iiprop: 'url'
+  }, function(err, data){
+    if (err) return callback(err);
+    var page = _.values(data.pages)[0];
+    var url = page && page.imageinfo && page.imageinfo[0].url;
+    callback(null, url);
+  });
+};
+
 module.exports = Wiki;

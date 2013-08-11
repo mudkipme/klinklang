@@ -36,3 +36,20 @@ exports.getItemInfo = function(wiki, callback){
     });
   });
 };
+
+exports.getItemImage = function(wiki, callback){
+  var filename = __dirname + '/../database/item.json';
+  fs.readFile(filename, {encoding: 'utf8'}, function(err, content){
+    var items = JSON.parse(content), result = {};
+    async.eachSeries(_.pairs(items), function(item, next){
+      wiki.imgUrl('Dream ' + item[1] + ' Sprite.png', function(err, url){
+        if (err) return next(err);
+        result[item[0]] = url;
+        next();
+      });
+    }, function(err){
+      if (err) return callback(err);
+      callback(null, result);
+    });
+  });
+};

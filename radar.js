@@ -130,6 +130,16 @@ program
   });
 });
 
+program
+.command('item-image')
+.description('Get the images of items.')
+.action(function(item){
+  require('./actions/item').getItemImage(wiki, function(err, urls){
+    if (err) return console.log(err.message);
+    console.log(JSON.stringify(urls));
+  });
+});
+
 if (program.parse(process.argv).args.length == 0) {
   program.help();
 }
