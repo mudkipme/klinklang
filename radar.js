@@ -105,7 +105,7 @@ program
 .action(function(){
   require('./actions/conquest').addMovePower(wiki, function(err){
     if (err) return console.log(err.message);
-    console.log('Finish adding conquest move power.');
+    console.log('Finish adding Pokémon Conquest move power.');
   });
 });
 
@@ -113,9 +113,20 @@ program
 .command('conquest-add-pokemon-link')
 .description('Add Pokémon Conquest Pokémon max links.')
 .action(function(speciesName){
-  require('./actions/conquest').addPokemonLink(wiki, function(err, result){
+  require('./actions/conquest').addPokemonLink(wiki, function(err){
     if (err) return console.log(err.message);
-    console.log(result);
+    console.log('Finish adding Pokémon Conquest Pokémon max links.');
+  });
+});
+
+
+program
+.command('item-info')
+.description('Get the info of items.')
+.action(function(item){
+  require('./actions/item').getItemInfo(wiki, function(err, info){
+    if (err) return console.log(err.message);
+    console.log(JSON.stringify(info));
   });
 });
 

@@ -13,6 +13,7 @@
     "sass-middleware": "*",
     "commander": "*",
     "sqlite": "*",
-    "request": "*"
+    "request": "*",
+    "tongwen": "*"
   }
 }

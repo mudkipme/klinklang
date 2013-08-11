@@ -4,6 +4,7 @@
 var request = require('request');
 var async = require('async');
 var _ = require('underscore');
+var tongwen = require('tongwen');
 
 var Wiki = function(options){
   'use strict';
@@ -135,6 +136,20 @@ Wiki.prototype.getArticle = function(title, options, callback){
   });
 };
 
+Wiki.prototype.getArticleZh = function(title, options, callback){
+  if (!callback) {
+    callback = options;
+    options = {};
+  }
+  var me = this;
+  me.getArticle(tongwen.t2s(title), options, function(err, content){
+    if (err) return callback(err);
+    if (content) return callback(null, content);
+
+    me.getArticle(tongwen.s2t(title), options, callback);
+  });
+};
+
 Wiki.prototype.getSection = function(title, sectionName, options, callback){
   if (!callback) {
     callback = options;
@@ -262,6 +277,20 @@ Wiki.prototype.addAttrs = function(content, template, attrs){
 
   return content.split(matches[0])
     .join('{{' + template + '\n' + matches[1].trim() + '\n' + newAttrs.join('\n') + '\n}}');
+};
+
+Wiki.prototype.attrs = function(content, template){
+  var matches = content.match(new RegExp('{{' + template + '([^}]*?)}}'));
+  if (!matches || !matches[1]) return false;
+
+  var result = {};
+
+  matches[1].replace(/\|\s*(\w+)\s*=([^\|}]*)/g, function(match, key, value){
+    result[key] = value.trim();
+    return match;
+  });
+
+  return result;
 };
 
 module.exports = Wiki;
