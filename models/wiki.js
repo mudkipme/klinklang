@@ -5,6 +5,7 @@ var request = require('request');
 var async = require('async');
 var _ = require('underscore');
 var tongwen = require('tongwen');
+var parseString = require('xml2js').parseString;
 
 var Wiki = function(options){
   'use strict';
@@ -262,21 +263,24 @@ Wiki.prototype.getPagesInCategory = function(category, callback){
 };
 
 Wiki.prototype.addAttrs = function(content, template, attrs){
-  var matches = content.match(new RegExp('{{' + template + '([^}]*?)}}'));
+  var matches = content.match(new RegExp('{{' + tongwen.t2s(template) + '([^}]*?)}}'));
   var newAttrs = [];
+
+  if (!matches || !matches[1])
+    matches = content.match(new RegExp('{{' + tongwen.s2t(template) + '([^}]*?)}}'));
 
   if (!matches || !matches[1]) return false;
 
     _.each(attrs, function(value, key){
-    if (matches[1].indexOf('|' + key + '=') == -1) {
-      newAttrs.push('|' + key + '=' + value);
+    if (matches[1].indexOf(key + '=') == -1) {
+      newAttrs.push('|\n' + key + '=' + value);
     }
   });
 
   if (!newAttrs.length) return false;
 
   return content.split(matches[0])
-    .join('{{' + template + '\n' + matches[1].trim() + '\n' + newAttrs.join('\n') + '\n}}');
+    .join('{{' + template + newAttrs.join('\n') + matches[1].trim() + '}}');
 };
 
 Wiki.prototype.attrs = function(content, template){
@@ -293,6 +297,37 @@ Wiki.prototype.attrs = function(content, template){
   return result;
 };
 
+Wiki.prototype.getAttrs = function(content, template, callback){
+  this.request({
+    action: 'expandtemplates'
+    ,text: content
+    ,generatexml: 1
+  }, function(err, info, next, data){
+    if (err) return callback(err);
+    if (!data || !data.parsetree || !data.parsetree['*']) return callback(null);
+    parseString(data.parsetree['*'], function(err, res){
+      try {
+        var result = {}, parts;
+        _.some(res.root.template, function(t){
+          if (t.title[0].trim() == template) {
+            parts = t.part;
+            return true;
+          }
+        });
+
+        _.each(parts, function(part){
+          var name = part.name[0];
+          _.isObject(name) && (name = name['$'].index);
+          result[name.trim()] =  part.value[0].trim();
+        });
+
+        callback(null, result);
+
+      } catch(e) { return callback(e); }
+    });
+  });
+};
+
 Wiki.prototype.imgUrl = function(filename, callback){
   this.request({
     action: 'query'
@@ -304,6 +339,34 @@ Wiki.prototype.imgUrl = function(filename, callback){
     var page = _.values(data.pages)[0];
     var url = page && page.imageinfo && page.imageinfo[0].url;
     callback(null, url);
+  });
+};
+
+Wiki.prototype.remoteUpload = function(filename, url, options, callback){
+  if (!callback) {
+    callback = options;
+    options = {};
+  }
+
+  var me = this;
+
+  me.getToken('File:' + filename, 'edit', function(err, token){
+    if (err) return callback(err);
+
+    options = _.defaults(options, {
+      action: 'upload'
+      ,url: url
+      ,filename: filename
+      ,token: token
+      ,ignorewarnings: 'yes'
+      ,prop: 'revisions'
+      ,rvprop: 'content'
+    });
+
+    me.request(options, function(err, data){
+      if (err) return callback(err);
+      callback(null, data);
+    });
   });
 };
 

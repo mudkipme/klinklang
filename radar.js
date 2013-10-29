@@ -100,6 +100,41 @@ program
 });
 
 program
+.command('add-attr <title> <template> <key> <value>')
+.description('Add attribute to a template text.')
+.action(function(title, template, key, value){
+  wiki.getArticle(title, function(err, content){
+    if (err) return console.log(err.message);
+    var obj = {};
+    obj[key] = value;
+    content = wiki.addAttrs(content, template, obj);
+    if (!content) {
+      console.log('Failed adding attribute.');
+      return;
+    }
+
+    wiki.edit(title, content, function(err, res){
+      console.log(res);
+    });
+  });
+});
+
+program
+.command('get-attr <title> <section> <template>')
+.description('Get the attributes of a template text.')
+.action(function(title, section, template){
+  wiki.getSection(title, section, function(err, content){
+    if (err) return console.log(err.message);
+
+    wiki.getAttrs(content, template, function(err, result){
+      if (err) return console.log(err.message);
+
+      console.log(JSON.stringify(result));
+    });
+  });
+});
+
+program
 .command('conquest-add-move-power')
 .description('Add Pokémon Conquest move power.')
 .action(function(){
@@ -112,7 +147,7 @@ program
 program
 .command('conquest-add-pokemon-link')
 .description('Add Pokémon Conquest Pokémon max links.')
-.action(function(speciesName){
+.action(function(){
   require('./actions/conquest').addPokemonLink(wiki, function(err){
     if (err) return console.log(err.message);
     console.log('Finish adding Pokémon Conquest Pokémon max links.');
@@ -123,7 +158,7 @@ program
 program
 .command('item-info')
 .description('Get the info of items.')
-.action(function(item){
+.action(function(){
   require('./actions/item').getItemInfo(wiki, function(err, info){
     if (err) return console.log(err.message);
     console.log(JSON.stringify(info));
@@ -133,10 +168,40 @@ program
 program
 .command('item-image')
 .description('Get the images of items.')
-.action(function(item){
+.action(function(){
   require('./actions/item').getItemImage(wiki, function(err, urls){
     if (err) return console.log(err.message);
     console.log(JSON.stringify(urls));
+  });
+});
+
+program
+.command('mega-stone')
+.description('Generate articles for Mega Stones.')
+.action(function(){
+  require('./actions/mega-stone').megaStone(wiki, function(err){
+    if (err) return console.log(err.message);
+    console.log('Finished.');
+  });
+});
+
+program
+.command('dream-image <filename>')
+.description('Upload the artwork of Dream World.')
+.action(function(filename){
+  require('./actions/image').uploadDreamWorld(wiki, filename, function(err, data){
+    if (err) return console.log(err.message);
+    console.log(JSON.stringify(data));
+  });
+});
+
+program
+.command('xy-sprites')
+.description('Upload the sprites in Pokémon X & Y.')
+.action(function(filename){
+  require('./actions/image').uploadXYSprites(wiki, function(err, data){
+    if (err) return console.log(err.message);
+    console.log('Finished.');
   });
 });
 

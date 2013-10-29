@@ -14,6 +14,7 @@
     "commander": "*",
     "sqlite": "*",
     "request": "*",
-    "tongwen": "*"
+    "tongwen": "*",
+    "xml2js": "*"
   }
 }

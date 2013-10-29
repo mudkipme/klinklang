@@ -20,3 +20,16 @@ exports.typeName = function(species, callback){
     callback(null, result);
   });
 };
+
+exports.allNames = function(language, callback){
+  var languageToId = {zh: 4, en: 9};
+  db.all('SELECT pokemon_species_id, name FROM pokemon_species_names WHERE local_language_id = ?', [languageToId[language]], function(err, rows){
+    if (err) return callback(err);
+
+    var result = {};
+    _.each(rows, function(row){
+      result[row.pokemon_species_id] = row.name;
+    });
+    callback(null, result);
+  });
+};
