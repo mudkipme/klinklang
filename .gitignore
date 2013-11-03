@@ -4,6 +4,9 @@ public/components
 public/stylesheets/*.css
 database/base.sqlite3
 database/cookie-jar.txt
+database/item.json
+database/pokedex.json
+database/pokedex.csv
 dist
 *.sublime-project
 *.sublime-workspace
