@@ -171,7 +171,6 @@ Wiki.prototype.getSection = function(title, sectionName, options, callback){
     _.each(matches, function(match, index){
       if (sectionName.indexOf(match.split('=').join('').trim()) > -1) {
         options.rvsection = index + 1;
-        return false;
       }
     });
 
@@ -316,9 +315,10 @@ Wiki.prototype.getAttrs = function(content, template, callback){
         });
 
         _.each(parts, function(part){
-          var name = part.name[0];
+          var name = part.name[0], value = part.value[0];
           _.isObject(name) && (name = name['$'].index);
-          result[name.trim()] =  part.value[0].trim();
+          _.isObject(value) && (value = value['_']);
+          result[name.trim()] =  value.trim();
         });
 
         callback(null, result);

@@ -26,7 +26,7 @@ var importTable = function(tableName, callback){
 
       // Convert numberic String to Number
       data = _.map(data, function(element){
-        return isNaN(element) ? element : Number(element);
+        return (!element.length || isNaN(element)) ? element : Number(element);
       });
 
       insertStmt.run.apply(insertStmt, data);

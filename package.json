@@ -12,7 +12,7 @@
     "underscore": "*",
     "sass-middleware": "*",
     "commander": "*",
-    "sqlite": "*",
+    "sqlite3": "*",
     "request": "*",
     "tongwen": "*",
     "xml2js": "*"

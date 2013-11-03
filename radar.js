@@ -205,6 +205,56 @@ program
   });
 });
 
+program
+.command('save-pokedex <pokemon>')
+.description('Fetch Pokédex entries from Bulbapedia.')
+.action(function(pokemon){
+  require('./actions/pokedex').enDex(pokemon, function(err, data){
+    if (err) return console.log(err.message);
+
+    var entries = [];
+    if (fs.existsSync(__dirname + '/database/pokedex.json')){
+      entries = JSON.parse(fs.readFileSync(
+        __dirname + '/database/pokedex.json'
+        ,{encoding: 'utf8'}
+      ));
+    }
+
+    entries.push(data);
+    console.log(data);
+
+    fs.writeFileSync(
+      __dirname + '/database/pokedex.json'
+      ,JSON.stringify(entries)
+    );
+  });
+});
+
+program
+.command('analyze-pokedex')
+.description('Analyze Pokédex entries.')
+.action(function(pokemon){
+  entries = JSON.parse(fs.readFileSync(
+    __dirname + '/database/pokedex.json'
+    ,{encoding: 'utf8'}
+  ));
+
+  fs.writeFileSync(
+    __dirname + '/database/pokedex.csv'
+    ,require('./actions/pokedex').analyze(entries).join('\n')
+  );
+});
+
+program
+.command('export-genv-learnlist <pokemon>')
+.description('Export Generation V Learnlist to seperate article.')
+.action(function(pokemon){
+  require('./actions/learnset').exportGenVLearnlist(wiki, pokemon, function(err, result){
+    if (err) return console.log(err.message);
+    console.log(JSON.stringify(result));
+  });
+});
+
 if (program.parse(process.argv).args.length == 0) {
   program.help();
 }
