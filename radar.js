@@ -185,25 +185,7 @@ program
   });
 });
 
-program
-.command('dream-image <filename>')
-.description('Upload the artwork of Dream World.')
-.action(function(filename){
-  require('./actions/image').uploadDreamWorld(wiki, filename, function(err, data){
-    if (err) return console.log(err.message);
-    console.log(JSON.stringify(data));
-  });
-});
-
-program
-.command('xy-sprites')
-.description('Upload the sprites in Pokémon X & Y.')
-.action(function(filename){
-  require('./actions/image').uploadXYSprites(wiki, function(err, data){
-    if (err) return console.log(err.message);
-    console.log('Finished.');
-  });
-});
+require('./actions/image').register(program, wiki);
 
 program
 .command('save-pokedex <pokemon>')
@@ -245,15 +227,8 @@ program
   );
 });
 
-program
-.command('export-genv-learnlist <pokemon>')
-.description('Export Generation V Learnlist to seperate article.')
-.action(function(pokemon){
-  require('./actions/learnset').exportGenVLearnlist(wiki, pokemon, function(err, result){
-    if (err) return console.log(err.message);
-    console.log(JSON.stringify(result));
-  });
-});
+require('./actions/learnset').register(program, wiki);
+require('./actions/move').register(program, wiki);
 
 if (program.parse(process.argv).args.length == 0) {
   program.help();

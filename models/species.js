@@ -12,7 +12,19 @@ exports.needle = function(species) {
 exports.name = function(species, language, callback){
   db.get('SELECT name FROM pokemon_species_names WHERE pokemon_species_id = ? AND local_language_id = ?', [parseInt(species), languageToId[language]], function(err, row){
     if (err) return callback(err);
-    return callback(null, row && row.name);
+    // Fallback to Japanese
+    if (!row && language != 'ja') return exports.name(species, 'ja', callback);
+
+    callback(null, row && row.name);
+  });
+};
+
+exports.generation = function(species, callback){
+  if (!isNaN(species)) species = parseInt(species);
+  
+  db.get('SELECT generation_id FROM pokemon_species WHERE id = ' + exports.needle(species), [species], function(err, row){
+    if (err) return callback(err);
+    return callback(null, row && row.generation_id);
   });
 };
 

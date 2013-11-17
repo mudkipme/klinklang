@@ -121,7 +121,7 @@ This move cannot be selected by []{move:sleep-talk}."
 
 The doll takes damage as normal, using the user's stats and types, and will break when its [HP]{mechanic:hp} reaches zero.  Self-inflicted damage from [confusion]{mechanic:confusion} or recoil is not absorbed.  Healing effects from opponents ignore the doll and heal the user as normal.  Moves that work based on the user's [HP]{mechanic:hp} still do so; the doll's [HP]{mechanic:hp} does not influence any move.
 
-The doll will block [major status effect]{mechanic:major-status-effect}s, [confusion]{mechanic:confusion}, and [flinch]{mechanic:flinch}ing.  The effects of []{move:smellingsalt} and []{move:wake-up-slap} do not trigger against a doll, even if the Pokémon behind the doll has the appropriate [major status effect]{mechanic:major-status-effect}.  Multi-turn trapping moves like []{move:wrap} will hit the doll for their [regular damage]{mechanic:regular-damage}, but the multi-turn trapping and damage effects will not activate.
+The doll will block [major status effect]{mechanic:major-status-effect}s, [confusion]{mechanic:confusion}, and [flinch]{mechanic:flinch}ing.  The effects of []{move:smelling-salts} and []{move:wake-up-slap} do not trigger against a doll, even if the Pokémon behind the doll has the appropriate [major status effect]{mechanic:major-status-effect}.  Multi-turn trapping moves like []{move:wrap} will hit the doll for their [regular damage]{mechanic:regular-damage}, but the multi-turn trapping and damage effects will not activate.
 
 Moves blocked or damage absorbed by the doll do not count as hitting the user or inflicting damage for any effects that respond to such, e.g., []{move:avalanche}, []{move:counter}, or a []{item:rowap-berry}.  []{move:magic-coat} still works as normal, even against moves the doll would block.  Opposing Pokémon that damage the doll with a leech move like []{move:absorb} are healed as normal.
 
@@ -182,7 +182,7 @@ This effect is passed on by []{move:baton-pass}."
 This move cannot be copied by []{move:mimic} or []{move:mirror-move}, nor selected by []{move:assist} or []{move:metronome}, nor forced by []{move:encore}."
 98,9,Randomly uses one of the user's other three moves.  Only works if the user is sleeping.,"Only usable if the user is [sleep]{mechanic:sleep}ing.  Randomly selects and uses one of the user's other three moves.  Use of the selected move requires and costs 0 [PP]{mechanic:pp}.
 
-This move will not select []{move:assist}, []{move:bide}, []{move:bounce}, []{move:chatter}, []{move:copycat}, []{move:dig}, []{move:dive}, []{move:fly}, []{move:focus-punch}, []{move:me-first}, []{move:metronome}, []{move:mirror-move}, []{move:shadow-force}, []{move:skull-bash}, []{move:sky-attack}, []{move:sky-drop}, []{move:sleep-talk}, []{move:solarbeam}, []{move:razor-wind}, or []{move:uproar}.
+This move will not select []{move:assist}, []{move:bide}, []{move:bounce}, []{move:chatter}, []{move:copycat}, []{move:dig}, []{move:dive}, []{move:fly}, []{move:focus-punch}, []{move:me-first}, []{move:metronome}, []{move:mirror-move}, []{move:shadow-force}, []{move:skull-bash}, []{move:sky-attack}, []{move:sky-drop}, []{move:sleep-talk}, []{move:solar-beam}, []{move:razor-wind}, or []{move:uproar}.
 
 If the selected move requires a recharge turn—i.e., one of []{move:blast-burn}, []{move:frenzy-plant}, []{move:giga-impact}, []{move:hydro-cannon}, []{move:hyper-beam}, []{move:roar-of-time}, or []{move:rock-wrecker}—and the user is still [sleep]{mechanic:sleep}ing next turn, then it's forced to use this move again and pay another [PP]{mechanic:pp} for the recharge turn.
 
@@ -263,7 +263,7 @@ This effect is passed on by []{move:baton-pass}.
 This move cannot be copied by []{move:mirror-move}."
 116,9,Changes the weather to a sandstorm for five turns.,"Changes the weather to a sandstorm for five turns.  Pokémon that are not []{type:ground}, []{type:rock}, or []{type:steel} take 1/16 their max [HP]{mechanic:hp} at the end of every turn.  Every []{type:rock} Pokémon's original [Special Defense]{mechanic:special-defense} is raised by 50% for the duration of this effect.
 
-[]{move:solarbeam}'s power is halved.
+[]{move:solar-beam}'s power is halved.
 
 []{move:moonlight}, []{move:morning-sun}, and []{move:synthesis} only heal 1/4 the user's max [HP]{mechanic:hp}."
 117,9,Prevents the user's HP from lowering below 1 this turn.,"The user's [HP]{mechanic:hp} cannot be lowered below 1 by any means for the remainder of this turn.
@@ -373,7 +373,7 @@ If the user is holding []{item:damp-rock}, this effect lasts for eight turns.
 
 []{move:thunder} has 100% accuracy.  If the target has used []{move:detect} or []{move:protect}, []{move:thunder} has a (100 - accuracy)% chance to break through the protection.
 
-[]{move:solarbeam} has half power.
+[]{move:solar-beam} has half power.
 
 []{move:moonlight}, []{move:morning-sun}, and []{move:synthesis} heal only 1/4 of the user's max [HP]{mechanic:hp}.
 
@@ -390,7 +390,7 @@ Pokémon cannot become [frozen]{mechanic:frozen}.
 
 []{move:thunder} has 50% accuracy.
 
-[]{move:solarbeam} skips its charge turn.
+[]{move:solar-beam} skips its charge turn.
 
 []{move:moonlight}, []{move:morning-sun}, and []{move:synthesis} heal 2/3 of the user's max [HP]{mechanic:hp}.
 
@@ -709,7 +709,7 @@ Waterfall      | []{type:grass}
 
 Specifically, []{type:flying} Pokémon and those with []{ability:levitate} or that have used []{move:magnet-rise} are no longer immune to []{type:ground} attacks, []{ability:arena-trap}, []{move:spikes}, or []{move:toxic-spikes}.
 
-[]{move:bounce}, []{move:fly}, []{move:sky-drop}, []{move:hi-jump-kick}, []{move:jump-kick}, and []{move:splash} cannot be used while this move is in effect.
+[]{move:bounce}, []{move:fly}, []{move:sky-drop}, []{move:high-jump-kick}, []{move:jump-kick}, and []{move:splash} cannot be used while this move is in effect.
 
 *Bug*: If this move is used during a double or triple battle while Pokémon are under the effect of []{move:sky-drop}, Sky Drop's effect is not correctly canceled on its target, and it remains high in the air indefinitely.  As Sky Drop prevents the target from acting, the only way to subsequently remove it from the field is to faint it."
 217,9,"Forces the target to have no evasion, and allows it to be hit by Psychic moves even if it's Dark.",Resets the target's [evasion]{mechanic:evasion} to normal and prevents any further boosting until the target leaves the [field]{mechanic:field}.  A []{type:dark} Pokémon under this effect takes normal damage from []{type:psychic} moves.  This move itself ignores [accuracy]{mechanic:accuracy} and [evasion]{mechanic:evasion} modifiers.
@@ -1002,10 +1002,39 @@ If the user is a []{pokemon:meloetta}, it will toggle between Aria and Pirouette
 This move can hit Pokémon under the effect of []{move:bounce}, []{move:fly}, or []{move:sky-drop}.
 
 During []{move:rain-dance}, this move has 100% accuracy.  During []{move:sunny-day}, this move has 50% accuracy."
+339,9,Deals both []{type:fighting} and []{type:flying}-type damage.,Deals both []{type:fighting} and []{type:flying}-type damage.
+340,9,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.,Protects all friendly Pokémon from damaging moves.  Only works on the first turn after the user is sent out.
+341,9,Uses up the user's berry.  Fails if it is not holding one.,Uses up the user's berry.  Fails if it is not holding one.
+342,9,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.,Raises friendly []{type:grass} Pokémon's Attack and Special Attack.
+343,9,Lowers opponents' Speed by one stage when they enter battle.,Lowers opponents' Speed by one stage when they enter battle.
+344,9,Raises the user's Attack by two stages if it KOs the target.,Raises the user's Attack by two stages if it KOs the target.
+345,9,Adds []{type:ghost} to the target's types.,Adds []{type:ghost} to the target's types.
+346,9,Lower's the target's Attack and Special Attack by one stage.,Lower's the target's Attack and Special Attack by one stage.
+347,9,Changes []{type:normal} moves to []{type:electric} moves.,Changes []{type:normal} moves to []{type:electric} moves.
+348,9,Heals the user for half the total damage dealt to all targets.,Heals the user for half the total damage dealt to all targets.
+349,9,Adds []{type:grass} to the target's types.,Adds []{type:grass} to the target's types.
+350,9,Super-effective against []{type:water}-types.,Super-effective against []{type:water}-types.
+351,9,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.,Lowers all targets' Attack and Special Attack by one stage.  Makes the user switch out.
+352,9,Inverts the target's stat modifiers.,Inverts the target's stat modifiers.
+353,9,Drains 75% of the damage inflicted to heal the user.,Drains 75% of the damage inflicted to heal the user.
+354,9,Protects all friendly Pokémon from non-damaging moves.,Protects all friendly Pokémon from non-damaging moves.
+355,9,Raises friendly []{type:grass} Pokémon's Defense.,Raises friendly []{type:grass} Pokémon's Defense.
+356,9,"For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power.","For five turns, heals all Pokémon on the ground for 1/16 their max HP each turn and strengthens their []{type:grass} moves to 1.5× their power."
+357,9,"For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power.","For five turns, protects all Pokémon on the ground from major status ailments and confusion and weakens their []{type:dragon} moves to 0.5× their power."
+358,9,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.,Changes the target's move's type to []{type:electric} if it hasn't moved yet this turn.
+359,9,Prevents all Pokémon from fleeing or switching out during the next turn.,Prevents all Pokémon from fleeing or switching out during the next turn.
+360,9,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.,Blocks damaging attacks and lowers attacking Pokémon's Attack by two stages on contact.  Switches Aegislash to Shield Forme.
+361,9,Lowers the target's Special Attack by one stage.,Lowers the target's Special Attack by one stage.
+362,9,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.,Blocks damaging attacks and damages attacking Pokémon for 1/8 their max HP.
+363,9,Raises all friendly Pokémon's Special Defense by one stage.,Raises all friendly Pokémon's Special Defense by one stage.
+364,9,"Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned.","Lowers the target's Attack, Special Attack, and Speed by one stage if it is poisoned."
+365,9,Damages the target if it uses a []{type:fire} move.,Damages the target if it uses a []{type:fire} move.
+366,9,"Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage.","Takes one turn to charge, then raises the user's Special Attack, Special Defense, and Speed by one stage."
+367,9,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.,Raises Defense and Special Defense by one stage for friendly Pokémon with with []{ability:plus} or []{ability:minus}.
+368,9,"For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power.","For five turns, prevents Pokémon on the ground from sleeping and strengthens their []{type:electric} moves to 1.5× their power."
 10001,9,Has an increased chance for a critical hit in Hyper Mode.,Inflicts [regular damage]{mechanic:regular-damage}.  User's [critical hit]{mechanic:critical-hit} rate is one level higher when using this move while in [hyper mode]{mechanic:hyper-mode}.
 10002,9,User receives 1/2 its HP in recoil.,Inflicts [regular damage]{mechanic:regular-damage}.  User takes 1/2 of its current [HP]{mechanic:hp} in recoil.
 10003,9,Halves HP of all Pokémon on the field.  Must recharge,"Halves [HP]{mechanic:hp} of all Pokémon on the field.  User loses its next turn to ""recharge"", and cannot attack or [switch]{mechanic:switch} out during that turn."
 10004,9,Lowers the target's evasion by two stages.,Lowers the target's [evasion]{mechanic:evasion} by two [stages]{mechanic:stage}.
 10005,9,"Removes [Light Screen]{move:light-screen}, [Reflect]{move:reflect}, and [Safeguard]{move:safeguard}.","Removes the effects of []{move:light-screen}, []{move:reflect}, and []{move:safeguard}."
 10006,9,Changes the weather to Shadow Sky for five turns.,Changes the weather to Shadow Sky for five turns.  Pokémon other than []{type:shadow} Pokémon take 1/16 their max [HP]{mechanic:hp} at the end of every turn.  This move is typeless for the purposes of []{move:weather-ball}.
-10007,9,[Gen VI placeholder],[Gen VI placeholder]
