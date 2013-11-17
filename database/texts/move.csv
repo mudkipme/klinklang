@@ -1,14 +1,14 @@
 拍击,はたく,Pound
 手刀,からてチョップ,Karate Chop
-连环巴掌,おうふくビンタ,DoubleSlap
+连环巴掌,おうふくビンタ,Double Slap
 连续拳,れんぞくパンチ,Comet Punch
 百万吨拳击,メガトンパンチ,Mega Punch
 聚宝功,ネコにこばん,Pay Day
 火焰拳,ほのおのパンチ,Fire Punch
 急冻拳,れいとうパンチ,Ice Punch
-雷光掌,かみなりパンチ,ThunderPunch
+雷光掌,かみなりパンチ,Thunder Punch
 利爪,ひっかく,Scratch
-剪断,はさむ,ViceGrip
+剪断,はさむ,Vice Grip
 剪刀断头台,ハサミギロチン,Guillotine
 旋风刀,かまいたち,Razor Wind
 剑舞,つるぎのまい,Swords Dance
@@ -25,7 +25,7 @@
 百万吨飞腿,メガトンキック,Mega Kick
 飞踢,とびげり,Jump Kick
 旋风腿,まわしげり,Rolling Kick
-飞沙脚,すなかけ,Sand-Attack
+飞沙脚,すなかけ,Sand Attack
 铁头功,ずつき,Headbutt
 角撞,つのでつく,Horn Attack
 疯狂攻击,みだれづき,Fury Attack
@@ -46,7 +46,7 @@
 吼叫,ほえる,Roar
 唱歌,うたう,Sing
 超音波,ちょうおんぱ,Supersonic
-音爆,ソニックブーム,SonicBoom
+音爆,ソニックブーム,Sonic Boom
 石化功,かなしばり,Disable
 溶解液,ようかいえき,Acid
 火花,ひのこ,Ember
@@ -58,7 +58,7 @@
 急冻光线,れいとうビーム,Ice Beam
 暴风雪,ふぶき,Blizzard
 幻象光,サイケこうせん,Psybeam
-泡沫光线,バブルこうせん,BubbleBeam
+泡沫光线,バブルこうせん,Bubble Beam
 极光束,オーロラビーム,Aurora Beam
 破坏死光,はかいこうせん,Hyper Beam
 啄,つつく,Peck
@@ -73,15 +73,15 @@
 寄生种子,やどりぎのタネ,Leech Seed
 生长,せいちょう,Growth
 飞叶快刀,はっぱカッター,Razor Leaf
-阳光烈焰,ソーラービーム,SolarBeam
-毒粉末,どくのこな,PoisonPowder
+阳光烈焰,ソーラービーム,Solar Beam
+毒粉末,どくのこな,Poison Powder
 麻痹粉,しびれごな,Stun Spore
 睡眠粉,ねむりごな,Sleep Powder
 花之舞,はなびらのまい,Petal Dance
 吐丝,いとをはく,String Shot
 龙之怒,りゅうのいかり,Dragon Rage
 火焰漩涡,ほのおのうず,Fire Spin
-电击,でんきショック,ThunderShock
+电击,でんきショック,Thunder Shock
 十万伏特,１０まんボルト,Thunderbolt
 电磁波,でんじは,Thunder Wave
 打雷,かみなり,Thunder
@@ -105,7 +105,7 @@
 自我复原,じこさいせい,Recover
 硬梆梆,かたくなる,Harden
 缩小,ちいさくなる,Minimize
-烟幕,えんまく,SmokeScreen
+烟幕,えんまく,Smokescreen
 奇异光线,あやしいひかり,Confuse Ray
 缩壳,からにこもる,Withdraw
 防卫卷,まるくなる,Defense Curl
@@ -117,7 +117,7 @@
 忍忍,がまん,Bide
 挥指功,ゆびをふる,Metronome
 学舌术,オウムがえし,Mirror Move
-自爆,じばく,Selfdestruct
+自爆,じばく,Self-Destruct
 炸蛋,タマゴばくだん,Egg Bomb
 舔舌头,したでなめる,Lick
 迷雾,スモッグ,Smog
@@ -132,8 +132,8 @@
 纠缠,からみつく,Constrict
 瞬间失忆,ドわすれ,Amnesia
 折弯汤匙,スプーンまげ,Kinesis
-生蛋,タマゴうみ,Softboiled
-飞膝撞,とびひざげり,Hi Jump Kick
+生蛋,タマゴうみ,Soft-Boiled
+飞膝撞,とびひざげり,High Jump Kick
 大蛇瞪眼,へびにらみ,Glare
 食梦,ゆめくい,Dream Eater
 毒瓦斯,どくガス,Poison Gas
@@ -182,7 +182,7 @@
 守住,まもる,Protect
 音速拳,マッハパンチ,Mach Punch
 鬼脸,こわいかお,Scary Face
-虚晃一招,だましうち,Faint Attack
+虚晃一招,だましうち,Feint Attack
 天使之吻,てんしのキッス,Sweet Kiss
 肚子大鼓,はらだいこ,Belly Drum
 臭泥爆弹,ヘドロばくだん,Sludge Bomb
@@ -220,9 +220,9 @@
 分享痛楚,いたみわけ,Pain Split
 圣之火,せいなるほのお,Sacred Fire
 震级,マグニチュード,Magnitude
-爆裂拳,ばくれつパンチ,DynamicPunch
+爆裂拳,ばくれつパンチ,Dynamic Punch
 百万吨角击,メガホーン,Megahorn
-龙吸,りゅうのいぶき,DragonBreath
+龙吸,りゅうのいぶき,Dragon Breath
 接棒,バトンタッチ,Baton Pass
 再来一次,アンコール,Encore
 追打,おいうち,Pursuit
@@ -242,8 +242,8 @@
 咬碎,かみくだく,Crunch
 表面涂层,ミラーコート,Mirror Coat
 自我暗示,じこあんじ,Psych Up
-神速,しんそく,ExtremeSpeed
-原始之力,げんしのちから,AncientPower
+神速,しんそく,Extreme Speed
+原始之力,げんしのちから,Ancient Power
 影子球,シャドーボール,Shadow Ball
 先知,みらいよち,Future Sight
 岩石粉碎,いわくだき,Rock Smash
@@ -262,7 +262,7 @@
 临别礼物,おきみやげ,Memento
 假勇敢,からげんき,Facade
 集中猛击,きあいパンチ,Focus Punch
-苏醒,きつけ,SmellingSalt
+苏醒,きつけ,Smelling Salt
 跟我来,このゆびとまれ,Follow Me
 自然能力,しぜんのちから,Nature Power
 充电,じゅうでん,Charge
@@ -294,7 +294,7 @@
 萤火,ほたるび,Tail Glow
 洁净光泽,ラスターパージ,Luster Purge
 薄雾球,ミストボール,Mist Ball
-羽毛舞,フェザーダンス,FeatherDance
+羽毛舞,フェザーダンス,Feather Dance
 摇晃舞,フラフラダンス,Teeter Dance
 火焰踢,ブレイズキック,Blaze Kick
 玩泥巴,どろあそび,Mud Sport
@@ -317,7 +317,7 @@
 岩石封闭,がんせきふうじ,Rock Tomb
 银色旋风,ぎんいろのかぜ,Silver Wind
 金属音,きんぞくおん,Metal Sound
-草笛魔音,くさぶえ,GrassWhistle
+草笛魔音,くさぶえ,Grass Whistle
 搔痒,くすぐる,Tickle
 无限能量,コスモパワー,Cosmic Power
 喷水,しおふき,Water Spout
@@ -557,12 +557,6 @@
 胜利V热炎,Ｖジェネレート,V-create
 十字交叉火焰,クロスフレイム,Fusion Flare
 十字交叉闪电,クロスサンダー,Fusion Bolt
-抛物线充电,パラボラチャージ,Parabolic Charge
-放狠话,すてゼリフ,Parting Shot
-月之力量,ムーンフォース,Moonblast
-妖精之风,ようせいのかぜ,Fairy Wind
-爆音波,ばくおんぱ,Boomburst
-战吼,おたけび,Noble Roar
 抛物线充电,パラボラチャージ,Parabolic Charge
 放狠话,すてゼリフ,Parting Shot
 月之力量,ムーンフォース,Moonblast

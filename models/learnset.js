@@ -28,6 +28,7 @@ exports.learnlist = function(species, type, callback){
     _.each(rows, function(row){
       if (row.level == 1) row.level = '—';
       if (!row.power) row.power = '—';
+      if (row.power == 1) row.power = '变化';
       if (!row.accuracy) row.accuracy = '—';
       if (row.machine_number) {
         row.machine_number = row.machine_number > 100 ? '秘传技学习器0' + row.machine_number % 100 : (row.machine_number < 10 ? '技能学习器0' + row.machine_number : '技能学习器' + row.machine_number);
@@ -44,7 +45,7 @@ exports.learnlist = function(species, type, callback){
         exports.learnlist(row.evolves_from_species_id, 'level', function(err, rows2){
           var rows2 = _.filter(rows2, function(r){
             if ((r.level + '').indexOf('MSP') == -1) {
-              r.level = '{{MSP|' + row.evolves_from_species_id + '|' + row.name + '}}' + r.level;
+              r.level = '{{MSP|' + ('00' + row.evolves_from_species_id).substr(-3) + '|' + row.name + '}}' + r.level;
             }
             return !_.findWhere(rows, {move_id: r.move_id});
           });
