@@ -1,6 +1,7 @@
 var async = require('async');
 var _ = require('underscore');
 var Species = require('../models/species');
+var Wiki = require('../models/wiki');
 
 var uploadDreamWorld = function(wiki, filename, callback){
   Species.allNames('en', function(err, names){
@@ -31,6 +32,14 @@ var uploadMega = function(wiki, filename, callback){
   wiki.remoteUpload(filename, url, callback);
 };
 
+var importImage = function(wiki, filename, callback){
+  var bulba = new Wiki({api: 'http://archives.bulbagarden.net/w/api.php'});
+  bulba.imgUrl(filename, function(err, url){
+    url = url.replace(/archives\./, 'cdn.');
+    wiki.remoteUpload(filename, url, callback);
+  });
+};
+
 exports.register = function(program, wiki){
   program
   .command('dream-image <filename>')
@@ -57,6 +66,16 @@ exports.register = function(program, wiki){
   .description('Upload the icons of Mega Pokémon.')
   .action(function(filename){
     uploadMega(wiki, filename, function(err, data){
+      if (err) return console.log(err.message);
+      console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('import-image <filename>')
+  .description('Import certain image from other wikis.')
+  .action(function(filename){
+    importImage(wiki, filename, function(err, data){
       if (err) return console.log(err.message);
       console.log(JSON.stringify(data));
     });

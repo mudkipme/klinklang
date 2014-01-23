@@ -142,12 +142,12 @@
 鲜花熏香,おはなのおこう,Rose Incense
 幸运熏香,こううんのおこう,Luck Incense
 清净熏香,きよめのおこう,Pure Incense
-保护甲,プロテクター,Protector
+护身盔甲,プロテクター,Protector
 电力发动机,エレキブースター,Electirizer
 岩浆驱动器,マグマブースター,Magmarizer
 怪异补丁,あやしいパッチ,Dubious Disc
 灵界之布,れいかいのぬの,Reaper Cloth
-锐利爪,するどいツメ,Razor Claw
+锐利爪子,するどいツメ,Razor Claw
 锐利牙,するどいキバ,Razor Fang
 圆石头,まんまるいし,Oval Stone
 金刚玉魂,こんごうだま,Adamant Orb
@@ -280,7 +280,7 @@ PP增加剂,ポイントマックス,PP Max
 潜水球,ダイブボール,Dive Ball
 巢穴球,ネストボール,Nest Ball
 重复球,リピートボール,Repeat Ball
-时间球,タイマーボール,Timer Ball
+计时球,タイマーボール,Timer Ball
 华丽球,ゴージャスボール,Luxury Ball
 首席球,プレミアボール,Premier Ball
 治愈球,ヒールボール,Heal Ball
@@ -436,7 +436,7 @@ PP增加剂,ポイントマックス,PP Max
 神奇宝贝之笛,ポケモンのふえ,Poké Flute
 秘密钥匙,ひみつのカギ,Secret Key
 礼券,ひきかえけん,Coupons
-金之假牙,きんのいれば,Gold Teeth
+金子做的假牙,きんのいれば,Gold Teeth
 卡片钥匙,カードキー,Card Key
 电梯钥匙,エレベータのカギ,Lift Key
 幻影透视镜,シルフスコープ,Silph Scope
@@ -532,9 +532,11 @@ GB播放机,GBプレイヤー,GB Sounds
 装饰品盒,グッズケース,Liberty Pass
 龙骨,ドラゴンのホネ,Dragon Skull
 黑暗石,ダークストーン,Dark Stone
-光明石,ライトストーン,Light Stone
+光芒石,ライトストーン,Light Stone
 实况转播器,ライブキャスター,Xtransceiver
 神石,ゴッドストーン,God Stone
+基因之楔,いでんしのくさび,DNA Splicers
+写形镜,うつしかがみ,Reveal Glass
 配达物1,はいたつぶつ１,Gram 1
 配达物2,はいたつぶつ２,Gram 2
 配达物3,はいたつぶつ３,Gram 3
@@ -545,3 +547,38 @@ GB播放机,GBプレイヤー,GB Sounds
 白色圆柑果实,しろぼんぐり,Wht Apricorn
 黑色圆柑果实,くろぼんぐり,Blk Apricorn
 粉色圆柑果,ももぼんぐり,Pnk Apricorn
+特性胶囊,とくせいカプセル,Ability Capsule
+米亚雷脆皮饼,ミアレガレット,Lumiose Galette
+颚之化石,アゴのカセキ,Jaw Fossil
+鳍之化石,ヒレのカセキ,Sail Fossil
+弱点保险,じゃくてんほけん,Weakness Policy
+突击护甲,とつげきチョッキ,Assault Vest
+精灵令,せいれいプレート,Pixie Plate
+防尘护眼镜, ぼうじんゴーグル,Safety Goggles
+香囊,においぶくろ,Sachet
+奶油棒糖,ホイップポップ,Whipped Dream
+光苔,ひかるコケ,Luminous Moss
+雪球,ゆきだま,Snowball
+妖精宝石,フェアリージュエル,Fairy Gem
+全息转播器,ホロキャスター,Holo Caster
+探险心得,たんけんこころえ,Adventure Rules
+奇妙石,すごそうないし,Intriguing Stone
+隐形眼镜盒,レンズケース,Lens Case
+百万环,メガリング,Mega Ring
+直排轮,ローラースケート,Roller Skates
+发电厂通行证,はつでんしょパス,Power Plant Pass
+TMV通行证,ＴＭＶパス,TMV Pass
+卡洛斯纹章,カロスエンブレム,Honor of Kalos
+帅哥票证,ハンサムチケット,Looker Ticket
+神奇摆设,ふしぎなおきもの,Strange Souvenir
+电梯的钥匙,エレベータのカギ,Lift Key
+莲叶童子喷壶,ハスボーじょうろ,Sprinklotad
+博士的信,はかせのてがみ,Prof's Letter
+洛神果,ロゼルのみ,Roseli Berry
+阿开果,アッキのみ,Kee Berry
+香波果,タラプのみ,Maranga Berry
+荒诞肥,とんでもこやし,Amaze Mulch
+劲劲肥,ぐんぐんこやし,Boost Mulch
+硕果肥,たわわこやし,Rich Mulch
+惊讶肥,びっくりこやし,Surprise Mulch
+特价券,バーゲンチケット,Discount Coupon

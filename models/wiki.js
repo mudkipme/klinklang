@@ -10,6 +10,7 @@ var parseString = require('xml2js').parseString;
 var Wiki = function(options){
   'use strict';
   var me = this;
+  options = options || {};
   me.api = options.api || require('../config.json').wiki.api;
   me.userAgent = options.userAgent
     || 'MudkipRadar v' + require('../package.json').version;
