@@ -79,9 +79,22 @@
 立涌市,タチワキシティ,Virbank City
 山路镇,ヤマジタウン,Lentimas Town
 青海波市,セイガイハシティ,Humilau City
-麻芽镇,アサメタウン,Vaniville Town
-米亚雷市,ミアレシティ,Lumiose City
+朝芽镇,アサメタウン,Vaniville Town
+名水镇,メイスイタウン,Aquacorde Town
 白檀市,ハクダンシティ,Santalune City
+枯木镇,コボクタウン,Camphrier Town
+逍遥市,ショウヨウシティ,Cyllage City
+石苔镇,セキタイタウン,Geosenge Town
+红尘镇,コウジンタウン,Ambrette Town
+娑罗市,シャラシティ,Shalour City
+比翼市,ヒヨクシティ,Coumarine City
+米亚雷市,ミアレシティ,Lumiose City
+薰衣市,クノエシティ,Laverre City
+风絮镇,フウジョタウン,Dendemille Town
+百刻市,ヒャッコクシティ,Anistar City
+连理镇,レンリタウン,Couriway Town
+映雪市,エイセツシティ,Snowbelle City
+奇南市,キナンシティ,Kiloude City
 一之岛,１の岛,One Island
 二之岛,２の岛,Two Island
 三之岛,３の岛,Three Island
@@ -101,9 +114,9 @@
 冰雪之村,ブルブルキャンプ,Shiver Camp
 玛瑙村,アゲトビレッジ,Agate Village
 堇青港,アイオポート,Gateon Port
-硅铍市,フェナスシティ,Phenac City
+矽铍市,フェナスシティ,Phenac City
 黄铁镇,パイラタウン,Pyrite Town
-下面,アンダー,The Under
+地下城,アンダー,The Under
 哆落普岛,ドロップじま,Dolce Island
 来恩虹岛,レインボじま,Renbow Island
 咪龙达岛,ミロンダじま,Mitonga Island
@@ -135,7 +148,7 @@
 石英高原,セキエイ高原,Indigo Plateau
 月见山,お月见山,Mt. Moon
 月见山广场,お月见山広场,Mt. Moon Square
-神奇宝贝大宅,ポケモン屋敷,Pokémon Mansion
+神奇宝贝屋,ポケモン屋敷,Pokémon Mansion
 神奇宝贝塔,ポケモンタワー,Pokémon Tower
 无人发电站,无人発电所,Power Plant
 岩山隧道,イワヤマトンネル,Rock Tunnel
@@ -184,9 +197,9 @@
 觉醒祠堂,目覚めの丛祠,Cave of Origin
 沙漠遗迹,砂漠遗迹,Desert Ruins
 沙漠的地下道,砂漠の地下道,Desert Underpass
-遥远的孤岛,最果ての孤岛,Faraway Island
+边境的小岛,最果ての孤岛,Faraway Island
 热焰小径,炎の抜け道,Fiery Path
-岩石洞窟,石の洞窟,Granite Cave
+石之洞窟,石の洞窟,Granite Cave
 小岛横穴,小岛の横穴,Island Cave
 凹凸山道,デコボコ山道,Jagged Pass
 海之窟,海の洞窟,Marine Cave
@@ -287,7 +300,7 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 心之空洞,心の空洞,Cave of Being
 誓约森林,ちかいのはやし,Pledge Grove
 神奇宝贝好莱坞,ポケウッド,Pokéstar Studios
-立涌联合厂,タチワキコンビナート,Virbank Complex
+立涌联合工业区,タチワキコンビナート,Virbank Complex
 飞云地下水道,ヒウン下水道,Castelia Sewers
 古代秘道,古代の抜け道,Relic Passage
 菊老大路,ヤーコンロード,Clay Tunnel
@@ -295,13 +308,14 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 反转山,リバースマウンテン,Reversal Mountain
 海洋隧道,マリンチューブ,Marine Tube
 海边洞穴,海辺の洞穴,Seaside Cave
-等离子巡防舰,プラズマフリゲート,Plasma Frigate
+电浆巡防舰,プラズマフリゲート,Plasma Frigate
 自然保护区,自然保护区,Nature Preserve
 神奇宝贝世界锦标赛,ポケモンワールドトーナメント,Pokémon World Tournament
 加盟大道,ジョインアベニュー,Join Avenue
 外人之屋,ストレンジャハウス,Strange House
 隐藏洞穴,隠し穴,Hidden Grotto
 白檀森林,ハクダンの森,Santalune Forest
+精通塔,マスタータワー,Tower of Mastery
 变化洞窟,変化の洞窟,Altering Cave
 果实森林,木の実の森,Berry Forest
 诞生之岛,誕生の島,Birth Island
@@ -316,7 +330,7 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 不归之穴,変えらずの穴,Lost Cave
 回忆之塔,思い出の塔,Memorial Pillar
 灯火山,灯山,Mt. Ember
-脐之岩,臍の岩,Navel Rock
+肚脐岩,臍の岩,Navel Rock
 外岛,外れの島,Outcast Island
 记号树林,印の林,Pattern Bush
 高级度假村,ゴージャスリゾート,Resort Gorgeous
@@ -325,7 +339,7 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 七宝溪谷,七宝渓谷,Sevault Canyon
 阿斯卡纳遗迹,アスカナ遺跡,Tanoby Ruins
 阿斯卡纳的锁,アスカナの键,Tanoby Key
-珍宝海滩,宝の浜（たからのはま）,Treasure Beach
+珍宝海滩,宝の浜,Treasure Beach
 训练家之塔,トレーナータワー,Trainer Tower
 水之迷宫,水の迷路,Water Labyrinth
 水之步道,水の散歩道,Water Path
