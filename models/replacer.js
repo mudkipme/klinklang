@@ -7,13 +7,15 @@ var fs = require('fs')
 var tableCache = {}, tables = [];
 
 var loadText = function(text, callback) {
+  text = path.basename(text);
+
   if (tableCache[text])
     return callback(null, tableCache[text]);
 
   var table = [];
 
   csv().from(
-    __dirname + '/../database/texts/' + path.basename(text) + '.csv'
+    __dirname + '/../database/texts/' + text + '.csv'
     ,{columns: ['zh', 'ja', 'en']}
   )
   .on('record', function(row, index){
