@@ -1,6 +1,6 @@
 {
   "name": "klinklang",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "private": true,
   "scripts": {
     "start": "node app.js"
@@ -13,7 +13,7 @@
     "sass-middleware": "*",
     "commander": "*",
     "sqlite3": "*",
-    "request": "*",
+    "request": "2.27.0",
     "tongwen": "*",
     "xml2js": "*"
   }

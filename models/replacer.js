@@ -22,12 +22,12 @@ var loadText = function(text, callback) {
     table.push(row);
   })
   .on('end', function(){
-    tableCache[text] = table;
     if (text == 'type') {
       table = table.concat(_.map(table, function(row){
         return {zh: row.zh, ja: row.ja, en: row.en.toLowerCase()};
       }));
     }
+    tableCache[text] = table;
     callback(null, table);
   })
   .on('error', function(err){
