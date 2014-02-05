@@ -38,13 +38,7 @@ var loadText = function(text, callback) {
 exports.loadText = function(texts, callback) {
   texts = texts || [];
 
-  var actions = [];
-  texts.forEach(function(text){
-    actions.push(function(next){
-      loadText(text, next);
-    });
-  });
-  async.series(actions, callback);
+  async.mapSeries(texts, loadText, callback);
 };
 
 exports.allTables = function(callback) {

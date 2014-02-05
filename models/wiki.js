@@ -371,4 +371,26 @@ Wiki.prototype.remoteUpload = function(filename, url, options, callback){
   });
 };
 
+Wiki.prototype.redirect = function(source, dest, callback){
+  var me = this;
+
+  me.getArticle(source, function(err, text){
+    if (err) return callback(err);
+    if (text) return callback(null, 'Skip ' + source);
+
+    dest = tongwen.t2s(dest);
+
+    me.getArticle(dest, function(err, text){
+      if (err) return callback(err);
+      if (text) return me.edit(source, '#REDIRECT [[' + dest + ']]', callback);
+
+      dest = tongwen.s2t(dest);
+      me.getArticle(dest, function(err, text){
+        if (!text) return callback(null, 'Skip ' + dest);
+        me.edit(source, '#REDIRECT [[' + dest + ']]', callback);
+      });
+    });
+  });
+};
+
 module.exports = Wiki;

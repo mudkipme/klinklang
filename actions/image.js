@@ -40,6 +40,62 @@ var importImage = function(wiki, filename, callback){
   });
 };
 
+var uploadXYAniSprites = function(wiki, number, callback){
+  var filename;
+  async.waterfall([
+    async.apply(Species.name, number, 'en')
+    ,function(name, next){
+      filename = name.toLowerCase()
+      .split('♂').join(' m').split('♀').join(' f')
+      .split("'").join('').split(' ').join('_') + '.png';
+
+      wiki.remoteUpload('Spr 6x ' + ('00' + number).substr(-3) + '.png'
+        ,'http://static-local.52poke.com/wikipic/sprite/xy/ani/' + filename
+        ,{text: "{{图片信息|source=[http://www.pkparaiso.com/xy/sprites_pokemon.php Pokémon Paraíso]|about=游戏}}"}
+        ,next);
+    }
+  ], callback);
+};
+
+var uploadXYShinySprites = function(wiki, number, callback){
+  var frName = 'Sprite 6 x ' + ('00' + number).substr(-3) + ' s.png';
+  
+  wiki.remoteUpload('Spr 6x ' + ('00' + number).substr(-3) + ' s.png'
+    ,'http://static-local.52poke.com/wikipic/sprite/xy/shiny/' + frName.split(' ').join('_')
+    ,{text: "{{图片信息|source=Poképédia|about=游戏}}\n[[fr:Fichier:" + frName + "]]"}
+    ,callback);
+};
+
+var spriteTemplate = function(wiki, number, callback){
+  var title = '', types = [];
+
+  async.waterfall([
+    async.apply(Species.name, number, 'zh')
+    ,function(name, next){
+      title = name;
+      Species.typeName(number, next);
+    }
+    ,function(typeName, next){
+      types = '|type=' + typeName[0];
+      typeName.length > 1 && (types += '\n|type2=' + typeName[1]);
+      wiki.getSection(title, '形象', next);
+    }
+    ,function(text, rvsection, next){
+      if (!text) return next();
+
+      content = [
+        '===形象==='
+        ,'{{形象'
+        ,types
+        ,'|gen=6'
+        ,'|ndex=' + number + '}}'
+      ].join('\n');
+
+      wiki.edit(title, content, {section: rvsection}, next);
+    }
+  ], callback);
+};
+
 exports.register = function(program, wiki){
   program
   .command('dream-image <filename>')
@@ -76,6 +132,36 @@ exports.register = function(program, wiki){
   .description('Import certain image from other wikis.')
   .action(function(filename){
     importImage(wiki, filename, function(err, data){
+      if (err) return console.log(err.message);
+      console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('xy-ani-sprite <number>')
+  .description('Upload animated sprites of Pokémon X & Y.')
+  .action(function(number){
+    uploadXYAniSprites(wiki, number, function(err, data){
+      if (err) return console.log(err.message);
+      console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('xy-shiny-sprite <number>')
+  .description('Upload shiny sprites of Pokémon X & Y.')
+  .action(function(number){
+    uploadXYShinySprites(wiki, number, function(err, data){
+      if (err) return console.log(err.message);
+      console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('sprite-template <number>')
+  .description('Added sprite template to Pokémon articles.')
+  .action(function(number){
+    spriteTemplate(wiki, number, function(err, data){
       if (err) return console.log(err.message);
       console.log(JSON.stringify(data));
     });

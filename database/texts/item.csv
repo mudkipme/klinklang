@@ -119,22 +119,22 @@
 粉红头巾,ピンクのバンダナ,Pink Scarf
 绿色头巾,みどりのバンダナ,Green Scarf
 黄色头巾,きいろのバンダナ,Yellow Scarf
-火球令,ひのたまプレート,Flame Plate
-水滴令,しずくプレート,Splash Plate
-雷电令,いかずちプレート,Zap Plate
-碧绿令,みどりのプレート,Meadow Plate
-冰柱令,つららのプレート,Icicle Plate
-拳头令,こぶしのプレート,Fist Plate
-剧毒令,もうどくプレート,Toxic Plate
-大地令,だいちのプレート,Earth Plate
-青空令,あおぞらプレート,Sky Plate
-奇异令,ふしぎのプレート,Mind Plate
-玉虫令,たまむしプレート,Insect Plate
-岩石令,がんせきプレート,Stone Plate
-妖怪令,もののけプレート,Spooky Plate
-龙之令,りゅうのプレート,Draco Plate
-凶狠令,こわもてプレート,Dread Plate
-钢铁令,こうてつプレート,Iron Plate
+火球板块,ひのたまプレート,Flame Plate
+水滴板块,しずくプレート,Splash Plate
+雷电板块,いかずちプレート,Zap Plate
+碧绿板块,みどりのプレート,Meadow Plate
+冰柱板块,つららのプレート,Icicle Plate
+拳头板块,こぶしのプレート,Fist Plate
+剧毒板块,もうどくプレート,Toxic Plate
+大地板块,だいちのプレート,Earth Plate
+青空板块,あおぞらプレート,Sky Plate
+奇异板块,ふしぎのプレート,Mind Plate
+玉虫板块,たまむしプレート,Insect Plate
+岩石板块,がんせきプレート,Stone Plate
+妖怪板块,もののけプレート,Spooky Plate
+龙之板块,りゅうのプレート,Draco Plate
+凶狠板块,こわもてプレート,Dread Plate
+钢铁板块,こうてつプレート,Iron Plate
 怪异熏香,あやしいおこう,Odd Incense
 岩石熏香,がんせきおこう,Rock Incense
 满腹熏香,まんぷくおこう,Full Incense
@@ -176,7 +176,7 @@
 黏着钩爪,ねばりのかぎづめ,Grip Claw
 限定招式的围巾,こだわりスカーフ,Choice Scarf
 附针,くっつきバリ,Sticky Barb
-力量护碗,パワーリスト,Power Bracer
+力量护腕,パワーリスト,Power Bracer
 力量腰带,パワーベルト,Power Belt
 力量镜片,パワーレンズ,Power Lens
 力量束带,パワーバンド,Power Band
@@ -200,23 +200,23 @@
 球根,きゅうこん,Absorb Bulb
 充电电池,じゅうでんち,Cell Battery
 逃脱按钮,だっしゅつボタン,Eject Button
-炎之珠宝,ほのおのジュエル,Fire Gem
-水之珠宝,みずのジュエル,Water Gem
-电之珠宝,でんきのジュエル,Electric Gem
-草之珠宝,くさのジュエル,Grass Gem
-冰之珠宝,こおりのジュエル,Ice Gem
-格斗珠宝,かくとうジュエル,Fighting Gem
-毒之珠宝,どくのジュエル,Poison Gem
-地上珠宝,じめんのジュエル,Ground Gem
-飞行珠宝,ひこうのジュエル,Flying Gem
-超能珠宝,エスパージュエル,Psychic Gem
-虫之珠宝,むしのジュエル,Insect Gem
-岩石珠宝,いわのジュエル,Rock Gem
-幽灵珠宝,ゴーストジュエル,Ghost Gem
-龙之珠宝,ドラゴンジュエル,Dragon Gem
-恶之珠宝,あくのジュエル,Dark Gem
-钢之珠宝,はがねのジュエル,Steel Gem
-一般珠宝,ノーマルジュエル,Normal Gem
+炎之宝石,ほのおのジュエル,Fire Gem
+水之宝石,みずのジュエル,Water Gem
+电之宝石,でんきのジュエル,Electric Gem
+草之宝石,くさのジュエル,Grass Gem
+冰之宝石,こおりのジュエル,Ice Gem
+格斗宝石,かくとうジュエル,Fighting Gem
+毒之宝石,どくのジュエル,Poison Gem
+地上宝石,じめんのジュエル,Ground Gem
+飞行宝石,ひこうのジュエル,Flying Gem
+超能宝石,エスパージュエル,Psychic Gem
+虫之宝石,むしのジュエル,Insect Gem
+岩石宝石,いわのジュエル,Rock Gem
+幽灵宝石,ゴーストジュエル,Ghost Gem
+龙之宝石,ドラゴンジュエル,Dragon Gem
+恶之宝石,あくのジュエル,Dark Gem
+钢之宝石,はがねのジュエル,Steel Gem
+一般宝石,ノーマルジュエル,Normal Gem
 药水,キズぐすり,Potion
 解毒剂,どくけし,Antidote
 灼伤药,やけどなおし,Burn Heal
@@ -490,7 +490,7 @@ GS球,ジーエスボール,GS Ball
 红宝石,ルビー,Ruby
 蓝宝石,サファイア,Sapphire
 火岩标志,マグマのしるし,Magma Emblem
-陈旧航海图,ふるびたかいず,Old Sea Map
+古航海图,ふるびたかいず,Old Sea Map
 探检包,たんけんセット,Explorer Kit
 宝藏袋,たからぶくろ,Loot Sack
 规则书,ルールブック,Rule Book
@@ -553,8 +553,8 @@ GB播放机,GBプレイヤー,GB Sounds
 鳍之化石,ヒレのカセキ,Sail Fossil
 弱点保险,じゃくてんほけん,Weakness Policy
 突击护甲,とつげきチョッキ,Assault Vest
-精灵令,せいれいプレート,Pixie Plate
-防尘护眼镜, ぼうじんゴーグル,Safety Goggles
+精灵板块,せいれいプレート,Pixie Plate
+防尘护眼镜,ぼうじんゴーグル,Safety Goggles
 香囊,においぶくろ,Sachet
 奶油棒糖,ホイップポップ,Whipped Dream
 光苔,ひかるコケ,Luminous Moss
