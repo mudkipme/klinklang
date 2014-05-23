@@ -12,7 +12,7 @@
 绿色碎片,みどりのかけら,Green Shard
 学习装置,がくしゅうそうち,Exp. Share
 木箱,きのはこ,Normal Box
-桐箱,きりのはこ,Gorgeous Box
+桐木箱,きりのはこ,Gorgeous Box
 美味尾巴,おいしいシッポ,Slowpoketail
 甜蜜,あまいミツ,Honey
 快快肥,すくすくこやし,Growth Mulch
@@ -100,14 +100,14 @@
 弯曲的汤匙,まがったスプーン,TwistedSpoon
 木炭,もくたん,Charcoal
 龙之牙,りゅうのキバ,Dragon Fang
-粉红缎带,ピンクのリボン,Pink Ribbon
-波点缎带,みずたまりボン,Polkadot Bow
-升级卡片,アップグレード,Up-Grade
-幸运拳套,ラッキーパンチ,Lucky Punch
+粉红色丝带,ピンクのリボン,Pink Ribbon
+水玉色之带,みずたまりボン,Polkadot Bow
+升级,アップグレード,Up-Grade
+幸运之拳,ラッキーパンチ,Lucky Punch
 金属粉,メタルパウダー,Metal Powder
-粗骨棒,ふといホネ,Thick Club
-长葱,ながねぎ,Stick
-破坏的基因,はかいのいでんし,Berserk Gene
+胖骨头,ふといホネ,Thick Club
+大葱,ながねぎ,Stick
+破坏性的遗传因子,はかいのいでんし,Berserk Gene
 白色药草,しろいハーブ,White Herb
 强制锻炼器,きょうせいギプス,Macho Brace
 安抚之铃,やすらぎのすず,Soothe Bell
@@ -250,7 +250,7 @@ PP全补剂,ピーピーマックス,Max Elixir
 元气之根,ちからのねっこ,Energy Root
 万能之粉,ばんのうごな,Heal Powder
 复活之草,ふっかつそう,Revival Herb
-圣灰,せいなるはい,Sacred Ash
+神圣之灰,せいなるはい,Sacred Ash
 愤怒馒头,いかりまんじゅう,RageCandyBar
 釜炎仙贝,フエンせんべい,Lava Cookie
 树果汁,きのみジュース,Berry Juice
@@ -273,6 +273,7 @@ PP增加剂,ポイントマックス,PP Max
 飞云冰淇淋,ヒウンアイス,Casteliacone
 特性胶囊,とくせいカプセル,Ability Capsule
 米亚雷脆皮饼,ミアレガレット,Lumiose Galette
+娑罗松饼,シャラサブレ,Shalour Sable
 弱点保险,じゃくてんほけん,Weakness Policy
 突击护甲,とつげきチョッキ,Assault Vest
 防尘护眼镜,ぼうじんゴーグル,Safety Goggles
@@ -339,12 +340,16 @@ PP增加剂,ポイントマックス,PP Max
 梦境球,ドリームボール,Dream Ball
 技能学习器,わざマシン,TM
 秘传技学习器,ひでんマシン,HM
-木之实,きのみ,Berry
-黄金果,おうごんのみ,Gold Berry
-解麻果,まひなおしのみ,PRZCureBerry
-解毒果,どくけしのみ,PSNCureBerry
-苦气果,にがいきのみ,Bitter Berry
-灼伤果,やけたきのみ,Burnt Berry
+树果,きのみ,Berry
+黄金的果实,おうごんのみ,Gold Berry
+消除麻痹的果实,まひなおしのみ,PRZCureBerry
+解毒的果实,どくけしのみ,PSNCureBerry
+苦涩的果实,にがいきのみ,Bitter Berry
+烧烤的果实,やけたきのみ,Burnt Berry
+冰冻的果实,こおったきのみ,Ice Berry
+薄荷的果实,はっかのみ,Mint Berry
+奇迹的果实,きせきのみ,MiracleBerry
+奇异的果实,ふしぎなきのみ, MysteryBerry
 辣樱,クラボのみ,Cheri Berry
 涩栗,カゴのみ,Chesto Berry
 甜桃,モモンのみ,Pecha Berry
@@ -414,11 +419,11 @@ PP增加剂,ポイントマックス,PP Max
 香波果,タラプのみ,Maranga Berry
 花案邮件,はながらメール,Flower Mail
 冲浪邮件,なみのりメール,Surf Mail
-海洋邮件,みずいろメール,Bubble Mail
+水色邮件,みずいろメール,Bubble Mail
 肖像邮件,にがおえメール,PortraitMail
 可爱邮件,ラブリーメール,Lovely Mail
 伊布邮件,ブイブイメール,Eon Mail
-变神邮件,へんしんメール,Morph Mail
+变身邮件,へんしんメール,Morph Mail
 蓝天邮件,あおぞらメール,Bluesky Mail
 音符邮件,おんぷメール,Music Mail
 梦幻邮件,まぼろしメール,Mirage Mail
@@ -494,18 +499,18 @@ PP增加剂,ポイントマックス,PP Max
 自行车,じてんしゃ,Bicycle
 城镇地图,タウンマップ,Town Map
 GS球,ジーエスボール,GS Ball
-蛋券,タマゴけん,Egg Ticket
+神奇宝贝蛋兑换券,タマゴけん,Egg Ticket
 透明铃铛,とうめいなスズ,Clear Bell
-蓝牌,ブルーカード,Blue Card
-卡咪龟喷壶,ゼニガメじょうろ,Squirtbottle
-红色鳞片,あかいウロコ,Red Scale
-失物,おとしもの,Lost Item
-磁浮通,リニアパス*,Pass
-机械部品,きかいのぶひん,Machine Part
+蓝色卡片,ブルーカード,Blue Card
+杰尼龟喷水器,ゼニガメじょうろ,Squirtbottle
+红色的鳞片,あかいウロコ,Red Scale
+掉落的东西,おとしもの,Lost Item
+定期月票,リニアパス,Pass
+机械的零件,きかいのぶひん,Machine Part
 银色的羽毛,ぎんいろのはねカ,Silver Wing
 彩虹色的羽毛,にじいろのはね,Rainbow Wing
-不可思议的蛋,ふしぎなタマゴ,Mystery Egg
-秘传特效药,ひでんのくすり,SecretPotion
+神奇之蛋,ふしぎなタマゴ,Mystery Egg
+秘传之药,ひでんのくすり,SecretPotion
 马赫自行车,マッハじてんしゃ,Mach Bike
 华丽大赛通行证,コンテストパス,Contest Pass
 吼吼鲸浇花器,ホエルコじょうろ,Wailmer Pail
@@ -519,7 +524,7 @@ GS球,ジーエスボール,GS Ball
 红色宝珠,べにいろのたま,Red Orb
 蓝色宝珠,あいいろのたま,Blue Orb
 探测器,たんちき,Scanner
-沙尘望远镜,ゴーゴーゴーグル,Go-Goggles
+沙尘护目镜,ゴーゴーゴーグル,Go-Goggles
 陨石,いんせき,Meteorite
 1号客房的钥匙,１ごうしつのカギ,Rm. 1 Key
 2号客房的钥匙,２ごうしつのカギ,Rm. 2 Key
@@ -542,24 +547,24 @@ GS球,ジーエスボール,GS Ball
 蓝宝石,サファイア,Sapphire
 火岩标志,マグマのしるし,Magma Emblem
 古航海图,ふるびたかいず,Old Sea Map
-探检包,たんけんセット,Explorer Kit
+挖掘装备,たんけんセット,Explorer Kit
 宝藏袋,たからぶくろ,Loot Sack
 规则书,ルールブック,Rule Book
 神奇追踪,ポケトレ,Poké Radar
 得点卡,ポイントカード,Point Card
-冒险笔记,ぼうけんノート,Journal
+冒险笔记本,ぼうけんノート,Journal
 贴纸盒,シールいれ,Seal Case
 饰品盒,アクセサリーいれ,Fashion Case
 贴纸袋,シールぶくろ,Seal Bag
 朋友笔记,ともだちてちょう,Pal Pad
 发电场钥匙,はつでんしょキー,Works Key
 古代护身符,こだいのおまもり,Old Charm
-银河钥匙,ギンガだんのカギ,Journal
+银河队钥匙,ギンガだんのカギ,Journal
 红锁链,あかいくさり,Red Chain
 可达鸭喷壶,コダックじょうろ,Sprayduck
 面宝收纳盒,ポフィンケース,Poffin Case
 房间钥匙,ルームキー,Suite Key
-大木的信,オーキドのてがみ,Oak's Letter
+大木博士的信,オーキドのてがみ,Oak's Letter
 月牙之羽,みかづきのはね,Lunar Wing
 会员卡,メンバーズカード,Member Card
 天界之笛,てんかいのふえ,Azure Flute
@@ -571,14 +576,14 @@ GS球,ジーエスボール,GS Ball
 葛拉西蒂亚花,グラシデアのはな,Gracidea
 圆柑果实盒,ぼんぐりケース,Apricorn Box
 未知图腾笔记,アンノーンノート,Unown Report
-果实播种机,きのみプランター,Berry Pots
+果实种植盆,きのみプランター,Berry Pots
 相册,フォトアルバム,Photo Album
-GB播放机,GBプレイヤー,GB Sounds
+GB音乐盒,GBプレイヤー,GB Sounds
 海鸣铃铛,うみなりのスズ,Tidal Bell
 资料卡,データカード,Data Card
 绿色宝珠,もえぎいろのたま,Jade Orb
-锁紧胶囊,ロックカプセル,Lock Capsule
-谜之水晶,なぞのすいしょう,Enigma Stone
+上锁的胶囊,ロックカプセル,Lock Capsule
+神秘水晶,なぞのすいしょう,Enigma Stone
 自由船票,リバティチケット,Liberty Pass
 装饰品盒,グッズケース,Liberty Pass
 龙骨,ドラゴンのホネ,Dragon Skull
@@ -601,8 +606,11 @@ GB播放机,GBプレイヤー,GB Sounds
 立体投影转播器,ホロキャスター,Holo Caster
 探险心得,たんけんこころえ,Adventure Rules
 奇妙石,すごそうないし,Intriguing Stone
+一般石,ありふれたいし,Common Stone
 隐形眼镜盒,レンズケース,Lens Case
 百万环,メガリング,Mega Ring
+百万项链,メガチャーム,Mega Charm
+百万手套,メガグローブ,Mega Glove
 直排轮,ローラースケート,Roller Skates
 发电厂通行证,はつでんしょパス,Power Plant Pass
 TMV通行证,ＴＭＶパス,TMV Pass
@@ -612,3 +620,4 @@ TMV通行证,ＴＭＶパス,TMV Pass
 电梯的钥匙,エレベータのカギ,Lift Key
 莲叶童子喷壶,ハスボーじょうろ,Sprinklotad
 博士的信,はかせのてがみ,Prof's Letter
+箱包,いしょうトランク,Travel Trunk
