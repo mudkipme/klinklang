@@ -40,6 +40,37 @@ var importImage = function(wiki, filename, callback){
   });
 };
 
+var importSprite = function(wiki, number, callback){
+  var spriteTypes = [
+    {fr: 'Sprite 6 x 001.png', zh: 'Spr 6x 001.png'},
+    {fr: 'Sprite 6 dos 001.png', zh: 'Spr b 6x 001.png'},
+    {fr: 'Sprite 6 x 001 s.png', zh: 'Spr 6x 001 s.png'},
+    {fr: 'Sprite 6 dos 001 s.png', zh: 'Spr b 6x 001 s.png'},
+    {fr: 'Sprite 6 x 001 m.png', zh: 'Spr 6x 001 m.png'},
+    {fr: 'Sprite 6 dos 001 m.png', zh: 'Spr b 6x 001 m.png'},
+    {fr: 'Sprite 6 x 001 m s.png', zh: 'Spr 6x 001 m s.png'},
+    {fr: 'Sprite 6 dos 001 m s.png', zh: 'Spr b 6x 001 m s.png'},
+    {fr: 'Sprite 6 x 001 f.png', zh: 'Spr 6x 001 f.png'},
+    {fr: 'Sprite 6 dos 001 f.png', zh: 'Spr b 6x 001 f.png'},
+    {fr: 'Sprite 6 x 001 f s.png', zh: 'Spr 6x 001 f s.png'},
+    {fr: 'Sprite 6 dos 001 f s.png', zh: 'Spr b 6x 001 f s.png'}
+  ];
+
+  var pokepedia = new Wiki({api: 'http://www.pokepedia.fr/api.php'});
+  number = ('00'+number).substr(-3);
+
+  async.eachSeries(spriteTypes, function(spriteType, next){
+    pokepedia.imgUrl(spriteType.fr.replace('001', number), function(err, url){
+      if (!url) return next();
+      wiki.remoteUpload(
+        spriteType.zh.replace('001', number)
+        ,url
+        ,{text: "== 授权协议 ==\n{{i-Fairuse-game}}\n[[fr:Fichier:" + spriteType.fr.replace('001', number) + "]]"}
+        ,next);
+    });
+  }, callback);
+};
+
 var uploadXYAniSprites = function(wiki, number, callback){
   var filename;
   async.waterfall([
@@ -55,15 +86,6 @@ var uploadXYAniSprites = function(wiki, number, callback){
         ,next);
     }
   ], callback);
-};
-
-var uploadXYShinySprites = function(wiki, number, callback){
-  var frName = 'Sprite 6 x ' + ('00' + number).substr(-3) + ' s.png';
-  
-  wiki.remoteUpload('Spr 6x ' + ('00' + number).substr(-3) + ' s.png'
-    ,'http://static-local.52poke.com/wikipic/sprite/xy/shiny/' + frName.split(' ').join('_')
-    ,{text: "{{图片信息|source=Poképédia|about=游戏}}\n[[fr:Fichier:" + frName + "]]"}
-    ,callback);
 };
 
 var spriteTemplate = function(wiki, number, callback){
@@ -107,6 +129,7 @@ exports.register = function(program, wiki){
     });
   });
 
+
   program
   .command('xy-sprites')
   .description('Upload the sprites in Pokémon X & Y.')
@@ -148,22 +171,22 @@ exports.register = function(program, wiki){
   });
 
   program
-  .command('xy-shiny-sprite <number>')
-  .description('Upload shiny sprites of Pokémon X & Y.')
-  .action(function(number){
-    uploadXYShinySprites(wiki, number, function(err, data){
-      if (err) return console.log(err.message);
-      console.log(JSON.stringify(data));
-    });
-  });
-
-  program
   .command('sprite-template <number>')
   .description('Added sprite template to Pokémon articles.')
   .action(function(number){
     spriteTemplate(wiki, number, function(err, data){
       if (err) return console.log(err.message);
       console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('import-sprite <number>')
+  .description('Import the XY sprites from French Wiki Poképédia.')
+  .action(function(number){
+    importSprite(wiki, number, function(err, data){
+      if (err) return console.log(err.message);
+      console.log('Imported '+number);
     });
   });
 };

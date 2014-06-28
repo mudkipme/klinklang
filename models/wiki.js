@@ -237,6 +237,13 @@ Wiki.prototype.edit = function(title, content, options, callback){
   });
 };
 
+Wiki.prototype.purge = function(title, callback){
+  this.request({
+    action: 'purge'
+    ,titles: title
+  }, callback);
+};
+
 Wiki.prototype.getPagesInCategory = function(category, callback){
   var pages = [], me = this;
 

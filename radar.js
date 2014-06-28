@@ -90,6 +90,16 @@ program
 });
 
 program
+.command('purge <title>')
+.description('Purge the cache of a article.')
+.action(function(title){
+    wiki.purge(title, function(err, data){
+      if (err) return console.log(err.message);
+      console.log(data);
+    });
+});
+
+program
 .command('pages-in-category <category>')
 .description('List the members of a category.')
 .action(function(category){
