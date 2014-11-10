@@ -5,32 +5,13 @@ var program = require('commander');
 var request = require('request');
 var _ = require('underscore');
 var Wiki = require('./models/wiki');
-var jar = request.jar();
+var FileCookieStore = require("tough-cookie-filestore");
+
+var jar = request.jar(new FileCookieStore(__dirname + "/database/cookie-jar.txt"));
 
 program.version(require('./package.json').version);
 
-if (fs.existsSync(__dirname + '/database/cookie-jar.txt')){
-  var cookies = JSON.parse(fs.readFileSync(
-    __dirname + '/database/cookie-jar.txt'
-    ,{encoding: 'utf8'}
-  ));
-
-  _.each(cookies, function(cookie){
-    jar.add(request.cookie(cookie));
-  });
-};
-
 var wiki = new Wiki({jar: jar});
-
-var saveCookie = function(){
-  var cookies = _.map(jar.cookies, function(cookie){
-    return cookie.str;
-  });
-  fs.writeFileSync(
-    __dirname + '/database/cookie-jar.txt'
-    ,JSON.stringify(cookies)
-  );
-};
 
 program
 .command('init')
@@ -59,7 +40,6 @@ program
   wiki.login(username, password, function(err, result){
     if (err) return console.log(err.message);
     console.log('User ' + result.lgusername + ' logined.');
-    saveCookie();
   });
 });
 

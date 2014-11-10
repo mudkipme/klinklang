@@ -262,7 +262,7 @@
 临别礼物,おきみやげ,Memento
 假勇敢,からげんき,Facade
 集中猛击,きあいパンチ,Focus Punch
-苏醒,きつけ,Smelling Salt
+苏醒,きつけ,Smelling Salts
 跟我来,このゆびとまれ,Follow Me
 自然能力,しぜんのちから,Nature Power
 充电,じゅうでん,Charge
@@ -557,61 +557,65 @@
 胜利V热炎,Ｖジェネレート,V-create
 十字交叉火焰,クロスフレイム,Fusion Flare
 十字交叉闪电,クロスサンダー,Fusion Bolt
-抛物线充电,パラボラチャージ,Parabolic Charge
-放狠话,すてゼリフ,Parting Shot
-月之力量,ムーンフォース,Moonblast
-妖精之风,ようせいのかぜ,Fairy Wind
-爆音波,ばくおんぱ,Boomburst
-战吼,おたけび,Noble Roar
-吸收之吻,ドレインキッス,Draining Kiss
-翻倒,ひっくりかえす,Topsy-Turvy
-升力拳,グロウパンチ,Power-Up Punch
-蹭蹭脸,ほっぺすりすり,Nuzzle
-圆滑目光,つぶらなひとみ,Baby-Doll Eyes
-嬉戏,じゃれつく,Play Rough
-冰冻干燥,フリーズドライ,Freeze-Dry
-快乐时光,ハッピータイム,Happy Hour
-鲜花防御,フラワーガード,Flower Shield
-狡猾防御,トリックガード,Crafty Shield
-刺针防御,ニードルガード,Spiky Shield
-魔法火焰,マジカルフレイム,Mystical Fire
-水之手里剑,みずしゅりけん,Water Shuriken
-魅惑之音,チャームボイス,Disarming Voice
-悄悄话,ないしょばなし,Confide
-做朋友,なかよくする,Play Nice
-草原场地,グラスフィールド,Grassy Terrain
-电气场地,エレキフィールド,Electric Terrain
-薄雾场地,ミストフィールド,Misty Terrain
-芳香薄雾,アロマミスト,Aromatic Mist
-打嗝,ゲップ,Belch
-庆祝,おいわい,Celebration
-送电,そうでん,Electrify
-怪电波,かいでんぱ,Eerie Impulse
-妖精之锁,フェアリーロック,Fairy Lock
-击倒针刺,とどめばり,Fell Stinger
 飞行重压,フライングプレス,Flying Press
-森林诅咒,もりののろい,Forest's Curse
-电浆阵雨,プラズマシャワー,Ion Deluge
-王者之盾,キングシールド,King's Shield
-魔法照耀,マジカルシャイン,Dazzling Gleam
-磁场操作,じばそうさ,Magnetic Flux
 垫返,たたみがえし,Mat Block
-花瓣暴风雪,はなふぶき,Petal Blizzard
-幽灵俯冲,ゴーストダイブ,Phantom Force
-粉尘,ふんじん,Powder
+打嗝,ゲップ,Belch
 耕地,たがやす,Rototiller
 黏黏网,ねばねばネット,Sticky Web
+击倒针刺,とどめばり,Fell Stinger
+幽灵潜水,ゴーストダイブ,Phantom Force
 万圣夜狂欢,ハロウィン,Trick-or-Treat
-毒液陷阱,ベノムトラップ,Venom Drench
-缠身,まとわりつく,Infestation
-大地控制,ジオコントロール,Geomancy
-死亡之翼,デスウイング,Oblivion Wing
-大地原力,グランドフォース,Land's Wrath
-手下留情,てかげん,Hold Back
-万波激震,サウザンウェーブ,Thousand Waves
-万箭齐发,サウザンアロー,Thousand Arrows
-破灭之光,はめつのひかり,Light of Ruin
-牵手,てをつなぐ,Hold Hands
-钻石暴风,ダイヤストーム, Diamond Storm
+战吼,おたけび,Noble Roar
+电浆阵雨,プラズマシャワー,Ion Deluge
+抛物线充电,パラボラチャージ,Parabolic Charge
+森林诅咒,もりののろい,Forest's Curse
+花瓣暴风雪,はなふぶき,Petal Blizzard
+冰冻干燥,フリーズドライ,Freeze-Dry
+魅惑之音,チャームボイス,Disarming Voice
+放狠话,すてゼリフ,Parting Shot
+翻倒,ひっくりかえす,Topsy-Turvy
+吸取之吻,ドレインキッス,Draining Kiss
+狡猾防御,トリックガード,Crafty Shield
+鲜花防御,フラワーガード,Flower Shield
+草原场地,グラスフィールド,Grassy Terrain
+薄雾场地,ミストフィールド,Misty Terrain
+送电,そうでん,Electrify
+嬉戏,じゃれつく,Play Rough
+妖精之风,ようせいのかぜ,Fairy Wind
+月亮攻击,ムーンフォース,Moonblast
+爆音波,ばくおんぱ,Boomburst
+妖精之锁,フェアリーロック,Fairy Lock
+王者盾牌,キングシールド,King's Shield
+做朋友,なかよくする,Play Nice
+悄悄话,ないしょばなし,Confide
+钻石暴风,ダイヤストーム,Diamond Storm
 蒸汽喷发,スチームバースト,Steam Eruption
 异次元虫洞,いじげんホール,Hyperspace Hole
+水手里剑,みずしゅりけん,Water Shuriken
+魔法火焰,マジカルフレイム,Mystical Fire
+刺针防御,ニードルガード,Spiky Shield
+芳香薄雾,アロマミスト,Aromatic Mist
+怪电波,かいでんぱ,Eerie Impulse
+毒液陷阱,ベノムトラップ,Venom Drench
+粉尘,ふんじん,Powder
+大地控制,ジオコントロール,Geomancy
+磁场操作,じばそうさ,Magnetic Flux
+快乐时光,ハッピータイム,Happy Hour
+电气场地,エレキフィールド,Electric Terrain
+魔法照耀,マジカルシャイン,Dazzling Gleam
+庆祝,おいわい,Celebrate
+牵手,てをつなぐ,Hold Hands
+圆滑目光,つぶらなひとみ,Baby-Doll Eyes
+碰碰脸颊,ほっぺすりすり,Nuzzle
+手下留情,てかげん,Hold Back
+缠身,まとわりつく,Infestation
+增强拳,グロウパンチ,Power-Up Punch
+死亡之翼,デスウイング,Oblivion Wing
+万波激震,サウザンウェーブ,Thousand Waves
+万箭齐发,サウザンアロー,Thousand Arrows
+大地原力,グランドフォース,Land's Wrath
+破灭之光,はめつのひかり,Light of Ruin
+根源波动,こんげんのはどう,Origin Pulse
+断崖之剑,だんがいのつるぎ,Precipice Blades
+画龙点睛,ガリョウテンセイ,Dragon Ascent
+异次元冲锋,いじげんラッシュ,Hyperspace Fury

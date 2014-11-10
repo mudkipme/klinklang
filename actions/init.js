@@ -1,5 +1,5 @@
 var fs = require('fs');
-var csv = require('csv');
+var parse = require('csv-parse');
 var async = require('async');
 var _ = require('underscore');
 var db = require('../models/database.js').base;
@@ -7,10 +7,11 @@ var translation = require('../config.json').translation;
 
 var importTable = function(tableName, callback){
   var insertStmt;
+  var input = fs.createReadStream(__dirname + '/../database/veekun/' + tableName + '.csv');
+  var parser = parse();
+  var index = 0;
 
-  csv()
-  .from(__dirname + '/../database/veekun/' + tableName + '.csv')
-  .on('record', function(data, index){
+  var readRecord = function(data){
     db.serialize(function(){
       if (index == 0) {
         db.run('BEGIN TRANSACTION');
@@ -31,8 +32,18 @@ var importTable = function(tableName, callback){
 
       insertStmt.run.apply(insertStmt, data);
     });
+  };
+
+  parser.on('readable', function(){
+    while(record = parser.read()){
+      readRecord(record);
+      index++;
+    }
   })
-  .on('end', function(){
+  .on('error', function(err){
+    callback(err);
+  })
+  .on('finish', function(){
     db.serialize(function(){
       insertStmt.finalize();
       db.run('COMMIT', function(err){
@@ -41,10 +52,9 @@ var importTable = function(tableName, callback){
         callback();
       });
     });
-  })
-  .on('error', function(err){
-    callback(err);
   });
+
+  input.pipe(parser);
 };
 
 var importTranslation = function(tableName, csvFile, idField, callback){
@@ -52,9 +62,9 @@ var importTranslation = function(tableName, csvFile, idField, callback){
     db.run('BEGIN TRANSACTION');
     db.run('DELETE FROM ' + tableName + '_names WHERE local_language_id = 4');
 
-    csv()
-    .from(__dirname + '/../database/texts/' + csvFile + '.csv')
-    .on('record', function(data, index){
+    var input = fs.createReadStream(__dirname + '/../database/texts/' + csvFile + '.csv');
+    var parser = parse();
+    var readRecord = function(data){
       if (!data.length) return;
 
       db.serialize(function(){
@@ -80,8 +90,17 @@ var importTranslation = function(tableName, csvFile, idField, callback){
             }
           })
       })
+    };
+
+    parser.on('readable', function(){
+      while(record = parser.read()){
+        readRecord(record);
+      }
     })
-    .on('end', function(){
+    .on('error', function(err){
+      callback(err);
+    })
+    .on('finish', function(){
       db.serialize(function(){
         db.run('COMMIT', function(err){
           if (err) return callback(err);
@@ -89,10 +108,9 @@ var importTranslation = function(tableName, csvFile, idField, callback){
           callback();
         });
       });
-    })
-    .on('error', function(err){
-      callback(err);
     });
+
+    input.pipe(parser);
   });
 };
 

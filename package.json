@@ -7,14 +7,15 @@
   },
   "dependencies": {
     "express": "*",
-    "csv": "*",
+    "csv-parse": "*",
     "async": "*",
     "underscore": "*",
     "sass-middleware": "*",
     "commander": "*",
     "sqlite3": "*",
-    "request": "2.27.0",
+    "request": "*",
     "tongwen": "*",
-    "xml2js": "*"
+    "xml2js": "*",
+    "tough-cookie-filestore": "*"
   }
 }

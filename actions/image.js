@@ -2,6 +2,8 @@ var async = require('async');
 var _ = require('underscore');
 var Species = require('../models/species');
 var Wiki = require('../models/wiki');
+var request = require('request');
+var fs = require('fs');
 
 var uploadDreamWorld = function(wiki, filename, callback){
   Species.allNames('en', function(err, names){
@@ -157,6 +159,17 @@ exports.register = function(program, wiki){
     importImage(wiki, filename, function(err, data){
       if (err) return console.log(err.message);
       console.log(JSON.stringify(data));
+    });
+  });
+
+  program
+  .command('download-image <filename>')
+  .description('Import certain image from other wikis.')
+  .action(function(filename){
+    var bulba = new Wiki({api: 'http://archives.bulbagarden.net/w/api.php'});
+    bulba.imgUrl(filename, function(err, url){
+      url = url.replace(/archives\./, 'cdn.');
+      request(url).pipe(fs.createWriteStream(__dirname + '/../database/downloads/' +  filename.replace('MS.png', '.png')));
     });
   });
 

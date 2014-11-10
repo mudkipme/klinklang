@@ -19,24 +19,24 @@
 湿湿肥,じめじめこやし,Damp Mulch
 长长肥,ながながこやし,Stable Mulch
 粘粘肥,ねばねばこやし,Gooey Mulch
+楔石,かなめいし,Odd Keystone
+释出之玉,デルダマ,Pass Orb
 荒诞肥,とんでもこやし,Amaze Mulch
 劲劲肥,ぐんぐんこやし,Boost Mulch
 硕果肥,たわわこやし,Rich Mulch
 惊讶肥,びっくりこやし,Surprise Mulch
-树根化石,ねっこのカセキ,Root Fossil
-尖爪化石,ツメのカセキ,Claw Fossil
 贝之化石,かいのカセキ,Helix Fossil
 龟壳化石,こうらのカセキ,Dome Fossil
 秘密琥珀,ひみつのコハク,Old Amber
+树根化石,ねっこのカセキ,Root Fossil
+尖爪化石,ツメのカセキ,Claw Fossil
 盾牌化石,たてのカセキ,Armor Fossil
 头盖化石,ずがいのカセキ,Skull Fossil
-颚之化石,アゴのカセキ,Jaw Fossil
-鳍之化石,ヒレのカセキ,Sail Fossil
-楔石,かなめいし,Odd Keystone
 盖状化石,ふたのカセキ,Cover Fossil
 羽之化石,はねのカセキ,Plume Fossil
-释出之玉,デルダマ,Pass Orb
-太阳石,たいようのいし,Sun Stone
+颚之化石,アゴのカセキ,Jaw Fossil
+鳍之化石,ヒレのカセキ,Sail Fossil
+太阳之石,たいようのいし,Sun Stone
 月之石,つきのいし,Moon Stone
 火之石,ほのおのいし,Fire Stone
 雷之石,かみなりのいし,Thunderstone
@@ -44,8 +44,8 @@
 叶之石,リーフのいし,Leaf Stone
 光之石,ひかりのいし,Shiny Stone
 暗之石,やみのいし,Dusk Stone
-觉醒石,めざめいし,Dawn Stone
-小蘑菇,ちいさなキノコ,Tinymushroom
+觉醒之石,めざめいし,Dawn Stone
+小蘑菇,ちいさなキノコ,Tiny mushroom
 大蘑菇,おおきなキノコ,Big Mushroom
 珍珠,しんじゅ,Pearl
 大珍珠,おおきなしんじゅ,Big Pearl
@@ -81,7 +81,7 @@
 振奋精神的头布,きあいのハチマキ,Focus Band
 振奋精神的绑带,きあいのタスキ,Focus Sash
 幸运蛋,しあわせタマゴ,Lucky Egg
-焦点镜片,ピントレンズ,Scope Lens
+对焦镜片,ピントレンズ,Scope Lens
 金属涂层,メタルコート,Metal Coat
 吃剩下的东西,たべのこし,Leftovers
 龙之鳞片,りゅうのウロコ,Dragon Scale
@@ -141,7 +141,6 @@
 龙之板块,りゅうのプレート,Draco Plate
 凶狠板块,こわもてプレート,Dread Plate
 钢铁板块,こうてつプレート,Iron Plate
-精灵板块,せいれいプレート,Pixie Plate
 怪异熏香,あやしいおこう,Odd Incense
 岩石熏香,がんせきおこう,Rock Incense
 满腹熏香,まんぷくおこう,Full Incense
@@ -224,7 +223,17 @@
 恶之宝石,あくのジュエル,Dark Gem
 钢之宝石,はがねのジュエル,Steel Gem
 一般宝石,ノーマルジュエル,Normal Gem
+弱点保险,じゃくてんほけん,Weakness Policy
+突击护甲,とつげきチョッキ,Assault Vest
+精灵板块,せいれいプレート,Pixie Plate
+特性胶囊,とくせいカプセル,Ability Capsule
+防尘护眼镜,ぼうじんゴーグル,Safety Goggles
+奶油棒糖,ホイップポップ,Whipped Dream
+香囊,においぶくろ,Sachet
+光苔,ひかるコケ,Luminous Moss
+雪球,ゆきだま,Snowball
 妖精宝石,フェアリージュエル,Fairy Gem
+特价券,バーゲンチケット,Discount Coupon
 药水,キズぐすり,Potion
 解毒剂,どくけし,Antidote
 灼伤药,やけどなおし,Burn Heal
@@ -257,7 +266,7 @@ PP全补剂,ピーピーマックス,Max Elixir
 HP提升剂,マックスアップ,HP Up
 攻击牛磺剂,タウリン,Protein
 防御提升剂,ブロムヘキシン,Iron
-效果防护,インドメタシン,Carbos
+效果防护剂,インドメタシン,Carbos
 特攻增加剂,リゾチウム,Calcium
 神奇糖果,ふしぎなアメ,Rare Candy
 PP提升剂,ポイントアップ,PP Up
@@ -270,48 +279,10 @@ PP增加剂,ポイントマックス,PP Max
 智力之羽,ちりょくのハネ,Genius Wing
 精神之羽,せいしんのハネ,Clever Wing
 瞬发之羽,しゅんぱつのハネ,Swift Wing
+森之羊羹,もりのヨウカン,Old Gateau
 飞云冰淇淋,ヒウンアイス,Casteliacone
-特性胶囊,とくせいカプセル,Ability Capsule
-米亚雷脆皮饼,ミアレガレット,Lumiose Galette
+密阿雷脆皮饼,ミアレガレット,Lumiose Galette
 娑罗松饼,シャラサブレ,Shalour Sable
-弱点保险,じゃくてんほけん,Weakness Policy
-突击护甲,とつげきチョッキ,Assault Vest
-防尘护眼镜,ぼうじんゴーグル,Safety Goggles
-香囊,においぶくろ,Sachet
-奶油棒糖,ホイップポップ,Whipped Dream
-光苔,ひかるコケ,Luminous Moss
-雪球,ゆきだま,Snowball
-特价券,バーゲンチケット,Discount Coupon
-妙蛙花石,フシギバナイト,Venusaurite
-喷火龙石X,リザードナイトX,Charizardite,X
-喷火龙石Y,リザードナイトY,Charizardite,Y
-水箭龟石,カメックスナイト,Blastoisinite
-胡地石,フーディナイト,Alakazite
-耿鬼石,ゲンガナイト,Gengarite
-袋龙石,ガルーラナイト,Kangaskhanite
-大甲石,カイロスナイト,Pinsirite
-暴鲤龙石,ギャラドスナイト,Gyaradosite
-化石翼龙石,リプテラナイト,Aerodactylite
-超梦石X,ミュウツナイトX,Mewtwoite,X
-超梦石Y,ミュウツナイトY,Mewtwoite,Y
-电龙石,デンリュウナイト,Ampharosite
-巨钳螳螂石,ハッサムナイト,Scizorite
-赫拉克罗斯石,ヘラクロスナイト,Heracronite
-黑鲁加石,ヘルガナイト,Houndoomite
-班吉拉石,バンギラスナイト,Tyranitarite
-火焰鸡石,バシャーモナイト,Blazikenite
-沙奈朵石,サーナイトナイト,Gardevoirnite
-大嘴娃石,クチートナイト,Mawilite
-波士可多拉石,ボスゴドラナイト,Aggronite
-恰雷姆石,チャーレムナイト,Medichamite
-雷电兽石,ライボルトナイト,Manectite
-诅咒娃娃石,ジュペッタナイト,Banettite
-阿勃梭鲁石,アブソルナイト,Absolite
-拉帝亚斯石,ラティアスナイト,Latiasite
-拉帝欧斯石,ラティオスナイト,Latiosite
-路卡利欧石,ルカリオナイト,Lucarionite
-烈咬陆鲨石,ガブリアスナイト,Garchompite
-暴雪王石,ユキノオナイト,Abomasite
 神奇宝贝球,モンスターボール,Poké Ball
 超级球,スーパーボール,Great Ball
 高级球,ハイパーボール,Ultra Ball
@@ -349,7 +320,7 @@ PP增加剂,ポイントマックス,PP Max
 冰冻的果实,こおったきのみ,Ice Berry
 薄荷的果实,はっかのみ,Mint Berry
 奇迹的果实,きせきのみ,MiracleBerry
-神奇的果实,ふしぎなきのみ, MysteryBerry
+神奇的果实,ふしぎなきのみ,MysteryBerry
 辣樱,クラボのみ,Cheri Berry
 涩栗,カゴのみ,Chesto Berry
 甜桃,モモンのみ,Pecha Berry
@@ -392,7 +363,7 @@ PP增加剂,ポイントマックス,PP Max
 青杏,ズアのみ,Apicot Berry
 红阳,サンのみ,Lansat Berry
 绿星桃,スターのみ,Starf Berry
-谜之果,ナゾのみ,Enigma Berry
+谜团果实,ナゾのみ,Enigma Berry
 欧可果,オッカのみ,Occa Berry
 香百果,イトケのみ,Passho Berry
 烛木果,ソクノのみ,Wacan Berry
@@ -459,11 +430,11 @@ PP增加剂,ポイントマックス,PP Max
 质问邮件,しつもんメール,Inquiry Mail
 推荐邮件,おすすめメール,Like Mail
 回复邮件,おかえしメール,Reply Mail
-桥梁邮件T,ブリッジメールＳ,Bridge Mail S
-桥梁邮件F,ブリッジメールＨ,Bridge Mail D
-桥梁邮件Y,ブリッジメールＣ,Bridge Mail T
-桥梁邮件C,ブリッジメールＶ,Bridge Mail V
-桥梁邮件Q,ブリッジメールＷ,Bridge Mail M
+桥梁邮件S,ブリッジメールＳ,Bridge Mail S
+桥梁邮件H,ブリッジメールＨ,Bridge Mail D
+桥梁邮件C,ブリッジメールＣ,Bridge Mail T
+桥梁邮件V,ブリッジメールＶ,Bridge Mail V
+桥梁邮件W,ブリッジメールＷ,Bridge Mail M
 防御效果,エフェクトガード,Guard Spec.
 要害攻击,クリティカッター,Dire Hit
 力量增强,プラスパワー,X Attack
@@ -478,20 +449,20 @@ PP增加剂,ポイントマックス,PP Max
 黄色哨子,きいろビードロ,Yellow Flute
 红色哨子,あかいビードロ,Red Flute
 神奇宝贝玩具,ポケじゃらし,Poké Toy
-特性呼唤,スキルコール,Ability Urge
-放下道具,アイテムドロップ,Item Drop
-道具呼唤,アイテムコール,Item Urge
-平实呼唤,フラットコール,Reset Urge
+特效召唤,スキルコール,Ability Urge
+道具击落,アイテムドロップ,Item Drop
+道具召唤,アイテムコール,Item Urge
+恢复召唤,フラットコール,Reset Urge
 代币盒,コインケース,Coin Case
-探宝器,ダウジングマシン,Dowsing MCHN
-破烂的钓竿,ボロのつりざお,Old Rod
+探宝器,ダウジングマシン,Itemfinder
+破烂钓竿,ボロのつりざお,Old Rod
 优秀钓竿,いいつりざお,Good Rod
 超强钓竿,すごいつりざお,Super Rod
 船票,ふねのチケット,S.S. Ticket
-托付物品,おとどけもの,Oak's Parcel
+包裹,おとどけもの,Oak's Parcel
 神奇宝贝之笛,ポケモンのふえ,Poké Flute
 秘密钥匙,ひみつのカギ,Secret Key
-礼券,ひきかえけん,Coupons
+自行车兑换券,ひきかえけん,Bike Voucher
 金子做的假牙,きんのいれば,Gold Teeth
 卡片钥匙,カードキー,Card Key
 电梯钥匙,エレベータのカギ,Lift Key
@@ -501,11 +472,11 @@ PP增加剂,ポイントマックス,PP Max
 GS球,ジーエスボール,GS Ball
 神奇宝贝蛋兑换券,タマゴけん,Egg Ticket
 透明铃铛,とうめいなスズ,Clear Bell
-蓝色卡片,ブルーカード,Blue Card
-杰尼龟喷水器,ゼニガメじょうろ,Squirtbottle
+蓝色卡片,ブルーカード,Itemfinder
+杰尼龟的喷水器,ゼニガメじょうろ,Squirtbottle
 红色的鳞片,あかいウロコ,Red Scale
 掉落的东西,おとしもの,Lost Item
-定期月票,リニアパス,Pass
+定期月票,リニアパス*,Pass
 机械的零件,きかいのぶひん,Machine Part
 银色的羽毛,ぎんいろのはねカ,Silver Wing
 彩虹色的羽毛,にじいろのはね,Rainbow Wing
@@ -513,10 +484,10 @@ GS球,ジーエスボール,GS Ball
 秘传之药,ひでんのくすり,SecretPotion
 马赫自行车,マッハじてんしゃ,Mach Bike
 华丽大赛通行证,コンテストパス,Contest Pass
-吼吼鲸浇花器,ホエルコじょうろ,Wailmer Pail
+吼吼鲸喷壶,ホエルコじょうろ,Wailmer Pail
 得文公司的货物,デボンのにもつ,Devon Goods
 集灰袋,はいぶくろ,Soot Sack
-地下钥匙,ちかのカギ,Basement Key
+地下的钥匙,ちかのカギ,Basement Key
 飞跃自行车,ダートじてんしゃ,Acro Bike
 能量方块盒,ポロックケース,Pokéblock Case
 给大吾的信,ダイゴへのてがみ,Letter
@@ -546,7 +517,7 @@ GS球,ジーエスボール,GS Ball
 红宝石,ルビー,Ruby
 蓝宝石,サファイア,Sapphire
 火岩标志,マグマのしるし,Magma Emblem
-古航海图,ふるびたかいず,Old Sea Map
+陈旧航海图,ふるびたかいず,Old Sea Map
 挖掘装备,たんけんセット,Explorer Kit
 宝藏袋,たからぶくろ,Loot Sack
 规则书,ルールブック,Rule Book
@@ -559,7 +530,7 @@ GS球,ジーエスボール,GS Ball
 朋友笔记,ともだちてちょう,Pal Pad
 发电场钥匙,はつでんしょキー,Works Key
 古代护身符,こだいのおまもり,Old Charm
-银河队钥匙,ギンガだんのカギ,Journal
+银河队钥匙,ギンガだんのカギ,Galactic Key
 红锁链,あかいくさり,Red Chain
 可达鸭喷壶,コダックじょうろ,Sprayduck
 面宝收纳盒,ポフィンケース,Poffin Case
@@ -576,7 +547,7 @@ GS球,ジーエスボール,GS Ball
 葛拉西蒂亚花,グラシデアのはな,Gracidea
 圆柑果实盒,ぼんぐりケース,Apricorn Box
 未知图腾笔记,アンノーンノート,Unown Report
-果实种植盆,きのみプランター,Berry Pots
+树果种植盆,きのみプランター,Berry Pots
 相册,フォトアルバム,Photo Album
 GB音乐盒,GBプレイヤー,GB Sounds
 海鸣铃铛,うみなりのスズ,Tidal Bell
@@ -585,17 +556,43 @@ GB音乐盒,GBプレイヤー,GB Sounds
 上锁的胶囊,ロックカプセル,Lock Capsule
 神秘水晶,なぞのすいしょう,Enigma Stone
 自由船票,リバティチケット,Liberty Pass
-装饰品盒,グッズケース,Liberty Pass
+装饰品盒,グッズケース,Prop Case
 龙骨,ドラゴンのホネ,Dragon Skull
 黑暗石,ダークストーン,Dark Stone
 光芒石,ライトストーン,Light Stone
-实况转播器,ライブキャスター,Xtransceiver
 神石,ゴッドストーン,God Stone
+实况转播器,ライブキャスター,Xtransceiver
+转交物品1,はいたつぶつ１,Gram 1
+转交物品2,はいたつぶつ２,Gram 2
+转交物品3,はいたつぶつ３,Gram 3
+奖章盒,メダルボックス,Medal Box
+阿克罗玛机器,アクロママシーン,Colress MCHN
 基因之楔,いでんしのくさび,DNA Splicers
-写形镜,うつしかがみ,Reveal Glass
-配达物1,はいたつぶつ１,Gram 1
-配达物2,はいたつぶつ２,Gram 2
-配达物3,はいたつぶつ３,Gram 3
+遗失物,わすれもの,Dropped Item
+脏手帕,よごれたハンカチ,Grubby Hanky
+圆形护符,まるいおまもり,Oval Charm
+许可证,きょかしょう,Permit
+电浆卡,プラズマカード,Plasma Card
+写形镜,うつしかがみ,Reflecting Mirror
+闪耀护符,ひかるおまもり,Shining Charm
+特派员转播器,ホロキャスター,Holo Caster
+探险心得,たんけんこころえ,Adventure Rules
+奇妙石,すごそうないし,Intriguing Stone
+一般石,ありふれたいし,Common Stone
+隐形眼镜盒,レンズケース,Lens Case
+自行车,じてんしゃ,Bicycle
+超进化环,メガリング,Mega Ring
+超进化项坠,メガリング,Mega Charm
+超进化手套,メガリング,Mega Glove
+直排轮,ローラースケート,Roller Skates
+发电厂通行证,はつでんしょパス,Power Plant Pass
+TMV通行证,ＴＭＶパス,TMV Pass
+卡洛斯纹章,カロスエンブレム,Honor of Kalos
+帅哥票证,ハンサムチケット,Looker Ticket
+神奇摆设,ふしぎなおきもの,Strange Souvenir
+箱包,いしょうトランク,Travel Trunk
+超进化手镯,メガバングル,Mega Bracelet
+无限之笛,むげんのふえ,Eno Flute
 红色圆柑果实,あかぼんぐり,Red Apricorn
 蓝色圆柑果实,あおぼんぐり,Blu Apricorn
 黄色圆柑果实,きぼんぐり,Ylw Apricorn
@@ -603,21 +600,39 @@ GB音乐盒,GBプレイヤー,GB Sounds
 白色圆柑果实,しろぼんぐり,Wht Apricorn
 黑色圆柑果实,くろぼんぐり,Blk Apricorn
 桃色圆柑果实,ももぼんぐり,Pnk Apricorn
-立体投影转播器,ホロキャスター,Holo Caster
-探险心得,たんけんこころえ,Adventure Rules
-奇妙石,すごそうないし,Intriguing Stone
-一般石,ありふれたいし,Common Stone
-隐形眼镜盒,レンズケース,Lens Case
-百万环,メガリング,Mega Ring
-百万项链,メガチャーム,Mega Charm
-百万手套,メガグローブ,Mega Glove
-直排轮,ローラースケート,Roller Skates
-发电厂通行证,はつでんしょパス,Power Plant Pass
-TMV通行证,ＴＭＶパス,TMV Pass
-卡洛斯纹章,カロスエンブレム,Honor of Kalos
-帅哥票证,ハンサムチケット,Looker Ticket
-神奇摆设,ふしぎなおきもの,Strange Souvenir
-电梯的钥匙,エレベータのカギ,Lift Key
-莲叶童子喷壶,ハスボーじょうろ,Sprinklotad
-博士的信,はかせのてがみ,Prof's Letter
-箱包,いしょうトランク,Travel Trunk
+妙蛙花石,フシギバナイト,Venusaurite
+喷火龙石X,リザードナイトX,Charizardite X
+喷火龙石Y,リザードナイトY,Charizardite Y
+水箭龟石,カメックスナイト,Blastoisinite
+胡地石,フーディナイト,Alakazite
+耿鬼石,ゲンガナイト,Gengarite
+袋龙石,ガルーラナイト,Kangaskhanite
+大甲石,カイロスナイト,Pinsirite
+暴鲤龙石,ギャラドスナイト,Gyaradosite
+化石翼龙石,リプテラナイト,Aerodactylite
+超梦石X,ミュウツナイトX,Mewtwoite X
+超梦石Y,ミュウツナイトY,Mewtwoite Y
+电龙石,デンリュウナイト,Ampharosite
+大钢蛇石,ハガネールナイト,Steelixite
+巨钳螳螂石,ハッサムナイト,Scizorite
+赫拉克罗斯石,ヘラクロスナイト,Heracronite
+黑鲁加石,ヘルガナイト,Houndoomite
+班吉拉石,バンギラスナイト,Tyranitarite
+蜥蜴王石,ジュカインナイト,Sceptilite
+火焰鸡石,バシャーモナイト,Blazikenite
+巨沼怪石,ラグラージナイト,Swampertite
+沙奈朵石,サーナイトナイト,Gardevoirnite
+大嘴娃石,クチートナイト,Mawilite
+波士可多拉石,ボスゴドラナイト,Aggronite
+恰雷姆石,チャーレムナイト,Medichamite
+雷电兽石,ライボルトナイト,Manectite
+诅咒娃娃石,ジュペッタナイト,Banettite
+阿勃梭鲁石,アブソルナイト,Absolite
+冰鬼护石,オニゴーリナイト,Glalitite
+巨金怪石,メタグロスナイト,Metagrossite
+拉帝亚斯石,ラティアスナイト,Latiasite
+拉帝欧斯石,ラティオスナイト,Latiosite
+路卡利欧石,ルカリオナイト,Lucarionite
+烈咬陆鲨石,ガブリアスナイト,Garchompite
+暴雪王石,ユキノオナイト,Abomasite
+蒂安希石,ディアンシーナイト,Diancite

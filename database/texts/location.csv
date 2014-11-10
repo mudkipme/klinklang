@@ -79,22 +79,22 @@
 立涌市,タチワキシティ,Virbank City
 山路镇,ヤマジタウン,Lentimas Town
 青海波市,セイガイハシティ,Humilau City
-朝芽镇,アサメタウン,Vaniville Town
-名水镇,メイスイタウン,Aquacorde Town
+朝香镇,アサメタウン,Vaniville Town
+美川镇,メイスイタウン,Aquacorde Town
 白檀市,ハクダンシティ,Santalune City
-枯木镇,コボクタウン,Camphrier Town
-逍遥市,ショウヨウシティ,Cyllage City
-石苔镇,セキタイタウン,Geosenge Town
-红尘镇,コウジンタウン,Ambrette Town
+古木镇,コボクタウン,Camphrier Town
+遥香市,ショウヨウシティ,Cyllage City
+石林镇,セキタイタウン,Geosenge Town
+古香镇,コウジンタウン,Ambrette Town
 娑罗市,シャラシティ,Shalour City
-比翼市,ヒヨクシティ,Coumarine City
-米亚雷市,ミアレシティ,Lumiose City
-薰衣市,クノエシティ,Laverre City
-风絮镇,フウジョタウン,Dendemille Town
+海翼市,ヒヨクシティ,Coumarine City
+密阿雷市,ミアレシティ,Lumiose City
+香薰市,クノエシティ,Laverre City
+雪风镇,フウジョタウン,Dendemille Town
 百刻市,ヒャッコクシティ,Anistar City
-连理镇,レンリタウン,Couriway Town
+水涟镇,レンリタウン,Couriway Town
 映雪市,エイセツシティ,Snowbelle City
-奇南市,キナンシティ,Kiloude City
+奇楠市,キナンシティ,Kiloude City
 一之岛,１の岛,One Island
 二之岛,２の岛,Two Island
 三之岛,３の岛,Three Island
@@ -117,29 +117,29 @@
 矽铍市,フェナスシティ,Phenac City
 黄铁镇,パイラタウン,Pyrite Town
 地下城,アンダー,The Under
-哆落普岛,ドロップじま,Dolce Island
-来恩虹岛,レインボじま,Renbow Island
-咪龙达岛,ミロンダじま,Mitonga Island
-发尔泰拉岛,ファルデラじま,Faldera Island
-索菲亚娜岛,ソピアナじま,Sophian Island
-拉雷云岛,ライウンじま,Layuda Island
-西克丽丽岛,シクレレじま,Tilikule Island
-初始之国,ハジメの国,Aurora
-火焰之国,カエンの国,Ignis
+甜糖果岛,ドロップじま,Dolce Island
+彩虹岛,レインボじま,Renbow Island
+米罗达岛,ミロンダじま,Mitonga Island
+法尔泰拉岛,ファルデラじま,Faldera Island
+索菲亚纳岛,ソピアナじま,Sophian Island
+雷云岛,ライウンじま,Layuda Island
+锡克丽丽岛,シクレレじま,Tilikule Island
 青叶之国,アオバの国,Greenleaf
 泉水之国,イズミの国,Fontaine
-紫电之国,シデンの国,Violight
-虫蛹之国,サナギの国,Chrysalia
-拳斗之国,コブシの国,Pugilis
-幻梦之国,ゲンムの国,Illusio
-大地之国,ダイチの国,Terrera
+火焰之国,カエンの国,Ignis
 奇岩之国,キガンの国,Cragspur
-毒牙之国,ドクガの国,Viperia
-夜叉之国,ヤシャの国,Yaksha
+幻梦之国,ゲンムの国,Illusio
+拳斗之国,コブシの国,Pugilis
+虫蛹之国,サナギの国,Chrysalia
+紫电之国,シデンの国,Violight
+大地之国,ダイチの国,Terrera
 飞翼之国,ツバサの国,Avia
+毒牙之国,ドクガの国,Viperia
+初始之国,ハジメの国,Aurora
 不屈之国,フクツの国,Valora
-御灵之国,ミタマの国,Spectra
 吹雪之国,フブキの国,Nixtorm
+御灵之国,ミタマの国,Spectra
+夜叉之国,ヤシャの国,Yaksha
 神龙之国,リュウの国,Dragnor
 华蓝洞,ハナダの洞窟,Cerulean Cave
 彩虹百货大楼,タマムシデパート,Celadon Department Store
@@ -187,7 +187,7 @@
 神都遗迹,シント遗迹,Sinjoh Ruins
 呆呆兽之井,ヤドンの井戸,Slowpoke Well
 喇叭芽之塔,マダツボミの塔,Sprout Tower
-铃铃塔,スズの塔,Bell Tower
+铃铛塔,スズの塔,Bell Tower
 互连洞,繋がりの洞窟,Union Cave
 漩涡列岛,涡巻き岛,Whirl Islands
 弃船,舍てられ船,Abandoned Ship
@@ -321,7 +321,7 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 树果田,きのみ畑,Berry fields
 连地洞穴,地つなぎの洞穴,Connecting Cave
 闪耀洞窟,辉きの洞窟,Glittering Cave
-反映洞窟,映し身の洞窟,Reflection Cave
+映身洞窟,映し身の洞窟,Reflective Cave
 精通塔,マスタータワー,Tower of Mastery
 蔚蓝湾,アズール湾,Azure Bay
 海神之穴,海神の穴,Sea Spirit's Den
@@ -329,8 +329,8 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 宝贝球工厂,ボール工场,Poké Ball Factory
 荒废旅馆,荒れ果てホテル,Lost Hotel
 冰霜洞穴,フロストケイブ,Frost Cavern
-强蜀实验室,フラダリラボ,Lysandre Labs
-闪光队秘密基地,フレア団秘密基地,Team Flare HQ
+弗拉达利实验室,フラダリラボ,Lysandre Labs
+闪焰队秘密基地,フレア団秘密基地,Team Flare HQ
 终端洞窟,终の洞窟,Terminus Cave
 神奇宝贝村庄,ポケモンの村,Pokémon Village
 冠军之路,チャンピオンロード,Victory Road
