@@ -3,29 +3,32 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , http = require('http')
-  , path = require('path')
-  , sass = require('sass-middleware');
+var express = require('express');
+var path = require('path');
+var compress = require('compression');
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var session = require('express-session');
+var sassMiddleware = require('node-sass-middleware');
 
 var app = express();
 
 // all environments
 app.set('port', process.env.PORT || 3393);
-app.use(express.compress());
-app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(express.cookieParser('your secret here'));
-app.use(express.session());
-app.use(app.router);
+app.use(compress());
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieParser('your secret here'));
+app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
 
 // development only
 if ('development' == app.get('env')) {
-  app.use(sass({ src: __dirname + '/public', style: 'compact' }));
+  app.use(sassMiddleware({ src: __dirname + '/public', outputStyle: 'nested' }));
   app.use(express.static(path.join(__dirname, 'public')));
-  app.use(express.errorHandler());
 }
 
 if ('production' == app.get('env')) {
@@ -40,9 +43,26 @@ app.post('/api/replace', replace);
 app.post('/api/translate', translate);
 app.post('/api/scss', scss);
 app.get(/^\/(replacer|translator|card|scss)\/?$/, function(req, res){
-  res.sendfile(__dirname + '/public/index.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+/// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500).json({
+      error: err.message,
+      detail: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+    res.status(err.status || 500).json({ error: err.message });
 });
+
+module.exports = app;

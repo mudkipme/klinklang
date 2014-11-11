@@ -1,6 +1,6 @@
 var fs = require('fs')
   , path = require('path')
-  , csv = require('csv')
+  , parse = require('csv-parse')
   , async = require('async')
   , _ = require('underscore');
 
@@ -14,14 +14,18 @@ var loadText = function(text, callback) {
 
   var table = [];
 
-  csv().from(
-    __dirname + '/../database/texts/' + text + '.csv'
-    ,{columns: ['zh', 'ja', 'en']}
-  )
-  .on('record', function(row, index){
-    table.push(row);
+  var input = fs.createReadStream(__dirname + '/../database/texts/' + text + '.csv');
+  var parser = parse({columns: ['zh', 'ja', 'en']});
+
+  parser.on('readable', function(){
+    while(record = parser.read()){
+      table.push(record);
+    }
   })
-  .on('end', function(){
+  .on('error', function(err){
+    callback(err);
+  })
+  .on('finish', function(){
     if (text == 'type') {
       table = table.concat(_.map(table, function(row){
         return {zh: row.zh, ja: row.ja, en: row.en.toLowerCase()};
@@ -29,10 +33,9 @@ var loadText = function(text, callback) {
     }
     tableCache[text] = table;
     callback(null, table);
-  })
-  .on('error', function(err){
-    callback(err);
   });
+
+  input.pipe(parser);
 };
 
 exports.loadText = function(texts, callback) {

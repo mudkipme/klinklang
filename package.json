@@ -1,21 +1,29 @@
 {
   "name": "klinklang",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "private": true,
   "scripts": {
     "start": "node app.js"
   },
   "dependencies": {
     "express": "*",
+    "compression": "*",
+    "serve-favicon": "*",
+    "morgan": "*",
+    "cookie-parser": "*",
+    "body-parser": "*",
+    "debug": "*",
+    "express-session": "*",
     "csv-parse": "*",
     "async": "*",
     "underscore": "*",
-    "sass-middleware": "*",
+    "node-sass-middleware": "*",
+    "node-sass": "*",
     "commander": "*",
     "sqlite3": "*",
     "request": "*",
     "tongwen": "*",
     "xml2js": "*",
-    "tough-cookie-filestore": "*"
+    "tough-cookie-filestore": "git://github.com/mudkipme/tough-cookie-filestore.git"
   }
 }
