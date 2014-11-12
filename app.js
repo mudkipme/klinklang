@@ -16,7 +16,6 @@ var sassMiddleware = require('node-sass-middleware');
 var app = express();
 
 // all environments
-app.set('port', process.env.PORT || 3393);
 app.use(compress());
 app.use(favicon(__dirname + '/public/images/favicon.ico'));
 app.use(logger('dev'));

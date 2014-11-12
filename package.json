@@ -24,6 +24,8 @@
     "request": "*",
     "tongwen": "*",
     "xml2js": "*",
-    "tough-cookie-filestore": "git://github.com/mudkipme/tough-cookie-filestore.git"
+    "tough-cookie-filestore": "*",
+    "zurb-foundation-5": "*",
+    "backbone": "*"
   }
 }

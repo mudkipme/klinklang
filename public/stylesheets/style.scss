@@ -2,8 +2,8 @@ $primary-color: #F1907B;
 $topbar-bg: #e34234;
 $topbar-dropdown-bg: lighten($topbar-bg, 20%);
 
-@import "../components/foundation/scss/normalize.scss";
-@import "../components/foundation/scss/foundation.scss";
+@import "../../node_modules/zurb-foundation-5/scss/normalize.scss";
+@import "../../node_modules/zurb-foundation-5/scss/foundation.scss";
 
 @import "topbar.scss";
 @import "replacer.scss";
