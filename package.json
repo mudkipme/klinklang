@@ -25,6 +25,7 @@
     "tongwen": "*",
     "xml2js": "*",
     "tough-cookie-filestore": "*",
+    "jquery": "*",
     "zurb-foundation-5": "*",
     "backbone": "*"
   }
