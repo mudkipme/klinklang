@@ -1,12 +1,11 @@
-.sass-cache
 node_modules
 public/components
-public/stylesheets/*.css
+public/stylesheets/style.css
+public/javascripts/bundle.js
 database/base.sqlite3
 database/cookie-jar.txt
 database/item.json
 database/pokedex.json
 database/pokedex.csv
-dist
 *.sublime-project
 *.sublime-workspace

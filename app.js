@@ -11,7 +11,6 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
-var sassMiddleware = require('node-sass-middleware');
 
 var app = express();
 
@@ -23,16 +22,7 @@ app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser('your secret here'));
 app.use(session({secret: 'keyboard cat', resave: true, saveUninitialized: true}));
-
-// development only
-if ('development' == app.get('env')) {
-  app.use(sassMiddleware({ src: __dirname + '/public', outputStyle: 'nested' }));
-  app.use(express.static(path.join(__dirname, 'public')));
-}
-
-if ('production' == app.get('env')) {
-  app.use(express.static(path.join(__dirname, 'dist')));
-}
+app.use(express.static(path.join(__dirname, 'public')));
 
 // routes
 var translate = require('./routes/translate');

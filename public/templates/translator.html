@@ -1,8 +1,8 @@
-<form class="custom">
+<form>
   <div class="row select-type">
     <% _.each(types, function(name, key){ %>
       <div class="columns small-6 large-3">
-        <label for="type-<%= key %>"><input type="radio" name="type" id="type-<%= key %>" value="<%= key %>" style="display:none;"><span class="custom radio"></span> <%= name %></label>
+        <input type="radio" name="type" id="type-<%= key %>" value="<%= key %>"><label for="type-<%= key %>"><%= name %></label>
       </div>
     <% }) %>
     <div class="columns large-2">

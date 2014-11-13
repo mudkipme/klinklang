@@ -1,49 +1,46 @@
-define([
-  'zepto'
-  ,'underscore'
-  ,'backbone'
-  ,'models/scss'
-  ,'text!templates/scss.html'
-], function($, _, Backbone, Scss, scssTemplate){
+var $ = require('jquery');
+var _ = require('underscore');
+var Backbone = require('backbone');
+var Scss = require('../models/scss');
+var scssTemplate = require('../../templates/scss.html');
   
-  var ScssView = Backbone.View.extend({
-    id: 'scss'
+var ScssView = Backbone.View.extend({
+  id: 'scss'
 
-    ,events: {
-      'blur #scss-text': 'setText'
-      ,'click #load-wiki': 'loadWikiScss'
-      ,'click #convert-css': 'convert'
-    }
+  ,events: {
+    'blur #scss-text': 'setText'
+    ,'click #load-wiki': 'loadWikiScss'
+    ,'click #convert-css': 'convert'
+  }
 
-    ,initialize: function(){
-      this.model = new Scss;
-    }
+  ,initialize: function(){
+    this.model = new Scss;
+  }
 
-    ,render: function(){
-      this.$el.html(scssTemplate);
-      this.update();
-      this.listenTo(this.model, 'change', this.update);
-      return this;
-    }
+  ,render: function(){
+    this.$el.html(scssTemplate());
+    this.update();
+    this.listenTo(this.model, 'change', this.update);
+    return this;
+  }
 
-    ,update: function(){
-      this.$('#scss-text').val(this.model.get('text')).prop('disabled', false);
-    }
+  ,update: function(){
+    this.$('#scss-text').val(this.model.get('text')).prop('disabled', false);
+  }
 
-    ,setText: function(e){
-      this.model.set('text', e.target.value);
-    }
+  ,setText: function(e){
+    this.model.set('text', e.target.value);
+  }
 
-    ,loadWikiScss: function(){
-      this.$('#scss-text').prop('disabled', true);
-      this.model.loadWikiScss();
-    }
+  ,loadWikiScss: function(){
+    this.$('#scss-text').prop('disabled', true);
+    this.model.loadWikiScss();
+  }
 
-    ,convert: function(){
-      this.$('#scss-text').prop('disabled', true);
-      this.model.convert();
-    }
-  });
-
-  return ScssView;
+  ,convert: function(){
+    this.$('#scss-text').prop('disabled', true);
+    this.model.convert();
+  }
 });
+
+module.exports = ScssView;

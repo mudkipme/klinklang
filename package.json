@@ -3,30 +3,47 @@
   "version": "0.3.0",
   "private": true,
   "scripts": {
-    "start": "node app.js"
+    "start": "node bin/app"
+  },
+  "browser": {
+    "foundation": "zurb-foundation-5/js/foundation/foundation",
+    "foundation.topbar": "zurb-foundation-5/js/foundation/foundation.topbar"
+  },
+  "browserify": {
+    "transform": [
+      "jstify"
+    ]
   },
   "dependencies": {
-    "express": "*",
-    "compression": "*",
-    "serve-favicon": "*",
-    "morgan": "*",
-    "cookie-parser": "*",
-    "body-parser": "*",
-    "debug": "*",
-    "express-session": "*",
-    "csv-parse": "*",
     "async": "*",
-    "underscore": "*",
-    "node-sass-middleware": "*",
-    "node-sass": "*",
+    "backbone": "*",
+    "body-parser": "*",
     "commander": "*",
-    "sqlite3": "*",
-    "request": "*",
-    "tongwen": "*",
-    "xml2js": "*",
-    "tough-cookie-filestore": "*",
+    "compression": "*",
+    "cookie-parser": "*",
+    "csv-parse": "*",
+    "debug": "*",
+    "express": "*",
+    "express-session": "*",
     "jquery": "*",
+    "morgan": "*",
+    "node-sass": "*",
+    "request": "*",
+    "serve-favicon": "*",
+    "sqlite3": "*",
+    "tongwen": "*",
+    "tough-cookie-filestore": "*",
+    "underscore": "*",
+    "xml2js": "*",
     "zurb-foundation-5": "*",
-    "backbone": "*"
+    "jstify": "*"
+  },
+  "devDependencies": {
+    "browserify": "^6.3.2",
+    "gulp": "^3.8.10",
+    "gulp-sass": "^1.1.0",
+    "gulp-streamify": "0.0.5",
+    "gulp-uglify": "^1.0.1",
+    "vinyl-source-stream": "^1.0.0"
   }
 }

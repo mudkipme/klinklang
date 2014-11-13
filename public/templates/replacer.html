@@ -1,4 +1,4 @@
-<form class="custom">
+<form>
   <div class="row">
     <div class="large-5 small-6 columns">
       <label for="language-from-select">源语言</label>  
@@ -23,11 +23,11 @@
   <div class="row select-text">
     <% _.each(texts, function(name, key){ %>
       <div class="large-2 small-6 columns">
-        <label for="text-<%= key %>"><input type="checkbox" id="text-<%= key %>" value="<%= key %>" style="display: none;"><span class="custom checkbox"></span> <%= name %></label>
+        <input type="checkbox" id="text-<%= key %>" value="<%= key %>"><label for="text-<%= key %>"><%= name %></label>
       </div>
     <% }) %>
     <div class="large-2 small-6 columns">
-      <label for="text-all"><input type="checkbox" id="text-all" style="display: none;"><span class="custom checkbox"></span> 全选</label>
+      <input type="checkbox" id="text-all"><label for="text-all">全选</label>
     </div>
   </div>
   <div class="row">
