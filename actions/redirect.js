@@ -36,11 +36,5 @@ exports.register = function(program, wiki){
         if (err) return console.log(err.message);
       });
     });
-
-
-    // wiki.redirect(source, dest, function(err, result){
-    //   if (err) return console.log(err.message);
-    //   console.log(JSON.stringify(result));
-    // });
   });
 };
