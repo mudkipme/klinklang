@@ -220,6 +220,7 @@ program
 require('./actions/learnset').register(program, wiki);
 require('./actions/move').register(program, wiki);
 require('./actions/redirect').register(program, wiki);
+require('./actions/names').register(program, wiki);
 
 if (program.parse(process.argv).args.length == 0) {
   program.help();

@@ -26,6 +26,7 @@
     "express": "*",
     "express-session": "*",
     "jquery": "*",
+    "jstify": "*",
     "morgan": "*",
     "node-sass": "*",
     "request": "*",
@@ -35,8 +36,7 @@
     "tough-cookie-filestore": "*",
     "underscore": "*",
     "xml2js": "*",
-    "zurb-foundation-5": "*",
-    "jstify": "*"
+    "zurb-foundation-5": "*"
   },
   "devDependencies": {
     "browserify": "^6.3.2",
