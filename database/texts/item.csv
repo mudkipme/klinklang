@@ -25,6 +25,8 @@
 劲劲肥,ぐんぐんこやし,Boost Mulch
 硕果肥,たわわこやし,Rich Mulch
 惊讶肥,びっくりこやし,Surprise Mulch
+特价券,バーゲンチケット,Discount Coupon
+神奇摆设,ふしぎなおきもの,Strange Souvenir
 贝之化石,かいのカセキ,Helix Fossil
 龟壳化石,こうらのカセキ,Dome Fossil
 秘密琥珀,ひみつのコハク,Old Amber
@@ -233,7 +235,8 @@
 光苔,ひかるコケ,Luminous Moss
 雪球,ゆきだま,Snowball
 妖精宝石,フェアリージュエル,Fairy Gem
-特价券,バーゲンチケット,Discount Coupon
+红色宝珠,べにいろのたま,Red Orb
+蓝色宝珠,あいいろのたま,Blue Orb
 药水,キズぐすり,Potion
 解毒剂,どくけし,Antidote
 灼伤药,やけどなおし,Burn Heal
@@ -364,8 +367,20 @@ PP增加剂,ポイントマックス,PP Max
 红阳,サンのみ,Lansat Berry
 绿星桃,スターのみ,Starf Berry
 谜团果实,ナゾのみ,Enigma Berry
+南瓜果,カチャのみ,Pumkin Berry
+萝卜果,ブーカのみ,Drash Berry
+茄果,ビスナのみ,Eggant Berry
+豌豆果,エドマのみ,Strib Berry
+酸浆果,ホズのみ,Chilan Berry
+花生果,ラッカのみ,Nutpea Berry
+洋葱果,ギネマのみ,Ginema Berry
+秋葵果,クオのみ,Kuo Berry
+苦瓜果,ヤゴのみ,Yago Berry
+辣椒果,トウガのみ,Touga Berry
+大蒜果,ニニクのみ,Niniku Berry
+土豆果,トポのみ,Topo Berry
 欧可果,オッカのみ,Occa Berry
-香百果,イトケのみ,Passho Berry
+浮番果,イトケのみ,Passho Berry
 烛木果,ソクノのみ,Wacan Berry
 苦豆,リンドのみ,Rindo Berry
 冰迦果,ヤチェのみ,Yache Berry
@@ -388,17 +403,16 @@ PP增加剂,ポイントマックス,PP Max
 洛神果,ロゼルのみ,Roseli Berry
 阿开果,アッキのみ,Kee Berry
 香波果,タラプのみ,Maranga Berry
-花案邮件,はながらメール,Flower Mail
-冲浪邮件,なみのりメール,Surf Mail
-水色邮件,みずいろメール,Bubble Mail
-肖像邮件,にがおえメール,PortraitMail
-可爱邮件,ラブリーメール,Lovely Mail
-伊布邮件,ブイブイメール,Eon Mail
-变身邮件,へんしんメール,Morph Mail
 蓝天邮件,あおぞらメール,Bluesky Mail
-音符邮件,おんぷメール,Music Mail
+伊布邮件,ブイブイメール,Eon Mail
+花案邮件,はながらメール,Flower Mail
+海洋邮件,みずいろメール,Litebluemail
+可爱邮件,ラブリーメール,Lovely Mail
 梦幻邮件,まぼろしメール,Mirage Mail
-镶嵌邮件,モザイクメール,Mosaic Mail
+变身邮件,へんしんメール,Morph Mail
+肖像邮件,にがおえメール,Portraitmail
+音符邮件,おんぷメール,Music Mail
+冲浪邮件,なみのりメール,Surf Mail
 橙色邮件,オレンジメール,Harbor Mail
 港口邮件,ハーバーメール,Surf Mail
 闪亮邮件,キラキラメール,Glitter Mail
@@ -454,7 +468,7 @@ PP增加剂,ポイントマックス,PP Max
 道具召唤,アイテムコール,Item Urge
 恢复召唤,フラットコール,Reset Urge
 代币盒,コインケース,Coin Case
-探宝器,ダウジングマシン,Itemfinder
+探宝器,ダウジングマシン,Dowsing MCHN
 破烂钓竿,ボロのつりざお,Old Rod
 优秀钓竿,いいつりざお,Good Rod
 超强钓竿,すごいつりざお,Super Rod
@@ -503,8 +517,8 @@ GS球,ジーエスボール,GS Ball
 6号客房的钥匙,６ごうしつのカギ,Rm. 6 Key
 仓库的钥匙,そうこのカギ,Storage Key
 得文侦测望远镜,デボンスコープ,Devon Scope
-战斗探测器,バトルサーチャー,Vs. Seeker
-语音检测仪,ボイスチェッカー,Fame Checker
+对战搜寻器,バトルサーチャー,Vs. Seeker
+声音记录器,ボイスチェッカー,Fame Checker
 技能学习器盒,わざマシンケース,TM Case
 果实袋,きのみぶくろ,Berry Pouch
 教学电视,おしえテレビ,Teachy TV
@@ -540,9 +554,9 @@ GS球,ジーエスボール,GS Ball
 会员卡,メンバーズカード,Member Card
 天界之笛,てんかいのふえ,Azure Flute
 火山镇石,かざんのおきいし,Magma Stone
-礼劵1,ひきかえけん1,Coupon 1
-礼劵2,ひきかえけん2,Coupon 2
-礼劵3,ひきかえけん3,Coupon 3
+礼券1,ひきかえけん1,Coupon 1
+礼券2,ひきかえけん2,Coupon 2
+礼券3,ひきかえけん3,Coupon 3
 对战摄录机,バトルレコーダー,Vs. Recorder
 葛拉西蒂亚花,グラシデアのはな,Gracidea
 圆柑果实盒,ぼんぐりケース,Apricorn Box
@@ -582,17 +596,27 @@ GB音乐盒,GBプレイヤー,GB Sounds
 隐形眼镜盒,レンズケース,Lens Case
 自行车,じてんしゃ,Bicycle
 超进化环,メガリング,Mega Ring
-超进化项坠,メガリング,Mega Charm
-超进化手套,メガリング,Mega Glove
+超进化饰坠,メガチャーム,Mega Charm
+超进化手套,メガローブ,Mega Glove
 直排轮,ローラースケート,Roller Skates
-发电厂通行证,はつでんしょパス,Power Plant Pass
+发电所通行证,はつでんしょパス,Power Plant Pass
 TMV通行证,ＴＭＶパス,TMV Pass
+电梯的钥匙,エレベータのカギ,Elevator Key
 卡洛斯纹章,カロスエンブレム,Honor of Kalos
 帅哥票证,ハンサムチケット,Looker Ticket
-神奇摆设,ふしぎなおきもの,Strange Souvenir
-箱包,いしょうトランク,Travel Trunk
+服饰旅行箱,いしょうトランク,Travel Trunk
 超进化手镯,メガバングル,Mega Bracelet
-无限之笛,むげんのふえ,Eno Flute
+超进化护腕,メガブレス,Mega Cuff
+能量方块组合,ポロックキット,Pokéblock Kit
+得文潜水装备,デボンボンベ,Devon Scuba Gear
+汇演礼服,ライブスーツ,Contest Costume
+汇演舞裙,ライブドレス,Contest Costume
+火岩套装,マグマスーツ,Magma Suit
+束缚之壶,いましめのつぼ,Prison Bottle
+水舰套装,アクアスーツ,Aqua Suit
+双人票,ペアチケット,Pair of Tickets
+陨石碎片,いんせきのかけら,Meteorite Shard
+无限之笛,むげんのふえ,Eon Flute
 红色圆柑果实,あかぼんぐり,Red Apricorn
 蓝色圆柑果实,あおぼんぐり,Blu Apricorn
 黄色圆柑果实,きぼんぐり,Ylw Apricorn
@@ -600,39 +624,50 @@ TMV通行证,ＴＭＶパス,TMV Pass
 白色圆柑果实,しろぼんぐり,Wht Apricorn
 黑色圆柑果实,くろぼんぐり,Blk Apricorn
 桃色圆柑果实,ももぼんぐり,Pnk Apricorn
-妙蛙花石,フシギバナイト,Venusaurite
-喷火龙石X,リザードナイトX,Charizardite X
-喷火龙石Y,リザードナイトY,Charizardite Y
-水箭龟石,カメックスナイト,Blastoisinite
-胡地石,フーディナイト,Alakazite
-耿鬼石,ゲンガナイト,Gengarite
-袋龙石,ガルーラナイト,Kangaskhanite
-大甲石,カイロスナイト,Pinsirite
-暴鲤龙石,ギャラドスナイト,Gyaradosite
-化石翼龙石,リプテラナイト,Aerodactylite
-超梦石X,ミュウツナイトX,Mewtwoite X
-超梦石Y,ミュウツナイトY,Mewtwoite Y
-电龙石,デンリュウナイト,Ampharosite
-大钢蛇石,ハガネールナイト,Steelixite
-巨钳螳螂石,ハッサムナイト,Scizorite
-赫拉克罗斯石,ヘラクロスナイト,Heracronite
-黑鲁加石,ヘルガナイト,Houndoomite
-班吉拉石,バンギラスナイト,Tyranitarite
-蜥蜴王石,ジュカインナイト,Sceptilite
-火焰鸡石,バシャーモナイト,Blazikenite
-巨沼怪石,ラグラージナイト,Swampertite
-沙奈朵石,サーナイトナイト,Gardevoirnite
-大嘴娃石,クチートナイト,Mawilite
-波士可多拉石,ボスゴドラナイト,Aggronite
-恰雷姆石,チャーレムナイト,Medichamite
-雷电兽石,ライボルトナイト,Manectite
-诅咒娃娃石,ジュペッタナイト,Banettite
-阿勃梭鲁石,アブソルナイト,Absolite
-冰鬼护石,オニゴーリナイト,Glalitite
-巨金怪石,メタグロスナイト,Metagrossite
-拉帝亚斯石,ラティアスナイト,Latiasite
-拉帝欧斯石,ラティオスナイト,Latiosite
-路卡利欧石,ルカリオナイト,Lucarionite
-烈咬陆鲨石,ガブリアスナイト,Garchompite
-暴雪王石,ユキノオナイト,Abomasite
-蒂安希石,ディアンシーナイト,Diancite
+妙蛙花进化石,フシギバナイト,Venusaurite
+喷火龙进化石X,リザードナイトX,Charizardite X
+喷火龙进化石Y,リザードナイトY,Charizardite Y
+水箭龟进化石,カメックスナイト,Blastoisinite
+大针蜂进化石,スピアナイト,Beedrillite
+比雕进化石,ピジョットナイト,Pidgeotite
+胡地进化石,フーディナイト,Alakazite
+呆河马进化石,ヤドランナイト,Slowbronite
+耿鬼进化石,ゲンガナイト,Gengarite
+袋龙进化石,ガルーラナイト,Kangaskhanite
+大甲进化石,カイロスナイト,Pinsirite
+暴鲤龙进化石,ギャラドスナイト,Gyaradosite
+化石翼龙进化石,リプテラナイト,Aerodactylite
+超梦进化石X,ミュウツナイトX,Mewtwoite X
+超梦进化石Y,ミュウツナイトY,Mewtwoite Y
+电龙进化石,デンリュウナイト,Ampharosite
+大钢蛇进化石,ハガネールナイト,Steelixite
+巨钳螳螂进化石,ハッサムナイト,Scizorite
+赫拉克罗斯进化石,ヘラクロスナイト,Heracronite
+黑鲁加进化石,ヘルガナイト,Houndoomite
+班吉拉进化石,バンギラスナイト,Tyranitarite
+蜥蜴王进化石,ジュカインナイト,Sceptilite
+火焰鸡进化石,バシャーモナイト,Blazikenite
+巨沼怪进化石,ラグラージナイト,Swampertite
+沙奈朵进化石,サーナイトナイト,Gardevoirnite
+勾魂眼进化石,ヤミラミナイト,Sablenite
+大嘴娃进化石,クチートナイト,Mawilite
+波士可多拉进化石,ボスゴドラナイト,Aggronite
+恰雷姆进化石,チャーレムナイト,Medichamite
+雷电兽进化石,ライボルトナイト,Manectite
+巨牙鲨进化石,サメハダナイト,Sharpedonite
+喷火驼进化石,バクーダナイト,Cameruptite
+七夕青鸟进化石,チルタリスナイト,Altarianite
+诅咒娃娃进化石,ジュペッタナイト,Banettite
+阿勃梭鲁进化石,アブソルナイト,Absolite
+冰鬼护进化石,オニゴーリナイト,Glalitite
+暴蝾螈进化石,ボーマンダナイト,Salamencite
+巨金怪进化石,メタグロスナイト,Metagrossite
+拉帝亚斯进化石,ラティアスナイト,Latiasite
+拉帝欧斯进化石,ラティオスナイト,Latiosite
+长耳兔进化石,ミミロップナイト,Lopunnite
+路卡利欧进化石,ルカリオナイト,Lucarionite
+烈咬陆鲨进化石,ガブリアスナイト,Garchompite
+暴雪王进化石,ユキノオナイト,Abomasite
+艾路雷朵进化石,エルレイドナイト,Galladite
+差不多娃娃进化石,タブンネナイト,Audinite
+蒂安希进化石,ディアンシナイト,Diancite
