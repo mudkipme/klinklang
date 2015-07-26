@@ -1,7 +1,7 @@
 物理,ぶつり,Physical
 特殊,とくしゅ,Special
 变化,へんか,Status
-聪明,かしこさ,Smart
+聪明,かしこさ,Clever
 美丽,うつくしさ,Beauty
 强壮,たくましさ,Tough
 帅气,かっこよさ,Cool
@@ -16,35 +16,11 @@
 红色花丛,,Red Flowers
 黄色花丛,,Yellow Flowers
 紫色花丛,,Purple Flowers
-草丛,,Grass
-{{捕捉/entryoa,,{{catch/entryoras|
+|草丛|,,|Grass|
+&mdash;,,—
 破烂的钓竿,,Fish Old
 优秀钓竿,,Fish Good
 超强钓竿,,Fish Super
 垂钓,,Fishing
-{{捕捉/header,,{{catch/header
-赠送,,Gift
-|all=只有一只|,,|One|
-群聚对战,,{{color2|000|Horde Encounter}}
-群聚对战,,Horde Encounter
-忍足系统|解决固拉多/盖欧卡事件后}},,Exclusively as {{color2|000|DexNav#Hidden Pokémon|hidden Pokémon}}<br><small>After defeating or capturing 
-{{名字/header|,,{{langtable|
-{{名字/entry|zh,,|zh_cmn=
-{{名字/entry|en,,|en
-{{名字/entry|fr,,|fr
-{{名字/entry|de,,|de
-{{名字/entry|it,,|it
-{{名字/entry|es,,|es
-{{名字/entry|es,,|es_eu=
-{{名字/entry|es,,|es_la=
-{{名字/entry|ko,,|ko=
-路比,,Ruby
-莎菲雅,,Sapphire
-米拉特,,Emerald
-大吾,,Steven Stone
-极梅,,Ultima/Kimberly
-源治,,Drake
-兹伏奇社长,,Mr. Stone
-哈奇老人,,Mr. Briney
-彼岸,,Zinnia
-'s),,的）
+{{learnlist/levelh|,,{{learnlist/levelh/6|
+}},,|xy=n}}
