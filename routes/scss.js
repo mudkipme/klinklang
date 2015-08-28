@@ -4,11 +4,8 @@ module.exports = function(req, res){
   sass.render({
     data: req.body.text
     ,outputStyle: 'compressed'
-    ,success: function(result){
-      res.json({result: result.split('}').join('}\n')});
-    }
-    ,error: function(err){
-      res.status(400).json({result: (err && err.message)});
-    }
+  }, function(err, result) {
+    if (err) return res.status(400).json({result: (err && err.message)});
+    res.json({result: result.css.toString().split('}').join('}\n')});
   });
 };

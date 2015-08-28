@@ -25,6 +25,7 @@ var Replacement = Backbone.Model.extend({
       ,'trainer-type': '训练家类型'
       ,'location-type': '地点类型'
       ,warrior: '武将'
+      ,role: '人物'
       ,other: '其他'
     }
   }

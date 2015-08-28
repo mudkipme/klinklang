@@ -30,7 +30,6 @@
 小次郎,コジロウ,James
 乔伊,ジョーイ,Nurse Joy
 君莎,ジュンサー,Officer Jenny
-中文名, 日文名, 英文名
 小响,ヒビキ,Ethan
 小银,シルバー,Silver
 空木博士,ウツギ博士,Professor Elm
@@ -48,7 +47,6 @@
 阿波罗,アポロ,Archer
 雅典娜,アテナ,Ariana
 兰斯,ランス,Proton
-拉姆达,ラムダ,Petrel
 初始,ジョバンニ,Earl Dervish
 钢铁,ガンテツ,Kurt
 五月,サツキ,Miki
@@ -112,7 +110,7 @@
 潮,ウシオ,Matt
 哈奇老人,ハギ老人,Mr. Briney
 索蓝斯博士,ソライシ博士,Professor Cozmo
-索蓝斯高雄,ソライシ・タカオTakao Cozmo
+索蓝斯高雄,ソライシ・タカオ,Takao Cozmo
 连胜晴彦,カチヌキ ハルヒコ,Victor Winstrate
 连胜安江,カチヌキ ヤスエ,Victoria Winstrate
 连胜小雪,カチヌキ アキ,Vivi Winstrate
@@ -235,8 +233,8 @@ N,Ｎ,N
 蔚欧,ヴィオ,Zinzolin
 巴贝娜,バーベナ,Concordia
 荷莲娜,ヘレナ,Anthea
-平和之女神,平和の女神
-爱之女神,愛の女神
+平和之女神,平和の女神,
+爱之女神,愛の女神,
 黑暗三人组,ダークトリニティ,Shadow Triad
 妈妈,ママ,Mom
 森本,モリモト,Morimoto
@@ -298,12 +296,11 @@ AZ,AZ,AZ
 露琪雅,ルチア,Lisia
 彼岸,ヒガナ,Zinnia
 藤蔓,カズラ,Chaz
-
 小蓝,ブルー,Green
 小黄,イエロー,Yellow
 阿金,ゴール,Gold
 克丽丝塔儿,クリスタル,Crystal
-克丽丝，クリス，Crys
+克丽丝,クリス,Crys
 路比,ルビー,Ruby
 小田卷莎菲雅,オダマキ・サファイア,Sapphire Birch
 莎菲雅,サファイア,Sapphire
@@ -319,7 +316,6 @@ AZ,AZ,AZ
 黑次,ラクツ,Lack-Two
 华依,ワイ,Y
 华依•纳•卡贝娜,ワイ•ナ•ガーベナ,Yvonne Gābena
-
 小智,サトシ,Ash Ketchum
 小智,サトシ,Ash
 小胜,マサト,Max
