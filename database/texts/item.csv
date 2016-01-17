@@ -200,7 +200,7 @@
 绮丽鳞片,きれいなウロコ,Prism Scale
 进化辉石,しんかのきせき,Eviolite
 浮石,かるいし,Float Stone
-坚硬头盔,ゴツゴツメット,Rocky Helmet
+岩石安全帽,ゴツゴツメット,Rocky Helmet
 气球,ふうせん,Air Balloon
 红牌,レッドカード,Red Card
 狙击标靶,ねらいのまと,Ring Target
@@ -511,6 +511,7 @@ GS球,ジーエスボール,GS Ball
 探测器,たんちき,Scanner
 沙尘护目镜,ゴーゴーゴーグル,Go-Goggles
 陨石,いんせき,Meteorite
+磁悬浮通行证,リニアパス,Pas
 1号客房的钥匙,１ごうしつのカギ,Rm. 1 Key
 2号客房的钥匙,２ごうしつのカギ,Rm. 2 Key
 4号客房的钥匙,４ごうしつのカギ,Rm. 4 Key
@@ -522,8 +523,8 @@ GS球,ジーエスボール,GS Ball
 技能学习器盒,わざマシンケース,TM Case
 果实袋,きのみぶくろ,Berry Pouch
 教学电视,おしえテレビ,Teachy TV
-通行船票,トライパス,Tri-Pass
-彩虹通行券,レインボーパス,Rainbow Pass
+三岛通行证,トライパス,Tri-Pass
+七岛通行证,レインボーパス,Rainbow Pass
 茶,おちゃ,Tea
 神秘船票,しんぴのチケット,MysticTicket
 极光船票,オーロラチケット,AuroraTicket
@@ -557,7 +558,7 @@ GS球,ジーエスボール,GS Ball
 礼券1,ひきかえけん1,Coupon 1
 礼券2,ひきかえけん2,Coupon 2
 礼券3,ひきかえけん3,Coupon 3
-对战摄录机,バトルレコーダー,Vs. Recorder
+对战记录器,バトルレコーダー,Vs. Recorder
 葛拉西蒂亚花,グラシデアのはな,Gracidea
 圆柑果实盒,ぼんぐりケース,Apricorn Box
 未知图腾笔记,アンノーンノート,Unown Report
@@ -599,8 +600,9 @@ GB音乐盒,GBプレイヤー,GB Sounds
 超进化饰坠,メガチャーム,Mega Charm
 超级手套,メガローブ,Mega Glove
 直排轮,ローラースケート,Roller Skates
-发电所通行证,はつでんしょパス,Power Plant Pass
+发电厂通行证,はつでんしょパス,Power Plant Pass
 TMV通行证,ＴＭＶパス,TMV Pass
+莲叶童子浇花器,ハスボーじょうろ,Sprinklotad
 电梯的钥匙,エレベータのカギ,Elevator Key
 卡洛斯纹章,カロスエンブレム,Honor of Kalos
 帅哥票证,ハンサムチケット,Looker Ticket
@@ -612,10 +614,10 @@ TMV通行证,ＴＭＶパス,TMV Pass
 汇演礼服,ライブスーツ,Contest Costume
 汇演舞裙,ライブドレス,Contest Costume
 火岩套装,マグマスーツ,Magma Suit
-束缚之壶,いましめのつぼ,Prison Bottle
+惩戒之壶,いましめのつぼ,Prison Bottle
 水舰套装,アクアスーツ,Aqua Suit
 双人票,ペアチケット,Pair of Tickets
-陨石碎片,いんせきのかけら,Meteorite Shard
+陨石的碎片,いんせきのかけら,Meteorite Shard
 无限之笛,むげんのふえ,Eon Flute
 红色圆柑果实,あかぼんぐり,Red Apricorn
 蓝色圆柑果实,あおぼんぐり,Blu Apricorn
