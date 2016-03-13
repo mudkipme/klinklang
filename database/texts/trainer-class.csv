@@ -1,8 +1,9 @@
+中文名, 日文名, 英文名
 菁英训练家,エリートトレーナー,Ace Trainer
 大姐姐,おとなのおねえさん,Beauty
 女童军,ガールスカウト,Jr. Trainer♀
 怪兽狂,かいじゅうマニア,Poké Maniac
-窃贼,かじばどろぼう,Burglar
+趁火打劫者,かじばどろぼう,Burglar
 空手道王,カラテおう,Blackbelt
 祈祷师,きとうし,Channeler
 赌徒,ギャンブラー,PI
@@ -79,19 +80,13 @@
 水舰队队员,アクアだんしたっぱ,Team Aqua Grunt
 水舰队干部,アクアだんのかんぶ,Aqua Admin
 水舰队首领,アクアだんリーダー,Aqua Leader
-教学电视演员,テレビのおにいさん,Poké Dude
-画家,えかき,Painter
-菁英情侣,エリートカップル,Cool Couple
-格斗女孩,かくとうむすめ,Crush Girl
-格斗兄妹,かくとうきょうだい,Crush Kin
 竞技场主将,アリーナキャプテン,Arena Tycoon
 巨蛋超级巨星,ドームスーパースター,Dome Ace
 工厂头目,ファクトリーヘッド,Factory Head
 宫殿守护者,パレスガーディアン,Palace Maven
 水管皇后,チューブクイーン,Pike Queen
 金字塔法老,ピラミッドキング,Pyramid King
-对战大君,タワータイクーン,Salon Maiden
-对战大君,タワータイクーン,Tower Tycoon
+对战大君,タワータイクーン,Pyramid King
 偶像,アイドル,Idol
 服务生,ウエーター,Waiter
 女服务生,ウエートレス,Waitress
@@ -144,55 +139,70 @@ Game Freak,ゲームフリーク,Game Freak
 幼儿园老师,ほいくし,Nursery Aide
 乐手,ミュージシャン,Musician
 滑稽演员,クラウン,Harlequin
-摩托手,バイクずき,Motorcyclist
+摩托手,バイクずき,Motorcyclis
 首领训练家,ボストレーナー,Boss Trainer
-在神奇宝贝好莱坞拍摄中
 特摄演员,スーツアクター,Suit Actor
+特摄女演员,スーツアクトレス, Suit Actor
 演员,はいゆう, Actor
-女演员,じょしゅ, Actress
-新晋女演员,しんじんじょゆう,New Actress
+女演员,じょゆう, Actress
+新人女演员,しんじんじょゆう, New Actress
+明星演员,スターアクター, Star Actor
 喜剧演员,コメディアン, Comedian
-个性派演员,こせいはじょゆう, Strange Lady
-实力派演员,ベテランはいゆう, Veteran Star
+个性派女演员,こせいはじょゆう, Unique Star
+资深演员,ベテランはいゆう, Veteran Star
 性格演员,せいかくはいゆう, Fine Actor
-人气演员,にんきじょゆう, Chic Actress
-知名演员,タレント, Celebrity
-一线演员,にんきはいゆう, A-list Actor
+人气演员,にんきはいゆう, A-list Actor
+人气女演员,にんきじょゆう, Chic Actress
+艺人,タレント, Celebrity
 天才童星,てんさいこやく, Child Star
-大牌演员,ビッグスター, Big Star
-明星,スター,Movie Star
-神奇宝贝好莱坞上映的电影中
+大牌演员,おおものはいゆう, Big Star
+明星,スター, Movie Star
 助手,じょしゅ,Assistant
-战斗的伙伴,バトルシップ, Battleship
-神秘人, かいじん, Masked Man
-姐姐,おねえさゃん, Big Sister
+超级战舰,バトルシップ, Battleship
+怪人, かいじん, Masked Man
+姐姐,おねえさん, Big Sister
 恋人,こいびと, Boyfriend
-恋人,こいびと, Girlfriend
-可疑男子,あやしい しんし, Strange Man
+Girlfriend
+可疑绅士, あやしいしんし, Strange Man
 可疑女子, あやしいおんな, Strange Lady
 国际警察, こくさいコップ, World Police
 侵略者, しんりゃくしゃ, Invader
-古代宝物, たいこのひほう, Treasure
-被附身的男人, とりつかれたおとこ, Haunted Man
-被附身的孩子, とりつかれたこども, Haunted Kid
-神秘男子, なぞのえんばん, Mystery Man
-神秘女子, なぞのおんな, Enigma
+古代秘宝, たいこのひほう, Treasure
+被附身的男子, とりつかれたおとこ, Haunted Man
+被附身的小孩, とりつかれたこども, Haunted Kid
+谜之圆盘, なぞのえんばん, Mystery Man
+谜之女子, なぞのおんな, Enigma
 谜之光, なぞのひかり, Weird Light
-工作的男子, はたらくおとこ, Working Man
+工作男子, はたらくおとこ, Working Man
 秘密警察, ひみつけいさつ, Secret Agent
 魔法女王, まほうクイーン, Magic Queen
-午夜, まよなか, Midnight
+深夜, まよなか, Midnight
 未来人, みらいじん, Future Being
-目光相对的人, めとめが あったひと, Cute Trainer
+目光相对的人, めとめがあったひと, Cute Trainer
 门卫, もんばん, Gatekeeper
 机甲警察的妹妹, メカポリスのいもうと, Little Sis
 受欢迎的男孩, モテモテボーイ, Popular Boy
 受欢迎的女孩, モテモテガール, Popular Girl
+初级组代表,ジュニアだいひょう,Junior Representative
+初级组殿军,ジュニアせかい4い,World Finalist
+初级组季军,ジュニアせかい3い,World Finalist
+初级组亚军,ジュニアせかい2い,World Runner-up
+初级组冠军,ジュニアチャンピオン,World Champion
+高级组代表,シニアだいひょう,Senior Representative
+高级组殿军,シニアせかい4い,World Finalist
+高级组季军,シニアせかい3い,World Finalist
+高级组亚军,シニアせかい2い,World Runner-up
+高级组冠军,シニアチャンピオン,World Champion
+大师组代表,マスターだいひょう,Master Representative
+大师组殿军,マスターせかい4い,World Finalist
+大师组季军,マスターせかい3い,World Finalist
+大师组亚军,マスターせかい2い,World Runner-up
+大师组冠军,マスターチャンピオン,World Champion
 天空训练家,スカイトレーナー,Sky Trainer
 神奇宝贝博士,ポケモン博士,Pokémon Professor
-闪焰队,フレア団,Team Flare
-闪焰队手下,フレア団のしたっぱ,Team Flare Grunt
-闪焰队干部,フレア団のかんぶ,Team Flare Admins
+闪焰队,フレアだん,Team Flare
+闪焰队手下,フレアだんのしたっぱ,Team Flare Grunt
+闪焰队干部,フレアだんのかんぶ,Team Flare Admin
 闪焰队首领,フレアだんボス,Team Flare Boss
 园艺师,にわし,Gardener
 直排轮玩家,ローラースケート,Roller Skater
@@ -201,7 +211,7 @@ Game Freak,ゲームフリーク,Game Freak
 希望训练家,ホープトレーナー,Rising Star
 主厨,りょうりにん,Chef
 观光客,ツアーきゃく,Tourist
-男侍,ギャルソン,Gar?0?4on
+男侍,ギャルソン,Garçon
 店主,オーナー,Owner
 司机,ドライバー,Driver
 神奇宝贝迷夫妇,だいすきふうふ,Poké Fan Family
@@ -217,15 +227,16 @@ Game Freak,ゲームフリーク,Game Freak
 女侯爵,マーショネス,Marchioness
 公爵,デューク,Duke
 女公爵,ダッチェス,Duchess
+大公,グランデューク,Grand Duke
 女大公,グランダッチェス,Grand Duchess
 对战女城主,バトルシャトレーヌ,Battle Chatelaine
 管家,しつじ,Butler
 男士,ムッシュ,Monsieur
-智者＆强者,ブレイン＆パワーズ,Brains & Brawn
+智者与强者,ブレイン&パワーズ,Brains & Brawn
 蜜月夫妇,ハネムーン,Honeymooners
 童话女孩,メルヘンしょうじょ,Fairy Tale Girl
 和服少女,ふりそで,Furisode Girl
-神秘姐妹,フシギしまい,Mysterious Sisters
+不可思议姐妹,フシギしまい,Mysterious Sisters
 坏男孩,バッドガイ,Punk Guy
 坏女孩,バッドガール,Punk Girl
 不良情侣,ふりょうアベック,Punk Couple
