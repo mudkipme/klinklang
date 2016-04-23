@@ -1,11 +1,5 @@
+.DS_Store
 node_modules
-public/components
-public/stylesheets/style.css
-public/javascripts/bundle.js
-database/base.sqlite3
-database/cookie-jar.txt
-database/item.json
-database/pokedex.json
-database/pokedex.csv
 *.sublime-project
 *.sublime-workspace
+@eaDir
