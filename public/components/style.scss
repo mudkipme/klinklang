@@ -1,0 +1,12 @@
+@import "~react-toolbox/lib/base";
+@import "~react-toolbox/lib/app_bar/config";
+
+$title-font-size: 1.8 * $unit;
+
+.appbar {
+  > .title {
+    font-size: $title-font-size;
+    font-weight: $font-weight-bold;
+    position: relative;
+  }
+}
