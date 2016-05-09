@@ -1,10 +1,16 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import Header from './components/header';
-import style from './style';
+import { render } from 'react-dom';
+import { Router, Route, IndexRoute, browserHistory } from 'react-router';
+import App from './app';
+import Replace from './components/replace';
+import SCSS from './components/scss';
 
-ReactDOM.render((
-  <div>
-    <Header />
-  </div>
-), document.getElementById('app'));
+render((
+  <Router history={browserHistory}>
+    <Route path="/" component={App}>
+      <Route path="replace" component={Replace} />
+      <Route path="scss" component={SCSS} />
+      <IndexRoute component={Replace} />
+    </Route>
+  </Router>
+), document.body);

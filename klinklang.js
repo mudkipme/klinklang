@@ -21,6 +21,6 @@ app.use(error());
 app.use(replaceRouter.routes());
 app.use(scssRouter.routes());
 
-const server = app.listen(process.env.PORT || 3393, function() {
+const server = app.listen(process.env.PORT || 3001, function() {
   console.log('Paradise server listening on port ' + server.address().port);
 });
