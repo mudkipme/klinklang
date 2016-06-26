@@ -1,0 +1,41 @@
+@import "~react-toolbox/lib/app_bar/config";
+
+$title-font-size: 1.8 * $unit;
+
+.appbar {
+  > .title {
+    font-size: $title-font-size;
+    font-weight: $font-weight-bold;
+    position: relative;
+  }
+}
+
+.navigation {
+  flex-grow: 1;
+  text-align: right;
+  > ul {
+    list-style: none;
+    > li {
+      display: inline-block;
+      > a {
+        @include typo-menu;
+        position: relative;
+        display: inline-block;
+        padding: 0 1.5 * $unit;
+        margin-right: $unit;
+        line-height: $appbar-height;
+        color: $color-primary-contrast;
+        &.active:after {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          display: block;
+          width: 100%;
+          height: .3 * $unit;
+          content: '';
+          background-color: $color-accent;
+        }
+      }
+    }
+  }
+}

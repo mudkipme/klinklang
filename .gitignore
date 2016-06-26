@@ -3,6 +3,4 @@ node_modules
 *.sublime-project
 *.sublime-workspace
 @eaDir
-*.map
-public/bundle.js
-public/styles.css
+public/build
