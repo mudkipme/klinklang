@@ -15,7 +15,7 @@ router.post('/api/scss', async function (ctx, next) {
     data: ctx.request.body.text || '',
     outputStyle: 'compressed'
   }));
-  ctx.body = css.toString().split('}').join('}\n');
+  ctx.body = { text: css.toString().split('}').join('}\n') };
 });
 
 export default router;
