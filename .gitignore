@@ -3,4 +3,5 @@ node_modules
 *.sublime-project
 *.sublime-workspace
 @eaDir
-public/build
+/public/build
+/database/base.sqlite3
