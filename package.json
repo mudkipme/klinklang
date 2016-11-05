@@ -34,8 +34,11 @@
     "redux": "^3.6.0",
     "redux-promise-middleware": "^4.1.0",
     "redux-thunk": "^2.1.0",
+    "request": "^2.78.0",
+    "request-promise-native": "^1.0.3",
     "sass-loader": "^4.0.2",
     "sqlite3": "^3.1.8",
+    "tough-cookie-file-store": "^1.1.1",
     "webpack": "^2.1.0-beta.25"
   },
   "devDependencies": {

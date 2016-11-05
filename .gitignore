@@ -5,3 +5,5 @@ node_modules
 @eaDir
 /public/build
 /database/base.sqlite3
+/database/cookie.json
+/config.json
