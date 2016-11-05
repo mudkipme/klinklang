@@ -1,7 +1,7 @@
 import fs from 'mz/fs';
 import path from 'path';
 import parse from 'csv-parse';
-import camelCase from 'camelcase';
+import { camelCase } from 'lodash';
 import db from '../lib/database';
 
 const csvRootDir = path.join(__dirname, '../../pokedex/pokedex/data/csv');
