@@ -6,4 +6,5 @@ node_modules
 /public/build
 /database/base.sqlite3
 /database/cookie.json
+/database/allpages.json
 /config.json

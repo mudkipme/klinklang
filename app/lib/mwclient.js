@@ -1,6 +1,6 @@
 import rp from 'request-promise-native';
 
-class MWClient {
+export default class MWClient {
   constructor(options = {}) {
     this.api = options.api;
     this.userAgent = options.userAgent || 'Node.js MediaWiki Client';
@@ -81,6 +81,14 @@ class MWClient {
 
     return response.data.userinfo;
   }
-}
 
-export default MWClient;
+  async allpages(options = {}) {
+    const response = await this.request({
+      ...options,
+      action: 'query',
+      list: 'allpages'
+    });
+
+    return { pages: response.data.allpages, next: response.next };
+  }
+}

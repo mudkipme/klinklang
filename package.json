@@ -11,6 +11,7 @@
     "babel-preset-env": "0.0.7",
     "commander": "^2.9.0",
     "csv-parse": "^1.1.7",
+    "csv-stringify": "^1.0.4",
     "immutability-helper": "^2.0.0",
     "koa": "2.0.0-alpha.7",
     "koa-bodyparser": "^3.1.0",
