@@ -91,4 +91,17 @@ export default class MWClient {
 
     return { pages: response.data.allpages, next: response.next };
   }
+
+  async move(from, to, options = {}) {
+    const response = await this.request({
+      ...options,
+      action: 'move',
+      from: from,
+      to: to,
+      movetalk: true,
+      token: await this.getToken()
+    });
+
+    return response.data;
+  }
 }
