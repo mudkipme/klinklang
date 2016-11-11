@@ -7,4 +7,5 @@ node_modules
 /database/base.sqlite3
 /database/cookie.json
 /database/allpages.json
+/database/movements.csv
 /config.json

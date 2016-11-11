@@ -104,4 +104,37 @@ export default class MWClient {
 
     return response.data;
   }
+
+  async getContent(title, options) {
+    const response = await this.request({
+      ...options,
+      action: 'query',
+      prop: 'revisions',
+      rvprop: 'content',
+      titles: title
+    });
+
+    if (Object.keys(response.data.pages).length === 0) {
+      throw new Error('Page not found.');
+    }
+
+    const page = response.data.pages[Object.keys(response.data.pages)[0]];
+    const revision = page.revisions && page.revisions.shift();
+    const content = revision && revision['*'];
+
+    return content || '';
+  }
+
+  async edit(title, content, options) {
+    const response = await this.request({
+      ...options,
+      action: 'edit',
+      bot: true,
+      text: content,
+      title: title,
+      token: await this.getToken()
+    });
+
+    return response.data;
+  }
 }
