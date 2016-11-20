@@ -5,6 +5,7 @@
 七岛,ナナシマ,Sevii Islands
 合众,イッシュ,Unova
 卡洛斯,カロス,Kalos
+阿罗拉,アローラ,Alola
 欧雷,オーレ,Orre
 菲蕾,フィオレ,Fiore
 阿尔米亚,アルミア,Almia
@@ -148,7 +149,7 @@
 石英高原,セキエイ高原,Indigo Plateau
 月见山,お月见山,Mt. Moon
 月见山广场,お月见山広场,Mt. Moon Square
-神奇宝贝屋,ポケモン屋敷,Pokémon Mansion
+宝可梦屋,ポケモン屋敷,Pokémon Mansion
 神奇宝贝塔,ポケモンタワー,Pokémon Tower
 无人发电站,无人発电所,Power Plant
 岩山隧道,イワヤマトンネル,Rock Tunnel
@@ -156,10 +157,10 @@
 海岸小屋,岬の小屋,Sea Cottage
 双子岛,双子岛,Seafoam Islands
 匿音之桥,サイレンズブリッジ,Silence Bridge
-希鲁夫公司,シルフカンパニー,Silph Co.
+西尔佛公司,シルフカンパニー,Silph Co.
 圣安奴号,サント・アンヌ号,S.S. Anne
 都城瀑布,トージョウの滝,Tohjo Falls
-地下通路,地下通路,Underground Path
+地下道,地下通路,Underground Path
 冠军之路,チャンピオンロード,Victory Road
 常磐森林,トキワの森,Viridian Forest
 对战开拓区,バトルフロンティア,Battle Frontier
@@ -180,7 +181,7 @@
 擂钵山,スリバチ山,Mt. Mortar
 白银山,シロガネ山,Mt. Silver
 自然公园,自然公园,National Park
-神奇宝贝全能竞技赛巨蛋,ポケスロンドーム,Pokéathlon Dome
+宝可梦全能竞技赛巨蛋,ポケスロンドーム,Pokéathlon Dome
 收讯塔,ラジオ塔,Radio Tower
 阿露福遗迹,アルフの遗迹,Ruins of Alph
 野生原野区入口,サファリゾーンゲート,Safari Zone Gate
@@ -206,7 +207,7 @@
 流星瀑布,流星の滝,Meteor Falls
 梦幻岛,幻岛,Mirage Island
 幻影之塔,幻影の塔,Mirage Tower
-烟突山,烟突山,Mt. Chimney
+烟囱山,烟突山,Mt. Chimney
 送火山,送り火山,Mt. Pyre
 新紫堇,ニューキンセツ,New Mauville
 橙华森林,トウカの森,Petalburg Woods
@@ -224,8 +225,8 @@
 对战开拓区,バトルフロンティア,Battle Frontier
 对战特区,バトルゾーン,Battle Zone
 对战公园,バトルパーク,Battle Park
-山中小屋,山小屋,Café Cabin
-破格的世界,破れた世界,Distortion World
+山后屋咖啡厅,山小屋,Café Cabin
+毁坏的世界,破れた世界,Distortion World
 战斗区,ファイトエリア,Fight Area
 苑之花田,ソノオの花畑,Floaroma Meadow
 花之乐园,花の楽園,Flower Paradise
@@ -247,8 +248,8 @@
 天冠山,テンガン山,Mt. Coronet
 新月岛,新月島,Newmoon Island
 森之洋馆,森の洋館,Old Chateau
-朋友公园,パルパーク,Pal Park
-神奇宝贝表公司,ポケッチカンパニー,Pokétch Company
+伙伴公园,パルパーク,Pal Park
+宝可梦表公司,ポケッチカンパニー,Pokétch Company
 荒芜小道,荒れた抜け道,Ravaged Path
 名胜区,リゾートエリア,Resort Area
 岩山遗迹,岩山の遺跡,Rock Peak Ruins
@@ -260,8 +261,8 @@
 严酷山,ハードマウンテン,Stark Mountain
 生存区,サバイバルエリア,Survival Area
 归途洞窟,戻りの洞窟,Turnback Cave
-自豪的后院,自慢の裏庭,Trophy Garden
-山谷间的发电场,谷間の発電所,Valley Windworks
+最自豪的后院,自慢の裏庭,Trophy Garden
+山谷发电厂,谷間の発電所,Valley Windworks
 导航灯塔,シルベの灯台,Vista Lighthouse
 迷幻洞窟,迷いの洞窟,Wayward Cave
 梦的遗址,夢の跡地,Dreamyard
@@ -289,8 +290,8 @@
 传送工厂,シフトファクトリー,Poké Transfer Lab
 白色森林,ホワイトフォレスト,White Forest
 冠军之路,チャンピオンロード,Victory Road
-N的城堡,Ｎの城,N's Castle
-P2实验室,Ｐ２ラボ,P2 Laboratory
+Ｎ的城堡,Ｎの城,N's Castle
+Ｐ２实验室,Ｐ２ラボ,P2 Laboratory
 巨人洞窟,ジャイアントホール,Giant Chasm
 村庄桥,ビレッジブリッジ,Village Bridge
 奇妙之桥,ワンダーブリッジ,Marvelous Bridge
@@ -299,7 +300,7 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 算木牧场,サンギぼくじょう,Floccesy Ranch
 心之空洞,心の空洞,Cave of Being
 誓约森林,ちかいのはやし,Pledge Grove
-神奇宝贝好莱坞,ポケウッド,Pokéstar Studios
+宝可梦好莱坞,ポケウッド,Pokéstar Studios
 立涌联合工业区,タチワキコンビナート,Virbank Complex
 飞云地下水道,ヒウン下水道,Castelia Sewers
 古代秘道,古代の抜け道,Relic Passage
@@ -308,9 +309,9 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 反转山,リバースマウンテン,Reversal Mountain
 海洋隧道,マリンチューブ,Marine Tube
 海边洞穴,海辺の洞穴,Seaside Cave
-电浆巡防舰,プラズマフリゲート,Plasma Frigate
+等离子驱逐舰,プラズマフリゲート,Plasma Frigate
 自然保护区,自然保护区,Nature Preserve
-神奇宝贝世界锦标赛,ポケモンワールドトーナメント,Pokémon World Tournament
+宝可梦世界锦标赛,ポケモンワールドトーナメント,Pokémon World Tournament
 加盟大道,ジョインアベニュー,Join Avenue
 外人之屋,ストレンジャハウス,Strange House
 隐藏洞穴,隠し穴,Hidden Grotto
@@ -322,17 +323,17 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 连地洞穴,地つなぎの洞穴,Connecting Cave
 闪耀洞窟,辉きの洞窟,Glittering Cave
 镜穴,映し身の洞窟,Reflective Cave
-精練之塔,マスタータワー,Tower of Mastery
+精炼之塔,マスタータワー,Tower of Mastery
 蔚蓝湾,アズール湾,Azure Bay
 海神之穴,海神の穴,Sea Spirit's Den
 卡洛斯发电厂,カロス発电所,Kalos Power Plant
-宝贝球工厂,ボール工场,Poké Ball Factory
+精灵球工厂,ボール工场,Poké Ball Factory
 荒废旅馆,荒れ果てホテル,Lost Hotel
-冰霜洞穴,フロストケイブ,Frost Cavern
-弗拉达利实验室,フラダリラボ,Lysandre Labs
+冰结洞穴,フロストケイブ,Frost Cavern
+弗拉达利研究所,フラダリラボ,Lysandre Labs
 闪焰队秘密基地,フレア団秘密基地,Team Flare HQ
-终端洞窟,终の洞窟,Terminus Cave
-神奇宝贝村庄,ポケモンの村,Pokémon Village
+终结洞窟,终の洞窟,Terminus Cave
+宝可梦村庄,ポケモンの村,Pokémon Village
 冠军之路,チャンピオンロード,Victory Road
 无名洞窟,ななしの洞窟,Unknown Dungeon
 对战宅第,バトルハウス,Battle Maison
@@ -392,3 +393,78 @@ P2实验室,Ｐ２ラボ,P2 Laboratory
 雄黄塔,ラガルタワー,Realgam Tower
 榴辉峡谷,エクロ峡谷,Eclo Canyon
 镍暗岛,ニケルダーク岛,Citadark Isle
+神秘的地方,なぞのばしょ,Mystery Zone
+遥远的地方,とおいばしょ,Faraway Place
+好奥乐市郊,ハウオリシティはずれ,Hau’oli Outskirts
+卡拉蔚湾,カーラエわん,Kala’e Bay
+美乐美乐海,メレメレかい,Melemele Sea
+好奥乐市,ハウオリシティ,Hau’oli City
+海滩区,ビーチサイドエリア,Beachfront
+商业区,ショッピングエリア,Shopping District
+港口区,ポートエリア,Marina
+利利小镇,リリィタウン,Iki Town
+马哈罗山路,マハロさんどう,Mahalo Trail
+吊桥,つりばし,Plank Bridge
+战争遗迹,いくさのいせき,Ruins of Conflict
+十克拉山丘,テンカラットヒル,Ten Carat Hill
+最深处的空洞,さいおうくうどう,Farthest Hollow
+好奥乐墓园,ハウオリれいえん,Hau’oli Cemetery
+美乐美乐花园,メレメレのはなぞの,Melemele Meadow
+通海洞穴,うみつなぎのどうけつ,Seaward Cave
+树果园,きのみばたけ,Berry Fields
+葱郁洞窟,しげみのどうくつ,Verdant Cavern
+考验之地,しれんのま,Trial Site
+霸主居处,ぬしのま,Totem’s Den
+豪诺豪诺度假地,ハノハノリゾート,Hano Grand Resort
+豪诺豪诺海滩,ハノハノビーチ,Hano Beach
+阿卡拉花园,アーカラのはなぞの,Akala Meadow
+欧哈纳镇,オハナタウン,Paniola Town
+慷待市,カンタイシティ,Heahea City
+可霓可市,コニコシティ,Konikoni City
+皇家大道,ロイヤルアベニュー,Royal Avenue
+回忆之丘,メモリアルヒル,Memorial Hill
+欧哈纳牧场,オハナぼくじょう,Paniola Ranch
+维拉火山公园,ヴェラかざんこうえん,Wela Volcano Park
+潺潺之丘,せせらぎのおか,Brooklet Hill
+树荫丛林,シェードジャングル,Lush Jungle
+生命遗迹,いのちのいせき,Ruins of Life
+阿卡拉岛郊外,アーカラじまはずれ,Akala Outskirts
+地鼠隧道,ディグダトンネル,Diglett’s Tunnel
+皇家巨蛋,ロイヤルドーム,Battle Royal Dome
+乌拉乌拉后海岸,ウラウラうらかいがん,Secluded Shore
+卡璞村,カプのむら,Tapu Village
+哈伊纳沙漠,ハイナさばく,Haina Desert
+乌拉乌拉花园,ウラウラのはなぞの,Ula’ula Meadow
+魄镇,ポータウン,Po Town
+马利埃静市,マリエシティ,Malie City
+马利埃庭园,マリエていえん,Malie Garden
+辉克拉尼山,ホクラニだけ,Mount Hokulani
+火特力山,ホテリやま,Blush Mountain
+丰收遗迹,みのりのいせき,Ruins of Abundance
+日轮湖,にちりんのみずうみ,Lake of the Sunne
+月轮湖,がちりんのみずうみ,Lake of the Moone
+拉纳基拉山,ラナキラマウンテン,Mount Lanakila
+可疑宅邸,いかがわしきやしき,Shady House
+超值超市,スーパー・メガやす,Thrifty Megamart
+旧址,あとち,Abandoned Site
+辉克拉尼天文台,ホクラニてんもんだい,Hokulani Observatory
+宝可梦联盟,ポケモンリーグ,Pokémon League
+波尼花园,ポニのはなぞの,Poni Meadow
+波尼原野,ポニのげんや,Poni Wilds
+波尼古道,ポニのこどう,Ancient Poni Path
+波尼鼓浪岩岸,ポニのあらいそ,Poni Breaker Coast
+波尼树林,ポニのじゅりん,Poni Grove
+波尼旷野,ポニのこうや,Poni Plains
+波尼海岸,ポニのかいがん,Poni Coast
+波尼险路,ポニのけんろ,Poni Gauntlet
+海洋居民之村,うみのたみのむら,Seafolk Village
+波尼大峡谷,ポニのだいきょうこく,Vast Poni Canyon
+日轮祭坛,にちりんのさいだん,Altar of the Sunne
+月轮祭坛,がちりんのさいだん,Altar of the Moone
+彼岸遗迹,ひがんのいせき,Ruins of Hope
+终结洞窟,エンドケイブ,Resolution Cave
+椰蛋树岛,ナッシー・アイランド,Exeggutor Island
+对战树,バトルツリー,Battle Tree
+以太乐园,エーテルパラダイス,Aether Paradise
+究极空间,ウルトラスペース,Ultra Space
+市郊海角,はずれのみさき,Outer Cape

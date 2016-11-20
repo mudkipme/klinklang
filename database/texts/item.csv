@@ -1,319 +1,865 @@
-除虫喷雾器,むしよけスプレー,Repel
-白银喷雾器,シルバースプレー,Super Repel
-黄金喷雾器,ゴールドスプレー,Max Repel
-脱离洞穴的绳子,あなぬけのヒモ,Escape Rope
-黑色哨子,くろいビードロ,Black Flute
-白色哨子,しろいビードロ,White Flute
+、无,なし,None
+大师球,マスターボール,Master Ball
+高级球,ハイパーボール,Ultra Ball
+超级球,スーパーボール,Great Ball
+精灵球,モンスターボール,Poké Ball
+狩猎球,サファリボール,Safari Ball
+捕网球,ネットボール,Net Ball
+潜水球,ダイブボール,Dive Ball
+巢穴球,ネストボール,Nest Ball
+重复球,リピートボール,Repeat Ball
+计时球,タイマーボール,Timer Ball
+豪华球,ゴージャスボール,Luxury Ball
+纪念球,プレミアボール,Premier Ball
+黑暗球,ダークボール,Dusk Ball
+治愈球,ヒールボール,Heal Ball
+先机球,クイックボール,Quick Ball
+贵重球,プレシャスボール,Cherish Ball
+伤药,キズぐすり,Potion
+解毒药,どくけし,Antidote
+灼伤药,やけどなおし,Burn Heal
+解冻药,こおりなおし,Ice Heal
+解眠药,ねむけざまし,Awakening
+解麻药,まひなおし,Paralyze Heal
+全复药,かいふくのくすり,Full Restore
+全满药,まんたんのくすり,Max Potion
+厉害伤药,すごいキズぐすり,Hyper Potion
+好伤药,いいキズぐすり,Super Potion
+万灵药,なんでもなおし,Full Heal
+活力碎片,げんきのかけら,Revive
+活力块,げんきのかたまり,Max Revive
+美味之水,おいしいみず,Fresh Water
+劲爽汽水,サイコソーダ,Soda Pop
+果汁牛奶,ミックスオレ,Lemonade
+哞哞鲜奶,モーモーミルク,Moomoo Milk
+元气粉,ちからのこな,Energy Powder
+元气根,ちからのねっこ,Energy Root
+万能粉,ばんのうごな,Heal Powder
+复活草,ふっかつそう,Revival Herb
+ＰＰ单项小补剂,ピーピーエイド,Ether
+ＰＰ单项全补剂,ピーピーリカバー,Max Ether
+ＰＰ多项小补剂,ピーピーエイダー,Elixir
+ＰＰ多项全补剂,ピーピーマックス,Max Elixir
+釜炎仙贝,フエンせんべい,Lava Cookie
+树果汁,きのみジュース,Berry Juice
+圣灰,せいなるはい,Sacred Ash
+ＨＰ增强剂,マックスアップ,HP Up
+攻击增强剂,タウリン,Protein
+防御增强剂,ブロムヘキシン,Iron
+速度增强剂,インドメタシン,Carbos
+特攻增强剂,リゾチウム,Calcium
+神奇糖果,ふしぎなアメ,Rare Candy
+ＰＰ提升剂,ポイントアップ,PP Up
+特防增强剂,キトサン,Zinc
+ＰＰ极限提升剂,ポイントマックス,PP Max
+森之羊羹,もりのヨウカン,Old Gateau
+能力防守,エフェクトガード,Guard Spec.
+要害攻击,クリティカット,Dire Hit
+力量强化,プラスパワー,X Attack
+防御强化,ディフェンダー,X Defense
+速度强化,スピーダー,X Speed
+命中强化,ヨクアタール,X Accuracy
+特攻强化,スペシャルアップ,X Sp. Atk
+特防强化,スペシャルガード,X Sp. Def
+皮皮玩偶,ピッピにんぎょう,Poké Doll
+向尾喵的尾巴,エネコのシッポ,Fluffy Tail
+蓝色玻璃哨,あおいビードロ,Blue Flute
+黄色玻璃哨,きいろビードロ,Yellow Flute
+红色玻璃哨,あかいビードロ,Red Flute
+黑色玻璃哨,くろいビードロ,Black Flute
+白色玻璃哨,しろいビードロ,White Flute
 浅滩海盐,あさせのしお,Shoal Salt
 浅滩贝壳,あさせのかいがら,Shoal Shell
 红色碎片,あかいかけら,Red Shard
 蓝色碎片,あおいかけら,Blue Shard
 黄色碎片,きいろいかけら,Yellow Shard
 绿色碎片,みどりのかけら,Green Shard
-学习装置,がくしゅうそうち,Exp. Share
-木箱,きのはこ,Normal Box
-桐木箱,きりのはこ,Gorgeous Box
-美味尾巴,おいしいシッポ,Slowpoketail
-甜蜜,あまいミツ,Honey
-快快肥,すくすくこやし,Growth Mulch
-湿湿肥,じめじめこやし,Damp Mulch
-长长肥,ながながこやし,Stable Mulch
-粘粘肥,ねばねばこやし,Gooey Mulch
-楔石,かなめいし,Odd Keystone
-释出之玉,デルダマ,Pass Orb
-荒诞肥,とんでもこやし,Amaze Mulch
-劲劲肥,ぐんぐんこやし,Boost Mulch
-硕果肥,たわわこやし,Rich Mulch
-惊讶肥,びっくりこやし,Surprise Mulch
-特价券,バーゲンチケット,Discount Coupon
-神奇摆设,ふしぎなおきもの,Strange Souvenir
-贝之化石,かいのカセキ,Helix Fossil
-龟壳化石,こうらのカセキ,Dome Fossil
-秘密琥珀,ひみつのコハク,Old Amber
-树根化石,ねっこのカセキ,Root Fossil
-尖爪化石,ツメのカセキ,Claw Fossil
-盾牌化石,たてのカセキ,Armor Fossil
-头盖化石,ずがいのカセキ,Skull Fossil
-盖状化石,ふたのカセキ,Cover Fossil
-羽之化石,はねのカセキ,Plume Fossil
-颚之化石,アゴのカセキ,Jaw Fossil
-鳍之化石,ヒレのカセキ,Sail Fossil
-太阳之石,たいようのいし,Sun Stone
+白银喷雾,シルバースプレー,Super Repel
+黄金喷雾,ゴールドスプレー,Max Repel
+离洞绳,あなぬけのヒモ,Escape Rope
+除虫喷雾,むしよけスプレー,Repel
+日之石,たいようのいし,Sun Stone
 月之石,つきのいし,Moon Stone
 火之石,ほのおのいし,Fire Stone
-雷之石,かみなりのいし,Thunderstone
+雷之石,かみなりのいし,Thunder Stone
 水之石,みずのいし,Water Stone
 叶之石,リーフのいし,Leaf Stone
-光之石,ひかりのいし,Shiny Stone
-暗之石,やみのいし,Dusk Stone
-觉醒之石,めざめいし,Dawn Stone
-小蘑菇,ちいさなキノコ,Tiny mushroom
+小蘑菇,ちいさなキノコ,Tiny Mushroom
 大蘑菇,おおきなキノコ,Big Mushroom
 珍珠,しんじゅ,Pearl
 大珍珠,おおきなしんじゅ,Big Pearl
-星星的沙子,ほしのすな,Stardust
-星星的碎片,ほしのかけら,Star Piece
-金叶,きんのはっぱ,Gold Leaf
-银叶,ぎんのはっぱ,Silver Leaf
-砖瓦碎片,かわらのかけら,Brick Piece
-金色珠,きんのたま,Nugget
+星星沙子,ほしのすな,Stardust
+星星碎片,ほしのかけら,Star Piece
+金珠,きんのたま,Nugget
 心之鳞片,ハートのウロコ,Heart Scale
+甜甜蜜,あまいミツ,Honey
+速速肥,すくすくこやし,Growth Mulch
+湿湿肥,じめじめこやし,Damp Mulch
+久久肥,ながながこやし,Stable Mulch
+粘粘肥,ねばねばこやし,Gooey Mulch
+根状化石,ねっこのカセキ,Root Fossil
+爪子化石,ツメのカセキ,Claw Fossil
+贝壳化石,かいのカセキ,Helix Fossil
+甲壳化石,こうらのカセキ,Dome Fossil
+秘密琥珀,ひみつのコハク,Old Amber
+盾甲化石,たてのカセキ,Armor Fossil
+头盖化石,ずがいのカセキ,Skull Fossil
 贵重骨头,きちょうなホネ,Rare Bone
-美丽羽毛,きれいなハネ,Pretty Wing
-芳香蘑菇,かおるキノコ,BalmMushroom
-大金色珠,でかいきんのたま,Big Nugget
-珍珠团子,おだんごしんじゅ,Pearl String
-彗星碎片,すいせいのかけら,Comet Shard
-古代铜币,こだいのどうか,Relic Copper
-古代银币,こだいのぎんか,Relic Silver
-古代金币,こだいのきんか,Relic Gold
-古代之壶,こだいのツボ,Relic Vase
-古代手镯,こだいのうでわ,Relic Band
-古代石像,こだいのせきそう,Relic Statue
-古代王冠,こだいのおうかん,Relic Crown
-亮光之粉,ひかりのこな,BrightPowder
+光之石,ひかりのいし,Shiny Stone
+暗之石,やみのいし,Dusk Stone
+觉醒之石,めざめいし,Dawn Stone
+浑圆之石,まんまるいし,Oval Stone
+楔石,かなめいし,Odd Keystone
+白金宝珠,はっきんだま,Griseous Orb
+水流卡带,アクアカセット,Douse Drive
+闪电卡带,イナズマカセット,Shock Drive
+火焰卡带,ブレイズカセット,Burn Drive
+冰冻卡带,フリーズカセット,Chill Drive
+
+心形甜点,ハートスイーツ,Sweet Heart
+金刚宝珠,こんごうだま,Adamant Orb
+白玉宝珠,しらたま,Lustrous Orb
+初次邮件,はじめてメール,Greet Mail
+喜爱邮件,だいすきメール,Favored Mail
+邀请邮件,おさそいメール,RSVP Mail
+感谢邮件,かんしゃメール,Thanks Mail
+询问邮件,しつもんメール,Inquiry Mail
+推荐邮件,おすすめメール,Like Mail
+回复邮件,おかえしメール,Reply Mail
+桥梁邮件Ｓ,ブリッジメールＳ,Bridge Mail S
+桥梁邮件Ｈ,ブリッジメールＨ,Bridge Mail D
+桥梁邮件Ｃ,ブリッジメールＣ,Bridge Mail T
+桥梁邮件Ｖ,ブリッジメールＶ,Bridge Mail V
+桥梁邮件Ｗ,ブリッジメールＷ,Bridge Mail M
+樱子果,クラボのみ,Cheri Berry
+零余果,カゴのみ,Chesto Berry
+桃桃果,モモンのみ,Pecha Berry
+莓莓果,チーゴのみ,Rawst Berry
+利木果,ナナシのみ,Aspear Berry
+苹野果,ヒメリのみ,Leppa Berry
+橙橙果,オレンのみ,Oran Berry
+柿仔果,キーのみ,Persim Berry
+木子果,ラムのみ,Lum Berry
+文柚果,オボンのみ,Sitrus Berry
+勿花果,フィラのみ,Figy Berry
+异奇果,ウイのみ,Wiki Berry
+芒芒果,マゴのみ,Mago Berry
+乐芭果,バンジのみ,Aguav Berry
+芭亚果,イアのみ,Iapapa Berry
+蔓莓果,ズリのみ,Razz Berry
+墨莓果,ブリーのみ,Bluk Berry
+蕉香果,ナナのみ,Nanab Berry
+西梨果,セシナのみ,Wepear Berry
+凰梨果,パイルのみ,Pinap Berry
+榴石果,ザロクのみ,Pomeg Berry
+藻根果,ネコブのみ,Kelpsy Berry
+比巴果,タポルのみ,Qualot Berry
+哈密果,ロメのみ,Hondew Berry
+萄葡果,ウブのみ,Grepa Berry
+茄番果,マトマのみ,Tamato Berry
+玉黍果,モコシのみ,Cornn Berry
+岳竹果,ゴスのみ,Magost Berry
+茸丹果,ラブタのみ,Rabuta Berry
+檬柠果,ノメルのみ,Nomel Berry
+刺角果,ノワキのみ,Spelon Berry
+椰木果,シーヤのみ,Pamtre Berry
+瓜西果,カイスのみ,Watmel Berry
+金枕果,ドリのみ,Durin Berry
+靛莓果,ベリブのみ,Belue Berry
+巧可果,オッカのみ,Occa Berry
+千香果,イトケのみ,Passho Berry
+烛木果,ソクノのみ,Wacan Berry
+罗子果,リンドのみ,Rindo Berry
+番荔果,ヤチェのみ,Yache Berry
+莲蒲果,ヨプのみ,Chople Berry
+通通果,ビアーのみ,Kebia Berry
+腰木果,シュカのみ,Shuca Berry
+棱瓜果,バコウのみ,Coba Berry
+福禄果,ウタンのみ,Payapa Berry
+扁樱果,タンガのみ,Tanga Berry
+草蚕果,ヨロギのみ,Charti Berry
+佛柑果,カシブのみ,Kasib Berry
+莓榴果,ハバンのみ,Haban Berry
+刺耳果,ナモのみ,Colbur Berry
+霹霹果,リリバのみ,Babiri Berry
+灯浆果,ホズのみ,Chilan Berry
+枝荔果,チイラのみ,Liechi Berry
+龙睛果,リュガのみ,Ganlon Berry
+沙鳞果,カムラのみ,Salac Berry
+龙火果,ヤタピのみ,Petaya Berry
+杏仔果,ズアのみ,Apicot Berry
+兰萨果,サンのみ,Lansat Berry
+星桃果,スターのみ,Starf Berry
+谜芝果,ナゾのみ,Enigma Berry
+奇秘果,ミクルのみ,Micle Berry
+释陀果,イバンのみ,Custap Berry
+嘉珍果,ジャポのみ,Jaboca Berry
+雾莲果,レンブのみ,Rowap Berry
+光粉,ひかりのこな,Bright Powder
+白色香草,しろいハーブ,White Herb
+强制锻炼器,きょうせいギプス,Macho Brace
 学习装置,がくしゅうそうち,Exp. Share
-先攻之爪,せんせいのツメ,Quick Claw
+先制之爪,せんせいのツメ,Quick Claw
+安抚之铃,やすらぎのすず,Soothe Bell
+心灵香草,メンタルハーブ,Mental Herb
+讲究头带,こだわりハチマキ,Choice Band
 王者之证,おうじゃのしるし,King's Rock
-银色的粉,ぎんのこな,SilverPowder
-护身金币,おまもりこばん,Amulet Coin
-净身的护身符,きよめのおふだ,Cleanse Tag
+银粉,ぎんのこな,Silver Powder
+护符金币,おまもりこばん,Amulet Coin
+洁净之符,きよめのおふだ,Cleanse Tag
+心之水滴,こころのしずく,Soul Dew
+深海之牙,しんかいのキバ,Deep Sea Tooth
+深海鳞片,しんかいのウロコ,Deep Sea Scale
 烟雾球,けむりだま,Smoke Ball
 不变之石,かわらずのいし,Everstone
-振奋精神的头布,きあいのハチマキ,Focus Band
-振奋精神的绑带,きあいのタスキ,Focus Sash
+气势头带,きあいのハチマキ,Focus Band
 幸运蛋,しあわせタマゴ,Lucky Egg
-对焦镜片,ピントレンズ,Scope Lens
-金属涂层,メタルコート,Metal Coat
-吃剩下的东西,たべのこし,Leftovers
+焦点镜,ピントレンズ,Scope Lens
+金属膜,メタルコート,Metal Coat
+吃剩的东西,たべのこし,Leftovers
 龙之鳞片,りゅうのウロコ,Dragon Scale
 电气球,でんきだま,Light Ball
-柔软的沙子,やわらかいすな,Soft Sand
+柔软沙子,やわらかいすな,Soft Sand
 硬石头,かたいいし,Hard Stone
 奇迹种子,きせきのタネ,Miracle Seed
-黑色的眼镜,くろいメガネ,BlackGlasses
-黑色带子,くろおび,Black Belt
+黑色眼镜,くろいメガネ,Black Glasses
+黑带,くろおび,Black Belt
 磁铁,じしゃく,Magnet
 神秘水滴,しんぴのしずく,Mystic Water
-尖锐鸟嘴,するどいくちばし,Sharp Beak
+锐利鸟嘴,するどいくちばし,Sharp Beak
 毒针,どくバリ,Poison Barb
-不融冰,とけないこおり,NeverMeltIce
-诅咒护身符,のろいのおふだ,Spell Tag
-弯曲的汤匙,まがったスプーン,TwistedSpoon
+不融冰,とけないこおり,Never-Melt Ice
+诅咒之符,のろいのおふだ,Spell Tag
+弯曲的汤匙,まがったスプーン,Twisted Spoon
 木炭,もくたん,Charcoal
 龙之牙,りゅうのキバ,Dragon Fang
-粉红色丝带,ピンクのリボン,Pink Ribbon
-水玉色之带,みずたまりボン,Polkadot Bow
-升级,アップグレード,Up-Grade
-幸运之拳,ラッキーパンチ,Lucky Punch
-金属粉,メタルパウダー,Metal Powder
-胖骨头,ふといホネ,Thick Club
-大葱,ながねぎ,Stick
-破坏性的遗传因子,はかいのいでんし,Berserk Gene
-白色药草,しろいハーブ,White Herb
-强制锻炼器,きょうせいギプス,Macho Brace
-安抚之铃,やすらぎのすず,Soothe Bell
-心灵药草,メンタルハーブ,Mental Herb
-限定招式的头巾,こだわりハチマキ,Choice Band
-心之水滴,こころのしずく,Soul Dew
-深海之牙,しんかいのキバ,DeepSeaTooth
-深海之鳞,しんかいのウロコ,DeepSeaScale
 丝绸围巾,シルクのスカーフ,Silk Scarf
+升级数据,アップグレード,Up-Grade
 贝壳之铃,かいがらのすず,Shell Bell
-海潮熏香,うしおのおこう,Sea Incense
-悠闲熏香,のんきのおこう,Lax Incense
+海潮薰香,うしおのおこう,Sea Incense
+悠闲薰香,のんきのおこう,Lax Incense
+吉利拳,ラッキーパンチ,Lucky Punch
+金属粉,メタルパウダー,Metal Powder
+粗骨头,ふといホネ,Thick Club
+大葱,ながねぎ,Stick
 红色头巾,あかいバンダナ,Red Scarf
 蓝色头巾,あおいバンダナ,Blue Scarf
 粉红头巾,ピンクのバンダナ,Pink Scarf
 绿色头巾,みどりのバンダナ,Green Scarf
 黄色头巾,きいろのバンダナ,Yellow Scarf
-火球板块,ひのたまプレート,Flame Plate
-水滴板块,しずくプレート,Splash Plate
-雷电板块,いかずちプレート,Zap Plate
-碧绿板块,みどりのプレート,Meadow Plate
-冰柱板块,つららのプレート,Icicle Plate
-拳头板块,こぶしのプレート,Fist Plate
-剧毒板块,もうどくプレート,Toxic Plate
-大地板块,だいちのプレート,Earth Plate
-青空板块,あおぞらプレート,Sky Plate
-奇异板块,ふしぎのプレート,Mind Plate
-玉虫板块,たまむしプレート,Insect Plate
-岩石板块,がんせきプレート,Stone Plate
-妖怪板块,もののけプレート,Spooky Plate
-龙之板块,りゅうのプレート,Draco Plate
-凶狠板块,こわもてプレート,Dread Plate
-钢铁板块,こうてつプレート,Iron Plate
-怪异熏香,あやしいおこう,Odd Incense
-岩石熏香,がんせきおこう,Rock Incense
-满腹熏香,まんぷくおこう,Full Incense
-波纹熏香,さざなみのおこう,Wave Incense
-鲜花熏香,おはなのおこう,Rose Incense
-幸运熏香,こううんのおこう,Luck Incense
-清净熏香,きよめのおこう,Pure Incense
-护身盔甲,プロテクター,Protector
-电力发动机,エレキブースター,Electirizer
-岩浆驱动器,マグマブースター,Magmarizer
-怪异补丁,あやしいパッチ,Dubious Disc
-灵界之布,れいかいのぬの,Reaper Cloth
-锐利爪子,するどいツメ,Razor Claw
-锐利牙,するどいキバ,Razor Fang
-圆石头,まんまるいし,Oval Stone
-金刚玉魂,こんごうだま,Adamant Orb
-白玉魂,しらたま,Lustrous Orb
-白金玉魂,はっきんだま,Griseous Orb
-广角镜片,こうかくレンズ,Wide Lens
-力量头巾,ちからのハチマキ,Muscle Band
-知识眼镜,ものしりメガネ,Wise Glasses
-达人带子,たつじんのおび,Expert Belt
-光之粘土,ひかりのねんど,Light Clay
-生命之玉,いのちのたま,Life Orb
-力量药草,パワフルハーブ,Power Herb
-剧毒珠,どくどくだま,Toxic Orb
-火焰珠,かえんだま,Flame Orb
+广角镜,こうかくレンズ,Wide Lens
+力量头带,ちからのハチマキ,Muscle Band
+博识眼镜,ものしりメガネ,Wise Glasses
+达人带,たつじんのおび,Expert Belt
+光之黏土,ひかりのねんど,Light Clay
+生命宝珠,いのちのたま,Life Orb
+强力香草,パワフルハーブ,Power Herb
+剧毒宝珠,どくどくだま,Toxic Orb
+火焰宝珠,かえんだま,Flame Orb
 速度粉,スピードパウダー,Quick Powder
-对焦镜片,フォーカスレンズ,Zoom Lens
+气势披带,きあいのタスキ,Focus Sash
+对焦镜,フォーカスレンズ,Zoom Lens
 节拍器,メトロノーム,Metronome
 黑色铁球,くろいてっきゅう,Iron Ball
 后攻之尾,こうこうのしっぽ,Lagging Tail
 红线,あかいいと,Destiny Knot
-黑色淤泥,くろいヘドロ,Black Sludge
+黑色污泥,くろいヘドロ,Black Sludge
 冰冷岩石,つめたいいわ,Icy Rock
-流沙岩石,さらさらいわ,Smooth Rock
-炎热岩石,あついいわ,Heat Rock
+沙沙岩石,さらさらいわ,Smooth Rock
+炽热岩石,あついいわ,Heat Rock
 潮湿岩石,しめったいわ,Damp Rock
-黏着钩爪,ねばりのかぎづめ,Grip Claw
-限定招式的围巾,こだわりスカーフ,Choice Scarf
-附针,くっつきバリ,Sticky Barb
+紧缠钩爪,ねばりのかぎづめ,Grip Claw
+讲究围巾,こだわりスカーフ,Choice Scarf
+附着针,くっつきバリ,Sticky Barb
 力量护腕,パワーリスト,Power Bracer
 力量腰带,パワーベルト,Power Belt
-力量镜片,パワーレンズ,Power Lens
+力量镜,パワーレンズ,Power Lens
 力量束带,パワーバンド,Power Band
 力量护踝,パワーアンクル,Power Anklet
 力量负重,パワーウエイト,Power Weight
-漂亮外套,きれいなぬけがら,Shed Shell
-巨大根茎,おおきなねっこ,Big Root
-限定招式的眼镜,こだわりメガネ,Choice Specs
-水柱卡带,アクアカセット,Douse Drive
-火焰卡带,ブレイズカセット,Burn Drive
-冰冻卡带,フリーズカセット,Chill Drive
-闪电卡带,イナズマカセット,Shock Drive
-绮丽鳞片,きれいなウロコ,Prism Scale
-进化辉石,しんかのきせき,Eviolite
-浮石,かるいし,Float Stone
-岩石安全帽,ゴツゴツメット,Rocky Helmet
+美丽空壳,きれいなぬけがら,Shed Shell
+大根茎,おおきなねっこ,Big Root
+讲究眼镜,こだわりメガネ,Choice Specs
+火球石板,ひのたまプレート,Flame Plate
+水滴石板,しずくプレート,Splash Plate
+雷电石板,いかずちプレート,Zap Plate
+碧绿石板,みどりのプレート,Meadow Plate
+冰柱石板,つららのプレート,Icicle Plate
+拳头石板,こぶしのプレート,Fist Plate
+剧毒石板,もうどくプレート,Toxic Plate
+大地石板,だいちのプレート,Earth Plate
+蓝天石板,あおぞらプレート,Sky Plate
+神奇石板,ふしぎのプレート,Mind Plate
+玉虫石板,たまむしプレート,Insect Plate
+岩石石板,がんせきプレート,Stone Plate
+妖怪石板,もののけプレート,Spooky Plate
+龙之石板,りゅうのプレート,Draco Plate
+恶颜石板,こわもてプレート,Dread Plate
+钢铁石板,こうてつプレート,Iron Plate
+奇异薰香,あやしいおこう,Odd Incense
+岩石薰香,がんせきおこう,Rock Incense
+饱腹薰香,まんぷくおこう,Full Incense
+涟漪薰香,さざなみのおこう,Wave Incense
+花朵薰香,おはなのおこう,Rose Incense
+幸运薰香,こううんのおこう,Luck Incense
+洁净薰香,きよめのおこう,Pure Incense
+护具,プロテクター,Protector
+电力增幅器,エレキブースター,Electirizer
+熔岩增幅器,マグマブースター,Magmarizer
+可疑补丁,あやしいパッチ,Dubious Disc
+灵界之布,れいかいのぬの,Reaper Cloth
+锐利之爪,するどいツメ,Razor Claw
+锐利之牙,するどいキバ,Razor Fang
+招式学习器０１,わざマシン０１,TM01
+招式学习器０２,わざマシン０２,TM02
+招式学习器０３,わざマシン０３,TM03
+招式学习器０４,わざマシン０４,TM04
+招式学习器０５,わざマシン０５,TM05
+招式学习器０６,わざマシン０６,TM06
+招式学习器０７,わざマシン０７,TM07
+招式学习器０８,わざマシン０８,TM08
+招式学习器０９,わざマシン０９,TM09
+招式学习器１０,わざマシン１０,TM10
+招式学习器１１,わざマシン１１,TM11
+招式学习器１２,わざマシン１２,TM12
+招式学习器１３,わざマシン１３,TM13
+招式学习器１４,わざマシン１４,TM14
+招式学习器１５,わざマシン１５,TM15
+招式学习器１６,わざマシン１６,TM16
+招式学习器１７,わざマシン１７,TM17
+招式学习器１８,わざマシン１８,TM18
+招式学习器１９,わざマシン１９,TM19
+招式学习器２０,わざマシン２０,TM20
+招式学习器２１,わざマシン２１,TM21
+招式学习器２２,わざマシン２２,TM22
+招式学习器２３,わざマシン２３,TM23
+招式学习器２４,わざマシン２４,TM24
+招式学习器２５,わざマシン２５,TM25
+招式学习器２６,わざマシン２６,TM26
+招式学习器２７,わざマシン２７,TM27
+招式学习器２８,わざマシン２８,TM28
+招式学习器２９,わざマシン２９,TM29
+招式学习器３０,わざマシン３０,TM30
+招式学习器３１,わざマシン３１,TM31
+招式学习器３２,わざマシン３２,TM32
+招式学习器３３,わざマシン３３,TM33
+招式学习器３４,わざマシン３４,TM34
+招式学习器３５,わざマシン３５,TM35
+招式学习器３６,わざマシン３６,TM36
+招式学习器３７,わざマシン３７,TM37
+招式学习器３８,わざマシン３８,TM38
+招式学习器３９,わざマシン３９,TM39
+招式学习器４０,わざマシン４０,TM40
+招式学习器４１,わざマシン４１,TM41
+招式学习器４２,わざマシン４２,TM42
+招式学习器４３,わざマシン４３,TM43
+招式学习器４４,わざマシン４４,TM44
+招式学习器４５,わざマシン４５,TM45
+招式学习器４６,わざマシン４６,TM46
+招式学习器４７,わざマシン４７,TM47
+招式学习器４８,わざマシン４８,TM48
+招式学习器４９,わざマシン４９,TM49
+招式学习器５０,わざマシン５０,TM50
+招式学习器５１,わざマシン５１,TM51
+招式学习器５２,わざマシン５２,TM52
+招式学习器５３,わざマシン５３,TM53
+招式学习器５４,わざマシン５４,TM54
+招式学习器５５,わざマシン５５,TM55
+招式学习器５６,わざマシン５６,TM56
+招式学习器５７,わざマシン５７,TM57
+招式学习器５８,わざマシン５８,TM58
+招式学习器５９,わざマシン５９,TM59
+招式学习器６０,わざマシン６０,TM60
+招式学习器６１,わざマシン６１,TM61
+招式学习器６２,わざマシン６２,TM62
+招式学习器６３,わざマシン６３,TM63
+招式学习器６４,わざマシン６４,TM64
+招式学习器６５,わざマシン６５,TM65
+招式学习器６６,わざマシン６６,TM66
+招式学习器６７,わざマシン６７,TM67
+招式学习器６８,わざマシン６８,TM68
+招式学习器６９,わざマシン６９,TM69
+招式学习器７０,わざマシン７０,TM70
+招式学习器７１,わざマシン７１,TM71
+招式学习器７２,わざマシン７２,TM72
+招式学习器７３,わざマシン７３,TM73
+招式学习器７４,わざマシン７４,TM74
+招式学习器７５,わざマシン７５,TM75
+招式学习器７６,わざマシン７６,TM76
+招式学习器７７,わざマシン７７,TM77
+招式学习器７８,わざマシン７８,TM78
+招式学习器７９,わざマシン７９,TM79
+招式学习器８０,わざマシン８０,TM80
+招式学习器８１,わざマシン８１,TM81
+招式学习器８２,わざマシン８２,TM82
+招式学习器８３,わざマシン８３,TM83
+招式学习器８４,わざマシン８４,TM84
+招式学习器８５,わざマシン８５,TM85
+招式学习器８６,わざマシン８６,TM86
+招式学习器８７,わざマシン８７,TM87
+招式学习器８８,わざマシン８８,TM88
+招式学习器８９,わざマシン８９,TM89
+招式学习器９０,わざマシン９０,TM90
+招式学习器９１,わざマシン９１,TM91
+招式学习器９２,わざマシン９２,TM92
+秘传学习器０１,ひでんマシン０１,HM01
+秘传学习器０２,ひでんマシン０２,HM02
+秘传学习器０３,ひでんマシン０３,HM03
+秘传学习器０４,ひでんマシン０４,HM04
+秘传学习器０５,ひでんマシン０５,HM05
+秘传学习器０６,ひでんマシン０６,HM06
+探险套装,たんけんセット,Explorer Kit
+宝物袋,たからぶくろ,Loot Sack
+规则书,ルールブック,Rule Book
+宝可追踪,ポケトレ,Poké Radar
+点数卡,ポイントカード,Point Card
+冒险笔记,ぼうけんノート,Journal
+贴纸盒,シールいれ,Seal Case
+饰品盒,アクセサリーいれ,Fashion Case
+贴纸袋,シールぶくろ,Seal Bag
+朋友手册,ともだちてちょう,Pal Pad
+发电厂钥匙,はつでんしょキー,Works Key
+古代护符,こだいのおまもり,Old Charm
+银河队钥匙,ギンガだんのカギ,Galactic Key
+红色锁链,あかいくさり,Red Chain
+城镇地图,タウンマップ,Town Map
+对战搜寻器,バトルサーチャー,Vs. Seeker
+代币盒,コインケース,Coin Case
+破旧钓竿,ボロのつりざお,Old Rod
+好钓竿,いいつりざお,Good Rod
+厉害钓竿,すごいつりざお,Super Rod
+可达鸭喷壶,コダックじょうろ,Sprayduck
+宝芬盒,ポフィンケース,Poffin Case
+自行车,じてんしゃ,Bike
+房间钥匙,ルームキー,Suite Key
+大木的信,オーキドのてがみ,Oak's Letter
+新月之羽,みかづきのはね,Lunar Wing
+会员卡,メンバーズカード,Member Card
+天界之笛,てんかいのふえ,Azure Flute
+船票,ふねのチケット,S.S. Ticket
+华丽大赛参加证,コンテストパス,Contest Pass
+火山镇石,かざんのおきいし,Magma Stone
+包裹,おとどけもの,Parcel
+兑换券１,ひきかえけん１,Coupon 1
+兑换券２,ひきかえけん２,Coupon 2
+兑换券３,ひきかえけん３,Coupon 3
+仓库钥匙,そうこのカギ,Storage Key
+秘传之药,ひでんのくすり,Secret Potion
+对战记录器,バトルレコーダー,Vs. Recorder
+葛拉西蒂亚花,グラシデアのはな,Gracidea
+秘密钥匙,ひみつのカギ,Secret Key
+球果盒,ぼんぐりケース,Apricorn Box
+未知图腾笔记,アンノーンノート,Unown Report
+树果种植盆,きのみプランター,Berry Pots
+探宝器,ダウジングマシン,Dowsing Machine
+蓝卡,ブルーカード,Blue Card
+美味尾巴,おいしいシッポ,Slowpoke Tail
+透明铃铛,とうめいなスズ,Clear Bell
+钥匙卡,カードキー,Card Key
+地下钥匙,ちかのかぎ,Basement Key
+杰尼龟喷壶,ゼニガメじょうろ,Squirt Bottle
+红色鳞片,あかいウロコ,Red Scale
+遗失物,おとしもの,Lost Item
+磁浮列车自由票,リニアパス,Pass
+机械零件,きかいのぶひん,Machine Part
+银色之羽,ぎんいろのはね,Silver Wing
+虹色之羽,にじいろのはね,Rainbow Wing
+神奇蛋,ふしぎなタマゴ,Mystery Egg
+红球果,あかぼんぐり,Red Apricorn
+蓝球果,あおぼんぐり,Blue Apricorn
+黄球果,きぼんぐり,Yellow Apricorn
+绿球果,みどぼんぐり,Green Apricorn
+粉球果,ももぼんぐり,Pink Apricorn
+白球果,しろぼんぐり,White Apricorn
+黑球果,くろぼんぐり,Black Apricorn
+速度球,スピードボール,Fast Ball
+等级球,レベルボール,Level Ball
+诱饵球,ルアーボール,Lure Ball
+沉重球,ヘビーボール,Heavy Ball
+甜蜜球,ラブラブボール,Love Ball
+友友球,フレンドボール,Friend Ball
+月亮球,ムーンボール,Moon Ball
+竞赛球,コンペボール,Sport Ball
+公园球,パークボール,Park Ball
+相册,フォトアルバム,Photo Album
+ＧＢ播放器,ＧＢプレイヤー,GB Sounds
+海声铃铛,うみなりのスズ,Tidal Bell
+愤怒馒头,いかりまんじゅう,Rage Candy Bar
+数据卡０１,データカード０１,Data Card 01
+数据卡０２,データカード０２,Data Card 02
+数据卡０３,データカード０３,Data Card 03
+数据卡０４,データカード０４,Data Card 04
+数据卡０５,データカード０５,Data Card 05
+数据卡０６,データカード０６,Data Card 06
+数据卡０７,データカード０７,Data Card 07
+数据卡０８,データカード０８,Data Card 08
+数据卡０９,データカード０９,Data Card 09
+数据卡１０,データカード１０,Data Card 10
+数据卡１１,データカード１１,Data Card 11
+数据卡１２,データカード１２,Data Card 12
+数据卡１３,データカード１３,Data Card 13
+数据卡１４,データカード１４,Data Card 14
+数据卡１５,データカード１５,Data Card 15
+数据卡１６,データカード１６,Data Card 16
+数据卡１７,データカード１７,Data Card 17
+数据卡１８,データカード１８,Data Card 18
+数据卡１９,データカード１９,Data Card 19
+数据卡２０,データカード２０,Data Card 20
+数据卡２１,データカード２１,Data Card 21
+数据卡２２,データカード２２,Data Card 22
+数据卡２３,データカード２３,Data Card 23
+数据卡２４,データカード２４,Data Card 24
+数据卡２５,データカード２５,Data Card 25
+数据卡２６,データカード２６,Data Card 26
+数据卡２７,データカード２７,Data Card 27
+草绿色宝珠,もえぎいろのたま,Jade Orb
+上锁的容器,ロックカプセル,Lock Capsule
+朱红色宝珠,べにいろのたま,Red Orb
+靛蓝色宝珠,あいいろのたま,Blue Orb
+谜之水晶,なぞのすいしょう,Enigma Stone
+美丽鳞片,きれいなウロコ,Prism Scale
+进化奇石,しんかのきせき,Eviolite
+轻石,かるいし,Float Stone
+凸凸头盔,ゴツゴツメット,Rocky Helmet
 气球,ふうせん,Air Balloon
 红牌,レッドカード,Red Card
-狙击标靶,ねらいのまと,Ring Target
-紧固头巾,しめつけバンド,Binding Band
+标靶,ねらいのまと,Ring Target
+紧绑束带,しめつけバンド,Binding Band
 球根,きゅうこん,Absorb Bulb
 充电电池,じゅうでんち,Cell Battery
-逃脱按钮,だっしゅつボタン,Eject Button
-炎之宝石,ほのおのジュエル,Fire Gem
+逃脱按键,だっしゅつボタン,Eject Button
+火之宝石,ほのおのジュエル,Fire Gem
 水之宝石,みずのジュエル,Water Gem
 电之宝石,でんきのジュエル,Electric Gem
 草之宝石,くさのジュエル,Grass Gem
 冰之宝石,こおりのジュエル,Ice Gem
 格斗宝石,かくとうジュエル,Fighting Gem
 毒之宝石,どくのジュエル,Poison Gem
-地上宝石,じめんのジュエル,Ground Gem
+地面宝石,じめんのジュエル,Ground Gem
 飞行宝石,ひこうのジュエル,Flying Gem
-超能宝石,エスパージュエル,Psychic Gem
-虫之宝石,むしのジュエル,Insect Gem
+超能力宝石,エスパージュエル,Psychic Gem
+虫之宝石,むしのジュエル,Bug Gem
 岩石宝石,いわのジュエル,Rock Gem
 幽灵宝石,ゴーストジュエル,Ghost Gem
 龙之宝石,ドラゴンジュエル,Dragon Gem
 恶之宝石,あくのジュエル,Dark Gem
 钢之宝石,はがねのジュエル,Steel Gem
 一般宝石,ノーマルジュエル,Normal Gem
-弱点保险,じゃくてんほけん,Weakness Policy
-突击护甲,とつげきチョッキ,Assault Vest
-精灵板块,せいれいプレート,Pixie Plate
-特性胶囊,とくせいカプセル,Ability Capsule
-防尘护眼镜,ぼうじんゴーグル,Safety Goggles
-奶油棒糖,ホイップポップ,Whipped Dream
-香囊,においぶくろ,Sachet
-光苔,ひかるコケ,Luminous Moss
-雪球,ゆきだま,Snowball
-妖精宝石,フェアリージュエル,Fairy Gem
-红色宝珠,べにいろのたま,Red Orb
-蓝色宝珠,あいいろのたま,Blue Orb
-药水,キズぐすり,Potion
-解毒剂,どくけし,Antidote
-灼伤药,やけどなおし,Burn Heal
-解冻药,こおりなおし,Ice Heal
-解眠药,ねむけざまし,Awakening
-解麻药,まひなおし,Parlyz Heal
-回复药水,かいふくのくすり,Full Restore
-全满药水,まんたんのくすり,Max Potion
-超高级药水,すごいキズぐすり,Hyper Potion
-超级药水,いいキズぐすり,Super Potion
-万能药,なんでもなおし,Full Heal
-更生剂,げんきのかけら,Revive
-特级更生剂,げんきのかたまり,Max Revive
-美味之水,おいしいみず,Fresh Water
-塞可汽水,サイコソーダ,Soda Pop
-综合调味乳,ミックスオレ,Lemonade
-PP小补剂,ピーピーエイド,Ether
-PP单补剂,ピーピーリカバー,Max Ether
-PP大补剂,ピーピーエイダー,Elixir
-PP全补剂,ピーピーマックス,Max Elixir
-摩摩牛奶,モーモーミルク,Moomoo Milk
-元气之粉,ちからのこな,EnergyPowder
-元气之根,ちからのねっこ,Energy Root
-万能之粉,ばんのうごな,Heal Powder
-复活之草,ふっかつそう,Revival Herb
-神圣之灰,せいなるはい,Sacred Ash
-愤怒馒头,いかりまんじゅう,RageCandyBar
-釜炎仙贝,フエンせんべい,Lava Cookie
-树果汁,きのみジュース,Berry Juice
-HP提升剂,マックスアップ,HP Up
-攻击牛磺剂,タウリン,Protein
-防御提升剂,ブロムヘキシン,Iron
-效果防护剂,インドメタシン,Carbos
-特攻增加剂,リゾチウム,Calcium
-神奇糖果,ふしぎなアメ,Rare Candy
-PP提升剂,ポイントアップ,PP Up
-特防甲壳剂,キトサン,Zinc
-PP增加剂,ポイントマックス,PP Max
-心形甜品,ハートスイーツ,Sweet Heart
 体力之羽,たいりょくのハネ,Health Wing
 肌力之羽,きんりょくのハネ,Muscle Wing
 抵抗之羽,ていこうのハネ,Resist Wing
 智力之羽,ちりょくのハネ,Genius Wing
 精神之羽,せいしんのハネ,Clever Wing
 瞬发之羽,しゅんぱつのハネ,Swift Wing
-森之羊羹,もりのヨウカン,Old Gateau
-飞云冰淇淋,ヒウンアイス,Casteliacone
-密阿雷脆皮饼,ミアレガレット,Lumiose Galette
-娑罗饼干,シャラサブレ,Shalour Sable
-神奇宝贝球,モンスターボール,Poké Ball
-超级球,スーパーボール,Great Ball
-高级球,ハイパーボール,Ultra Ball
-掌门球,マスターボール,Master Ball
-狩猎球,サファリボール,Safari Ball
-重量球,ヘビーボール,Heavy Ball
-等级球,レベルボール,Level Ball
-诱饵球,ルアーボール,Lure Ball
-速度球,スピードボール,Fast Ball
-友友球,フレンドボール,Friend Ball
-月亮球,ムーンボール,Moon Ball
-爱心球,ラブラブボール,Love Ball
-竞赛球,コンペボール,Sport Ball
-网纹球,ネットボール,Net Ball
-潜水球,ダイブボール,Dive Ball
-巢穴球,ネストボール,Nest Ball
-重复球,リピートボール,Repeat Ball
-计时球,タイマーボール,Timer Ball
-华丽球,ゴージャスボール,Luxury Ball
-首席球,プレミアボール,Premier Ball
-治愈球,ヒールボール,Heal Ball
-黑暗球,ダークボール,Dusk Ball
-超速球,クイックボール,Quick Ball
-公园球,パークボール,Park Ball
-珍贵球,プレジャスボール,Cherish Ball
+美丽之羽,きれいなハネ,Pretty Wing
+背盖化石,ふたのカセキ,Cover Fossil
+羽毛化石,はねのカセキ,Plume Fossil
+自由船票,リバティチケット,Liberty Pass
+释出之玉,デルダマ,Pass Orb
 梦境球,ドリームボール,Dream Ball
-技能学习器,わざマシン,TM
-秘传技学习器,ひでんマシン,HM
+宝可尾草,ポケじゃらし,Poké Toy
+物品箱,グッズケース,Prop Case
+龙之骨,ドラゴンのホネ,Dragon Skull
+芳香蘑菇,かおるキノコ,Balm Mushroom
+巨大金珠,でかいきんのたま,Big Nugget
+丸子珍珠,おだんごしんじゅ,Pearl String
+彗星碎片,すいせいのかけら,Comet Shard
+古代铜币,こだいのどうか,Relic Copper
+古代银币,こだいのぎんか,Relic Silver
+古代金币,こだいのきんか,Relic Gold
+古代之壶,こだいのツボ,Relic Vase
+古代手镯,こだいのうでわ,Relic Band
+古代石像,こだいのせきぞう,Relic Statue
+古代王冠,こだいのおうかん,Relic Crown
+飞云冰淇淋,ヒウンアイス,Casteliacone
+要害攻击２,クリティカット２,Dire Hit 2
+速度强化２,スピーダー２,X Speed 2
+特攻强化２,ＳＰアップ２,X Sp. Atk 2
+特防强化２,ＳＰガード２,X Sp. Def 2
+防御强化２,ディフェンダー２,X Defense 2
+力量强化２,プラスパワー２,X Attack 2
+命中强化２,ヨクアタール２,X Accuracy 2
+速度强化３,スピーダー３,X Speed 3
+特攻强化３,ＳＰアップ３,X Sp. Atk 3
+特防强化３,ＳＰガード３,X Sp. Def 3
+防御强化３,ディフェンダー３,X Defense 3
+力量强化３,プラスパワー３,X Attack 3
+命中强化３,ヨクアタール３,X Accuracy 3
+速度强化６,スピーダー６,X Speed 6
+特攻强化６,ＳＰアップ６,X Sp. Atk 6
+特防强化６,ＳＰガード６,X Sp. Def 6
+防御强化６,ディフェンダー６,X Defense 6
+力量强化６,プラスパワー６,X Attack 6
+命中强化６,ヨクアタール６,X Accuracy 6
+特性召唤,スキルコール,Ability Urge
+道具击落,アイテムドロップ,Item Drop
+道具召唤,アイテムコール,Item Urge
+恢复召唤,フラットコール,Reset Urge
+要害攻击３,クリティカット３,Dire Hit 3
+光明石,ライトストーン,Light Stone
+黑暗石,ダークストーン,Dark Stone
+招式学习器９３,わざマシン９３,TM93
+招式学习器９４,わざマシン９４,TM94
+招式学习器９５,わざマシン９５,TM95
+即时通讯器,ライブキャスター,Xtransceiver
+神石,ゴッドストーン,???
+配送物品１,はいたつぶつ１,Gram 1
+配送物品２,はいたつぶつ２,Gram 2
+配送物品３,はいたつぶつ３,Gram 3
+即时通讯器,ライブキャスター,Xtransceiver
+奖牌盒,メダルボックス,Medal Box
+基因之楔,いでんしのくさび,DNA Splicers
+基因之楔,いでんしのくさび,DNA Splicers
+许可证,きょかしょう,Permit
+圆形护符,まるいおまもり,Oval Charm
+闪耀护符,ひかるおまもり,Shiny Charm
+等离子卡,プラズマカード,Plasma Card
+脏手帕,よごれたハンカチ,Grubby Hanky
+阿克罗玛机器,アクロママシーン,Colress Machine
+遗忘物,わすれもの,Dropped Item
+遗忘物,わすれもの,Dropped Item
+现形镜,うつしかがみ,Reveal Glass
+弱点保险,じゃくてんほけん,Weakness Policy
+突击背心,とつげきチョッキ,Assault Vest
+全息影像通讯器,ホロキャスター,Holo Caster
+博士的信,はかせのてがみ,Prof's Letter
+轮滑鞋,ローラースケート,Roller Skates
+妖精石板,せいれいプレート,Pixie Plate
+特性胶囊,とくせいカプセル,Ability Capsule
+泡沫奶油,ホイップポップ,Whipped Dream
+香袋,においぶくろ,Sachet
+光苔,ひかりごけ,Luminous Moss
+雪球,ゆきだま,Snowball
+防尘护目镜,ぼうじんゴーグル,Safety Goggles
+宝可梦之笛,ポケモンのふえ,Poké Flute
+硕果肥,たわわこやし,Rich Mulch
+吃惊肥,びっくりこやし,Surprise Mulch
+劲劲肥,ぐんぐんこやし,Boost Mulch
+超效肥,とんでもこやし,Amaze Mulch
+耿鬼进化石,ゲンガナイト,Gengarite
+沙奈朵进化石,サーナイトナイト,Gardevoirite
+电龙进化石,デンリュウナイト,Ampharosite
+妙蛙花进化石,フシギバナイト,Venusaurite
+喷火龙进化石Ｘ,リザードナイトＸ,Charizardite X
+水箭龟进化石,カメックスナイト,Blastoisinite
+超梦进化石Ｘ,ミュウツナイトＸ,Mewtwonite X
+超梦进化石Ｙ,ミュウツナイトＹ,Mewtwonite Y
+火焰鸡进化石,バシャーモナイト,Blazikenite
+恰雷姆进化石,チャーレムナイト,Medichamite
+黑鲁加进化石,ヘルガナイト,Houndoominite
+波士可多拉进化石,ボスゴドラナイト,Aggronite
+诅咒娃娃进化石,ジュペッタナイト,Banettite
+班基拉斯进化石,バンギラスナイト,Tyranitarite
+巨钳螳螂进化石,ハッサムナイト,Scizorite
+凯罗斯进化石,カイロスナイト,Pinsirite
+化石翼龙进化石,プテラナイト,Aerodactylite
+路卡利欧进化石,ルカリオナイト,Lucarionite
+暴雪王进化石,ユキノオナイト,Abomasite
+袋兽进化石,ガルーラナイト,Kangaskhanite
+暴鲤龙进化石,ギャラドスナイト,Gyaradosite
+阿勃梭鲁进化石,アブソルナイト,Absolite
+喷火龙进化石Ｙ,リザードナイトＹ,Charizardite Y
+胡地进化石,フーディナイト,Alakazite
+赫拉克罗斯进化石,ヘラクロスナイト,Heracronite
+大嘴娃进化石,クチートナイト,Mawilite
+雷电兽进化石,ライボルトナイト,Manectite
+烈咬陆鲨进化石,ガブリアスナイト,Garchompite
+拉帝亚斯进化石,ラティアスナイト,Latiasite
+拉帝欧斯进化石,ラティオスナイト,Latiosite
+洛玫果,ロゼルのみ,Roseli Berry
+亚开果,アッキのみ,Kee Berry
+香罗果,タラプのみ,Maranga Berry
+莲叶童子喷壶,ハスボーじょうろ,Sprinklotad
+招式学习器９６,わざマシン９６,TM96
+招式学习器９７,わざマシン９７,TM97
+招式学习器９８,わざマシン９８,TM98
+招式学习器９９,わざマシン９９,TM99
+招式学习器１００,わざマシン１００,TM100
+发电厂通行证,はつでんしょパス,Power Plant Pass
+超级环,メガリング,Mega Ring
+似珍石,すごそうないし,Intriguing Stone
+常见石,ありふれたいし,Common Stone
+折价券,バーゲンチケット,Discount Coupon
+电梯钥匙,エレベータのキー,Elevator Key
+ＴＭＶ自由票,ＴＭＶパス,TMV Pass
+卡洛斯勋章,カロスエンブレム,Honor of Kalos
+探险心得,たんけんこころえ,Adventure Rules
+神秘摆设,ふしぎなおきもの,Strange Souvenir
+隐形眼镜盒,レンズケース,Lens Case
+化妆包,コスメポーチ,Makeup Bag
+衣物箱,いしょうトランク,Travel Trunk
+密阿雷格雷派饼,ミアレガレット,Lumiose Galette
+娑罗沙布蕾,シャラサブレ,Shalour Sable
+颚之化石,アゴのカセキ,Jaw Fossil
+鳍之化石,ヒレのカセキ,Sail Fossil
+帅哥券,ハンサムチケット,Looker Ticket
+自行车,じてんしゃ,Bike
+全息影像通讯器,ホロキャスター,Holo Caster
+妖精宝石,ようせいジュエル,Fairy Gem
+超级坠饰,メガチャーム,Mega Charm
+超级手套,メガグローブ,Mega Glove
+音速自行车,マッハじてんしゃ,Mach Bike
+越野自行车,ダートじてんしゃ,Acro Bike
+吼吼鲸喷壶,ホエルコじょうろ,Wailmer Pail
+得文的物品,デボンのにもつ,Devon Parts
+集灰袋,はいぶくろ,Soot Sack
+地下钥匙,ちかのカギ,Basement Key
+宝可方块套装,ポロックキット,Pokéblock Kit
+给大吾的信,ダイゴへのてがみ,Letter
+无限船票,むげんのチケット,Eon Ticket
+探测器,たんちき,Scanner
+ＧＯＧＯ护目镜,ゴーゴーゴーグル,Go-Goggles
+陨石,いんせき,Meteorite
+１号客房的钥匙,１ごうしつのカギ,Key to Room 1
+２号客房的钥匙,２ごうしつのカギ,Key to Room 2
+４号客房的钥匙,４ごうしつのカギ,Key to Room 4
+６号客房的钥匙,６ごうしつのカギ,Key to Room 6
+仓库钥匙,そうこのカギ,Storage Key
+得文侦测镜,デボンスコープ,Devon Scope
+船票,ふねのチケット,S.S. Ticket
+秘传学习器０７,ひでんマシン０７,HM07
+得文潜水装备,デボンボンベ,Devon Scuba Gear
+演出礼服,ライブスーツ,Contest Costume
+演出礼裙,ライブドレス,Contest Costume
+熔岩装,マグマスーツ,Magma Suit
+海洋装,アクアスーツ,Aqua Suit
+双人票,ペアチケット,Pair of Tickets
+超级手镯,メガバングル,Mega Bracelet
+超级吊坠,メガペンダント,Mega Pendant
+超级眼镜,メガメガネ,Mega Glasses
+超级船锚,メガイカリ,Mega Anchor
+超级领针,メガラペルピン,Mega Stickpin
+超级头冠,メガティアラ,Mega Tiara
+超级脚镯,メガアンクレット,Mega Anklet
+陨石,いんせき,Meteorite
+巨沼怪进化石,ラグラージナイト,Swampertite
+蜥蜴王进化石,ジュカインナイト,Sceptilite
+勾魂眼进化石,ヤミラミナイト,Sablenite
+七夕青鸟进化石,チルタリスナイト,Altarianite
+艾路雷朵进化石,エルレイドナイト,Galladite
+差不多娃娃进化石,タブンネナイト,Audinite
+巨金怪进化石,メタグロスナイト,Metagrossite
+巨牙鲨进化石,サメハダナイト,Sharpedonite
+呆壳兽进化石,ヤドランナイト,Slowbronite
+大钢蛇进化石,ハガネールナイト,Steelixite
+大比鸟进化石,ピジョットナイト,Pidgeotite
+冰鬼护进化石,オニゴーリナイト,Glalitite
+蒂安希进化石,ディアンシナイト,Diancite
+惩戒之壶,いましめのツボ,Prison Bottle
+超级护腕,メガブレス,Mega Cuff
+喷火驼进化石,バクーダナイト,Cameruptite
+长耳兔进化石,ミミロップナイト,Lopunnite
+暴飞龙进化石,ボーマンダナイト,Salamencite
+大针蜂进化石,スピアナイト,Beedrillite
+陨石,いんせき,Meteorite
+陨石,いんせき,Meteorite
+钥石,キーストーン,Key Stone
+陨石碎片,いんせきのかけら,Meteorite Shard
+无限之笛,むげんのふえ,Eon Flute
+一般Ｚ,ノーマルＺ,Normalium Z
+火Ｚ,ホノオＺ,Firium Z
+水Ｚ,ミズＺ,Waterium Z
+电Ｚ,デンキＺ,Electrium Z
+草Ｚ,クサＺ,Grassium Z
+冰Ｚ,コオリＺ,Icium Z
+格斗Ｚ,カクトウＺ,Fightinium Z
+毒Ｚ,ドクＺ,Poisonium Z
+地面Ｚ,ジメンＺ,Groundium Z
+飞行Ｚ,ヒコウＺ,Flyinium Z
+超能力Ｚ,エスパーＺ,Psychium Z
+虫Ｚ,ムシＺ,Buginium Z
+岩石Ｚ,イワＺ,Rockium Z
+幽灵Ｚ,ゴーストＺ,Ghostium Z
+龙Ｚ,ドラゴンＺ,Dragonium Z
+恶Ｚ,アクＺ,Darkinium Z
+钢Ｚ,ハガネＺ,Steelium Z
+妖精Ｚ,フェアリーＺ,Fairium Z
+皮卡丘Ｚ,ピカチュウＺ,Pikanium Z
+银色王冠,ぎんのおうかん,Bottle Cap
+金色王冠,きんのおうかん,Gold Bottle Cap
+Ｚ手环,Ｚリング,Z-Ring
+狙射树枭Ｚ,ジュナイパーＺ,Decidium Z
+炽焰咆哮虎Ｚ,ガオガエンＺ,Incinium Z
+西狮海壬Ｚ,アシレーヌＺ,Primarium Z
+卡璞Ｚ,カプＺ,Tapunium Z
+玛夏多Ｚ,マーシャドーＺ,Marshadium Z
+阿罗雷Ｚ,アロライＺ,Aloraichium Z
+卡比兽Ｚ,カビゴンＺ,Snorlium Z
+伊布Ｚ,イーブイＺ,Eevium Z
+梦幻Ｚ,ミュウＺ,Mewnium Z
+一般Ｚ,ノーマルＺ,Normalium Z
+火Ｚ,ホノオＺ,Firium Z
+水Ｚ,ミズＺ,Waterium Z
+电Ｚ,デンキＺ,Electrium Z
+草Ｚ,クサＺ,Grassium Z
+冰Ｚ,コオリＺ,Icium Z
+格斗Ｚ,カクトウＺ,Fightinium Z
+毒Ｚ,ドクＺ,Poisonium Z
+地面Ｚ,ジメンＺ,Groundium Z
+飞行Ｚ,ヒコウＺ,Flyinium Z
+超能力Ｚ,エスパーＺ,Psychium Z
+虫Ｚ,ムシＺ,Buginium Z
+岩石Ｚ,イワＺ,Rockium Z
+幽灵Ｚ,ゴーストＺ,Ghostium Z
+龙Ｚ,ドラゴンＺ,Dragonium Z
+恶Ｚ,アクＺ,Darkinium Z
+钢Ｚ,ハガネＺ,Steelium Z
+妖精Ｚ,フェアリーＺ,Fairium Z
+皮卡丘Ｚ,ピカチュウＺ,Pikanium Z
+狙射树枭Ｚ,ジュナイパーＺ,Decidium Z
+炽焰咆哮虎Ｚ,ガオガエンＺ,Incinium Z
+西狮海壬Ｚ,アシレーヌＺ,Primarium Z
+卡璞Ｚ,カプＺ,Tapunium Z
+玛夏多Ｚ,マーシャドーＺ,Marshadium Z
+阿罗雷Ｚ,アロライＺ,Aloraichium Z
+卡比兽Ｚ,カビゴンＺ,Snorlium Z
+伊布Ｚ,イーブイＺ,Eevium Z
+梦幻Ｚ,ミュウＺ,Mewnium Z
+智皮卡Ｚ,サトピカＺ,Pikashunium Z
+智皮卡Ｚ,サトピカＺ,Pikashunium Z
+材料袋,ざいりょうぶくろ,Forage Bag
+钓竿,つりざお,Fishing Rod
+博士的面罩,はかせのふくめん,Professor's Mask
+圆庆票,フェスチケット,Festival Ticket
+光辉石,かがやくいし,Sparkling Stone
+胆怯球,ビビリだま,Adrenaline Orb
+基格尔德多面体,ジガルデキューブ,Zygarde Cube
+冰之石,こおりのいし,Ice Stone
+骑行装置,ライドギア,Ride Pager
+究极球,ウルトラボール,Beast Ball
+大马拉萨达,おおきいマラサダ,Big Malasada
+朱红色花蜜,くれないのミツ,Red Nectar
+金黄色花蜜,やまぶきのミツ,Yellow Nectar
+桃粉色花蜜,うすもものミツ,Pink Nectar
+兰紫色花蜜,むらさきのミツ,Purple Nectar
+太阳之笛,たいようのふえ,Sun Flute
+月亮之笛,つきのふえ,Moon Flute
+奇异卡片,あやしいカード,Enigmatic Card
+大地膜,グランドコート,Terrain Extender
+部位护具,ぼうごパット,Protective Pads
+电气种子,エレキシード,Electric Seed
+精神种子,サイコシード,Psychic Seed
+薄雾种子,ミストシード,Misty Seed
+青草种子,グラスシード,Grassy Seed
+战斗存储碟,ファイトメモリ,Fighting Memory
+飞翔存储碟,フライングメモリ,Flying Memory
+毒存储碟,ポイズンメモリ,Poison Memory
+大地存储碟,グラウンドメモリ,Ground Memory
+岩石存储碟,ロックメモリ,Rock Memory
+虫子存储碟,バグメモリ,Bug Memory
+幽灵存储碟,ゴーストメモリ,Ghost Memory
+钢铁存储碟,スチールメモリ,Steel Memory
+火焰存储碟,ファイヤーメモリ,Fire Memory
+清水存储碟,ウオーターメモリ,Water Memory
+青草存储碟,グラスメモリ,Grass Memory
+电子存储碟,エレクトロメモリ,Electric Memory
+精神存储碟,サイキックメモリ,Psychic Memory
+冰雪存储碟,アイスメモリ,Ice Memory
+龙存储碟,ドラゴンメモリ,Dragon Memory
+黑暗存储碟,ダークメモリ,Dark Memory
+妖精存储碟,フェアリーメモリ,Fairy Memory
+粉红色丝带,ピンクのリボン,Pink Ribbon
+水玉色之带,みずたまりボン,Polkadot Bow
 树果,きのみ,Berry
 黄金的果实,おうごんのみ,Gold Berry
 消除麻痹的果实,まひなおしのみ,PRZCureBerry
@@ -324,85 +870,18 @@ PP增加剂,ポイントマックス,PP Max
 薄荷的果实,はっかのみ,Mint Berry
 奇迹的果实,きせきのみ,MiracleBerry
 神奇的果实,ふしぎなきのみ,MysteryBerry
-辣樱,クラボのみ,Cheri Berry
-涩栗,カゴのみ,Chesto Berry
-甜桃,モモンのみ,Pecha Berry
-苦莓,チーゴのみ,Rawst Berry
-酸梨,ナナシのみ,Aspear Berry
-红苹,ヒメリのみ,Leppa Berry
-蓝橘,オレンのみ,Oran Berry
-甜柿,キーのみ,Persim Berry
-绿姆果,ラムのみ,Lum Berry
-香柚,オボンのみ,Sitrus Berry
-辣椰果,フィラのみ,Figy Berry
-蓝异奇果,ウイのみ,Wiki Berry
-甘芒,マゴのみ,Mago Berry
-绿乐芭,バンジのみ,Aguav Berry
-酸木瓜,イアのみ,Iapapa Berry
-红蔓莓,ズリのみ,Razz Berry
-蓝莓,ブリーのみ,Bluk Berry
-粉蕉,ナナのみ,Nanab Berry
-青梨,セシナのみ,Wepear Berry
-黄旺梨,パイルのみ,Pinap Berry
-红榴,ザロクのみ,Pomeg Berry
-蓝根藻果,ネコブのみ,Kelpsy Berry
-粉枇杷,タポルのみ,Qualot Berry
-黄斑蜜瓜,ロメのみ,Hondew Berry
-黄金葡,ウブのみ,Grepa Berry
-辣茄,マトマのみ,Tamato Berry
-紫黍,モコシのみ,Cornn Berry
-甜山竹,ゴスのみ,Magost Berry
-绿毛丹,ラブタのみ,Rabuta Berry
-酸柠,ノメルのみ,Nomel Berry
-辣乐奇,ノワキのみ,Spelon Berry
-紫椰,シーヤのみ,Pamtre Berry
-甜瓜,カイスのみ,Watmel Berry
-苦琏,ドリのみ,Durin Berry
-靛莓,ベリブのみ,Belue Berry
-奇拉果,チイラのみ,Liechi Berry
-龙佳果,リュガのみ,Ganlon Berry
-酸甜椰,カムラのみ,Salac Berry
-红龙果,ヤタピのみ,Petaya Berry
-青杏,ズアのみ,Apicot Berry
-红阳,サンのみ,Lansat Berry
-绿星桃,スターのみ,Starf Berry
-谜团果实,ナゾのみ,Enigma Berry
-南瓜果,カチャのみ,Pumkin Berry
-萝卜果,ブーカのみ,Drash Berry
-茄果,ビスナのみ,Eggant Berry
-豌豆果,エドマのみ,Strib Berry
-酸浆果,ホズのみ,Chilan Berry
-花生果,ラッカのみ,Nutpea Berry
-洋葱果,ギネマのみ,Ginema Berry
-秋葵果,クオのみ,Kuo Berry
-苦瓜果,ヤゴのみ,Yago Berry
-辣椒果,トウガのみ,Touga Berry
-大蒜果,ニニクのみ,Niniku Berry
-土豆果,トポのみ,Topo Berry
-欧可果,オッカのみ,Occa Berry
-浮番果,イトケのみ,Passho Berry
-烛木果,ソクノのみ,Wacan Berry
-苦豆,リンドのみ,Rindo Berry
-冰迦果,ヤチェのみ,Yache Berry
-麻雾果,ヨプのみ,Chople Berry
-通木果,ビアーのみ,Kebia Berry
-蜜腰果,シュカのみ,Shuca Berry
-风瓜,バコウのみ,Coba Berry
-糖葫果,ウタンのみ,Payapa Berry
-藤樱果,タンガのみ,Tanga Berry
-石蚕果,ヨロギのみ,Charti Berry
-佛手果,カシブのみ,Kasib Berry
-番榴,ハバンのみ,Haban Berry
-刺球果,ナモのみ,Colbur Berry
-霹雳果,リリバのみ,Babiri Berry
-灯笼果,ホズのみ,Chilan Berry
-神秘果,ミクルのみ,Micle Berry
-赤迦果,イバンのみ,Custap Berry
-嘉宝果,ジャポのみ,Jaboca Berry
-莲雾果,レンブのみ,Rowap Berry
-洛神果,ロゼルのみ,Roseli Berry
-阿开果,アッキのみ,Kee Berry
-香波果,タラプのみ,Maranga Berry
+瓜南果,カチャのみ,Pumkin Berry
+无青果,ブーカのみ,Drash Berry
+矮茄果,ビスナのみ,Eggant Berry
+宛豆果,エドマのみ,Strib Berry
+姑娘果,ホズのみ,Chilan Berry
+泥豆果,ラッカのみ,Nutpea Berry
+葱首果,ギネマのみ,Ginema Berry
+角豆果,クオのみ,Kuo Berry
+菩达果,ヤゴのみ,Yago Berry
+辛子果,トウガのみ,Touga Berry
+蒜蒜果,ニニクのみ,Niniku Berry
+薯薯果,トポのみ,Topo Berry
 蓝天邮件,あおぞらメール,Bluesky Mail
 伊布邮件,ブイブイメール,Eon Mail
 花案邮件,はながらメール,Flower Mail
@@ -413,263 +892,5 @@ PP增加剂,ポイントマックス,PP Max
 肖像邮件,にがおえメール,Portraitmail
 音符邮件,おんぷメール,Music Mail
 冲浪邮件,なみのりメール,Surf Mail
-橙色邮件,オレンジメール,Harbor Mail
-港口邮件,ハーバーメール,Surf Mail
-闪亮邮件,キラキラメール,Glitter Mail
-机械邮件,メカニカルメール,Mech Mail
-木纹邮件,ウッディメール,Wood Mail
-波涛邮件,クロスメール,Wave Mail
-珠宝邮件,トレジャーメール,Bead Mail
-影子邮件,シャドーメール,Shadow Mail
-热带邮件,トロピカルメール,Tropical Mail
-梦境邮件,ドリームメール,Dream Mail
-奇迹邮件,ミラクルメール,Miracle Mail
-复古邮件,レトロメール,Retro Mail
-青草邮件,グラスメール,Grass Mail
-火焰邮件,フレイムメール,Flame Mail
-泡泡邮件,ブルーメール,Bubble Mail
-绽放邮件,ブルームメール,Bloom Mail
-隧道邮件,トンネルメール,Tunnel Mail
-钢铁邮件,スチールメール,Steel Mail
-心灵邮件,ラブラブメール,Heart Mail
-雪花邮件,ブリザードメール,Snow Mail
-空间邮件,スペースメール,Space Mail
-天空邮件,エアメール,Air Mail
-镶嵌邮件,モザイクメール,Mosaic Mail
-砖块邮件,ブリックメール,Brick Mail
-初始邮件,はじめてメール,Greet Mail
-喜爱邮件,だいすきメール,Favored Mail
-邀请邮件,おさそいメール,RSVP Mail
-感谢邮件,かんしゃメール,Thanks Mail
-质问邮件,しつもんメール,Inquiry Mail
-推荐邮件,おすすめメール,Like Mail
-回复邮件,おかえしメール,Reply Mail
-桥梁邮件S,ブリッジメールＳ,Bridge Mail S
-桥梁邮件H,ブリッジメールＨ,Bridge Mail D
-桥梁邮件C,ブリッジメールＣ,Bridge Mail T
-桥梁邮件V,ブリッジメールＶ,Bridge Mail V
-桥梁邮件W,ブリッジメールＷ,Bridge Mail M
-防御效果,エフェクトガード,Guard Spec.
-要害攻击,クリティカッター,Dire Hit
-力量增强,プラスパワー,X Attack
-伤害预防,ディフェンダー,X Defend
-速度增加,スピーダー,X Speed
-命中加强,ヨクアタール,X Accuracy
-特殊增强,スペシャルアップ,X Special
-特防强化,スペシャルガード,X Sp. Def
-皮皮玩偶,ピッピにんぎょう,Poké Doll
-向尾喵的尾巴,エネコのシッポ,Fluffy Tail
-蓝色哨子,あおいビードロ,Blue Flute
-黄色哨子,きいろビードロ,Yellow Flute
-红色哨子,あかいビードロ,Red Flute
-神奇宝贝玩具,ポケじゃらし,Poké Toy
-特效召唤,スキルコール,Ability Urge
-道具击落,アイテムドロップ,Item Drop
-道具召唤,アイテムコール,Item Urge
-恢复召唤,フラットコール,Reset Urge
-代币盒,コインケース,Coin Case
-探宝器,ダウジングマシン,Dowsing MCHN
-破烂钓竿,ボロのつりざお,Old Rod
-优秀钓竿,いいつりざお,Good Rod
-超强钓竿,すごいつりざお,Super Rod
-船票,ふねのチケット,S.S. Ticket
-包裹,おとどけもの,Oak's Parcel
-神奇宝贝之笛,ポケモンのふえ,Poké Flute
-秘密钥匙,ひみつのカギ,Secret Key
-自行车兑换券,ひきかえけん,Bike Voucher
-金子做的假牙,きんのいれば,Gold Teeth
-卡片钥匙,カードキー,Card Key
-电梯钥匙,エレベータのカギ,Lift Key
-幻影透视镜,シルフスコープ,Silph Scope
-自行车,じてんしゃ,Bicycle
-城镇地图,タウンマップ,Town Map
-GS球,ジーエスボール,GS Ball
-神奇宝贝蛋兑换券,タマゴけん,Egg Ticket
-透明铃铛,とうめいなスズ,Clear Bell
-蓝色卡片,ブルーカード,Itemfinder
-杰尼龟的喷水器,ゼニガメじょうろ,Squirtbottle
-红色的鳞片,あかいウロコ,Red Scale
-掉落的东西,おとしもの,Lost Item
-定期月票,リニアパス*,Pass
-机械的零件,きかいのぶひん,Machine Part
-银色之翼,ぎんいろのはねカ,Silver Wing
-彩虹之翼,にじいろのはね,Rainbow Wing
-神奇之蛋,ふしぎなタマゴ,Mystery Egg
-秘传之药,ひでんのくすり,SecretPotion
-马赫自行车,マッハじてんしゃ,Mach Bike
-华丽大赛通行证,コンテストパス,Contest Pass
-吼吼鲸喷壶,ホエルコじょうろ,Wailmer Pail
-得文公司的货物,デボンのにもつ,Devon Goods
-集灰袋,はいぶくろ,Soot Sack
-地下的钥匙,ちかのカギ,Basement Key
-飞跃自行车,ダートじてんしゃ,Acro Bike
-能量方块盒,ポロックケース,Pokéblock Case
-给大吾的信,ダイゴへのてがみ,Letter
-无限船票,むげんのチケット,Eon Ticket
-红色宝珠,べにいろのたま,Red Orb
-蓝色宝珠,あいいろのたま,Blue Orb
-探测器,たんちき,Scanner
-沙尘护目镜,ゴーゴーゴーグル,Go-Goggles
-陨石,いんせき,Meteorite
-磁悬浮通行证,リニアパス,Pas
-1号客房的钥匙,１ごうしつのカギ,Rm. 1 Key
-2号客房的钥匙,２ごうしつのカギ,Rm. 2 Key
-4号客房的钥匙,４ごうしつのカギ,Rm. 4 Key
-6号客房的钥匙,６ごうしつのカギ,Rm. 6 Key
-仓库的钥匙,そうこのカギ,Storage Key
-得文侦测望远镜,デボンスコープ,Devon Scope
-对战搜寻器,バトルサーチャー,Vs. Seeker
-声音记录器,ボイスチェッカー,Fame Checker
-技能学习器盒,わざマシンケース,TM Case
-果实袋,きのみぶくろ,Berry Pouch
-教学电视,おしえテレビ,Teachy TV
-三岛通行证,トライパス,Tri-Pass
-七岛通行证,レインボーパス,Rainbow Pass
-茶,おちゃ,Tea
-神秘船票,しんぴのチケット,MysticTicket
-极光船票,オーロラチケット,AuroraTicket
-粉末收集瓶,こないれ,Powder Jar
-红宝石,ルビー,Ruby
-蓝宝石,サファイア,Sapphire
-火岩标志,マグマのしるし,Magma Emblem
-陈旧航海图,ふるびたかいず,Old Sea Map
-挖掘装备,たんけんセット,Explorer Kit
-宝藏袋,たからぶくろ,Loot Sack
-规则书,ルールブック,Rule Book
-神奇追踪,ポケトレ,Poké Radar
-得点卡,ポイントカード,Point Card
-冒险笔记本,ぼうけんノート,Journal
-贴纸盒,シールいれ,Seal Case
-饰品盒,アクセサリーいれ,Fashion Case
-贴纸袋,シールぶくろ,Seal Bag
-朋友笔记,ともだちてちょう,Pal Pad
-发电场钥匙,はつでんしょキー,Works Key
-古代护身符,こだいのおまもり,Old Charm
-银河队钥匙,ギンガだんのカギ,Galactic Key
-红锁链,あかいくさり,Red Chain
-可达鸭喷壶,コダックじょうろ,Sprayduck
-面宝收纳盒,ポフィンケース,Poffin Case
-房间钥匙,ルームキー,Suite Key
-大木博士的信,オーキドのてがみ,Oak's Letter
-月牙之羽,みかづきのはね,Lunar Wing
-会员卡,メンバーズカード,Member Card
-天界之笛,てんかいのふえ,Azure Flute
-火山镇石,かざんのおきいし,Magma Stone
-礼券1,ひきかえけん1,Coupon 1
-礼券2,ひきかえけん2,Coupon 2
-礼券3,ひきかえけん3,Coupon 3
-对战记录器,バトルレコーダー,Vs. Recorder
-葛拉西蒂亚花,グラシデアのはな,Gracidea
-圆柑果实盒,ぼんぐりケース,Apricorn Box
-未知图腾笔记,アンノーンノート,Unown Report
-树果种植盆,きのみプランター,Berry Pots
-相册,フォトアルバム,Photo Album
-GB音乐盒,GBプレイヤー,GB Sounds
-海鸣铃铛,うみなりのスズ,Tidal Bell
-资料卡,データカード,Data Card
-绿色宝珠,もえぎいろのたま,Jade Orb
-上锁的胶囊,ロックカプセル,Lock Capsule
-神秘水晶,なぞのすいしょう,Enigma Stone
-自由船票,リバティチケット,Liberty Pass
-装饰品盒,グッズケース,Prop Case
-龙骨,ドラゴンのホネ,Dragon Skull
-黑暗石,ダークストーン,Dark Stone
-光芒石,ライトストーン,Light Stone
-神石,ゴッドストーン,God Stone
-实况转播器,ライブキャスター,Xtransceiver
-转交物品1,はいたつぶつ１,Gram 1
-转交物品2,はいたつぶつ２,Gram 2
-转交物品3,はいたつぶつ３,Gram 3
-奖章盒,メダルボックス,Medal Box
-阿克罗玛机器,アクロママシーン,Colress MCHN
-基因之楔,いでんしのくさび,DNA Splicers
-遗失物,わすれもの,Dropped Item
-脏手帕,よごれたハンカチ,Grubby Hanky
-圆形护符,まるいおまもり,Oval Charm
-许可证,きょかしょう,Permit
-电浆卡,プラズマカード,Plasma Card
-写形镜,うつしかがみ,Reflecting Mirror
-闪耀护符,ひかるおまもり,Shining Charm
-立体影像转播器,ホロキャスター,Holo Caster
-探险心得,たんけんこころえ,Adventure Rules
-奇妙石,すごそうないし,Intriguing Stone
-一般石,ありふれたいし,Common Stone
-隐形眼镜盒,レンズケース,Lens Case
-自行车,じてんしゃ,Bicycle
-超进化环,メガリング,Mega Ring
-超进化饰坠,メガチャーム,Mega Charm
-超级手套,メガローブ,Mega Glove
-直排轮,ローラースケート,Roller Skates
-发电厂通行证,はつでんしょパス,Power Plant Pass
-TMV通行证,ＴＭＶパス,TMV Pass
-莲叶童子浇花器,ハスボーじょうろ,Sprinklotad
-电梯的钥匙,エレベータのカギ,Elevator Key
-卡洛斯纹章,カロスエンブレム,Honor of Kalos
-帅哥票证,ハンサムチケット,Looker Ticket
-服饰旅行箱,いしょうトランク,Travel Trunk
-超进化手镯,メガバングル,Mega Bracelet
-超进化护腕,メガブレス,Mega Cuff
-能量方块组合,ポロックキット,Pokéblock Kit
-得文潜水装备,デボンボンベ,Devon Scuba Gear
-汇演礼服,ライブスーツ,Contest Costume
-汇演舞裙,ライブドレス,Contest Costume
-火岩套装,マグマスーツ,Magma Suit
-惩戒之壶,いましめのつぼ,Prison Bottle
-水舰套装,アクアスーツ,Aqua Suit
-双人票,ペアチケット,Pair of Tickets
-陨石的碎片,いんせきのかけら,Meteorite Shard
-无限之笛,むげんのふえ,Eon Flute
-红色圆柑果实,あかぼんぐり,Red Apricorn
-蓝色圆柑果实,あおぼんぐり,Blu Apricorn
-黄色圆柑果实,きぼんぐり,Ylw Apricorn
-绿色圆柑果实,みどぼんぐり,Grn Apricorn
-白色圆柑果实,しろぼんぐり,Wht Apricorn
-黑色圆柑果实,くろぼんぐり,Blk Apricorn
-桃色圆柑果实,ももぼんぐり,Pnk Apricorn
-妙蛙花进化石,フシギバナイト,Venusaurite
-喷火龙进化石X,リザードナイトX,Charizardite X
-喷火龙进化石Y,リザードナイトY,Charizardite Y
-水箭龟进化石,カメックスナイト,Blastoisinite
-大针蜂进化石,スピアナイト,Beedrillite
-比雕进化石,ピジョットナイト,Pidgeotite
-胡地进化石,フーディナイト,Alakazite
-呆河马进化石,ヤドランナイト,Slowbronite
-耿鬼进化石,ゲンガナイト,Gengarite
-袋龙进化石,ガルーラナイト,Kangaskhanite
-大甲进化石,カイロスナイト,Pinsirite
-暴鲤龙进化石,ギャラドスナイト,Gyaradosite
-化石翼龙进化石,リプテラナイト,Aerodactylite
-超梦进化石X,ミュウツナイトX,Mewtwoite X
-超梦进化石Y,ミュウツナイトY,Mewtwoite Y
-电龙进化石,デンリュウナイト,Ampharosite
-大钢蛇进化石,ハガネールナイト,Steelixite
-巨钳螳螂进化石,ハッサムナイト,Scizorite
-赫拉克罗斯进化石,ヘラクロスナイト,Heracronite
-黑鲁加进化石,ヘルガナイト,Houndoomite
-班吉拉进化石,バンギラスナイト,Tyranitarite
-蜥蜴王进化石,ジュカインナイト,Sceptilite
-火焰鸡进化石,バシャーモナイト,Blazikenite
-巨沼怪进化石,ラグラージナイト,Swampertite
-沙奈朵进化石,サーナイトナイト,Gardevoirnite
-勾魂眼进化石,ヤミラミナイト,Sablenite
-大嘴娃进化石,クチートナイト,Mawilite
-波士可多拉进化石,ボスゴドラナイト,Aggronite
-恰雷姆进化石,チャーレムナイト,Medichamite
-雷电兽进化石,ライボルトナイト,Manectite
-巨牙鲨进化石,サメハダナイト,Sharpedonite
-喷火驼进化石,バクーダナイト,Cameruptite
-七夕青鸟进化石,チルタリスナイト,Altarianite
-诅咒娃娃进化石,ジュペッタナイト,Banettite
-阿勃梭鲁进化石,アブソルナイト,Absolite
-冰鬼护进化石,オニゴーリナイト,Glalitite
-暴蝾螈进化石,ボーマンダナイト,Salamencite
-巨金怪进化石,メタグロスナイト,Metagrossite
-拉帝亚斯进化石,ラティアスナイト,Latiasite
-拉帝欧斯进化石,ラティオスナイト,Latiosite
-长耳兔进化石,ミミロップナイト,Lopunnite
-路卡利欧进化石,ルカリオナイト,Lucarionite
-烈咬陆鲨进化石,ガブリアスナイト,Garchompite
-暴雪王进化石,ユキノオナイト,Abomasite
-艾路雷朵进化石,エルレイドナイト,Galladite
-差不多娃娃进化石,タブンネナイト,Audinite
-蒂安希进化石,ディアンシナイト,Diancite
+木箱,きのはこ,Normal Box
+桐木箱,きりのはこ,Gorgeous Box
