@@ -2,54 +2,24 @@ import fs from 'mz/fs';
 import path from 'path';
 import stringify from 'csv-stringify';
 import pg from 'polygoat';
-import parse from 'csv-parse';
+import { parseCSV } from '../lib/csv';
 import _ from 'lodash';
 
 const tables = ['pokemon', 'move', 'item', 'ability'];
 const ambiguous = ['怪力', '毒针', '毒針', '恶梦', '惡夢', '忍耐', '报仇', '報仇', '怨恨', '懒惰', '报复', '毒刺', '对焦镜片', '對焦鏡片', '毒针', '毒針', '杂技', '看穿', '魔法反射', '协助', '協助', '储存', '儲存', '石头', '石頭', '天气预报', '天氣預報', '乐天', '樂天'];
+const suffixes = {
+  ability: '（特性）',
+  item: '（道具）',
+  move: '（招式）',
+  pokemon: ''
+};
 
 function readTable(name) {
-  return new Promise((resolve, reject) => {
-    const result = [];
-    const input = fs.createReadStream(__dirname + '/../../database/20161118/' + path.basename(name) + '.csv');
-    const parser = parse({ columns: ['ja', 'en', 'zh-hans', 'zh-hant', 'zh-hans-legacy', 'zh-hant-legacy', 'zh-hans-current', 'zh-hant-current'] });
-
-    parser.on('readable', function () {
-      let record = null;
-      while (record = parser.read()) {
-        result.push(record);
-      }
-    })
-    .on('error', reject)
-    .on('finish', function () {
-      resolve(result);
-    });
-
-    input.on('error', reject)
-    .pipe(parser);
-  });
+  return parseCSV(__dirname + '/../../database/20161118/' + path.basename(name) + '.csv', ['ja', 'en', 'zh-hans', 'zh-hant', 'zh-hans-legacy', 'zh-hant-legacy', 'zh-hans-current', 'zh-hant-current']);
 }
 
 function readMove() {
-  return new Promise((resolve, reject) => {
-    const result = [];
-    const input = fs.createReadStream(__dirname + '/../../database/movements.csv');
-    const parser = parse({ columns: ['from', 'to'] });
-
-    parser.on('readable', function () {
-      let record = null;
-      while (record = parser.read()) {
-        result.push(record);
-      }
-    })
-    .on('error', reject)
-    .on('finish', function () {
-      resolve(result);
-    });
-
-    input.on('error', reject)
-    .pipe(parser);
-  });
+  return parseCSV(__dirname + '/../../database/movements.csv', ['from', 'to']);
 }
 
 function hasAmbiguous(text) {
@@ -265,19 +235,154 @@ export default function (program, wiki) {
         if (![0, 4, 10, 14].includes(page.ns)) {
           continue;
         }
-
-        console.log(`Reading ${page.title}`);
-        const content = await wiki.getContent(page.title);
-        const replacement = replace(content);
-        if (replacement === content) {
+        if (page.title < 'XY139') {
           continue;
         }
-        console.log(`Writing ${page.title}`);
-        const response = await wiki.edit(page.title, replacement, { summary: 'Batch replace for Sun/Moon release.' });
-        console.log(response);
+
+        console.log(`Reading ${page.title}`);
+        try {
+          const content = await wiki.getContent(page.title);
+          const replacement = replace(content);
+          if (replacement === content) {
+            continue;
+          }
+
+          console.log(`Writing ${page.title}`);
+          const response = await wiki.edit(page.title, replacement, { summary: 'Batch replace for Sun/Moon release.' });
+          console.log(response);
+        } catch(e) {
+          console.log(e);
+        }
       }
 
     } catch (e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('copy-to-pre')
+  .description('把条目复制到 Pre: 名字空间')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      let names = await Promise.all(tables.map(name => readTable(name)));
+
+      for (let index = 0; index < names.length; index++) {
+        const records = names[index];
+        for (let record of records) {
+          const hansTitle = record['zh-hans'] + suffixes[tables[index]];
+          const hantTitle = record['zh-hant'] + suffixes[tables[index]];
+          if (allpages.some(page => page.title === hansTitle)) {
+            console.log(`Reading ${hansTitle}`);
+            const content = await wiki.getContent(hansTitle);
+            console.log(`Writing Pre:${hansTitle}`);
+            const response = await wiki.edit('Pre:' + hansTitle, content, { summary: 'Copy to Pre-Release namespace.' });
+            console.log(response);
+          } else if (allpages.some(page => page.title === hantTitle)) {
+            console.log(`Reading ${hantTitle}`);
+            const content = await wiki.getContent(hantTitle);
+            console.log(`Writing Pre:${hantTitle}`);
+            const response = await wiki.edit('Pre:' + hantTitle, content, { summary: 'Copy to Pre-Release namespace.' });
+            console.log(response);
+          }
+        }
+      }
+      
+    } catch(e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('move-description')
+  .description('更新招式说明模板')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      const moves = await parseCSV(path.join(__dirname, '../../database/20161118/move-description.csv'), ['zh-hans', 'zh-hant', 'desc-hans', 'desc-hant', 'desc-trans']);
+      const regex = /\|([^\|}]+)}}/;
+      for (let move of moves) {
+        let title = '';
+        if (allpages.some(page => page.title === `Template:${move['zh-hans']}`)) {
+          title = `Template:${move['zh-hans']}`;
+        } else if (allpages.some(page => page.title === `Template:${move['zh-hant']}`)) {
+          title = `Template:${move['zh-hant']}`;
+        } else {
+          console.log(`${move['zh-hans']} not found.`);
+          continue;
+        }
+
+        let replacement = move['desc-hans'];
+        if (move['desc-trans'] !== move['desc-hant']) {
+          replacement = `-{zh-hans:${move['desc-hans']};zh-hant:${move['desc-hant']}}-`;
+        }
+
+        try {
+          console.log(`Reading ${title}`);
+          let content = await wiki.getContent(title);
+          if (content.match(regex)) {
+            content = content.replace(regex, text => {
+              return `|${replacement}}}`;
+            });
+          } else {
+            content = `${replacement}<noinclude>[[Category:招式说明]]</noinclude>`;
+          }
+          console.log(`Writing ${title}`);
+          const response = await wiki.edit(title, content, { summary: 'Edit move description from Sun/Moon.' });
+          console.log(response);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('item-description')
+  .description('更新道具说明')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      const items = await parseCSV(path.join(__dirname, '../../database/20161118/item-description.csv'), ['zh-hans', 'zh-hant', 'desc-hans', 'desc-hant', 'desc-trans']);
+
+      for (let item of items) {
+        let title = '';
+        if (allpages.some(page => page.title === item['zh-hans'] + suffixes.item)) {
+          title = item['zh-hans'] + suffixes.item;
+        } else if (allpages.some(page => page.title === item['zh-hant'] + suffixes.item)) {
+          title = item['zh-hant'] + suffixes.item;
+        } else {
+          console.log(`${item['zh-hans']} not found.`);
+          continue;
+        }
+
+        let description = item['desc-hans'];
+        if (item['desc-trans'] !== item['desc-hant']) {
+          description = `-{zh-hans:${item['desc-hans']};zh-hant:${item['desc-hant']}}-`;
+        }
+
+        try {
+          console.log(`Reading ${title}`);
+          let content = await wiki.getContent(title);
+
+          content = content.replace(/\|info=([^\|\r\n]*)/, `|info=${description}`);
+          if (content.indexOf('{{包包信息框|7|SM|') > -1) {
+            content = content.replace(/{{包包信息框\|7\|SM\|([^\|}]*)\|([^\|}]*)\|([^\|}]*)}}/, `{{包包信息框|7|SM|$1|$2|${description}}}`);
+          } else {
+            content = content.replace(/{{包包信息框\|6\|ORAS\|([^\|}]*)\|([^\|}]*)\|([^\|}]*)}}/, `{{包包信息框|6|ORAS|$1|$2|$3}}\n{{包包信息框|7|SM|$1|$2|${description}}}`);
+          }
+
+          console.log(`Writing ${title}`);
+          const response = await wiki.edit(title, content, { summary: 'Edit item description from Sun/Moon.' });
+          console.log(response);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    } catch(e) {
       console.log(e);
     }
   });
