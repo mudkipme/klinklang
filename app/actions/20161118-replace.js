@@ -386,4 +386,191 @@ export default function (program, wiki) {
       console.log(e);
     }
   });
+
+  program
+  .command('ability-description')
+  .description('更新特性说明')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      const abilities = await parseCSV(path.join(__dirname, '../../database/20161118/ability-description.csv'), ['zh-hans', 'zh-hant', 'desc-hans', 'desc-hant', 'desc-trans']);
+
+      for (let ability of abilities) {
+        let title = '';
+        if (allpages.some(page => page.title === ability['zh-hans'] + suffixes.ability)) {
+          title = ability['zh-hans'] + suffixes.ability;
+        } else if (allpages.some(page => page.title === ability['zh-hant'] + suffixes.ability)) {
+          title = ability['zh-hant'] + suffixes.ability;
+        } else {
+          console.log(`${ability['zh-hans']} not found.`);
+          continue;
+        }
+
+        let description = ability['desc-hans'];
+        if (ability['desc-trans'] !== ability['desc-hant']) {
+          description = `-{zh-hans:${ability['desc-hans']};zh-hant:${ability['desc-hant']}}-`;
+        }
+
+        try {
+          console.log(`Reading ${title}`);
+          let content = await wiki.getContent(title);
+          content = content.replace(/\|text=([^\r\n]*)/, `|text=${description}`);
+          console.log(`Writing ${title}`);
+          const response = await wiki.edit(title, content, { summary: 'Edit ability description from Sun/Moon.' });
+          console.log(response);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('pokedex')
+  .description('更新宝可梦图鉴')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      const pokedex = await parseCSV(path.join(__dirname, '../../database/20161118/pokedex.csv'), ['zh-hans', 'zh-hant', 'species-hans', 'species-hant', 'species-trans', 'sun-hans', 'sun-hant', 'sun-trans', 'moon-hans', 'moon-hant', 'moon-trans']);
+
+      for (let species of pokedex) {
+        if (!species['sun-hans']) {
+          continue;
+        }
+
+        let title = '';
+        if (allpages.some(page => page.title === species['zh-hans'])) {
+          title = species['zh-hans'];
+        } else if (allpages.some(page => page.title === species['zh-hant'])) {
+          title = species['zh-hant'];
+        } else {
+          console.log(`${species['zh-hans']} not found.`);
+          continue;
+        }
+
+        let sundex = species['sun-hans'];
+        if (species['sun-trans'] !== species['sun-hant']) {
+          sundex = `-{zh-hans:${species['sun-hans']};zh-hant:${species['sun-hant']}}-`;
+        }
+
+        let moondex = species['moon-hans'];
+        if (species['moon-trans'] !== species['moon-hant']) {
+          moondex = `-{zh-hans:${species['moon-hans']};zh-hant:${species['moon-hant']}}-`;
+        }
+
+        try {
+          console.log(`Reading ${title}`);
+          let content = await wiki.getContent(title);
+          let originalContent = content;
+
+          if (content.indexOf('|moondex=') > -1) {
+            content = content.replace(/\|moondex=([^\r\n]*)/, `|moondex=${moondex}`);
+          } else {
+            content = content.replace(/\|(\w+)dex=([^\r\n]*)\n}}/, `|$1dex=$2\n|moondex=${moondex}\n}}`);
+          }
+
+          if (content.indexOf('|sundex=') > -1) {
+            content = content.replace(/\|sundex=([^\r\n]*)/, `|sundex=${sundex}`);
+          } else {
+            content = content.replace(/\|moondex=([^\r\n]*)/, `|sundex=${sundex}\n|moondex=$1`);
+          }
+
+          if (originalContent === content) {
+            continue;
+          }
+          
+          console.log(`Writing ${title}`);
+          const response = await wiki.edit(title, content, { summary: 'Edit Sun/Moon Pokédex.' });
+          console.log(response);
+        } catch (e) {
+          console.log(e);
+        }
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('fix-broken-redirects')
+  .description('修复受损重定向')
+  .action(async () => {
+    try {
+      let names = await Promise.all(tables.map(name => readTable(name)));
+      let brokenredirects = await parseCSV(path.join(__dirname, '../../database/20161118/brokenredirects.csv'), ['page', 'linkto']);
+      for (let redirect of brokenredirects) {
+        if (hasAmbiguous(redirect.linkto)) {
+          continue;
+        }
+        let tableName = 'pokemon';
+        _.each(suffixes, (suffix, table) => {
+          if (suffix && redirect.linkto.endsWith(suffix)) {
+            tableName = table;
+          }
+        });
+        let records = names[tables.indexOf(tableName)];
+        let replaceto = null;
+        for (let record of records) {
+          const original = _.trimEnd(redirect.linkto, suffixes[tableName]);
+          if (original === record['zh-hans-legacy'] || original === record['zh-hans-current']) {
+            replaceto = `${record['zh-hans']}${suffixes[tableName]}`;
+            break;
+          }
+
+          if (original === record['zh-hant-legacy'] || original === record['zh-hant-current']) {
+            replaceto = `${record['zh-hant']}${suffixes[tableName]}`;
+            break;
+          }
+        }
+
+        if (replaceto) {
+          try {
+            console.log(`Writing ${redirect.page}`);
+            const response = await wiki.edit(redirect.page, `#REDIRECT [[${replaceto}]]`, { summary: 'Fix broken redirects.' });
+            console.log(response);
+          } catch (e) {
+            console.log(e);
+          }
+        }
+      }
+    } catch (e) {
+      console.log(e);
+    }
+  });
+
+  program
+  .command('delete-pre')
+  .description('删除 Pre: 名字空间条目')
+  .action(async () => {
+    try {
+      const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
+      let names = await Promise.all(tables.map(name => readTable(name)));
+
+      for (let index = 0; index < names.length; index++) {
+        const records = names[index];
+        for (let record of records) {
+          try {
+            const hansTitle = record['zh-hans'] + suffixes[tables[index]];
+            const hantTitle = record['zh-hant'] + suffixes[tables[index]];
+            if (allpages.some(page => page.title === hansTitle)) {
+              console.log(`Deleting Pre:${hansTitle}`);
+              const response = await wiki.remove('Pre:' + hansTitle, { reason: 'Delete from Pre-Release namespace.' });
+              console.log(response);
+            } else if (allpages.some(page => page.title === hantTitle)) {
+              console.log(`Deleting Pre:${hantTitle}`);
+              const response = await wiki.remove('Pre:' + hantTitle, { reason: 'Delete from Pre-Release namespace.' });
+              console.log(response);
+            }
+          } catch(e) {
+            console.log(e);
+          }
+        }
+      }
+      
+    } catch(e) {
+      console.log(e);
+    }
+  });
 }

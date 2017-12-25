@@ -137,4 +137,31 @@ export default class MWClient {
 
     return response.data;
   }
+
+  async remove(title, options) {
+    const response = await this.request({
+      ...options,
+      action: 'delete',
+      bot: true,
+      title: title,
+      token: await this.getToken()
+    });
+
+    return response.data;
+  }
+
+  async revisiondelete(ids, options) {
+    const response = await this.request({
+      ...options,
+      action: 'revisiondelete',
+      type: 'revision',
+      bot: true,
+      ids: ids,
+      hide: 'content|comment|user',
+      reason: '不适当的评论或个人信息',
+      token: await this.getToken()
+    });
+
+    return response.data;
+  }
 }
