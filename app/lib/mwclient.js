@@ -158,7 +158,6 @@ export default class MWClient {
       bot: true,
       ids: ids,
       hide: 'content|comment|user',
-      reason: '不适当的评论或个人信息',
       token: await this.getToken()
     });
 

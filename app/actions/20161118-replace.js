@@ -1,7 +1,7 @@
 import fs from 'mz/fs';
 import path from 'path';
+import { promisify } from 'util';
 import stringify from 'csv-stringify';
-import pg from 'polygoat';
 import { parseCSV } from '../lib/csv';
 import _ from 'lodash';
 
@@ -109,9 +109,9 @@ export default function (program, wiki) {
     try {
       const allpages = JSON.parse(await fs.readFile(path.join(__dirname, '../../database/allpages.json')));
       const input = allpages.filter(page => page.title.match(/(神奇宝贝|神奇寶貝)/));
-      const result = await pg(stringify.bind(null, input, {
+      const result = await promisify(stringify)(input, {
         columns: ['pageid', 'ns', 'title']
-      }));
+      });
 
       console.log(result);
     } catch(e) {
@@ -159,9 +159,9 @@ export default function (program, wiki) {
           console.log(`Move ${page.title} to ${rt}.`);
         }
       }
-      const result = await pg(stringify.bind(null, moves, {
+      const result = await promisify(stringify)(moves, {
         columns: ['from', 'to']
-      }));
+      });
 
       await fs.writeFile(path.join(__dirname, '../../database/movements.csv'), result);
       console.log('Saved movements.');

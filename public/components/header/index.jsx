@@ -10,7 +10,6 @@ const MainAppBar = () => (
     <nav className={style.navigation}>
       <ul>
         <li><IndexLink activeClassName={style.active} to='/'>名词转换器</IndexLink></li>
-        <li><Link activeClassName={style.active} to='/scss'>层叠样式表转换器</Link></li>
       </ul>
     </nav>
   </AppBar>
