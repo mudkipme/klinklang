@@ -1,13 +1,13 @@
 #!/usr/bin/env node
 
-require("babel-core/register")({
+require("@babel/register")({
   "presets": [
-    ["env", {
+    ["@babel/preset-env", {
       "targets": {
         "node": "current"
       }
     }],
-    "stage-2"
+    "@babel/preset-stage-2"
   ]
 });
 

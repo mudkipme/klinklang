@@ -1,18 +1,30 @@
-import React from 'react';
-import Navigation from 'react-toolbox/lib/navigation';
-import { IndexLink, Link } from 'react-router';
-import AppBar from 'react-toolbox/lib/app_bar';
-import style from './style';
+import React from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Grid, AppBar, Typography, Toolbar, Button, withStyles } from "material-ui";
 
-const MainAppBar = () => (
-  <AppBar className={style.appbar} flat>
-    <h1 className={style.title}>神奇宝贝百科工具台</h1>
-    <nav className={style.navigation}>
-      <ul>
-        <li><IndexLink activeClassName={style.active} to='/'>名词转换器</IndexLink></li>
-      </ul>
-    </nav>
-  </AppBar>
+const MainAppBar = ({ classes }) => (
+  <Grid container>
+    <AppBar position="static" className={classes.root}>
+      <Toolbar>
+        <Typography type="title" color="inherit" className={classes.title}>神奇宝贝百科工具台</Typography>
+        <Button component={Link} to="/" color="contrast">名词转换器</Button>
+      </Toolbar>
+    </AppBar>
+  </Grid>
 );
 
-export default MainAppBar;
+const styles = {
+  root: {
+    marginBottom: "1.875rem"
+  },
+  title: {
+    flex: 1
+  }
+};
+
+MainAppBar.propTypes = {
+  classes: PropTypes.object.isRequired
+};
+
+export default withStyles(styles)(MainAppBar);

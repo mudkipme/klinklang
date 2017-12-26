@@ -1,51 +1,44 @@
-'use strict';
+"use strict";
 
-const path = require('path');
-const webpack = require('webpack');
-const _ = require('lodash');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   context: __dirname,
-  devtool: 'inline-source-map',
+  devtool: "inline-source-map",
   entry: [
-     './public/main.jsx'
+    "./public/main.jsx"
   ],
   output: {
-    path: path.join(__dirname, 'public', 'build'),
-    filename: 'main.js',
-    publicPath: '/'
+    path: path.join(__dirname, "public", "build"),
+    filename: "main.js",
+    publicPath: "/"
   },
   resolve: {
-    extensions: ['', '.jsx', '.scss', '.js', '.json'],
-    modulesDirectories: [
-      'node_modules',
-      path.resolve(__dirname, './node_modules')
-    ]
+    extensions: [".jsx", ".css", ".js", ".json"]
   },
   module: {
-    loaders: [
+    loaders: [
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel',
+        loader: "babel-loader",
         exclude: /node_modules/,
         query: {
-          presets: ['es2015', 'react', 'stage-1']
+          presets: [
+            ["@babel/preset-env", {
+              "targets": {
+                "browsers": ["chrome 63"]
+              }}],
+            "@babel/preset-react",
+            "@babel/preset-stage-2"
+          ]
         }
-      },
-      {
-        test: /(\.scss|\.css)$/,
-        loader: ExtractTextPlugin.extract('style', 'css?sourceMap&modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]!sass?sourceMap')
       }
     ]
-  },
-  sassLoader: {
-    data: '@import "' + path.resolve(__dirname, 'public/theme/_theme.scss') + '";'
   },
   plugins: [
-    new ExtractTextPlugin('styles.css', { allChunks: true }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
+      "process.env.NODE_ENV": JSON.stringify("development")
     })
   ]
 };

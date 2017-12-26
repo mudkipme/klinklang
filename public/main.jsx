@@ -1,15 +1,14 @@
-import React from 'react';
-import { render } from 'react-dom';
-import { Router, browserHistory } from 'react-router';
-import { Provider } from 'react-redux';
-import store from './store';
-import routes from './routes';
-import theme from './theme/theme';
+import React from "react";
+import { render } from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import App from "./app";
 
 render((
   <Provider store={store}>
-    <Router history={browserHistory}>
-      { routes }
+    <Router>
+      <App />
     </Router>
   </Provider>
-), document.getElementById('app'));
+), document.getElementById("app"));
