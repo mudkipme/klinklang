@@ -1,9 +1,9 @@
-import rp from 'request-promise-native';
+import rp from "request-promise-native";
 
 export default class MWClient {
   constructor(options = {}) {
     this.api = options.api;
-    this.userAgent = options.userAgent || 'Node.js MediaWiki Client';
+    this.userAgent = options.userAgent || "Node.js MediaWiki Client";
     this.jar = options.jar;
   }
 
@@ -12,11 +12,11 @@ export default class MWClient {
       url: this.api,
       jar: this.jar,
       headers: {
-        'User-Agent': this.userAgent
+        "User-Agent": this.userAgent
       },
       form: {
         ...parameters,
-        format: 'json'
+        format: "json"
       },
       json: true,
       gzip: true
@@ -32,30 +32,30 @@ export default class MWClient {
     };
   }
 
-  async getToken(type = 'csrf') {
+  async getToken(type = "csrf") {
     const response = await this.request({
-      action: 'query',
-      meta: 'tokens',
+      action: "query",
+      meta: "tokens",
       type: type
     });
     const token = response.data.tokens[`${type}token`];
     if (!token) {
-      throw new Error('Failed to get token.');
+      throw new Error("Failed to get token.");
     }
     return token;
   }
 
   async login(username, password) {
     const response = await this.request({
-      action: 'clientlogin',
+      action: "clientlogin",
       username: username,
       password: password,
-      logintoken: await this.getToken('login'),
-      loginreturnurl: 'http://example.com'
+      logintoken: await this.getToken("login"),
+      loginreturnurl: "http://example.com"
     });
 
     if (!response.data.username) {
-      throw new Error(`Logging in failed: ${response.data.result} ${response.data.reason || ''}`);
+      throw new Error(`Logging in failed: ${response.data.result} ${response.data.reason || ""}`);
     }
     
     return response.data;
@@ -63,20 +63,20 @@ export default class MWClient {
 
   async whoami() {
     const response = await this.request({
-      action: 'query',
-      meta: 'userinfo',
+      action: "query",
+      meta: "userinfo",
       uiprop: [
-        'groups',
-        'rights',
-        'ratelimits',
-        'editcount' ,
-        'realname',
-        'email',
-      ].join('|')
+        "groups",
+        "rights",
+        "ratelimits",
+        "editcount" ,
+        "realname",
+        "email",
+      ].join("|")
     });
 
     if (!response.data.userinfo) {
-      throw new Error('Get userinfo failed.');
+      throw new Error("Get userinfo failed.");
     }
 
     return response.data.userinfo;
@@ -85,8 +85,8 @@ export default class MWClient {
   async allpages(options = {}) {
     const response = await this.request({
       ...options,
-      action: 'query',
-      list: 'allpages'
+      action: "query",
+      list: "allpages"
     });
 
     return { pages: response.data.allpages, next: response.next };
@@ -95,7 +95,7 @@ export default class MWClient {
   async move(from, to, options = {}) {
     const response = await this.request({
       ...options,
-      action: 'move',
+      action: "move",
       from: from,
       to: to,
       movetalk: true,
@@ -108,27 +108,27 @@ export default class MWClient {
   async getContent(title, options) {
     const response = await this.request({
       ...options,
-      action: 'query',
-      prop: 'revisions',
-      rvprop: 'content',
+      action: "query",
+      prop: "revisions",
+      rvprop: "content",
       titles: title
     });
 
     if (Object.keys(response.data.pages).length === 0) {
-      throw new Error('Page not found.');
+      throw new Error("Page not found.");
     }
 
     const page = response.data.pages[Object.keys(response.data.pages)[0]];
     const revision = page.revisions && page.revisions.shift();
-    const content = revision && revision['*'];
+    const content = revision && revision["*"];
 
-    return content || '';
+    return content || "";
   }
 
   async edit(title, content, options) {
     const response = await this.request({
       ...options,
-      action: 'edit',
+      action: "edit",
       bot: true,
       text: content,
       title: title,
@@ -141,7 +141,7 @@ export default class MWClient {
   async remove(title, options) {
     const response = await this.request({
       ...options,
-      action: 'delete',
+      action: "delete",
       bot: true,
       title: title,
       token: await this.getToken()
@@ -153,11 +153,11 @@ export default class MWClient {
   async revisiondelete(ids, options) {
     const response = await this.request({
       ...options,
-      action: 'revisiondelete',
-      type: 'revision',
+      action: "revisiondelete",
+      type: "revision",
       bot: true,
       ids: ids,
-      hide: 'content|comment|user',
+      hide: "content|comment|user",
       token: await this.getToken()
     });
 

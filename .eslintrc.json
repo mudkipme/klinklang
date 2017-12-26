@@ -15,8 +15,7 @@
     "sourceType": "module"
   },
   "plugins": [
-    "react",
-    "class-property"
+    "react"
   ],
   "rules": {
     "indent": [
@@ -35,6 +34,7 @@
     "semi": [
       "error",
       "always"
-    ]
+    ],
+    "no-console": "off"
   }
 }

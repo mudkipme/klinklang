@@ -2,15 +2,15 @@ const revisions = ["1132677","1132678","1132676","1132675","1132674","1132673","
 
 export default function (program, wiki) {
   program
-  .command('antispam')
-  .description('清理版本可见性。')
-  .action(async () => {
-    try {
-      for (let id of revisions) {
-        console.log(await wiki.revisiondelete(id));
+    .command("antispam")
+    .description("清理版本可见性。")
+    .action(async () => {
+      try {
+        for (let id of revisions) {
+          console.log(await wiki.revisiondelete(id));
+        }
+      } catch(e) {
+        console.log(e);
       }
-    } catch(e) {
-      console.log(e);
-    }
-  });
+    });
 }

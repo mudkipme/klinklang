@@ -1,7 +1,7 @@
-import fs from 'fs';
-import path from 'path';
-import parse from 'csv-parse';
-import _ from 'lodash';
+import fs from "fs";
+import path from "path";
+import parse from "csv-parse";
+import _ from "lodash";
 
 const tableCache = {};
 
@@ -13,36 +13,37 @@ export function loadText(text, options = {}) {
       return resolve(tableCache[text]);
 
     let table = [];
-    const input = fs.createReadStream(__dirname + '/../../database/texts/' + text + '.csv');
-    const parser = parse({ columns: ['zh', 'ja', 'en'] });
+    const input = fs.createReadStream(__dirname + "/../../database/texts/" + text + ".csv");
+    const parser = parse({ columns: ["zh", "ja", "en"] });
 
-    parser.on('readable', function () {
-      let record = null;
-      while (record = parser.read()) {
-        table.push(record);
-      }
-    })
-    .on('error', reject)
-    .on('finish', function () {
-      if (options.caseInsensitive) {
-        table = table.concat(table.map(row => ({...row, en: row.en.toLowerCase()})));
-      }
-      tableCache[text] = table;
-      resolve(table);
-    });
+    parser
+      .on("readable", function () {
+        let record = null;
+        while ((record = parser.read()) !== null) {
+          table.push(record);
+        }
+      })
+      .on("error", reject)
+      .on("finish", function () {
+        if (options.caseInsensitive) {
+          table = table.concat(table.map(row => ({...row, en: row.en.toLowerCase()})));
+        }
+        tableCache[text] = table;
+        resolve(table);
+      });
 
-    input.on('error', reject)
-    .pipe(parser);
+    input.on("error", reject)
+      .pipe(parser);
   });
 }
 
 export default async function (source, options) {
-  const sourceLng = options.sourceLng || 'en';
-  const resultLng = options.resultLng || 'zh';
-  let result = source || '';
+  const sourceLng = options.sourceLng || "en";
+  const resultLng = options.resultLng || "zh";
+  let result = source || "";
 
   let tables = await Promise.all(options.texts.map(text => loadText(text, {
-    caseInsensitive: text === 'type'
+    caseInsensitive: text === "type"
   })));
 
   tables = _.flatten(tables);
@@ -55,4 +56,4 @@ export default async function (source, options) {
   });
 
   return result;
-};
+}

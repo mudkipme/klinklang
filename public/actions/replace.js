@@ -23,7 +23,7 @@ export const changeResultLng = (resultLng) => ({
 });
 
 export const convertText = (source) => (dispatch, getState) => {
-  const state = getState();
+  const state = getState().replace;
   dispatch({
     type: REPLACE_TEXT,
     payload: request("/api/replace", {
