@@ -6,7 +6,7 @@ import Button from "material-ui/Button";
 import TextField from "material-ui/TextField";
 import { MenuItem } from "material-ui/Menu";
 import { FormControlLabel } from "material-ui/Form";
-import Checkbox from "material-ui/CheckBox";
+import Checkbox from "material-ui/Checkbox";
 import Divider from "material-ui/Divider";
 import { withStyles } from "material-ui/styles";
 import { compose } from "recompose";
