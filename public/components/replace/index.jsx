@@ -1,9 +1,16 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { Grid, Button, TextField, MenuItem, FormControlLabel, Checkbox, Divider, withStyles } from "material-ui";
+import Grid from "material-ui/Grid";
+import Button from "material-ui/Button";
+import TextField from "material-ui/TextField";
+import { MenuItem } from "material-ui/Menu";
+import { FormControlLabel } from "material-ui/Form";
+import Checkbox from "material-ui/CheckBox";
+import Divider from "material-ui/Divider";
+import { withStyles } from "material-ui/styles";
 import { compose } from "recompose";
-import { every } from "lodash";
+import every from "lodash/every";
 import { selectItem, selectAll, changeSourceLng, changeResultLng, convertText } from "../../actions/replace";
 
 class Replace extends Component {
@@ -13,14 +20,14 @@ class Replace extends Component {
       <div className={classes.root}>
         <Grid container>
           <Grid item xs={6} sm={5}>
-            <TextField select label="源语言" fullWidth value={sourceLng} onChange={this.handleChangeSourceLng}>
+            <TextField select label="From" fullWidth value={sourceLng} onChange={this.handleChangeSourceLng}>
               {languages.map(item => (
                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
               ))}
             </TextField>
           </Grid>
           <Grid item xs={6} sm={5}>
-            <TextField select label="目标语言" fullWidth value={resultLng} onChange={this.handleChangeResultLng}>
+            <TextField select label="To" fullWidth value={resultLng} onChange={this.handleChangeResultLng}>
               {languages.map(item => (
                 <MenuItem key={item.value} value={item.value}>{item.text}</MenuItem>
               ))}
@@ -28,7 +35,7 @@ class Replace extends Component {
           </Grid>
           <Grid item xs={12} sm={2}>
             <Button raised color="primary" className={classes.translateButton} onClick={this.handleButtonClick} >
-              立即转换
+              Replace
             </Button>
           </Grid>
         </Grid>
@@ -48,19 +55,19 @@ class Replace extends Component {
               control={
                 <Checkbox checked={selectedAll} onChange={this.handleChangeAll} />
               }
-              label="全选"
+              label="Select All"
             />
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
         <Grid container>
           <Grid item xs={12} sm={6}>
-            <TextField label="源内容" fullWidth multiline rows={10} rowsMax={10}
+            <TextField label="Source" fullWidth multiline rows={10} rowsMax={10}
               inputRef={ele => this._sourceTextField = ele}
             />
           </Grid>
           <Grid item xs={12} sm={6}>
-            <TextField label="结果" fullWidth multiline disabled value={result} rows={10} rowsMax={10} />
+            <TextField label="Result" fullWidth multiline disabled value={result} rows={10} rowsMax={10} />
           </Grid>
         </Grid>
       </div>

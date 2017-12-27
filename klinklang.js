@@ -7,6 +7,7 @@ import serve from "koa-static";
 import error from "koa-json-error";
 
 // routers
+import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
 import scssRouter from "./app/routes/scss";
 
@@ -18,6 +19,7 @@ app.use(bodyParser());
 app.use(serve(path.join(__dirname, "public")));
 app.use(error());
 
+app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
 app.use(scssRouter.routes());
 

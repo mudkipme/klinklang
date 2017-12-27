@@ -1,7 +1,18 @@
-神奇宝贝百科的工具台应用，目前正在开发中。
+klinklang
+=========
 
-[神奇宝贝百科](https://wiki.52poke.com/)是一部协作共建的，关于精灵宝可梦（Pokémon）的在线百科全书。
+A collection of utilities of [52Poké Wiki](https://wiki.52poke.com/).
 
-本项目程序基于 MIT 协议，其中神奇宝贝专有词汇的版权和商标权属于精灵宝可梦相关企业。
+[![Build Status](https://api.travis-ci.org/mudkipme/klinklang.svg?branch=master)](http://travis-ci.org/mudkipme/klinklang)
 
-**Pokémon ©2016 Pokémon. ©1995-2016 Nintendo/Creatures Inc. /GAME FREAK inc. "精灵宝可梦"是任天堂的商标**
+## Requirements
+
+* node.js (Stable)
+
+## Features
+
+* Replace Pokémon terminologies from one language to another
+* Various maintenance works for 52Poké Wiki
+* Automatically generate certain content based on Pokémon game data
+
+*Pokémon ©2018 Pokémon. ©1995-2018 Nintendo/Creatures Inc./GAME FREAK inc.*

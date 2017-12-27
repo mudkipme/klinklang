@@ -3,7 +3,9 @@ import path from "path";
 import { promisify } from "util";
 import stringify from "csv-stringify";
 import { parseCSV } from "../lib/csv";
-import _ from "lodash";
+import each from "lodash/each";
+import flatten from "lodash/flatten";
+import trimEnd from "lodash/trimEnd";
 
 const tables = ["pokemon", "move", "item", "ability"];
 const ambiguous = ["怪力", "毒针", "毒針", "恶梦", "惡夢", "忍耐", "报仇", "報仇", "怨恨", "懒惰", "报复", "毒刺", "对焦镜片", "對焦鏡片", "毒针", "毒針", "杂技", "看穿", "魔法反射", "协助", "協助", "储存", "儲存", "石头", "石頭", "天气预报", "天氣預報", "乐天", "樂天"];
@@ -201,7 +203,7 @@ export default function (program, wiki) {
     .description("寻找歧义的词语。")
     .action(async () => {
       try {
-        let names = _.flatten(await Promise.all(tables.map(name => readTable(name))));
+        let names = flatten(await Promise.all(tables.map(name => readTable(name))));
         names.forEach(record => {
           if (names.some(another => {
             return record !== another && (
@@ -505,7 +507,7 @@ export default function (program, wiki) {
             continue;
           }
           let tableName = "pokemon";
-          _.each(suffixes, (suffix, table) => {
+          each(suffixes, (suffix, table) => {
             if (suffix && redirect.linkto.endsWith(suffix)) {
               tableName = table;
             }
@@ -513,7 +515,7 @@ export default function (program, wiki) {
           let records = names[tables.indexOf(tableName)];
           let replaceto = null;
           for (let record of records) {
-            const original = _.trimEnd(redirect.linkto, suffixes[tableName]);
+            const original = trimEnd(redirect.linkto, suffixes[tableName]);
             if (original === record["zh-hans-legacy"] || original === record["zh-hans-current"]) {
               replaceto = `${record["zh-hans"]}${suffixes[tableName]}`;
               break;

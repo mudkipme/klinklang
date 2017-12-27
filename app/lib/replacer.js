@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 import parse from "csv-parse";
-import _ from "lodash";
+import flatten from "lodash/flatten";
 
 const tableCache = {};
 
@@ -46,7 +46,7 @@ export default async function (source, options) {
     caseInsensitive: text === "type"
   })));
 
-  tables = _.flatten(tables);
+  tables = flatten(tables);
   tables.sort((row1, row2) => (row2[sourceLng].length - row1[sourceLng].length));
 
   tables.forEach(row => {

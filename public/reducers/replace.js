@@ -1,26 +1,26 @@
 import { SELECT_ITEM, SELECT_ALL, REPLACE_TEXT, CHANGE_SOURCE_LNG, CHANGE_RESULT_LNG } from "../constants/replace";
-import { every } from "lodash";
+import every from "lodash/every";
 
 const initialState = {
   languages: [
-    { value: "en", text: "英文" },
-    { value: "ja", text: "日文" },
-    { value: "zh", text: "中文" },
+    { value: "en", text: "English" },
+    { value: "ja", text: "日本語" },
+    { value: "zh", text: "简体中文" },
   ],
   texts: [
-    { value: "pokemon", text: "宝可梦", selected: false },
-    { value: "ability", text: "特性", selected: false },
-    { value: "move", text: "招式", selected: false },
-    { value: "type", text: "属性", selected: false },
-    { value: "item", text: "道具", selected: false },
-    { value: "tcg", text: "卡片游戏", selected: false },
-    { value: "location", text: "地点", selected: false },
-    { value: "nature", text: "性格", selected: false },
-    { value: "trainer-type", text: "训练家类型", selected: false },
-    { value: "location-type", text: "地点类型", selected: false },
-    { value: "warrior", text: "武将", selected: false },
-    { value: "role", text: "人物", selected: false },
-    { value: "other", text: "其他", selected: false },
+    { value: "pokemon", text: "Pokémon", selected: false },
+    { value: "ability", text: "Ability", selected: false },
+    { value: "move", text: "Move", selected: false },
+    { value: "type", text: "Type", selected: false },
+    { value: "item", text: "Item", selected: false },
+    { value: "tcg", text: "TCG", selected: false },
+    { value: "location", text: "Location", selected: false },
+    { value: "nature", text: "Nature", selected: false },
+    { value: "trainer-type", text: "Trainer Type", selected: false },
+    { value: "location-type", text: "Location Type", selected: false },
+    { value: "warrior", text: "Warrior", selected: false },
+    { value: "role", text: "Character", selected: false },
+    { value: "other", text: "Other", selected: false },
   ],
   sourceLng: "en",
   resultLng: "zh",

@@ -3,17 +3,17 @@ import cookieStore from "tough-cookie-file-store";
 import request from "request";
 import fs from "mz/fs";
 import path from "path";
-import Wiki52Poke from "./app/lib/wiki52poke";
+import MWClient from "./app/lib/mwclient";
 import { init } from "./app/actions/init";
+import config from "./app/lib/config";
 
 // actions for temporary tasks
 import action20161118Replace from "./app/actions/20161118-replace";
 import action20170628Antispam from "./app/actions/20170628-antispam";
 
 const version = require("./package.json").version;
-const config = require("./config.json");
 const jar = request.jar(new cookieStore("./database/cookie.json"));
-const wiki = new Wiki52Poke({
+const wiki = new MWClient({
   api: config.wiki.api,
   userAgent: `MudkipRadar v${version}`,
   jar: jar

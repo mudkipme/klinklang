@@ -1,17 +1,17 @@
 "use strict";
 
+const CleanWebpackPlugin = require("clean-webpack-plugin");
 const path = require("path");
-const webpack = require("webpack");
+const fs = require("mz/fs");
 
 module.exports = {
   context: __dirname,
-  devtool: "inline-source-map",
   entry: [
     "./public/main.jsx"
   ],
   output: {
     path: path.join(__dirname, "public", "build"),
-    filename: "main.js",
+    filename: "main.[chunkhash].js",
     publicPath: "/"
   },
   resolve: {
@@ -39,8 +39,11 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.DefinePlugin({
-      "process.env.NODE_ENV": JSON.stringify("development")
-    })
+    new CleanWebpackPlugin([path.join(__dirname, "public", "build")]),
+    function() {
+      this.plugin("done", function(stats) {
+        fs.writeFile(path.join(__dirname, "stats.generated.json"), JSON.stringify(stats.toJson().assetsByChunkName));
+      });
+    }
   ]
 };

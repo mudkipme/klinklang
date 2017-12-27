@@ -1,14 +1,34 @@
-import React from "react";
-import { render } from "react-dom";
+import React, { Component } from "react";
+import { hydrate } from "react-dom";
+import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
 import { BrowserRouter as Router } from "react-router-dom";
-import { Provider } from "react-redux";
+import { Provider as ReduxProvider } from "react-redux";
 import store from "./store";
 import App from "./app";
 
-render((
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>
+class Main extends Component {
+  componentDidMount() {
+    const jssStyles = document.getElementById("jss-server-side");
+    if (jssStyles && jssStyles.parentNode) {
+      jssStyles.parentNode.removeChild(jssStyles);
+    }
+  }
+
+  render() {
+    return (
+      <App {...this.props} />
+    );
+  }
+}
+
+const theme = createMuiTheme();
+
+hydrate((
+  <MuiThemeProvider theme={theme}>
+    <ReduxProvider store={store}>
+      <Router>
+        <Main />
+      </Router>
+    </ReduxProvider>
+  </MuiThemeProvider>
 ), document.getElementById("app"));

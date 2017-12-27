@@ -2,8 +2,10 @@
 node_modules
 *.sublime-project
 *.sublime-workspace
+*.generated.json
 @eaDir
 /public/build
+/build
 /database/base.sqlite3
 /database/cookie.json
 /database/allpages.json

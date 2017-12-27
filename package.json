@@ -1,14 +1,36 @@
 {
   "name": "klinklang",
-  "version": "1.0.0",
+  "description": "A collection of utilities of 52Poké Wiki.",
+  "version": "2.0.0",
+  "author": {
+    "name": "mudkipme",
+    "url": "https://mudkip.me",
+    "email": "i@mudkip.me"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node bin/app"
+    "clean": "rm -rf ./build && rm -rf ./public/build",
+    "build-server": "webpack --config webpack.server.js",
+    "build-client": "webpack --config webpack.prod.js",
+    "build-dev": "webpack --config webpack.dev.js",
+    "build": "npm run build-client && npm run build-server",
+    "lint": "eslint .",
+    "start": "NODE_ENV=production node ./build/klinklang",
+    "debug": "NODE_ENV=development node --inspect ./build/klinklang",
+    "radar": "node ./build/radar",
+    "init": "node ./build/radar init"
+  },
+  "bin": {
+    "klinklang": "./build/klinklang",
+    "radar": "./build/radar"
   },
   "dependencies": {
     "commander": "^2.12.2",
     "csv-parse": "^2.0.0",
     "csv-stringify": "^2.0.1",
+    "jss": "^9.4.0",
+    "jss-preset-default": "^4.0.1",
     "koa": "2.4.1",
     "koa-bodyparser": "^4.2.0",
     "koa-compress": "^2.0.0",
@@ -24,6 +46,7 @@
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-jss": "^8.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "recompose": "^0.26.0",
@@ -40,11 +63,14 @@
     "@babel/preset-env": "^7.0.0-beta.36",
     "@babel/preset-react": "^7.0.0-beta.36",
     "@babel/preset-stage-2": "^7.0.0-beta.36",
-    "@babel/register": "^7.0.0-beta.36",
     "babel-eslint": "^8.1.2",
     "babel-loader": "^8.0.0-beta.0",
+    "clean-webpack-plugin": "^0.1.17",
     "eslint": "^4.14.0",
     "eslint-plugin-react": "^7.5.1",
-    "webpack": "^3.10.0"
+    "uglifyjs-webpack-plugin": "^1.1.4",
+    "webpack": "^3.10.0",
+    "webpack-merge": "^4.1.1",
+    "webpack-node-externals": "^1.6.0"
   }
 }
