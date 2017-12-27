@@ -1,5 +1,18 @@
 import fs from "mz/fs";
 import path from "path";
 
-const config = JSON.parse(fs.readFileSync(path.join(__dirname, "../../config.json")));
+let config = {
+  wiki: {
+    api: "https://en.wikipedia.org/w/api.php",
+    username: "",
+    password: ""
+  },
+  secret: ""
+};
+
+const configFile = path.join(__dirname, "../../config.json");
+if (fs.existsSync(configFile)) {
+  config = JSON.parse(fs.readFileSync(configFile));
+}
+
 export default config;
