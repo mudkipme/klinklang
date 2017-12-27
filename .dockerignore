@@ -1,9 +1,5 @@
-.DS_Store
+.git
 node_modules
-*.sublime-project
-*.sublime-workspace
-*.generated.json
-@eaDir
 /public/build
 /build
 /database/base.sqlite3
