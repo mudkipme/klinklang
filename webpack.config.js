@@ -27,8 +27,10 @@ module.exports = {
           presets: [
             ["@babel/preset-env", {
               "targets": {
-                "browsers": ["chrome 63"]
-              }}],
+                "browsers": ["chrome >= 63", "safari >= 11", "firefox >= 57", "edge >= 16"]
+              },
+              "modules": false
+            }],
             "@babel/preset-react",
             "@babel/preset-stage-2"
           ]

@@ -10,7 +10,7 @@ class Replace extends Component {
   render() {
     const { classes, languages, texts, sourceLng, resultLng, result, selectedAll } = this.props;
     return (
-      <div>
+      <div className={classes.root}>
         <Grid container>
           <Grid item xs={6} sm={5}>
             <TextField select label="源语言" fullWidth value={sourceLng} onChange={this.handleChangeSourceLng}>
@@ -106,6 +106,10 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const styles = {
+  root: {
+    maxWidth: "62.5rem",
+    margin: "0 auto"
+  },
   translateButton: {
     width: "100%"
   },
