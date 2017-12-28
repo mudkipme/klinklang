@@ -1,4 +1,6 @@
 import rp from "request-promise-native";
+import mapValues from "lodash/mapValues";
+import pickBy from "lodash/pickBy";
 
 export default class MWClient {
   constructor(options = {}) {
@@ -162,5 +164,59 @@ export default class MWClient {
     });
 
     return response.data;
+  }
+
+  async imageinfo(filename, options) {
+    if (!Array.isArray(filename)) {
+      filename = [filename];
+    }
+    const iiprop = (options && options.iiprop) || ["url", "timestamp", "user", "metadata", "size"];
+    const response = await this.request({
+      ...options,
+      action: "query",
+      titles: filename.map(file => `File:${file}`).join("|"),
+      prop: "imageinfo",
+      iiprop: iiprop.join("|")
+    });
+
+    let result = mapValues(response.data.pages, page => {
+      if (!page.imageinfo || !page.imageinfo.length) {
+        return null;
+      }
+      const imageinfo = page.imageinfo[0];
+      const metadata = {};
+      let currentMetadata = imageinfo.metadata;
+      while (currentMetadata) {
+        currentMetadata.forEach(item => {
+          metadata[item.name] = item.value;
+        });
+        currentMetadata = metadata.metadata;
+        if (currentMetadata) {
+          delete metadata.metadata;
+        }
+      }
+      imageinfo.metadata = metadata;
+      return {
+        pageid: page.pageid,
+        title: page.title,
+        ...imageinfo
+      };
+    });
+    result = pickBy(result);
+    return result;
+  }
+
+  async categorymembers(category, options) {
+    const response = await this.request({
+      ...options,
+      action: "query",
+      list: "categorymembers",
+      cmtitle: `Category:${category}`
+    });
+
+    return {
+      categorymembers: response.data.categorymembers,
+      next: response.next
+    };
   }
 }

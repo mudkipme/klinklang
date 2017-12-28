@@ -12,8 +12,8 @@
   "scripts": {
     "clean": "rm -rf ./build && rm -rf ./public/build",
     "build-server": "webpack --config webpack.server.js",
-    "build-client": "webpack --config webpack.prod.js",
-    "build-dev": "webpack --config webpack.dev.js",
+    "build-client": "NODE_ENV=production webpack",
+    "build-dev": "NODE_ENV=development webpack",
     "build": "npm run build-client && npm run build-server",
     "lint": "eslint .",
     "start": "NODE_ENV=production node ./build/klinklang",

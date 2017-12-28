@@ -1,8 +1,11 @@
 "use strict";
 
-const CleanWebpackPlugin = require("clean-webpack-plugin");
 const path = require("path");
 const fs = require("mz/fs");
+const webpack = require("webpack");
+const merge = require("webpack-merge");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -47,3 +50,26 @@ module.exports = {
     }
   ]
 };
+
+if (process.env.NODE_ENV === "production") {
+  module.exports = merge(module.exports, {
+    devtool: "source-map",
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify("production")
+      }),
+      new UglifyJSPlugin({
+        sourceMap: true
+      })
+    ]
+  });
+} else {
+  module.exports = merge(module.exports, {
+    devtool: "inline-source-map",
+    plugins: [
+      new webpack.DefinePlugin({
+        "process.env.NODE_ENV": JSON.stringify("development")
+      })
+    ]
+  });
+}

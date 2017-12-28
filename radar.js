@@ -10,6 +10,7 @@ import config from "./app/lib/config";
 // actions for temporary tasks
 import action20161118Replace from "./app/actions/20161118-replace";
 import action20170628Antispam from "./app/actions/20170628-antispam";
+import action20171228Sprites from "./app/actions/20171228-sprites";
 
 const version = require("./package.json").version;
 const jar = request.jar(new cookieStore("./database/cookie.json"));
@@ -82,6 +83,7 @@ program
 
 action20161118Replace(program, wiki);
 action20170628Antispam(program, wiki);
+action20171228Sprites(program, wiki);
 
 program.version(version);
 

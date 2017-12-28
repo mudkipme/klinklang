@@ -6,7 +6,7 @@ import { withStyles } from "material-ui/styles";
 
 const Footer = ({ classes }) => (
   <Grid container className={classes.root} component="footer">
-    <Grid item xs={12} component={Typography} type="body1">
+    <Grid item xs={12} component={Typography} type="body1" className={classes.text}>
       &copy; <a className={classes.link} href="https://wiki.52poke.com/">52Poké Wiki</a>
     </Grid>
   </Grid>
@@ -14,8 +14,12 @@ const Footer = ({ classes }) => (
 
 const styles = {
   root: {
-    maxWidth: "62.5rem",
-    margin: "1rem auto"
+    marginTop: "1rem",
+    marginBottom: "1rem",
+    justifyContent: "center"
+  },
+  text: {
+    maxWidth: "62.5rem"
   },
   link: {
     color: "inherit",

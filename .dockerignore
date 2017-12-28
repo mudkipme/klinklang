@@ -6,5 +6,6 @@ node_modules
 /database/cookie.json
 /database/allpages.json
 /database/movements.csv
+/database/download
 /config.json
 npm-debug.log
