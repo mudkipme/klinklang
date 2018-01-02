@@ -9,7 +9,6 @@ import error from "koa-json-error";
 // routers
 import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
-import scssRouter from "./app/routes/scss";
 
 const app = new Koa();
 
@@ -21,8 +20,9 @@ app.use(error());
 
 app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
-app.use(scssRouter.routes());
 
 const server = app.listen(process.env.PORT || 3001, function() {
   console.log("Klinklang server listening on port " + server.address().port);
 });
+
+export default app;
