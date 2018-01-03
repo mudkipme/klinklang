@@ -1,3 +1,4 @@
+const webpack = require("webpack");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const nodeExternals = require("webpack-node-externals");
 const path = require("path");
@@ -45,6 +46,10 @@ module.exports = {
     ]
   },
   plugins: [
-    new CleanWebpackPlugin([path.join(__dirname, "build")])
+    new CleanWebpackPlugin([path.join(__dirname, "build")]),
+    new webpack.BannerPlugin({
+      banner: "#!/usr/bin/env node",
+      raw: true
+    })
   ]
 };
