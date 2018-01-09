@@ -10,9 +10,9 @@ RUN npm install && npm cache clean --force
 
 COPY . /app
 ENV NODE_ENV production
-RUN npm run build && npm run init
+RUN npm run build
 
-EXPOSE 3001
+EXPOSE 3000
 VOLUME ["/app/config.json"]
 
 CMD [ "npm", "start" ]

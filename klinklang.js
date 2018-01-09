@@ -5,6 +5,7 @@ import favicon from "koa-favicon";
 import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import error from "koa-json-error";
+import xHub from "koa-x-hub";
 
 // routers
 import renderRouter from "./app/routes/render";
@@ -21,7 +22,7 @@ app.use(error());
 app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
 
-const server = app.listen(process.env.PORT || 3001, function() {
+const server = app.listen(process.env.PORT || 3000, function() {
   console.log("Klinklang server listening on port " + server.address().port);
 });
 

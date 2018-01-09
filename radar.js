@@ -4,7 +4,6 @@ import request from "request";
 import fs from "mz/fs";
 import path from "path";
 import MWClient from "./app/lib/mwclient";
-import { init } from "./app/actions/init";
 import config from "./app/lib/config";
 
 // actions for temporary tasks
@@ -19,17 +18,6 @@ const wiki = new MWClient({
   userAgent: `MudkipRadar v${version}`,
   jar: jar
 });
-
-program
-  .command("init")
-  .description("Init the Pokédex database.")
-  .action(async () => {
-    try {
-      await init();
-    } catch (e) {
-      console.log(e);
-    }
-  });
 
 program
   .command("login [username] [password]")

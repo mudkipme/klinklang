@@ -18,8 +18,7 @@
     "lint": "eslint .",
     "start": "NODE_ENV=production node ./build/klinklang",
     "debug": "NODE_ENV=development node --inspect ./build/klinklang",
-    "radar": "node ./build/radar",
-    "init": "node ./build/radar init"
+    "radar": "node ./build/radar"
   },
   "bin": {
     "klinklang": "./build/klinklang.js",
@@ -42,10 +41,13 @@
     "koa-json-error": "^3.1.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
+    "koa-x-hub": "^1.0.0",
+    "kue": "^0.11.6",
     "lodash": "^4.17.4",
     "material-ui": "^1.0.0-beta.25",
     "material-ui-icons": "^1.0.0-beta.17",
     "mz": "^2.7.0",
+    "node-sass": "^4.7.2",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
