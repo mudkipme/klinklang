@@ -60,7 +60,6 @@
     "redux-thunk": "^2.2.0",
     "request": "^2.83.0",
     "request-promise-native": "^1.0.5",
-    "sqlite3": "^3.1.13",
     "tough-cookie-file-store": "^1.2.0"
   },
   "devDependencies": {
