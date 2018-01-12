@@ -1,18 +1,28 @@
-import fs from "mz/fs";
-import path from "path";
+import nconf from "nconf";
 
-let config = {
-  wiki: {
-    api: "https://en.wikipedia.org/w/api.php",
-    username: "",
-    password: ""
-  },
-  secret: ""
-};
+export default function initConfig() {
+  nconf.argv()
+    .env();
 
-const configFile = path.join(__dirname, "../../config.json");
-if (fs.existsSync(configFile)) {
-  config = JSON.parse(fs.readFileSync(configFile));
+  if (nconf.get("config")) {
+    nconf.file({
+      file: nconf.get("config")
+    });
+  } else {
+    nconf.file({
+      file: "config.json"
+    });
+  }
+
+  nconf.defaults({
+    "wiki": {
+      "api": "https://en.wikipedia.org/w/api.php",
+      "username": "",
+      "password": ""
+    },
+    "wikihooks": {
+      "secret": "my_little_secret",
+      "triggers": []
+    }
+  });
 }
-
-export default config;
