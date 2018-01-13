@@ -6,12 +6,11 @@ import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import error from "koa-json-error";
 import xHub from "koa-x-hub";
-
-
+import nconf from "./app/lib/config";
+import purge from "./app/routes/purge";
 import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
 import wikihooksRouter from "./app/routes/wikihooks";
-import nconf from "./app/lib/config";
 
 const app = new Koa();
 
@@ -25,6 +24,7 @@ app.use(error());
 app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
 app.use(wikihooksRouter.routes());
+app.use(purge);
 
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log("Klinklang server listening on port " + server.address().port);

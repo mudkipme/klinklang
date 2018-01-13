@@ -1,7 +1,6 @@
 import { test as jsonTest } from "json-predicate";
 import nconf from "./config";
-import { taskInfoFromTrigger } from "./task";
-import { addTask } from "./queue";
+import { addTaskFromTrigger } from "./task";
 
 const triggers = [];
 
@@ -16,7 +15,7 @@ for (let item of config) {
 export function runHook(action, data) {
   for (let trigger of triggers) {
     if (action === trigger.action && jsonTest(data, trigger.predicate)) {
-      addTask(taskInfoFromTrigger(trigger, data));
+      addTaskFromTrigger(trigger, data);
     }
   }
 }
