@@ -18,7 +18,7 @@ const app = new Koa();
 app.use(compress());
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(bodyParser());
-app.use(xHub({secret: nconf.get("wikihooks.secret")}));
+app.use(xHub({secret: nconf.get("wikihooks:secret")}));
 app.use(serve(path.join(__dirname, "public")));
 app.use(error());
 
