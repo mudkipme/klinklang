@@ -25,7 +25,9 @@ export default class MWClient {
     });
 
     if (response.error) {
-      throw new Error(response.error.info);
+      const error = new Error(response.error.info);
+      error.name = response.error.code;
+      throw error;
     }
 
     return {
@@ -57,7 +59,7 @@ export default class MWClient {
     });
 
     if (!response.data.username) {
-      throw new Error(`Logging in failed: ${response.data.result} ${response.data.reason || ""}`);
+      throw new Error(`Logging in failed: ${response.data.status} ${response.data.message || ""}`);
     }
     
     return response.data;

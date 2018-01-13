@@ -34,6 +34,7 @@
     "commander": "^2.13.0",
     "csv-parse": "^2.0.0",
     "csv-stringify": "^2.0.1",
+    "json-predicate": "^0.9.5",
     "jss": "^9.5.1",
     "jss-preset-default": "^4.0.1",
     "koa": "2.4.1",

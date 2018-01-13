@@ -6,14 +6,12 @@ import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import error from "koa-json-error";
 import xHub from "koa-x-hub";
-import nconf from "nconf";
+
 
 import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
 import wikihooksRouter from "./app/routes/wikihooks";
-import initConfig from "./app/lib/config";
-
-initConfig();
+import nconf from "./app/lib/config";
 
 const app = new Koa();
 

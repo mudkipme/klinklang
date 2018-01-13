@@ -2,6 +2,7 @@
 node_modules
 /public/build
 /build
+/logs
 /database/base.sqlite3
 /database/cookie.json
 /database/allpages.json

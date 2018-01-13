@@ -6,6 +6,7 @@ node_modules
 @eaDir
 /public/build
 /build
+/logs
 /database/base.sqlite3
 /database/cookie.json
 /database/allpages.json
