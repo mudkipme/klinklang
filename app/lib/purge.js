@@ -34,6 +34,7 @@ queue.process("purge", async (job, done) => {
     }
     
     await Promise.all(requestOptions.map(options => processRequest(options)));
+    logger.info(`Purge finished ${url}.`);
     done();
   } catch (e) {
     logger.error(e.message);
