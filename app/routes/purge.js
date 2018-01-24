@@ -6,5 +6,5 @@ export default async function (ctx, next) {
   }
 
   purger(ctx.request);
-  ctx.body = null;
+  ctx.body = "Purge task added.";
 }
