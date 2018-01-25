@@ -8,11 +8,11 @@ queue.process("purge", async (job, done) => {
   try {
     const purgeConfig = nconf.get("purge");
     const { host, url } = job.data;
-    const requestOptions = [];
+    let requestOptions = [];
 
     const queries = url.split('&');
     const lastQuery = queries.length > 0 ? queries[queries.length - 1] : '';
-    let pathComponents = url.split('/');
+    const pathComponents = url.split('/');
     const firstPath = pathComponents.length > 1 ? pathComponents[1] : '';
 
     for (let config of purgeConfig) {
