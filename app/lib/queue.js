@@ -6,6 +6,8 @@ const queue = kue.createQueue({
   redis: nconf.get("redis")
 });
 
+queue.watchStuckJobs();
+
 process.once("SIGTERM", () => {
   queue.shutdown(5000, function (err) {
     logger.info("Queue shutdown: ", err || "");

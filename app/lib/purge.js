@@ -2,12 +2,18 @@ import rp from "request-promise-native";
 import nconf from "./config";
 import logger from "./logger";
 import queue from "./queue";
+import { uniqWith, isEqual } from "lodash";
 
 queue.process("purge", async (job, done) => {
   try {
     const purgeConfig = nconf.get("purge");
     const { host, url } = job.data;
     const requestOptions = [];
+
+    const queries = url.split('&');
+    const lastQuery = queries.length > 0 ? queries[queries.length - 1] : '';
+    let pathComponents = url.split('/');
+    const firstPath = pathComponents.length > 1 ? pathComponents[1] : '';
 
     for (let config of purgeConfig) {
       if (config.host !== host) {
@@ -19,9 +25,14 @@ queue.process("purge", async (job, done) => {
 
       for (let uri of uriList) {
         for (let variant of variants) {
+          if (variant && (variants.indexOf(lastQuery) > -1 || variants.indexOf(firstPath) > -1)) {
+            continue;
+          }
           requestOptions.push({
             method: config.method || "PURGE",
-            uri: uri.split("#url#").join(url).split("#variants#").join(variant)
+            uri: uri.split("#url#").join(url).split("#variants#").join(variant),
+            timeout: 1000,
+            headers: config.headers
           });
           if (url.indexOf("/wiki/") !== -1 && variant) {
             requestOptions.push({
@@ -32,6 +43,8 @@ queue.process("purge", async (job, done) => {
         }
       }
     }
+
+    requestOptions = uniqWith(requestOptions, isEqual);
     
     await Promise.all(requestOptions.map(options => processRequest(options)));
     logger.info(`Purge finished ${url}.`);
