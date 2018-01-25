@@ -15,6 +15,7 @@ A collection of utilities for [52Poké Wiki](https://wiki.52poke.com/).
 * Replace Pokémon terminologies from one language to another
 * Various maintenance works for 52Poké Wiki
 * Automatically generate certain content based on Pokémon game data
+* Purge fastcgi/proxy caches of 52Poké Wiki
 
 ## Wikihooks
 

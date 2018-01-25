@@ -10,10 +10,10 @@ queue.process("purge", async (job, done) => {
     const { host, url } = job.data;
     let requestOptions = [];
 
-    const queries = url.split('&');
-    const lastQuery = queries.length > 0 ? queries[queries.length - 1] : '';
-    const pathComponents = url.split('/');
-    const firstPath = pathComponents.length > 1 ? pathComponents[1] : '';
+    const queries = url.split("&");
+    const lastQuery = queries.length > 0 ? queries[queries.length - 1] : "";
+    const pathComponents = url.split("/");
+    const firstPath = pathComponents.length > 1 ? pathComponents[1] : "";
 
     for (let config of purgeConfig) {
       if (config.host !== host) {
@@ -25,7 +25,7 @@ queue.process("purge", async (job, done) => {
 
       for (let uri of uriList) {
         for (let variant of variants) {
-          if (variant && (variants.indexOf(lastQuery) > -1 || variants.indexOf(firstPath) > -1)) {
+          if (variant && (variants.indexOf(lastQuery) > 0 || variants.indexOf(firstPath) > 0)) {
             continue;
           }
           requestOptions.push({
@@ -37,7 +37,9 @@ queue.process("purge", async (job, done) => {
           if (url.indexOf("/wiki/") !== -1 && variant) {
             requestOptions.push({
               method: config.method || "PURGE",
-              uri: uri.split("#url#").join(url).split("#variants#").join("").split("/wiki/").join(`/${variant}/`)
+              uri: uri.split("#url#").join(url).split("#variants#").join("").split("/wiki/").join(`/${variant}/`),
+              timeout: 1000,
+              headers: config.headers
             });
           }
         }
