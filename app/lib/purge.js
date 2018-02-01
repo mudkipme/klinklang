@@ -1,13 +1,18 @@
 import rp from "request-promise-native";
 import nconf from "./config";
 import logger from "./logger";
-import queue from "./queue";
+import Queue from "bull";
 import { uniqWith, isEqual } from "lodash";
 
-queue.process("purge", async (job, done) => {
+const purgeQueue = new Queue("purge", {
+  redis: nconf.get("redis"),
+  prefix: "klinklang_purge",
+  limiter: nconf.get("purgeLimit:limiter")
+});
+
+async function handlePurge({ host, url }) {
   try {
     const purgeConfig = nconf.get("purge");
-    const { host, url } = job.data;
     let requestOptions = [];
 
     const queries = url.split("&");
@@ -47,15 +52,14 @@ queue.process("purge", async (job, done) => {
     }
 
     requestOptions = uniqWith(requestOptions, isEqual);
-    
+
     await Promise.all(requestOptions.map(options => processRequest(options)));
-    logger.info(`Purge finished ${url}.`);
-    done();
+    logger.info("Purge finished.", { host, url });
   } catch (e) {
     logger.error(e.message);
-    done(e);
+    throw e;
   }
-});
+}
 
 async function processRequest(options) {
   try {
@@ -69,11 +73,23 @@ async function processRequest(options) {
   }
 }
 
-export default function purger({ host, url, href }) {
-  logger.info(`Prepare purge ${href}.`);
-  queue
-    .create("purge", { host, url })
-    .ttl(20000)
-    .removeOnComplete(true)
-    .save();
+purgeQueue.process(async (job) => {
+  const { host, url, scheduledTime } = job.data;
+  const expires = nconf.get("purgeLimit:expires");
+  if (expires && Date.now() - scheduledTime >= expires) {
+    logger.info("Skip purge.", job.data);
+    return;
+  }
+  await handlePurge({ host, url });
+});
+
+export function addPurge({ host, url }) {
+  const jobId = host + url;
+  logger.info("Prepare purge.", { host, url });
+  purgeQueue.add({ host, url, scheduledTime: Date.now() }, {
+    jobId,
+    timeout: 20000,
+    removeOnComplete: true,
+    removeOnFail: true
+  });
 }

@@ -31,6 +31,6 @@ export default class Task {
     return trigger.options;
   }
 
-  static priority = "normal";
+  static priority = 10;
   static ttl = 60000;
 }

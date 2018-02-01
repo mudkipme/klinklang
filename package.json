@@ -1,7 +1,7 @@
 {
   "name": "klinklang",
   "description": "A collection of utilities of 52Poké Wiki.",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "author": {
     "name": "mudkipme",
     "url": "https://mudkip.me",
@@ -30,10 +30,11 @@
     "url": "https://github.com/mudkipme/klinklang.git"
   },
   "dependencies": {
-    "cheerio": "^1.0.0-rc.2",
+    "bull": "^3.3.9",
     "commander": "^2.13.0",
     "csv-parse": "^2.0.0",
     "csv-stringify": "^2.0.1",
+    "ipaddr.js": "^1.5.4",
     "json-predicate": "^0.9.5",
     "jss": "^9.5.1",
     "jss-preset-default": "^4.0.1",
@@ -44,8 +45,6 @@
     "koa-json-error": "^3.1.2",
     "koa-router": "^7.3.0",
     "koa-static": "^4.0.2",
-    "koa-x-hub": "^1.0.0",
-    "kue": "^0.11.6",
     "lodash": "^4.17.4",
     "material-ui": "^1.0.0-beta.25",
     "material-ui-icons": "^1.0.0-beta.17",

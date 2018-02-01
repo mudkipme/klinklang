@@ -5,25 +5,22 @@ import favicon from "koa-favicon";
 import bodyParser from "koa-bodyparser";
 import serve from "koa-static";
 import error from "koa-json-error";
-import xHub from "koa-x-hub";
-import nconf from "./app/lib/config";
-import purge from "./app/routes/purge";
 import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
-import wikihooksRouter from "./app/routes/wikihooks";
+import eventsRouter from "./app/routes/events";
+import purge from "./app/routes/purge";
 
 const app = new Koa();
 
 app.use(compress());
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 app.use(bodyParser());
-app.use(xHub({secret: nconf.get("wikihooks:secret")}));
 app.use(serve(path.join(__dirname, "public")));
 app.use(error());
 
 app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
-app.use(wikihooksRouter.routes());
+app.use(eventsRouter.routes());
 app.use(purge);
 
 const server = app.listen(process.env.PORT || 3000, function() {

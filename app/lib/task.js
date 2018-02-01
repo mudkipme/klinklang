@@ -1,9 +1,15 @@
 import tasks from "../tasks";
 import { getUser } from "./user";
 import logger from "./logger";
-import queue from "./queue";
+import Queue from "bull";
+import nconf from "./config";
 
-queue.process("task", async (job, done) => {
+const queue = new Queue("task", {
+  redis: nconf.get("redis"),
+  prefix: "klinklang_task"
+});
+
+queue.process(async (job) => {
   try {
     const Task = tasks[job.data.task];
     if (!Task) {
@@ -15,11 +21,10 @@ queue.process("task", async (job, done) => {
     }
     const task = new Task(user, job.data.options);
     const result = await task.run(job);
-    logger.info(`Processed task ${job.data.task}.`, result);
-    done();
+    logger.info("Processed task", { task: job.data.task, result });
   } catch (e) {
     logger.error(e.message);
-    done(e);
+    throw e;
   }
 });
 
@@ -28,16 +33,15 @@ export function addTask(task, username, options) {
   if (!Task) {
     throw new Error("Invalid task name");
   }
-  logger.info(`Added task ${task}.`);
-  queue
-    .create("task", {
-      task,
-      username,
-      options
-    })
-    .priority(Task.priority)
-    .ttl(Task.ttl)
-    .save();
+  logger.info("Added task.", { task });
+  queue.add({
+    task,
+    username,
+    options
+  }, {
+    priority: Task.priority,
+    timeout: Task.ttl
+  });
 }
 
 export function addTaskFromTrigger(trigger, data) {

@@ -38,11 +38,11 @@ ${css.replace(/\n+/g, "\n")}`;
     };
   }
 
-  static priority = "high";
+  static priority = 9;
 
   static optionsFromTrigger(trigger, data) {
     return {
-      source: data.title,
+      source: data.page_title,
       ...trigger.options
     };
   }

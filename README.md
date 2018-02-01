@@ -17,40 +17,40 @@ A collection of utilities for [52Poké Wiki](https://wiki.52poke.com/).
 * Automatically generate certain content based on Pokémon game data
 * Purge fastcgi/proxy caches of 52Poké Wiki
 
-## Wikihooks
+## EventBus
 
-This program can be a endpoint of [MediaWiki Webhooks Extension](https://github.com/mudkipme/mediawiki-webhooks).
+This program can be a endpoint of [MediaWiki EventBus Extension](https://www.mediawiki.org/wiki/Extension:EventBus).
 
-The triggers should be in [JSON Predicate](https://tools.ietf.org/id/draft-snell-json-test-01.html) syntax.
+```php
+wfLoadExtension( 'EventBus' );
+$wgEventServiceUrl = 'http://klinklang:3000/v1/events';
+```
+
+This program can handle cache purge job and trigger certain tasks based on events. The triggers should be in [JSON Predicate](https://tools.ietf.org/id/draft-snell-json-test-01.html) syntax.
 
 Here is an example of `config.json`. We use a hook to read the [SCSS](http://sass-lang.com/) content from certain page and convert it to CSS and write to `Common.css`.
 
 ```json
 {
-  "wiki": {
-    "api": "https://wiki.52poke.com/api.php",
-    "username": "MudkipRadar",
-    "password": ""
-  },
-  "wikihooks": {
-    "secret": "my_little_secret",
+  "events": {
+    "ip": ["172.18.0.0/16", "127.0.0.0/8"],
     "triggers": [
       {
         "task": "scss",
-        "action": "EditedArticle",
+        "topic": "mediawiki.revision-create",
         "predicate": {
           "op": "test",
-          "path": "/title",
+          "path": "/page_title",
           "value": "神奇宝贝百科:层叠样式表"
         },
         "options": {
-          "target": ["MediaWiki:Common.css", "MediaWiki:Mobile.css"]
+          "target": [
+            "MediaWiki:Common.css",
+            "MediaWiki:Mobile.css"
+          ]
         }
       }
     ]
-  },
-  "redis": {
-    "host": "localhost"
   }
 }
 ```
