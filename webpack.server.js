@@ -25,7 +25,7 @@ module.exports = {
     extensions: [".jsx", ".js"]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         loader: "babel-loader",
@@ -38,8 +38,10 @@ module.exports = {
               },
               "modules": false
             }],
-            "@babel/preset-react",
-            "@babel/preset-stage-2"
+            "@babel/preset-react"
+          ],
+          plugins: [
+            "@babel/plugin-proposal-class-properties"
           ]
         }
       }

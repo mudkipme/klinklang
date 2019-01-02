@@ -5,7 +5,6 @@ const fs = require("mz/fs");
 const webpack = require("webpack");
 const merge = require("webpack-merge");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
-const UglifyJSPlugin = require("uglifyjs-webpack-plugin");
 
 module.exports = {
   context: __dirname,
@@ -21,7 +20,7 @@ module.exports = {
     extensions: [".jsx", ".css", ".js", ".json"]
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.(js|jsx)$/,
         loader: "babel-loader",
@@ -34,8 +33,10 @@ module.exports = {
               },
               "modules": false
             }],
-            "@babel/preset-react",
-            "@babel/preset-stage-2"
+            "@babel/preset-react"
+          ],
+          plugins: [
+            "@babel/plugin-proposal-class-properties"
           ]
         }
       }
@@ -53,19 +54,16 @@ module.exports = {
 
 if (process.env.NODE_ENV === "production") {
   module.exports = merge(module.exports, {
-    devtool: "source-map",
+    mode: "production",
     plugins: [
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("production")
-      }),
-      new UglifyJSPlugin({
-        sourceMap: true
       })
     ]
   });
 } else {
   module.exports = merge(module.exports, {
-    devtool: "inline-source-map",
+    mode: "development",
     plugins: [
       new webpack.DefinePlugin({
         "process.env.NODE_ENV": JSON.stringify("development")

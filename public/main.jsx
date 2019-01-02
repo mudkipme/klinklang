@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { hydrate } from "react-dom";
-import { MuiThemeProvider, createMuiTheme } from "material-ui/styles";
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles";
 import { BrowserRouter as Router } from "react-router-dom";
 import { Provider as ReduxProvider } from "react-redux";
 import store from "./store";
