@@ -1,25 +1,18 @@
-import React, { Component } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 
-class Empty extends Component {
-  componentWillMount() {
-    const { staticContext } = this.props;
-    if (staticContext) {
-      staticContext.notFound = true;
-    }
+const Empty = ({ staticContext, classes }) => {
+  if (staticContext) {
+    staticContext.notFound = true;
   }
-
-  render() {
-    const { classes } = this.props;
-    return (
-      <Typography className={classes.root}>
-        The page you’re looking for can’t be found.
-      </Typography>
-    );
-  }
-}
+  return (
+    <Typography className={classes.root}>
+      The page you’re looking for can’t be found.
+    </Typography>
+  );
+};
 
 const styles = {
   root: {

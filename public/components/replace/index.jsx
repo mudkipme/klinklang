@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
-import { MenuItem } from "@material-ui/core/Menu";
-import { FormControlLabel } from "@material-ui/core/FormControl";
+import MenuItem from "@material-ui/core/MenuItem";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Checkbox from "@material-ui/core/Checkbox";
 import Divider from "@material-ui/core/Divider";
 import { withStyles } from "@material-ui/core/styles";
@@ -18,7 +18,7 @@ class Replace extends Component {
     const { classes, languages, texts, sourceLng, resultLng, result, selectedAll } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container>
+        <Grid container spacing={16}>
           <Grid item xs={6} sm={5}>
             <TextField select label="From" fullWidth value={sourceLng} onChange={this.handleChangeSourceLng}>
               {languages.map(item => (
@@ -34,12 +34,12 @@ class Replace extends Component {
             </TextField>
           </Grid>
           <Grid item xs={12} sm={2}>
-            <Button raised color="primary" className={classes.translateButton} onClick={this.handleButtonClick} >
+            <Button variant="contained" color="primary" className={classes.translateButton} onClick={this.handleButtonClick}>
               Replace
             </Button>
           </Grid>
         </Grid>
-        <Grid container>
+        <Grid container spacing={16}>
           {texts.map(item => (
             <Grid item xs={6} sm={2} key={item.value}>
               <FormControlLabel
@@ -60,7 +60,7 @@ class Replace extends Component {
           </Grid>
         </Grid>
         <Divider className={classes.divider} />
-        <Grid container>
+        <Grid container spacing={16}>
           <Grid item xs={12} sm={6}>
             <TextField label="Source" fullWidth multiline rows={10} rowsMax={10}
               inputRef={ele => this._sourceTextField = ele}

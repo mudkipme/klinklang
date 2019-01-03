@@ -21,7 +21,11 @@ class Main extends Component {
   }
 }
 
-const theme = createMuiTheme();
+const theme = createMuiTheme({
+  typography: {
+    useNextVariants: true,
+  },
+});
 
 hydrate((
   <MuiThemeProvider theme={theme}>

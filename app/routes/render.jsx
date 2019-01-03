@@ -5,7 +5,7 @@ import { SheetsRegistry } from "react-jss/lib/jss";
 import JssProvider from "react-jss/lib/JssProvider";
 import { create } from "jss";
 import preset from "jss-preset-default";
-import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from "material-ui/styles";
+import { MuiThemeProvider, createMuiTheme, createGenerateClassName } from "@material-ui/core/styles";
 import StaticRouter from "react-router-dom/StaticRouter";
 import { Provider as ReduxProvider } from "react-redux";
 import { create as createStore } from "../../public/store";
@@ -16,7 +16,11 @@ const router = new Router();
 
 router.get(/(^\/$|^\/(?!api))/, async (ctx) => {
   const sheetsRegistry = new SheetsRegistry();
-  const theme = createMuiTheme();
+  const theme = createMuiTheme({
+    typography: {
+      useNextVariants: true,
+    },
+  });
   const jss = create(preset());
   const generateClassName = createGenerateClassName();
   const context = {};

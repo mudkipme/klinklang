@@ -45,7 +45,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin([path.join(__dirname, "public", "build")]),
     function() {
-      this.plugin("done", function(stats) {
+      this.hooks.done.tap("Stats", (stats) => {
         fs.writeFile(path.join(__dirname, "stats.generated.json"), JSON.stringify(stats.toJson().assetsByChunkName));
       });
     }

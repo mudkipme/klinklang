@@ -1,12 +1,14 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
+import CssBaseline from "@material-ui/core/CssBaseline";
 import Header from "./components/header";
 import Footer from "./components/footer";
 import Replace from "./components/replace";
 import Empty from "./components/empty";
 
 const App = () => (
-  <div>
+  <Fragment>
+    <CssBaseline />
     <Header />
     <Switch>
       <Route path="/replace" component={Replace} />
@@ -14,7 +16,7 @@ const App = () => (
       <Route component={Empty} />
     </Switch>
     <Footer />
-  </div>
+  </Fragment>
 );
 
 export default App;
