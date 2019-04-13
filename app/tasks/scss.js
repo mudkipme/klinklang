@@ -38,8 +38,6 @@ ${css.replace(/\n+/g, "\n")}`;
     };
   }
 
-  static priority = 9;
-
   static optionsFromTrigger(trigger, data) {
     return {
       source: data.page_title,

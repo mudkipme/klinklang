@@ -7,33 +7,33 @@ A collection of utilities for [52Poké Wiki](https://wiki.52poke.com/).
 
 ## Requirements
 
-* node.js (Stable)
-* Redis
+* Node.js
+* Apache Kafka
 
 ## Features
 
 * Replace Pokémon terminologies from one language to another
 * Various maintenance works for 52Poké Wiki
 * Automatically generate certain content based on Pokémon game data
-* Purge fastcgi/proxy caches of 52Poké Wiki
 
 ## EventBus
 
-This program can be a endpoint of [MediaWiki EventBus Extension](https://www.mediawiki.org/wiki/Extension:EventBus).
+This program is a Kafka consumer of [MediaWiki EventBus Extension](https://www.mediawiki.org/wiki/Extension:EventBus).
 
-```php
-wfLoadExtension( 'EventBus' );
-$wgEventServiceUrl = 'http://klinklang:3000/v1/events';
-```
-
-This program can handle cache purge job and trigger certain tasks based on events. The triggers should be in [JSON Predicate](https://tools.ietf.org/id/draft-snell-json-test-01.html) syntax.
+This program can trigger certain tasks based on events. The triggers should be in [JSON Predicate](https://tools.ietf.org/id/draft-snell-json-test-01.html) syntax.
 
 Here is an example of `config.json`. We use a hook to read the [SCSS](http://sass-lang.com/) content from certain page and convert it to CSS and write to `Common.css`.
 
 ```json
 {
+  "kafka": {
+    "config": {
+      "metadata.broker.list": "localhost:9092",
+      "group.id": "klinklang"
+    },
+    "topic": "mediawiki"
+  },
   "events": {
-    "ip": ["172.18.0.0/16", "127.0.0.0/8"],
     "triggers": [
       {
         "task": "scss",
@@ -65,4 +65,4 @@ This project is under [BSD-3-Clause](LICENSE).
 
 52Poké (神奇宝贝部落格/神奇寶貝部落格, 神奇宝贝百科/神奇寶貝百科) is a Chinese-language Pokémon fan site. Neither the name of 52Poké nor the names of the contributors may be used to endorse any usage of codes under this project.
 
-Pokémon ©2018 Pokémon. ©1995-2018 Nintendo/Creatures Inc./GAME FREAK inc. 52Poké and this project is not affiliated with any Pokémon-related companies.
+Pokémon ©2019 Pokémon. ©1995-2019 Nintendo/Creatures Inc./GAME FREAK inc. 52Poké and this project is not affiliated with any Pokémon-related companies.

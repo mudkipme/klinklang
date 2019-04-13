@@ -1,8 +1,9 @@
-import { URL } from "url";
 import { test as jsonTest } from "json-predicate";
+import { KafkaConsumer } from "node-rdkafka";
+import { promisify } from "util";
 import nconf from "./config";
-import { addPurge } from "../lib/purge";
 import { addTaskFromTrigger } from "./task";
+import logger from "./logger";
 
 const triggers = [];
 
@@ -14,27 +15,35 @@ for (let item of config) {
   });
 }
 
-function handlePurge(event) {
-  const url = new URL(event.meta.uri);
-  addPurge({ host: url.hostname, url: url.pathname + url.search });
-}
-
-export function runHook(topic, data) {
+export default async function handleEvent(event) {
+  const topic = event.meta && event.meta.topic;
   for (let trigger of triggers) {
-    if (topic === trigger.topic && jsonTest(data, trigger.predicate)) {
-      addTaskFromTrigger(trigger, data);
+    if (topic === trigger.topic && jsonTest(event, trigger.predicate)) {
+      await addTaskFromTrigger(trigger, event);
     }
   }
 }
 
-export default function handleEvent(event) {
-  const topic = event.meta && event.meta.topic;
-  switch (topic) {
-    case "cdn-url-purges":
-      handlePurge(event);
-      break;
-    default:
-      runHook(topic, event);
-      break;
-  }
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
+export function start() {
+  const consumer = new KafkaConsumer(nconf.get("kafka:config"));
+  consumer.connect();
+  consumer.on("ready", async () => {
+    consumer.subscribe([nconf.get("kafka:topic")]);
+    let msgs;
+    do {
+      try {
+        msgs = await promisify(consumer.consume.bind(consumer))(1);
+        if (msgs.length === 0) {
+          continue;
+        }
+        const event = JSON.parse(msgs[0].value.toString());
+        await handleEvent(event);
+      } catch (e) {
+        logger.error(e.message);
+        await delay(1000);
+      }
+    } while (msgs);
+  });
 }

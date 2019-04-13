@@ -30,7 +30,4 @@ export default class Task {
   static optionsFromTrigger({ trigger }) {
     return trigger.options;
   }
-
-  static priority = 10;
-  static ttl = 60000;
 }

@@ -7,8 +7,7 @@ import serve from "koa-static";
 import error from "koa-json-error";
 import renderRouter from "./app/routes/render";
 import replaceRouter from "./app/routes/replace";
-import eventsRouter from "./app/routes/events";
-import purge from "./app/routes/purge";
+import { start as startEvent } from "./app/lib/events";
 
 const app = new Koa();
 
@@ -20,8 +19,8 @@ app.use(error());
 
 app.use(renderRouter.routes());
 app.use(replaceRouter.routes());
-app.use(eventsRouter.routes());
-app.use(purge);
+
+startEvent();
 
 const server = app.listen(process.env.PORT || 3000, function() {
   console.log("Klinklang server listening on port " + server.address().port);
