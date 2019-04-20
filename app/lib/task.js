@@ -20,5 +20,5 @@ export async function addTaskFromTrigger(trigger, data) {
     throw new Error("Invalid task name");
   }
   const options = Task.optionsFromTrigger(trigger, data);
-  addTask(trigger.task, trigger.username, options);
+  await addTask(trigger.task, trigger.username, options);
 }
