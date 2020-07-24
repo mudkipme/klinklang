@@ -1,0 +1,7 @@
+.build
+.vscode
+build
+dist
+web_modules
+node_modules
+/config.json

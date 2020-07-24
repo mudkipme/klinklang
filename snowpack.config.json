@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "mount:public": "mount public --to /",
+    "mount:src": "mount src --to /_dist_"
+  },
+  "plugins": [],
+  "devOptions": {
+    "port": 3000
+  },
+  "proxy": {
+    "/api": "http://localhost:3001/api"
+  }
+}

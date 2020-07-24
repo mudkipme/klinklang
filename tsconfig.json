@@ -1,0 +1,16 @@
+{
+  "include": ["src", "server"],
+  "exclude": ["node_modules"],
+  "compilerOptions": {
+    "module": "esnext",
+    "target": "esnext",
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "baseUrl": "./",
+    "paths": { "*": ["web_modules/.types/*"] },
+    "strict": true,
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true
+  }
+}
