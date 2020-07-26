@@ -8,7 +8,7 @@ interface FetchTerminologyOptions {
   client?: MediaWikiClient
   page: string
   entrySelector: string
-  idSelector: string
+  idSelector?: string
   langSelectorMap: {zh: string, [lang: string]: string}
 }
 
@@ -29,8 +29,8 @@ const fetchTerminology = async (options: FetchTerminologyOptions): Promise<Map<n
   // load non-zh terminologies
   let $ = cheerio.load(pageDefault.parse.text)
 
-  $(options.entrySelector).each((_, line) => {
-    const textId = parseInt($(line).find(options.idSelector).text().trim(), 10)
+  $(options.entrySelector).each((index, line) => {
+    const textId = options.idSelector !== undefined ? parseInt($(line).find(options.idSelector).text().trim(), 10) : index + 1
     if (isNaN(textId)) {
       return
     }
@@ -56,8 +56,8 @@ const fetchTerminology = async (options: FetchTerminologyOptions): Promise<Map<n
   for (const variant of ['zh-hant', 'zh-hans']) {
     $ = cheerio.load(variant === 'zh-hant' ? pageHant.parse.text : pageHans.parse.text)
 
-    $(options.entrySelector).each((_, line) => {
-      const textId = parseInt($(line).find(options.idSelector).text().trim(), 10)
+    $(options.entrySelector).each((index, line) => {
+      const textId = options.idSelector !== undefined ? parseInt($(line).find(options.idSelector).text().trim(), 10) : index + 1
       if (isNaN(textId)) {
         return
       }

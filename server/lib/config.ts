@@ -1,11 +1,38 @@
 import convict from 'convict'
 
 const config = convict({
-  mediawiki: {
-    apiRoot: {
-      doc: 'api.php of your MediaWiki installation',
+  app: {
+    secret: {
+      doc: 'Secret of Klinklang app',
       format: String,
-      default: 'https://en.wikipedia.org/w/api.php'
+      default: ''
+    },
+    prefix: {
+      doc: 'Prefix for sessions',
+      format: String,
+      default: 'klinklang'
+    }
+  },
+  mediawiki: {
+    scriptPath: {
+      doc: 'Script path of your MediaWiki installation',
+      format: String,
+      default: 'https://en.wikipedia.org/w/'
+    },
+    oauthKey: {
+      doc: 'OAuth consumer key',
+      format: String,
+      default: ''
+    },
+    oauthSecret: {
+      doc: 'OAuth consumer secret',
+      format: String,
+      default: ''
+    },
+    oauthCallback: {
+      doc: 'OAuth callback url',
+      format: String,
+      default: 'oob'
     }
   },
   db: {
@@ -28,6 +55,18 @@ const config = convict({
       doc: 'Database password',
       format: String,
       default: ''
+    }
+  },
+  redis: {
+    host: {
+      doc: 'Redis host',
+      format: String,
+      default: 'redis'
+    },
+    port: {
+      doc: 'Redis port',
+      format: 'int',
+      default: 6379
     }
   }
 })
