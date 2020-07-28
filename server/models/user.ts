@@ -1,4 +1,5 @@
 import { Model, DataTypes, Optional } from 'sequelize'
+import { omit } from 'lodash'
 import { sequelize } from '../lib/database'
 import { Token } from 'oauth-1.0a'
 
@@ -18,6 +19,10 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public wikiId!: number
   public groups!: string[]
   public token!: Token
+
+  public toJSON (): Omit<UserAttributes, 'token'> {
+    return omit(this.get(), 'token')
+  }
 }
 
 User.init({

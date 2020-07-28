@@ -21,7 +21,7 @@ export interface OAuthIdentity {
   grants: string[]
 }
 
-const oauth = new OAuth({
+export const oauth = new OAuth({
   consumer: {
     key: config.get('mediawiki').oauthKey,
     secret: config.get('mediawiki').oauthSecret

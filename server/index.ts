@@ -9,6 +9,7 @@ import config from './lib/config'
 import logger from './lib/logger'
 import hello from './routes/hello'
 import oauth from './routes/oauth'
+import userRouter from './routes/user'
 import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
 
@@ -30,6 +31,7 @@ const start = async (): Promise<void> => {
 
   app.use(hello.routes())
   app.use(oauth.routes())
+  app.use(userRouter.routes())
 
   const server = app.listen(process.env.PORT ?? 3001, () => {
     const address = server.address()

@@ -1,17 +1,13 @@
 import { Middleware } from 'koa'
-import { Context } from '../lib/context'
+import { CustomState, CustomContext } from '../lib/context'
 import User from '../models/user'
 import logger from '../lib/logger'
 
-const userMiddleware = (): Middleware => async (ctx: Context, next): Promise<void> => {
-  if (ctx.session === undefined) {
-    await next()
-    return
-  }
+const userMiddleware = (): Middleware<CustomState, CustomContext> => async (ctx, next): Promise<void> => {
   if (ctx.session.userId !== undefined) {
     try {
       const user = await User.findOne({ where: { id: ctx.session.userId } })
-      ctx.state.user = user !== null ? user : undefined
+      ctx.state.user = user === null ? undefined : user
     } catch (e) {
       logger.warn(e)
     }

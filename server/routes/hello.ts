@@ -5,7 +5,9 @@ import { CustomState, CustomContext } from '../lib/context'
 const hello = new Router<CustomState, CustomContext>({ prefix: '/api/hello' })
 
 hello.get('/me', async (ctx) => {
-  ctx.body = ctx.state.user
+  ctx.body = {
+    user: ctx.state.user
+  }
 })
 
 hello.get('/world', async (ctx) => {

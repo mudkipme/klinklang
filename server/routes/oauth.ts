@@ -1,23 +1,21 @@
 import Router from '@koa/router'
 import createErrors, { BadRequest } from 'http-errors'
 import { getRedirectURL, verify, getIdentity } from '../lib/oauth'
-import { CustomContext } from '../lib/context'
+import { CustomContext, CustomState } from '../lib/context'
 import User from '../models/user'
 
-const oauthRouter = new Router<unknown, CustomContext>({ prefix: '/oauth' })
+const oauthRouter = new Router<CustomState, CustomContext>({ prefix: '/oauth' })
 
 oauthRouter.get('/login', async (ctx) => {
   const { url, token } = await getRedirectURL()
-  if (ctx.session !== undefined) {
-    ctx.session.loginToken = token
-  }
+  ctx.session.loginToken = token
   ctx.redirect(url)
 })
 
 oauthRouter.get('/callback', async (ctx) => {
   const searchParams = new URLSearchParams(ctx.search)
   const verifier = searchParams.get('oauth_verifier')
-  if (ctx.session === undefined || ctx.session.loginToken === undefined || verifier === null) {
+  if (ctx.session.loginToken === undefined || verifier === null) {
     throw createErrors(BadRequest, 'invalid oauth callback')
   }
 
@@ -29,7 +27,7 @@ oauthRouter.get('/callback', async (ctx) => {
   if (user === null) {
     user = await User.create({
       wikiId: identity.sub,
-      token: token,
+      token,
       groups: identity.groups,
       name: identity.username
     })
@@ -44,9 +42,7 @@ oauthRouter.get('/callback', async (ctx) => {
 })
 
 oauthRouter.post('/logout', async (ctx) => {
-  if (ctx.session !== undefined) {
-    delete ctx.session.userId
-  }
+  delete ctx.session.userId
   ctx.redirect('/')
 })
 
