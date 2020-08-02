@@ -41,6 +41,7 @@
     "@types/cheerio": "^0.22.21",
     "@types/convict": "^5.2.1",
     "@types/http-errors": "^1.8.0",
+    "@types/ioredis": "^4.17.2",
     "@types/jsonwebtoken": "^8.5.0",
     "@types/koa": "^2.11.3",
     "@types/koa-bodyparser": "^4.3.0",
@@ -51,12 +52,16 @@
     "@types/koa-static": "^4.0.1",
     "@types/koa__router": "^8.0.2",
     "@types/lodash": "^4.14.158",
+    "@types/uuid": "^8.0.0",
     "@types/validator": "^13.1.0",
+    "ajv": "^6.12.3",
+    "bullmq": "^1.9.0",
     "cheerio": "^1.0.0-rc.3",
     "convict": "^6.0.0",
     "haunted": "^4.7.0",
     "haunted-router": "^0.2.0",
     "http-errors": "^1.8.0",
+    "ioredis": "^4.17.3",
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.0",
     "koa-bodyparser": "^4.3.0",
@@ -67,11 +72,13 @@
     "koa-static": "^5.0.0",
     "lit-html": "^1.2.1",
     "lodash": "^4.17.19",
+    "micromustache": "^7.1.0",
     "node-fetch": "^3.0.0-beta.7",
     "node-rdkafka": "^2.9.1",
     "oauth-1.0a": "^2.2.6",
     "pg": "^8.3.0",
     "sequelize": "^6.3.3",
+    "uuid": "^8.3.0",
     "winston": "^3.3.3"
   },
   "devDependencies": {
@@ -84,7 +91,7 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.4",
-    "snowpack": "^2.6.4",
+    "snowpack": "^2.7.2",
     "typescript": "^3.9.7"
   }
 }

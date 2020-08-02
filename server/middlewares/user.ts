@@ -6,7 +6,7 @@ import logger from '../lib/logger'
 const userMiddleware = (): Middleware<CustomState, CustomContext> => async (ctx, next): Promise<void> => {
   if (ctx.session.userId !== undefined) {
     try {
-      const user = await User.findOne({ where: { id: ctx.session.userId } })
+      const user = await User.findByPk(ctx.session.userId)
       ctx.state.user = user === null ? undefined : user
     } catch (e) {
       logger.warn(e)

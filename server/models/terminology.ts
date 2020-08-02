@@ -17,6 +17,9 @@ class Terminology extends Model<TerminologyAttributes, TerminologyCreationAttrib
   public category!: string
   public lang!: string
   public text!: string
+
+  public readonly createdAt!: Date
+  public readonly updatedAt!: Date
 }
 
 Terminology.init({

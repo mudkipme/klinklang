@@ -1,7 +1,9 @@
 import { Model, DataTypes, Optional } from 'sequelize'
 import { omit } from 'lodash'
-import { sequelize } from '../lib/database'
 import { Token } from 'oauth-1.0a'
+import { sequelize } from '../lib/database'
+import MediaWikiClient from '../lib/mediawiki/client'
+import { authedClient } from '../lib/wiki'
 
 interface UserAttributes {
   id: string
@@ -20,8 +22,15 @@ class User extends Model<UserAttributes, UserCreationAttributes> implements User
   public groups!: string[]
   public token!: Token
 
+  public readonly createdAt!: Date
+  public readonly updatedAt!: Date
+
   public toJSON (): Omit<UserAttributes, 'token'> {
     return omit(this.get(), 'token')
+  }
+
+  public getWikiClient (): MediaWikiClient {
+    return authedClient(this.token)
   }
 }
 

@@ -12,6 +12,7 @@ import oauth from './routes/oauth'
 import userRouter from './routes/user'
 import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
+import './lib/worker'
 
 const start = async (): Promise<void> => {
   await sequelize.sync()
