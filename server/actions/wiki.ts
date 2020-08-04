@@ -4,7 +4,7 @@ import { Actions } from './interfaces'
 import { defaultClient } from '../lib/wiki'
 
 export interface GetHTMLActionInput {
-  title: ''
+  title: string
   variants?: Array<'zh-hans' | 'zh-hant'>
 }
 

@@ -62,7 +62,7 @@ class WorkflowInstance {
     const data = this.toJSON()
     await Promise.all([
       redis.set(`workflow-instance:${this.workflowId}:${this.instanceId}`, JSON.stringify(data)),
-      redis.zadd(`workflow-instances:${this.workflowId}`, this.instanceId, Date.now())
+      redis.zadd(`workflow-instances:${this.workflowId}`, Date.now(), this.instanceId)
     ])
   }
 
@@ -72,7 +72,7 @@ class WorkflowInstance {
     await this.save()
   }
 
-  public async update (output: unknown): Promise<void> {
+  public async update<T extends Actions> (output: T['output']): Promise<void> {
     this.context.prevOutput = output
     await this.save()
   }
@@ -94,18 +94,18 @@ class WorkflowInstance {
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
-    const nextAction = action.getNextAction()
+    const nextAction = await action.getNextAction()
     if (nextAction === null || nextAction === undefined) {
       return null
     }
 
-    const jobData = action.buildJobData(this.instanceId, this.context)
+    const jobData = nextAction.buildJobData(this.instanceId, this.context)
     const jobId = uuidv4()
-    const job = await queue.add(action.actionType, jobData, { jobId })
+    const job = await queue.add(nextAction.actionType, jobData, { jobId })
     return job
   }
 
-  public static async create (headAction: Action, trigger?: WorkflowTrigger): Promise<WorkflowInstance> {
+  public static async create<T extends Actions> (headAction: Action<T>, trigger?: WorkflowTrigger): Promise<WorkflowInstance> {
     const instanceId = uuidv4()
     const context = {}
     const jobData = headAction.buildJobData(instanceId, context)
@@ -134,7 +134,7 @@ class WorkflowInstance {
 
   public static async getInstance (workflowId: string, instanceId: string): Promise<WorkflowInstance | null> {
     const instance = await redis.get(`workflow-instance:${workflowId}:${instanceId}`)
-    return instance !== null ? JSON.parse(instance) : null
+    return instance !== null ? new WorkflowInstance(JSON.parse(instance)) : null
   }
 }
 

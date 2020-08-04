@@ -1,9 +1,10 @@
-import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin } from 'sequelize'
+import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin, HasManyAddAssociationsMixin, HasManyAddAssociationMixin } from 'sequelize'
 import { sequelize } from '../lib/database'
 import Action from './action'
 import { WorkflowTrigger } from './workflow-type'
 import WorkflowInstance from './workflow-instance'
 import User from './user'
+import { Actions } from '../actions/interfaces'
 
 interface WorkflowAttributes {
   id: string
@@ -22,7 +23,9 @@ class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> imp
   public enabled!: boolean
   public triggers!: WorkflowTrigger[]
 
-  public getActions!: HasManyGetAssociationsMixin<Action>
+  public getActions!: HasManyGetAssociationsMixin<Action<any>>
+  public addAction!: HasManyAddAssociationMixin<Action<any>, string>
+  public addActions!: HasManyAddAssociationsMixin<Action<any>, string>
   public getUser!: BelongsToGetAssociationMixin<User>
 
   public readonly createdAt!: Date
@@ -32,7 +35,7 @@ class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> imp
     return await WorkflowInstance.getInstancesOfWorkflow(this.id, start, stop)
   }
 
-  public async getHeadAction (): Promise<Action | undefined> {
+  public async getHeadAction<T extends Actions> (): Promise<Action<T> | undefined> {
     const actions = await this.getActions({ where: { isHead: true } })
     return actions[0]
   }
@@ -73,8 +76,10 @@ Workflow.init({
   sequelize
 })
 
-Action.belongsTo(Workflow)
-Workflow.hasMany(Action)
+Workflow.hasMany(Action, {
+  foreignKey: 'workflowId'
+})
+Action.belongsTo(Workflow, { as: 'workflow' })
 Workflow.belongsTo(User)
 
 export default Workflow

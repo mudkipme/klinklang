@@ -7,15 +7,17 @@ import session from 'koa-session'
 import redisStore from 'koa-redis'
 import config from './lib/config'
 import logger from './lib/logger'
-import hello from './routes/hello'
 import oauth from './routes/oauth'
 import userRouter from './routes/user'
+import workflowRouter from './routes/workflow'
 import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
+import bootstrap from './commands/bootstrap'
 import './lib/worker'
 
 const start = async (): Promise<void> => {
   await sequelize.sync()
+  await bootstrap()
 
   const app = new Koa()
 
@@ -30,9 +32,9 @@ const start = async (): Promise<void> => {
   app.use(error())
   app.use(userMiddleware())
 
-  app.use(hello.routes())
   app.use(oauth.routes())
   app.use(userRouter.routes())
+  app.use(workflowRouter.routes())
 
   const server = app.listen(process.env.PORT ?? 3001, () => {
     const address = server.address()
