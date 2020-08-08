@@ -54,3 +54,31 @@ export class GetHTMLWorker extends WikiWorker<GetHTMLAction> {
     }
   }
 }
+
+export interface GetTextActionInput {
+  title: string
+}
+
+export interface GetTextActionOutput {
+  text: string
+}
+
+export interface GetTextAction {
+  actionType: 'GET_TEXT'
+  input: GetTextActionInput
+  output: GetTextActionOutput
+}
+
+export class GetTextWorker extends WikiWorker<GetTextAction> {
+  public async process (): Promise<GetTextActionOutput> {
+    const client = await this.getWikiClient()
+    const response = await client.queryRevision([this.input.title])
+    let text = ''
+    if (response.query.pages.length > 0 && response.query.pages[0].revisions.length > 0 && response.query.pages[0].revisions[0].slots.main !== undefined) {
+      text = response.query.pages[0].revisions[0].slots.main.content
+    }
+    return {
+      text
+    }
+  }
+}

@@ -12,10 +12,18 @@ export async function setupUpdateAbilityWorkflow (): Promise<void> {
 
   try {
     const workflow = await Workflow.create({
-      name: 'Update Ability term list',
+      name,
       isPrivate: false,
       enabled: true,
-      triggers: []
+      triggers: [{
+        type: 'TRIGGER_EVENTBUS',
+        topic: 'mediawiki.revision-create',
+        predicate: {
+          op: 'test',
+          path: '/page_title',
+          value: '特性列表'
+        }
+      }]
     }, { transaction })
 
     const firstAction = await Action.create({
@@ -101,10 +109,18 @@ export async function setupUpdatePokemonWorkflow (): Promise<void> {
 
   try {
     const workflow = await Workflow.create({
-      name: 'Update Pokémon term list',
+      name,
       isPrivate: false,
       enabled: true,
-      triggers: []
+      triggers: [{
+        type: 'TRIGGER_EVENTBUS',
+        topic: 'mediawiki.revision-create',
+        predicate: {
+          op: 'test',
+          path: '/page_title',
+          value: '宝可梦列表（按全国图鉴编号）/简单版'
+        }
+      }]
     }, { transaction })
 
     const firstAction = await Action.create({

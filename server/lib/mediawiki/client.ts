@@ -1,7 +1,7 @@
 import fetch, { BodyInit } from 'node-fetch'
 import createError from 'http-errors'
 import OAuth, { Token } from 'oauth-1.0a'
-import { ParseResponse } from './api'
+import { ParseResponse, QueryRevisionResponse, QueryTokenResponse } from './api'
 
 export interface MediaWikiClientOptions {
   apiRoot: string
@@ -38,7 +38,7 @@ class MediaWikiClient {
       url: url.toString(),
       data: body,
       method
-    })) as unknown as Record<string, string> : undefined
+    }, this.#token)) as unknown as Record<string, string> : undefined
 
     const response = await fetch(url.toString(), {
       method,
@@ -54,12 +54,30 @@ class MediaWikiClient {
     return json as Response
   }
 
+  private async queryToken (type = 'csrf'): Promise<QueryTokenResponse> {
+    const params = new URLSearchParams()
+    params.set('action', 'query')
+    params.set('meta', 'tokens')
+    params.set('type', type)
+    return await this.makeRequest({ method: 'GET', params })
+  }
+
   public async parse (page: string, variant?: string): Promise<ParseResponse> {
     const params = new URLSearchParams()
     params.set('action', 'parse')
     params.set('page', page)
     params.set('prop', 'text')
     variant !== undefined && params.set('variant', variant)
+    return await this.makeRequest({ method: 'GET', params })
+  }
+
+  public async queryRevision (titles: string[]): Promise<QueryRevisionResponse> {
+    const params = new URLSearchParams()
+    params.set('action', 'query')
+    params.set('prop', 'revisions')
+    params.set('titles', titles.join('|'))
+    params.set('rvslots', '*')
+    params.set('rvprop', 'content')
     return await this.makeRequest({ method: 'GET', params })
   }
 }

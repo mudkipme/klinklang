@@ -1,6 +1,6 @@
 import { Job } from 'bullmq'
 import { WorkerType } from './base'
-import { GetHTMLWorker } from './wiki'
+import { GetHTMLWorker, GetTextWorker } from './wiki'
 import { Actions, ActionJobData, ActionJobResult } from './interfaces'
 import { ParseTerminologyWorker, UpdateTerminologyWorker } from './terminology'
 
@@ -27,3 +27,4 @@ export function register<T extends Actions> (actionType: T['actionType'], proces
 register('GET_HTML', GetHTMLWorker)
 register('PARSE_TERMINOLOGY_LIST', ParseTerminologyWorker)
 register('UPDATE_TERMINOLOGY', UpdateTerminologyWorker)
+register('GET_TEXT', GetTextWorker)

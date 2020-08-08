@@ -13,11 +13,13 @@ import workflowRouter from './routes/workflow'
 import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
 import bootstrap from './commands/bootstrap'
+import { start } from './lib/eventbus'
 import './lib/worker'
 
-const start = async (): Promise<void> => {
+const launch = async (): Promise<void> => {
   await sequelize.sync()
   await bootstrap()
+  await start()
 
   const app = new Koa()
 
@@ -43,6 +45,6 @@ const start = async (): Promise<void> => {
   })
 }
 
-start().catch(e => {
+launch().catch(e => {
   logger.error(e)
 })

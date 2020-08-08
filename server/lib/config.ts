@@ -68,6 +68,18 @@ const config = convict({
       format: 'int',
       default: 6379
     }
+  },
+  kafka: {
+    'metadata.broker.list': {
+      doc: 'Kafka broker list',
+      format: String,
+      default: 'kafka:9092'
+    },
+    'group.id': {
+      doc: 'Kafka consumer group id',
+      format: String,
+      default: 'klinklang'
+    }
   }
 })
 

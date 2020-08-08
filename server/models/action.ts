@@ -53,7 +53,6 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
 
 class Action<T extends Actions> extends Model<ActionAttributes<T>, ActionCreationAttributes<T>> implements ActionAttributes<T> {
   public id!: string
-  public workflowId!: string
   public readonly actionType!: T['actionType']
   public inputBuilder!: InputBuilder<T['input']>
   public isHead!: boolean
@@ -61,6 +60,9 @@ class Action<T extends Actions> extends Model<ActionAttributes<T>, ActionCreatio
   public getWorkflow!: BelongsToGetAssociationMixin<Workflow>
   public getNextAction!: BelongsToGetAssociationMixin<Action<any> | null>
   public setNextAction!: BelongsToSetAssociationMixin<Action<any> | null, string>
+
+  public workflowId!: string
+  public nextActionId!: string
 
   public buildJobData (instanceId: string, context: Record<string, unknown>): ActionJobData<T> {
     return {

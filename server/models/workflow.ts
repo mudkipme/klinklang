@@ -1,4 +1,5 @@
 import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin, HasManyAddAssociationsMixin, HasManyAddAssociationMixin } from 'sequelize'
+import { keyBy } from 'lodash'
 import { sequelize } from '../lib/database'
 import Action from './action'
 import { WorkflowTrigger } from './workflow-type'
@@ -46,6 +47,28 @@ class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> imp
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
     return await WorkflowInstance.create(headAction, trigger)
+  }
+
+  public async getLinkedActions (): Promise<Array<Action<any>>> {
+    const actions = await this.getActions()
+    let current = actions.find(action => action.isHead)
+    if (current === undefined || current === null) {
+      return []
+    }
+
+    const actionMap = keyBy(actions, 'id')
+    const linkedActions = []
+    const visited: {[id: string]: boolean} = {}
+    while (current !== undefined) {
+      if (visited[current.id]) {
+        throw new Error('CIRCULAR_ACTION_FOUND')
+      }
+      linkedActions.push(current)
+      visited[current.id] = true
+      current = current.nextActionId !== null ? actionMap[current.nextActionId] : undefined
+    }
+
+    return linkedActions
   }
 }
 
