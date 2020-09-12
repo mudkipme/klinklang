@@ -41,7 +41,7 @@ export abstract class ActionWorker<T extends Actions> {
     }
     await instance.started(this.jobId)
     const output = await this.process()
-    await instance.update(output)
+    await instance.update(this.actionId, output)
     const nextJob = await instance.createNextJob(this.actionId)
     if (nextJob === null) {
       await instance.complete()

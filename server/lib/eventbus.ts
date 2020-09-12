@@ -67,7 +67,6 @@ export default class Subscriber {
         if (msgs.length === 0) {
           continue
         }
-        logger.info('received message: ' + JSON.stringify(msgs))
         await this.handleMessage(msgs[0])
       } catch (e) {
         logger.error(e.message)

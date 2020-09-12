@@ -11,6 +11,11 @@ const config = convict({
       doc: 'Prefix for sessions',
       format: String,
       default: 'klinklang'
+    },
+    port: {
+      doc: 'Server port',
+      format: 'int',
+      default: 3000
     }
   },
   mediawiki: {

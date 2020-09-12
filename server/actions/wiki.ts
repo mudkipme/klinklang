@@ -2,6 +2,7 @@ import { ActionWorker } from './base'
 import MediaWikiClient from '../lib/mediawiki/client'
 import { Actions } from './interfaces'
 import { defaultClient } from '../lib/wiki'
+import { EditRequest, EditResponse } from '../lib/mediawiki/api'
 
 export interface GetHTMLActionInput {
   title: string
@@ -80,5 +81,24 @@ export class GetTextWorker extends WikiWorker<GetTextAction> {
     return {
       text
     }
+  }
+}
+
+export type EditWikiActionInput = EditRequest
+export type EditWikiActionOutput = EditResponse
+
+export interface EditWikiAction {
+  actionType: 'EDIT_WIKI'
+  input: EditWikiActionInput
+  output: EditWikiActionOutput
+}
+
+export class EditWikiWorker extends WikiWorker<EditWikiAction> {
+  public async process (): Promise<EditWikiActionOutput> {
+    const client = await this.getWikiClient()
+    return await client.edit({
+      bot: true,
+      ...this.input
+    })
   }
 }

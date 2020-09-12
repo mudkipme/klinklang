@@ -1,7 +1,7 @@
 import fetch, { BodyInit } from 'node-fetch'
 import createError from 'http-errors'
 import OAuth, { Token } from 'oauth-1.0a'
-import { ParseResponse, QueryRevisionResponse, QueryTokenResponse } from './api'
+import { ParseResponse, QueryRevisionResponse, QueryTokenResponse, EditRequest, EditResponse } from './api'
 
 export interface MediaWikiClientOptions {
   apiRoot: string
@@ -10,9 +10,9 @@ export interface MediaWikiClientOptions {
 }
 
 interface RequestOptions {
-  params: URLSearchParams
+  params?: URLSearchParams
   method: 'GET' | 'POST'
-  body?: BodyInit
+  form?: object
 }
 
 class MediaWikiClient {
@@ -25,20 +25,37 @@ class MediaWikiClient {
     this.#token = options.token
   }
 
-  private async makeRequest<Response>({ params, method, body }: RequestOptions): Promise<Response> {
+  private async makeRequest<Response>({ params, method, form }: RequestOptions): Promise<Response> {
     const url = new URL(this.#apiRoot)
+
     url.searchParams.set('format', 'json')
     url.searchParams.set('formatversion', '2')
 
-    for (const [name, value] of params) {
-      url.searchParams.append(name, value)
+    if (params !== undefined) {
+      for (const [name, value] of params) {
+        url.searchParams.append(name, value)
+      }
     }
 
-    const headers = this.#oauth !== undefined ? this.#oauth.toHeader(this.#oauth.authorize({
+    let body: BodyInit | undefined
+
+    if (form !== undefined) {
+      const formData = new URLSearchParams()
+      for (const [key, value] of Object.entries(form)) {
+        formData.set(key, `${value as string}`)
+      }
+      body = formData.toString()
+    }
+
+    let headers = this.#oauth !== undefined ? this.#oauth.toHeader(this.#oauth.authorize({
       url: url.toString(),
-      data: body,
+      data: form,
       method
     }, this.#token)) as unknown as Record<string, string> : undefined
+
+    if (method === 'POST') {
+      headers = { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }
+    }
 
     const response = await fetch(url.toString(), {
       method,
@@ -50,8 +67,7 @@ class MediaWikiClient {
       throw createError(response.status, await response.text())
     }
 
-    const json = await response.json()
-    return json as Response
+    return await response.json() as Response
   }
 
   private async queryToken (type = 'csrf'): Promise<QueryTokenResponse> {
@@ -79,6 +95,21 @@ class MediaWikiClient {
     params.set('rvslots', '*')
     params.set('rvprop', 'content')
     return await this.makeRequest({ method: 'GET', params })
+  }
+
+  public async edit (request: EditRequest): Promise<EditResponse> {
+    const token = await this.queryToken()
+    const params = new URLSearchParams()
+    params.set('action', 'edit')
+
+    return await this.makeRequest({
+      method: 'POST',
+      params,
+      form: {
+        ...request,
+        token: token.query.tokens.csrftoken
+      }
+    })
   }
 }
 

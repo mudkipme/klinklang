@@ -72,8 +72,15 @@ class WorkflowInstance {
     await this.save()
   }
 
-  public async update<T extends Actions> (output: T['output']): Promise<void> {
+  public async update<T extends Actions> (currentActionId: string, output: T['output']): Promise<void> {
+    const action = await Action.findByPk(currentActionId)
+    if (action === null || action === undefined) {
+      throw new Error('ERR_ACTION_NOT_FOUND')
+    }
     this.context.prevOutput = output
+    if (action.outputContext !== undefined && action.outputContext !== null && action.outputContext !== '') {
+      this.context[action.outputContext] = output
+    }
     await this.save()
   }
 

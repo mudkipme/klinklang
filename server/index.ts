@@ -38,7 +38,7 @@ const launch = async (): Promise<void> => {
   app.use(userRouter.routes())
   app.use(workflowRouter.routes())
 
-  const server = app.listen(process.env.PORT ?? 3001, () => {
+  const server = app.listen(process.env.PORT ?? config.get('app').port, () => {
     const address = server.address()
     const port = typeof address !== 'string' ? address?.port : address
     logger.info(`Klinklang server listening on ${port ?? ''}`)

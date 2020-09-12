@@ -31,6 +31,7 @@ interface ActionAttributes<T extends Actions> {
   actionType: T['actionType']
   inputBuilder: InputBuilder<T['input']>
   isHead: boolean
+  outputContext?: string
 }
 
 type ActionCreationAttributes<T extends Actions> = Optional<ActionAttributes<T>, 'id'>
@@ -63,6 +64,7 @@ class Action<T extends Actions> extends Model<ActionAttributes<T>, ActionCreatio
 
   public workflowId!: string
   public nextActionId!: string
+  public outputContext?: string
 
   public buildJobData (instanceId: string, context: Record<string, unknown>): ActionJobData<T> {
     return {
@@ -93,6 +95,10 @@ Action.init({
   isHead: {
     type: DataTypes.BOOLEAN,
     allowNull: false
+  },
+  outputContext: {
+    type: DataTypes.STRING,
+    allowNull: true
   }
 }, {
   sequelize

@@ -19,7 +19,7 @@ export interface SCSSAction {
 
 export class SCSSWorker extends ActionWorker<SCSSAction> {
   public async process (): Promise<SCSSActionOutput> {
-    const variableText = Object.keys(this.input.variables).map(key => `$${key}: ${this.input.variables[key]};\n`).join('')
+    const variableText = Object.keys(this.input.variables).map(key => `$${key}: "${this.input.variables[key]}";\n`).join('')
     const result = await promisify(sass.render.bind(sass))({
       data: variableText + this.input.scss,
       outputStyle: 'compact'
