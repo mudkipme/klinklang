@@ -5,3 +5,4 @@ dist
 web_modules
 node_modules
 /config.json
+/workflow.yml

@@ -1,4 +1,4 @@
-import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin, HasManyAddAssociationsMixin, HasManyAddAssociationMixin } from 'sequelize'
+import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin, HasManyAddAssociationsMixin, HasManyAddAssociationMixin, BelongsToSetAssociationMixin } from 'sequelize'
 import { keyBy } from 'lodash'
 import { sequelize } from '../lib/database'
 import Action from './action'
@@ -28,6 +28,7 @@ class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> imp
   public addAction!: HasManyAddAssociationMixin<Action<any>, string>
   public addActions!: HasManyAddAssociationsMixin<Action<any>, string>
   public getUser!: BelongsToGetAssociationMixin<User>
+  public setUser!: BelongsToSetAssociationMixin<User, string>
 
   public readonly createdAt!: Date
   public readonly updatedAt!: Date

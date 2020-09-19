@@ -77,7 +77,7 @@ class WorkflowInstance {
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
-    this.context.prevOutput = output
+    this.context.payload = output
     if (action.outputContext !== undefined && action.outputContext !== null && action.outputContext !== '') {
       this.context[action.outputContext] = output
     }

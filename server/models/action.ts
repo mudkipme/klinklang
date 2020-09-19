@@ -26,7 +26,7 @@ type InputBuildType<T> =
 
 type InputBuilder<T> = T extends object ? {[P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]>} : InputBuildType<T>
 
-interface ActionAttributes<T extends Actions> {
+export interface ActionAttributes<T extends Actions> {
   id: string
   actionType: T['actionType']
   inputBuilder: InputBuilder<T['input']>

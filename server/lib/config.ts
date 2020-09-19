@@ -16,6 +16,11 @@ const config = convict({
       doc: 'Server port',
       format: 'int',
       default: 3000
+    },
+    bootstrap: {
+      doc: 'Bootstrap workflow config',
+      format: String,
+      default: './workflow.yml'
     }
   },
   mediawiki: {

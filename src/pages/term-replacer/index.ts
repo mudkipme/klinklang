@@ -12,7 +12,7 @@ import reducer, { initialState } from './reducer'
 import { changeSourceLng, changeResultLng, selectAll, selectCategory } from './actions'
 
 export interface TermReplacer extends HTMLElement {}
-
+// eslint-disable-next-line @typescript-eslint/no-redeclare
 function TermReplacer (this: TermReplacer): TemplateResult {
   const [state, dispatch] = useReducer(reducer, initialState)
 
