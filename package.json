@@ -90,7 +90,8 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.1.1",
+    "@snowpack/plugin-optimize": "^0.2.1",
+    "@typescript-eslint/eslint-plugin": "^4.2.0",
     "concurrently": "^5.3.0",
     "eslint": "^7.9.0",
     "eslint-config-standard-with-typescript": "^19.0.1",
@@ -100,6 +101,6 @@
     "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.4",
     "snowpack": "^2.11.1",
-    "typescript": "^4.0.2"
+    "typescript": "^4.0.3"
   }
 }

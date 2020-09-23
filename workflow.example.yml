@@ -97,7 +97,7 @@ actions:
       jsonPath: $.payload
 ---
 name: Update Site CSS
-isPrivate: false
+isPrivate: true
 enabled: true
 user: MudkipRadar
 triggers:

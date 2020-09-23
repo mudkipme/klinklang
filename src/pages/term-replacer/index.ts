@@ -8,8 +8,9 @@ import '@material/mwc-checkbox'
 import type { Checkbox } from '@material/mwc-checkbox'
 import '@material/mwc-formfield'
 import '@material/mwc-textarea'
+import type { TextArea } from '@material/mwc-textarea'
 import reducer, { initialState } from './reducer'
-import { changeSourceLng, changeResultLng, selectAll, selectCategory } from './actions'
+import { changeSourceLng, changeResultLng, selectAll, selectCategory, replaceTextFulfilled } from './actions'
 
 export interface TermReplacer extends HTMLElement {}
 // eslint-disable-next-line @typescript-eslint/no-redeclare
@@ -33,6 +34,23 @@ function TermReplacer (this: TermReplacer): TemplateResult {
   const handleAllCheck = useCallback((e: Event) => {
     dispatch(selectAll((e.target as Checkbox).checked))
   }, [])
+
+  const handleReplace = useCallback(async () => {
+    const response = await fetch('/api/terminology/replace', {
+      method: 'POST',
+      body: JSON.stringify({
+        sourceLng: state.sourceLng,
+        resultLng: state.resultLng,
+        categories: state.categories.filter(category => category.selected).map(category => category.value),
+        text: this.shadowRoot !== null ? (this.shadowRoot.querySelector('.source-text') as TextArea).value : ''
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    const { text } = await response.json() as { text: string }
+    dispatch(replaceTextFulfilled(text))
+  }, [state])
 
   return html`
     <link rel="stylesheet" href="https://unpkg.com/@material/layout-grid@latest/dist/mdc.layout-grid.min.css">
@@ -66,7 +84,7 @@ function TermReplacer (this: TermReplacer): TemplateResult {
           </mwc-select>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2-desktop mdc-layout-grid__cell--span-2-tablet mdc-layout-grid__cell--span-4-phone">
-          <mwc-button raised class="translate-button">Replace</mwc-button>
+          <mwc-button raised class="translate-button" @click=${handleReplace}>Replace</mwc-button>
         </div>
       </div>
     </div>
@@ -90,10 +108,10 @@ function TermReplacer (this: TermReplacer): TemplateResult {
     <div class="mdc-layout-grid">
       <div class="mdc-layout-grid__inner">
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-          <mwc-textarea label="Source" required rows="10" class="textarea"></mwc-textarea>
+          <mwc-textarea class="source-text textarea" label="Source" required rows="10"></mwc-textarea>
         </div>
         <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-6-desktop mdc-layout-grid__cell--span-4-tablet mdc-layout-grid__cell--span-4-phone">
-          <mwc-textarea label="Result" required rows="10" class="textarea" disabled></mwc-textarea>
+          <mwc-textarea label="Result" required rows="10" class="textarea" disabled value=${state.resultText}></mwc-textarea>
         </div>
       </div>
     </div>

@@ -40,11 +40,25 @@ workflowRouter.get('/:workflowId/instances', async (ctx) => {
 })
 
 workflowRouter.post('/:workflowId/trigger', async (ctx) => {
+  const currentUser = ctx.state.user
+  if (currentUser === undefined) {
+    ctx.throw(401, new Error('UNAUTHORIZED'))
+    return
+  }
   const workflow = await Workflow.findByPk(ctx.params.workflowId)
   if (workflow === null || workflow === undefined) {
     ctx.throw(404, new Error('WORKFLOW_NOT_FOUND'))
     return
   }
+
+  if (workflow.isPrivate) {
+    const workflowOwner = await workflow.getUser()
+    if (workflowOwner !== null && workflowOwner !== undefined && workflowOwner.id !== currentUser.id && workflow.isPrivate) {
+      ctx.throw(403, new Error('FORBIDDEN'))
+      return
+    }
+  }
+
   const instance = await workflow.createInstance()
   ctx.body = {
     workflow,

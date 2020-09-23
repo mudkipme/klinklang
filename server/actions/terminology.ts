@@ -3,6 +3,7 @@ import type { GetHTMLActionOutput } from './wiki'
 import { ActionWorker } from './base'
 import { sequelize } from '../lib/database'
 import Terminology from '../models/terminology'
+import notification from '../lib/notification'
 
 export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
   entrySelector: string
@@ -107,6 +108,7 @@ export class UpdateTerminologyWorker extends ActionWorker<UpdateTerminologyActio
       await transaction.rollback()
       throw e
     }
+    await notification.sendMessage({ type: 'TERMINOLOGY_UPDATE' })
     return null
   }
 }

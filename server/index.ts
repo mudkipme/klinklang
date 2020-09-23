@@ -10,6 +10,7 @@ import logger from './lib/logger'
 import oauth from './routes/oauth'
 import userRouter from './routes/user'
 import workflowRouter from './routes/workflow'
+import terminologyRouter from './routes/terminology'
 import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
 import bootstrap from './commands/bootstrap'
@@ -37,6 +38,7 @@ const launch = async (): Promise<void> => {
   app.use(oauth.routes())
   app.use(userRouter.routes())
   app.use(workflowRouter.routes())
+  app.use(terminologyRouter.routes())
 
   const server = app.listen(process.env.PORT ?? config.get('app').port, () => {
     const address = server.address()

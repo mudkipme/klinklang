@@ -6,6 +6,7 @@ import { Op } from 'sequelize'
 import config from './config'
 import logger from './logger'
 import Workflow from '../models/workflow'
+import notification, { MessageType } from './notification'
 
 const delay = async (ms: number): Promise<NodeJS.Timeout> => await new Promise(resolve => setTimeout(resolve, ms))
 
@@ -138,35 +139,43 @@ export async function start (): Promise<void> {
 
   Workflow.afterCreate('eventbus', async (workflow) => {
     if (workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS')) {
-      await update()
+      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
     }
   })
 
   Workflow.afterBulkCreate('eventbus', async (workflows) => {
     if (workflows.some(workflow => workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS'))) {
-      await update()
+      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
     }
   })
 
   Workflow.afterDestroy('eventbus', async (workflow) => {
     if (workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS')) {
-      await update()
+      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
     }
   })
 
   Workflow.afterBulkDestroy('eventbus', async () => {
-    await update()
+    await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
   })
 
   Workflow.afterUpdate('eventbus', async (_, options) => {
     if (options.fields === undefined || options.fields === null || options.fields.includes('triggers')) {
-      await update()
+      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
     }
   })
 
   Workflow.afterBulkUpdate('eventbus', async (options) => {
     if (options.fields === undefined || options.fields === null || options.fields.includes('triggers')) {
-      await update()
+      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
+    }
+  })
+
+  notification.on('notification', (e: MessageType) => {
+    if (e.type === 'WORKFLOW_EVENTBUS_UPDATE') {
+      update().catch(err => {
+        logger.error(err)
+      })
     }
   })
 }
