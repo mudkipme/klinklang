@@ -5,7 +5,8 @@ const config = convict({
     secret: {
       doc: 'Secret of Klinklang app',
       format: String,
-      default: ''
+      default: '',
+      env: 'KLINKLANG_SECRET'
     },
     prefix: {
       doc: 'Prefix for sessions',
@@ -32,12 +33,14 @@ const config = convict({
     oauthKey: {
       doc: 'OAuth consumer key',
       format: String,
-      default: ''
+      default: '',
+      env: 'WIKI_OAUTH_KEY'
     },
     oauthSecret: {
       doc: 'OAuth consumer secret',
       format: String,
-      default: ''
+      default: '',
+      env: 'WIKI_OAUTH_SECRET'
     },
     oauthCallback: {
       doc: 'OAuth callback url',
@@ -59,12 +62,14 @@ const config = convict({
     username: {
       doc: 'Database user name',
       format: String,
-      default: ''
+      default: '',
+      env: 'DATABASE_USERNAME'
     },
     password: {
       doc: 'Database password',
       format: String,
-      default: ''
+      default: '',
+      env: 'DATABASE_PASSWORD'
     }
   },
   redis: {
