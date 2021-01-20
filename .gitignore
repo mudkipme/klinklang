@@ -4,5 +4,6 @@ build
 dist
 web_modules
 node_modules
-/config.json
 /workflow.yml
+lerna-debug.log
+/config.json

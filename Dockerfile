@@ -3,16 +3,15 @@ FROM node:lts
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY package.json /app/
-COPY package-lock.json /app/
-
-RUN npm install && npm cache clean --force
+RUN npm i lerna -g
 
 COPY . /app
+RUN lerna bootstrap
+
 ENV NODE_ENV production
-RUN npm run build
+RUN yarn build
 
 EXPOSE 3000
 VOLUME ["/app/config.json", "/app/workflow.yml"]
 
-CMD [ "npm", "serve" ]
+CMD [ "yarn", "serve" ]

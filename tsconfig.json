@@ -1,16 +1,18 @@
 {
-  "include": ["src", "server"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
     "moduleResolution": "node",
     "esModuleInterop": true,
+    "paths": {
+      "@mudkipme/*": ["packages/*/src"]
+    },
     "baseUrl": "./",
-    "paths": { "*": ["web_modules/.types/*"] },
     "strict": true,
-    "jsx": "preserve",
+    "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
-  }
+    "resolveJsonModule": true,
+    "experimentalDecorators": true
+  } 
 }
