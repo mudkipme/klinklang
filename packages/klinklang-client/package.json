@@ -20,7 +20,6 @@
     "url": "https://github.com/mudkipme/klinklang/issues"
   },
   "devDependencies": {
-    "@snowpack/plugin-optimize": "^0.2.13",
     "http-proxy": "^1.18.1",
     "snowpack": "^3.0.11"
   },

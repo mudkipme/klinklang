@@ -1,11 +1,9 @@
 import { join } from 'path'
-import Koa from 'koa'
-import compress from 'koa-compress'
-import bodyParser from 'koa-bodyparser'
-import serve from 'koa-static'
-import error from 'koa-json-error'
-import session from 'koa-session'
-import redisStore from 'koa-redis'
+import Hapi from '@hapi/hapi'
+import Cookie, { Options } from '@hapi/cookie'
+import Yar from '@hapi/yar'
+import Inert from '@hapi/inert'
+import CatboxRedis from '@hapi/catbox-redis'
 import config from './lib/config'
 import logger from './lib/logger'
 import oauth from './routes/oauth'
@@ -23,31 +21,91 @@ const launch = async (): Promise<void> => {
   await bootstrap()
   await start()
 
-  const app = new Koa()
-
-  app.keys = [config.get('app').secret]
-  app.use(session({
-    store: redisStore(config.get('redis')),
-    prefix: config.get('app').prefix
-  }, app))
-  app.use(compress())
-  app.use(bodyParser())
-  app.use(serve(join(process.env.LERNA_ROOT_PATH !== undefined ? `${process.env.LERNA_ROOT_PATH}/packages/klinklang-client` : '.', 'build')))
-  app.use(error())
-  app.use(userMiddleware())
-
-  app.use(oauth.routes())
-  app.use(userRouter.routes())
-  app.use(workflowRouter.routes())
-  app.use(terminologyRouter.routes())
-
-  const server = app.listen(process.env.PORT ?? config.get('app').port, () => {
-    const address = server.address()
-    const port = typeof address !== 'string' ? address?.port : address
-    logger.info(`Klinklang server listening on ${port ?? ''}`)
+  const port = process.env.PORT ?? config.get('app').port
+  const server = Hapi.server({
+    port,
+    cache: {
+      provider: {
+        constructor: CatboxRedis,
+        options: {
+          ...config.get('redis'),
+          partition: config.get('app').prefix
+        }
+      }
+    },
+    routes: {
+      files: {
+        relativeTo: join(process.env.LERNA_ROOT_PATH !== undefined ? `${process.env.LERNA_ROOT_PATH}/packages/klinklang-client` : '.', 'build')
+      }
+    }
   })
+
+  await server.register(Cookie)
+  const strategyOptions: Options = {
+    cookie: {
+      name: 'sid',
+      password: config.get('app').secret,
+      path: '/',
+      isSecure: process.env.NODE_ENV === 'production'
+    },
+    validateFunc: userMiddleware()
+  }
+  server.auth.strategy('session', 'cookie', strategyOptions)
+  server.auth.default('session')
+
+  await server.register({
+    plugin: Yar,
+    options: {
+      storeBlank: false,
+      cookieOptions: {
+        isSecure: process.env.NODE_ENV === 'production',
+        password: config.get('app').secret
+      }
+    }
+  })
+
+  await server.register(Inert)
+
+  server.route(oauth)
+  server.route(userRouter)
+  server.route(workflowRouter)
+  server.route(terminologyRouter)
+
+  server.route({
+    method: 'GET',
+    path: '/{any*}',
+    options: {
+      auth: false
+    },
+    handler: {
+      directory: {
+        path: '.',
+        redirectToSlash: true
+      }
+    }
+  })
+
+  server.route({
+    method: 'GET',
+    path: '/pages/{any*}',
+    options: {
+      auth: false
+    },
+    handler: function (_, h) {
+      return h.file('index.html')
+    }
+  })
+
+  await server.start()
+  logger.info(`Klinklang server listening on ${port}`)
 }
 
+process.on('unhandledRejection', (err) => {
+  console.log(err)
+  process.exit(1)
+})
+
 launch().catch(e => {
+  console.log(e)
   logger.error(e)
 })

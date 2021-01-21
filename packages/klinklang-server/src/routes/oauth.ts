@@ -1,49 +1,66 @@
-import Router from '@koa/router'
-import createErrors, { BadRequest } from 'http-errors'
+import { ServerRoute } from '@hapi/hapi'
+import { badRequest } from '@hapi/boom'
 import { getRedirectURL, verify, getIdentity } from '../lib/oauth'
-import { CustomContext, CustomState } from '../lib/context'
 import User from '../models/user'
 
-const oauthRouter = new Router<CustomState, CustomContext>({ prefix: '/oauth' })
+const oauthRouter: ServerRoute[] = [
+  {
+    method: 'GET',
+    path: '/oauth/login',
+    options: {
+      auth: false
+    },
+    handler: async (request, h) => {
+      const { url, token } = await getRedirectURL()
+      request.yar.set('loginToken', token)
+      return h.redirect(url)
+    }
+  },
+  {
+    method: 'GET',
+    path: '/oauth/callback',
+    options: {
+      auth: {
+        mode: 'try'
+      }
+    },
+    handler: async (request, h) => {
+      const verifier = request.query.oauth_verifier
+      if (request.yar.get('loginToken') === undefined || verifier === null) {
+        throw badRequest('invalid oauth callback')
+      }
 
-oauthRouter.get('/login', async (ctx) => {
-  const { url, token } = await getRedirectURL()
-  ctx.session.loginToken = token
-  ctx.redirect(url)
-})
+      const token = await verify(verifier, request.yar.get('loginToken'))
+      request.yar.clear('loginToken')
 
-oauthRouter.get('/callback', async (ctx) => {
-  const searchParams = new URLSearchParams(ctx.search)
-  const verifier = searchParams.get('oauth_verifier')
-  if (ctx.session.loginToken === undefined || verifier === null) {
-    throw createErrors(BadRequest, 'invalid oauth callback')
+      const identity = await getIdentity(token)
+      let user = await User.findOne({ where: { wikiId: identity.sub } })
+      if (user === null) {
+        user = await User.create({
+          wikiId: identity.sub,
+          token,
+          groups: identity.groups,
+          name: identity.username
+        })
+      } else {
+        user.token = token
+        user.groups = identity.groups
+        user.name = identity.username
+        await user.save()
+      }
+
+      request.cookieAuth.set({ userId: user.id })
+      return h.redirect('/')
+    }
+  },
+  {
+    method: 'POST',
+    path: '/oauth/logout',
+    handler: async (request, h) => {
+      request.cookieAuth.clear()
+      return h.redirect('/')
+    }
   }
-
-  const token = await verify(verifier, ctx.session.loginToken)
-  delete ctx.session.loginToken
-
-  const identity = await getIdentity(token)
-  let user = await User.findOne({ where: { wikiId: identity.sub } })
-  if (user === null) {
-    user = await User.create({
-      wikiId: identity.sub,
-      token,
-      groups: identity.groups,
-      name: identity.username
-    })
-  } else {
-    user.token = token
-    user.groups = identity.groups
-    user.name = identity.username
-    await user.save()
-  }
-  ctx.session.userId = user.id
-  ctx.redirect('/')
-})
-
-oauthRouter.post('/logout', async (ctx) => {
-  delete ctx.session.userId
-  ctx.redirect('/')
-})
+]
 
 export default oauthRouter

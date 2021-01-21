@@ -6,9 +6,11 @@ module.exports = {
     public: '/',
     src: '/_dist_'
   },
-  plugins: [
-    ['@snowpack/plugin-optimize', {}]
-  ],
+  optimize: {
+    bundle: true,
+    minify: true,
+    target: 'es2018'
+  },
   routes: [
     {
       src: '/(api|oauth)/.*',

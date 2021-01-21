@@ -1,5 +1,5 @@
 import fetch, { BodyInit } from 'node-fetch'
-import createError from 'http-errors'
+import { internal } from '@hapi/boom'
 import OAuth, { Token } from 'oauth-1.0a'
 import { ParseResponse, QueryRevisionResponse, QueryTokenResponse, EditRequest, EditResponse } from './api'
 
@@ -64,7 +64,7 @@ class MediaWikiClient {
     })
 
     if (response.status >= 300 || response.status < 200) {
-      throw createError(response.status, await response.text())
+      throw internal(await response.text(), undefined, response.status)
     }
 
     return await response.json() as Response

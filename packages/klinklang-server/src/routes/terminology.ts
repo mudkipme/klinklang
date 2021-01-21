@@ -1,12 +1,18 @@
-import Router from '@koa/router'
-import { replace } from '../services/terminology'
-import { CustomState, CustomContext } from '../lib/context'
+import { ServerRoute } from '@hapi/hapi'
+import { replace, TerminologyReplaceInput } from '../services/terminology'
 
-const terminologyRouter = new Router<CustomState, CustomContext>({ prefix: '/api/terminology' })
-
-terminologyRouter.post('/replace', async (ctx) => {
-  const text = await replace(ctx.request.body)
-  ctx.body = { text }
-})
+const terminologyRouter: ServerRoute[] = [
+  {
+    method: 'POST',
+    path: '/api/terminology/replace',
+    options: {
+      auth: false
+    },
+    handler: async (request) => {
+      const text = await replace(request.payload as TerminologyReplaceInput)
+      return { text }
+    }
+  }
+]
 
 export default terminologyRouter

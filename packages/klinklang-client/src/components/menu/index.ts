@@ -12,11 +12,11 @@ export class KlinklangMenu extends LitElement {
   private static readonly menus = [
     {
       title: 'Term Replacer',
-      link: '/replace'
+      link: '/pages/replace'
     },
     {
       title: 'Workflows',
-      link: '/workflows'
+      link: '/pages/workflows'
     }
   ]
 

@@ -8,8 +8,8 @@ async function setup (): Promise<void> {
 
   await router.setRoutes([
     { path: '/', component: 'term-replacer' },
-    { path: '/replace', component: 'term-replacer' },
-    { path: '/workflows', component: 'workflows-page' }
+    { path: '/pages/replace', component: 'term-replacer' },
+    { path: '/pages/workflows', component: 'workflows-page' }
   ])
 }
 

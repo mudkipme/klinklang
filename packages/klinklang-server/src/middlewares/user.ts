@@ -1,18 +1,21 @@
-import { Middleware } from 'koa'
-import { CustomState, CustomContext } from '../lib/context'
+import { ValidateFunction } from '@hapi/cookie'
 import User from '../models/user'
 import logger from '../lib/logger'
 
-const userMiddleware = (): Middleware<CustomState, CustomContext> => async (ctx, next): Promise<void> => {
-  if (ctx.session.userId !== undefined) {
+const userMiddleware = (): ValidateFunction => async (_, session) => {
+  const sessionData = session as { userId: string } | undefined
+  if (sessionData?.userId !== undefined) {
     try {
-      const user = await User.findByPk(ctx.session.userId)
-      ctx.state.user = user === null ? undefined : user
+      const user = await User.findByPk(sessionData?.userId)
+      if (user === null || user === undefined) {
+        return { valid: false }
+      }
+      return { valid: true, credentials: { user } }
     } catch (e) {
       logger.warn(e)
     }
   }
-  await next()
+  return { valid: false }
 }
 
 export default userMiddleware
