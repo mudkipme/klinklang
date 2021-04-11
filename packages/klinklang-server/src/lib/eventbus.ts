@@ -94,8 +94,8 @@ export default class Subscriber {
         return
       }
       for (const trigger of workflow.triggers) {
-        if (trigger.type === 'TRIGGER_EVENTBUS' && trigger.topic === msg.topic && jsonTest(event, trigger.predicate)) {
-          await workflow.createInstance(trigger)
+        if (trigger.type === 'TRIGGER_EVENTBUS' && trigger.topic === msg.topic && (trigger.predicate === undefined || jsonTest(event, trigger.predicate))) {
+          await workflow.createInstance(trigger, event)
           triggered[workflow.id] = true
           break
         }

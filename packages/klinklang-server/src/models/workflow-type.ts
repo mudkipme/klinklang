@@ -4,7 +4,7 @@ export type WorkflowTrigger =
 | {
   type: 'TRIGGER_EVENTBUS'
   topic: string
-  predicate: Predicate
+  predicate?: Predicate
 }
 | {
   type: 'TRIGGER_CRON'

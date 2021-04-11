@@ -63,13 +63,15 @@ export class KlinklangHeader extends LitElement {
         <div class="action-items" slot="actionItems">
           <mwc-icon-button class="account-button" icon="account_circle" @click=${this.accountClick}></mwc-icon-button>
           <mwc-menu @closed=${this.menuClose} .open=${this.open} class="account-menu" corner="BOTTOM_START">
-            ${this.currentUser !== null && this.currentUser !== undefined ? html`
+            ${this.currentUser !== null && this.currentUser !== undefined
+            ? html`
               <mwc-list-item graphic="icon">
                 <mwc-icon slot="graphic">face</mwc-icon>
                 <span>${this.currentUser.name}</span>
               </mwc-list-item>
               <li divider role="separator"></li>
-            ` : undefined}
+            `
+            : undefined}
             <mwc-list-item graphic="icon" @request-selected=${this.login}>
               <mwc-icon slot="graphic">login</mwc-icon>
               <span>${this.currentUser !== null && this.currentUser !== undefined ? 'Logout' : 'Login'}</span>

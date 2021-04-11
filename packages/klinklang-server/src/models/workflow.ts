@@ -42,12 +42,12 @@ class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> imp
     return actions[0]
   }
 
-  public async createInstance (trigger?: WorkflowTrigger): Promise<WorkflowInstance> {
+  public async createInstance (trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
     const headAction = await this.getHeadAction()
     if (headAction === undefined || headAction === null) {
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
-    return await WorkflowInstance.create(headAction, trigger)
+    return await WorkflowInstance.create(headAction, trigger, payload)
   }
 
   public async getLinkedActions (): Promise<Array<Action<any>>> {

@@ -47,11 +47,13 @@ class MediaWikiClient {
       body = formData.toString()
     }
 
-    let headers = this.#oauth !== undefined ? this.#oauth.toHeader(this.#oauth.authorize({
-      url: url.toString(),
-      data: form,
-      method
-    }, this.#token)) as unknown as Record<string, string> : undefined
+    let headers = this.#oauth !== undefined
+      ? this.#oauth.toHeader(this.#oauth.authorize({
+        url: url.toString(),
+        data: form,
+        method
+      }, this.#token)) as unknown as Record<string, string>
+      : undefined
 
     if (method === 'POST') {
       headers = { ...headers, 'Content-Type': 'application/x-www-form-urlencoded' }

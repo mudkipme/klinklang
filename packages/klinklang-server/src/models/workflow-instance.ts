@@ -112,9 +112,9 @@ class WorkflowInstance {
     return job
   }
 
-  public static async create<T extends Actions> (headAction: Action<T>, trigger?: WorkflowTrigger): Promise<WorkflowInstance> {
+  public static async create<T extends Actions> (headAction: Action<T>, trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
     const instanceId = uuidv4()
-    const context = {}
+    const context = { payload }
     const jobData = headAction.buildJobData(instanceId, context)
     const jobId = uuidv4()
     await queue.add(headAction.actionType, jobData, { jobId })

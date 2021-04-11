@@ -96,6 +96,14 @@ const config = convict({
       format: String,
       default: 'klinklang'
     }
+  },
+  discord: {
+    token: {
+      doc: 'Discord token',
+      format: String,
+      env: 'DISCORD_TOKEN',
+      default: ''
+    }
   }
 })
 

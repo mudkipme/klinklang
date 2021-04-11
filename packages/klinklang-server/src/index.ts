@@ -14,12 +14,14 @@ import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
 import bootstrap from './commands/bootstrap'
 import { start } from './lib/eventbus'
+import { login } from './lib/discord'
 import './lib/worker'
 
 const launch = async (): Promise<void> => {
   await sequelize.sync()
   await bootstrap()
   await start()
+  await login()
 
   const port = process.env.PORT ?? config.get('app').port
   const server = Hapi.server({
