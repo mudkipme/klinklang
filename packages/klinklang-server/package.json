@@ -58,7 +58,7 @@
     "micromustache": "^8.0.3",
     "node-fetch": "^2.6.1",
     "node-rdkafka": "^2.10.1",
-    "node-sass": "^5.0.0",
+    "node-sass": "^7.0.0",
     "oauth-1.0a": "^2.2.6",
     "pg": "^8.5.1",
     "safe-regex": "^2.1.1",
