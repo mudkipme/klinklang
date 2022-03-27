@@ -1,0 +1,12 @@
+{
+  "name": "@mudkipme/klinklang-prisma",
+  "private": true,
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@prisma/client": "^3.11.1"
+  },
+  "devDependencies": {
+    "@types/node": "*"
+  }
+}

@@ -1,0 +1,58 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../klinklang-prisma"
+}
+
+model Action {
+  id            String    @id @default(uuid()) @db.Uuid
+  actionType    String
+  inputBuilder  Json      @db.JsonB
+  isHead        Boolean
+  outputContext String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  nextActionId  String?   @unique @db.Uuid
+  nextAction    Action?   @relation("NextAction", fields: [nextActionId], references: [id])
+  prevAction    Action?   @relation("NextAction")
+  workflowId    String?   @db.Uuid
+  workflow      Workflow? @relation(fields: [workflowId], references: [id])
+}
+
+model Terminology {
+  id        Int      @id
+  textId    Int
+  category  String
+  lang      String
+  text      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id        String     @id @default(uuid()) @db.Uuid
+  name      String     @unique
+  wikiId    BigInt     @unique
+  groups    String
+  token     Json       @db.JsonB
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  workflows Workflow[]
+}
+
+model Workflow {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  isPrivate Boolean
+  enabled   Boolean
+  triggers  Json     @db.JsonB
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  userId    String?  @db.Uuid
+  user      User?    @relation(fields: [userId], references: [id])
+  actions   Action[]
+}

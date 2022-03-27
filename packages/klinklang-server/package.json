@@ -13,13 +13,15 @@
     "build": "tsc",
     "watch": "tsc -w",
     "serve": "node dist/index.js",
-    "serve-debug": "nodemon --inspect dist/index.js"
+    "serve-debug": "nodemon --inspect dist/index.js",
+    "generate-prisma": "prisma generate"
   },
   "bugs": {
     "url": "https://github.com/mudkipme/klinklang/issues"
   },
   "devDependencies": {
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "prisma": "^3.11.1"
   },
   "dependencies": {
     "@hapi/boom": "^9.1.2",
@@ -28,6 +30,8 @@
     "@hapi/hapi": "^20.1.2",
     "@hapi/inert": "^6.0.3",
     "@hapi/yar": "^10.1.1",
+    "@mudkipme/klinklang-prisma": "workspace:*",
+    "@prisma/client": "^3.11.1",
     "@types/cheerio": "^0.22.28",
     "@types/convict": "^6.0.1",
     "@types/hapi__catbox-redis": "^5.0.2",

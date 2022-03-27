@@ -6,3 +6,4 @@ web_modules
 node_modules
 /workflow.yml
 /config.json
+.env
