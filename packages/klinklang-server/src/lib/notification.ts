@@ -12,9 +12,9 @@ export type MessageType =
   }
 
 class Notification extends EventEmitter {
-  #subscriber: Redis.Redis
-  #publisher: Redis.Redis
-  public constructor (subscriber: Redis.Redis, publisher: Redis.Redis) {
+  #subscriber: Redis
+  #publisher: Redis
+  public constructor (subscriber: Redis, publisher: Redis) {
     super()
     this.#subscriber = subscriber
     this.#publisher = publisher

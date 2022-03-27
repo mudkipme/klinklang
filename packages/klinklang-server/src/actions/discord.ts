@@ -1,10 +1,10 @@
-import { APIMessageContentResolvable, MessageAdditions, MessageOptions, TextChannel } from 'discord.js'
+import { MessageOptions, MessagePayload, TextChannel } from 'discord.js'
 import { defaultClient } from '../lib/discord'
 import { WikiWorker } from './wiki'
 
 export interface DiscordMessageActionInput {
   channel: string
-  message: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions
+  message: string | MessagePayload | MessageOptions
 }
 
 export interface DiscordMessageActionOutput {

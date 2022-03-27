@@ -1,4 +1,4 @@
-import fetch, { BodyInit } from 'node-fetch'
+import { fetch, BodyInit } from 'undici'
 import { internal } from '@hapi/boom'
 import OAuth, { Token } from 'oauth-1.0a'
 import { ParseResponse, QueryRevisionResponse, QueryTokenResponse, EditRequest, EditResponse } from './api'

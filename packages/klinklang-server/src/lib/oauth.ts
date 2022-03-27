@@ -1,6 +1,6 @@
 import OAuth from 'oauth-1.0a'
 import crypto from 'crypto'
-import fetch, { BodyInit, Response } from 'node-fetch'
+import { fetch, BodyInit, Response } from 'undici'
 import jwt from 'jsonwebtoken'
 import config from './config'
 

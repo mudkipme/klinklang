@@ -36,7 +36,7 @@ const oauthRouter: ServerRoute[] = [
 
       const identity = await getIdentity(token)
       let user = await prisma.user.findUnique({ where: { wikiId: identity.sub } })
-      if (user === null) {
+      if (user === null || user === undefined) {
         user = await prisma.user.create({
           data: {
             wikiId: identity.sub,
