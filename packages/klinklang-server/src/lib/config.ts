@@ -49,30 +49,6 @@ const config = convict({
       default: 'oob'
     }
   },
-  db: {
-    host: {
-      doc: 'Database hostname or IP address',
-      format: String,
-      default: 'postgresql'
-    },
-    database: {
-      doc: 'Database name',
-      format: String,
-      default: 'klinklang'
-    },
-    username: {
-      doc: 'Database user name',
-      format: String,
-      default: '',
-      env: 'DATABASE_USERNAME'
-    },
-    password: {
-      doc: 'Database password',
-      format: String,
-      default: '',
-      env: 'DATABASE_PASSWORD'
-    }
-  },
   redis: {
     host: {
       doc: 'Redis host',

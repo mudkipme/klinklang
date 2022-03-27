@@ -1,12 +1,12 @@
 import { ValidateFunction } from '@hapi/cookie'
-import User from '../models/user'
 import logger from '../lib/logger'
+import { prisma } from '../lib/database'
 
 const userMiddleware = (): ValidateFunction => async (_, session) => {
   const sessionData = session as { userId: string } | undefined
   if (sessionData?.userId !== undefined) {
     try {
-      const user = await User.findByPk(sessionData?.userId)
+      const user = await prisma.user.findUnique({ where: { id: sessionData?.userId } })
       if (user === null || user === undefined) {
         return { valid: false }
       }

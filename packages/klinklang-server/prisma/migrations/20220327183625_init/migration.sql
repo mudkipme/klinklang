@@ -8,14 +8,14 @@ CREATE TABLE "Action" (
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
     "nextActionId" UUID,
-    "workflowId" UUID,
+    "workflowId" UUID NOT NULL,
 
     CONSTRAINT "Action_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
 CREATE TABLE "Terminology" (
-    "id" INTEGER NOT NULL,
+    "id" SERIAL NOT NULL,
     "textId" INTEGER NOT NULL,
     "category" TEXT NOT NULL,
     "lang" TEXT NOT NULL,
@@ -31,7 +31,7 @@ CREATE TABLE "User" (
     "id" UUID NOT NULL,
     "name" TEXT NOT NULL,
     "wikiId" BIGINT NOT NULL,
-    "groups" TEXT NOT NULL,
+    "groups" TEXT[],
     "token" JSONB NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
@@ -66,7 +66,7 @@ CREATE UNIQUE INDEX "User_wikiId_key" ON "User"("wikiId");
 ALTER TABLE "Action" ADD CONSTRAINT "Action_nextActionId_fkey" FOREIGN KEY ("nextActionId") REFERENCES "Action"("id") ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Action" ADD CONSTRAINT "Action_workflowId_fkey" FOREIGN KEY ("workflowId") REFERENCES "Workflow"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Action" ADD CONSTRAINT "Action_workflowId_fkey" FOREIGN KEY ("workflowId") REFERENCES "Workflow"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Workflow" ADD CONSTRAINT "Workflow_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("id") ON DELETE SET NULL ON UPDATE CASCADE;

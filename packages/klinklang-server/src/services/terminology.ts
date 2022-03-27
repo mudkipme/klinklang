@@ -1,6 +1,7 @@
-import Terminology from '../models/terminology'
+import { Terminology } from '@mudkipme/klinklang-prisma'
 import notification, { MessageType } from '../lib/notification'
 import logger from '../lib/logger'
+import { prisma } from '../lib/database'
 
 export interface TerminologyReplaceInput {
   sourceLng: string
@@ -12,7 +13,7 @@ export interface TerminologyReplaceInput {
 let terminologyDataCache: Terminology[] | undefined
 
 export async function updateTerminologyCache (): Promise<void> {
-  terminologyDataCache = await Terminology.findAll()
+  terminologyDataCache = await prisma.terminology.findMany()
 }
 
 export async function replace (input: TerminologyReplaceInput): Promise<string> {

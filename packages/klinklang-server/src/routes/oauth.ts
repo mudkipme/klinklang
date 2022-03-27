@@ -1,7 +1,8 @@
 import { ServerRoute } from '@hapi/hapi'
 import { badRequest } from '@hapi/boom'
 import { getRedirectURL, verify, getIdentity } from '../lib/oauth'
-import User from '../models/user'
+import { prisma } from '../lib/database'
+import { Prisma } from '@mudkipme/klinklang-prisma'
 
 const oauthRouter: ServerRoute[] = [
   {
@@ -34,19 +35,25 @@ const oauthRouter: ServerRoute[] = [
       request.yar.clear('loginToken')
 
       const identity = await getIdentity(token)
-      let user = await User.findOne({ where: { wikiId: identity.sub } })
+      let user = await prisma.user.findUnique({ where: { wikiId: identity.sub } })
       if (user === null) {
-        user = await User.create({
-          wikiId: identity.sub,
-          token,
-          groups: identity.groups,
-          name: identity.username
+        user = await prisma.user.create({
+          data: {
+            wikiId: identity.sub,
+            token: token as unknown as Prisma.InputJsonValue,
+            groups: identity.groups,
+            name: identity.username
+          }
         })
       } else {
-        user.token = token
-        user.groups = identity.groups
-        user.name = identity.username
-        await user.save()
+        await prisma.user.update({
+          where: { id: user.id },
+          data: {
+            token: token as unknown as Prisma.InputJsonValue,
+            groups: identity.groups,
+            name: identity.username
+          }
+        })
       }
 
       request.cookieAuth.set({ userId: user.id })

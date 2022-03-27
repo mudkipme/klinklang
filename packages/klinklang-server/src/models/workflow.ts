@@ -1,109 +1,43 @@
-import { Model, DataTypes, Optional, HasManyGetAssociationsMixin, BelongsToGetAssociationMixin, HasManyAddAssociationsMixin, HasManyAddAssociationMixin, BelongsToSetAssociationMixin } from 'sequelize'
 import { keyBy } from 'lodash'
-import { sequelize } from '../lib/database'
-import Action from './action'
+import { prisma } from '../lib/database'
 import { WorkflowTrigger } from './workflow-type'
 import WorkflowInstance from './workflow-instance'
-import User from './user'
-import { Actions } from '../actions/interfaces'
+import { Workflow, Action } from '@mudkipme/klinklang-prisma'
 
-interface WorkflowAttributes {
-  id: string
-  name: string
-  isPrivate: boolean
-  enabled: boolean
-  triggers: WorkflowTrigger[]
+export async function getWorkflowInstances (workflow: Workflow, start = 0, stop = 100): Promise<WorkflowInstance[]> {
+  return await WorkflowInstance.getInstancesOfWorkflow(workflow.id, start, stop)
 }
 
-type WorkflowCreationAttributes = Optional<WorkflowAttributes, 'id'>
-
-class Workflow extends Model<WorkflowAttributes, WorkflowCreationAttributes> implements WorkflowAttributes {
-  public id!: string
-  public name!: string
-  public isPrivate!: boolean
-  public enabled!: boolean
-  public triggers!: WorkflowTrigger[]
-
-  public getActions!: HasManyGetAssociationsMixin<Action<any>>
-  public addAction!: HasManyAddAssociationMixin<Action<any>, string>
-  public addActions!: HasManyAddAssociationsMixin<Action<any>, string>
-  public getUser!: BelongsToGetAssociationMixin<User>
-  public setUser!: BelongsToSetAssociationMixin<User, string>
-
-  public readonly createdAt!: Date
-  public readonly updatedAt!: Date
-
-  public async getInstances (start = 0, stop = 100): Promise<WorkflowInstance[]> {
-    return await WorkflowInstance.getInstancesOfWorkflow(this.id, start, stop)
-  }
-
-  public async getHeadAction<T extends Actions> (): Promise<Action<T> | undefined> {
-    const actions = await this.getActions({ where: { isHead: true } })
-    return actions[0]
-  }
-
-  public async createInstance (trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
-    const headAction = await this.getHeadAction()
-    if (headAction === undefined || headAction === null) {
-      throw new Error('ERR_ACTION_NOT_FOUND')
-    }
-    return await WorkflowInstance.create(headAction, trigger, payload)
-  }
-
-  public async getLinkedActions (): Promise<Array<Action<any>>> {
-    const actions = await this.getActions()
-    let current = actions.find(action => action.isHead)
-    if (current === undefined || current === null) {
-      return []
-    }
-
-    const actionMap = keyBy(actions, 'id')
-    const linkedActions = []
-    const visited: {[id: string]: boolean} = {}
-    while (current !== undefined) {
-      if (visited[current.id]) {
-        throw new Error('CIRCULAR_ACTION_FOUND')
-      }
-      linkedActions.push(current)
-      visited[current.id] = true
-      current = current.nextActionId !== null ? actionMap[current.nextActionId] : undefined
-    }
-
-    return linkedActions
-  }
+export async function getHeadActionOfWorkflow (workflow: Workflow): Promise<Action | null> {
+  return await prisma.action.findFirst({ where: { workflowId: workflow.id, isHead: true } })
 }
 
-Workflow.init({
-  id: {
-    type: DataTypes.UUID,
-    primaryKey: true,
-    allowNull: false,
-    defaultValue: DataTypes.UUIDV4
-  },
-  name: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
-  isPrivate: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
-  },
-  enabled: {
-    type: DataTypes.BOOLEAN,
-    allowNull: false
-  },
-  triggers: {
-    type: DataTypes.JSONB,
-    allowNull: false
+export async function createInstanceWithWorkflow (workflow: Workflow, trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
+  const headAction = await getHeadActionOfWorkflow(workflow)
+  if (headAction === undefined || headAction === null) {
+    throw new Error('ERR_ACTION_NOT_FOUND')
   }
-}, {
-  sequelize
-})
+  return await WorkflowInstance.create(headAction, trigger, payload)
+}
 
-Workflow.hasMany(Action, {
-  foreignKey: 'workflowId'
-})
-Action.belongsTo(Workflow, { as: 'workflow' })
-Workflow.belongsTo(User)
+export async function getLinkedActionsOfWorkflow (workflow: Workflow): Promise<Action[]> {
+  const actions = await prisma.action.findMany({ where: { workflowId: workflow.id } })
+  let current = actions.find(action => action.isHead)
+  if (current === undefined || current === null) {
+    return []
+  }
 
-export default Workflow
+  const actionMap = keyBy(actions, 'id')
+  const linkedActions = []
+  const visited: {[id: string]: boolean} = {}
+  while (current !== undefined) {
+    if (visited[current.id]) {
+      throw new Error('CIRCULAR_ACTION_FOUND')
+    }
+    linkedActions.push(current)
+    visited[current.id] = true
+    current = current.nextActionId !== null ? actionMap[current.nextActionId] : undefined
+  }
+
+  return linkedActions
+}

@@ -2,11 +2,13 @@ import { promisify } from 'util'
 import { isEqual } from 'lodash'
 import { KafkaConsumer, Message } from 'node-rdkafka'
 import { test as jsonTest } from 'json-predicate'
-import { Op } from 'sequelize'
 import config from './config'
 import logger from './logger'
-import Workflow from '../models/workflow'
+import { Workflow } from '@mudkipme/klinklang-prisma'
 import notification, { MessageType } from './notification'
+import { prisma } from './database'
+import { WorkflowTrigger } from '../models/workflow-type'
+import { createInstanceWithWorkflow } from '../models/workflow'
 
 const delay = async (ms: number): Promise<NodeJS.Timeout> => await new Promise(resolve => setTimeout(resolve, ms))
 
@@ -19,7 +21,7 @@ export default class Subscriber {
     const topics = new Map<string, Workflow[]>()
 
     for (const workflow of workflows) {
-      for (const trigger of workflow.triggers) {
+      for (const trigger of workflow.triggers as WorkflowTrigger[]) {
         if (trigger.type === 'TRIGGER_EVENTBUS') {
           const entries = topics.get(trigger.topic) ?? []
           entries.push(workflow)
@@ -70,7 +72,7 @@ export default class Subscriber {
         }
         await this.handleMessage(msgs[0])
       } catch (e) {
-        logger.error(e.message)
+        logger.error(e)
         await delay(1000)
       }
     } while (!this.#stopped)
@@ -93,9 +95,9 @@ export default class Subscriber {
       if (triggered[workflow.id]) {
         return
       }
-      for (const trigger of workflow.triggers) {
+      for (const trigger of workflow.triggers as WorkflowTrigger[]) {
         if (trigger.type === 'TRIGGER_EVENTBUS' && trigger.topic === msg.topic && (trigger.predicate === undefined || jsonTest(event, trigger.predicate))) {
-          await workflow.createInstance(trigger, event)
+          await createInstanceWithWorkflow(workflow, trigger, event)
           triggered[workflow.id] = true
           break
         }
@@ -120,16 +122,16 @@ export async function start (): Promise<void> {
   const update = async (): Promise<void> => {
     updating = updating.then(async () => {
       try {
-        const workflows = await Workflow.findAll({
+        const workflows = await prisma.workflow.findMany({
           where: {
             triggers: {
-              [Op.contains]: [{ type: 'TRIGGER_EVENTBUS' }]
+              array_contains: [{ type: 'TRIGGER_EVENTBUS' }]
             }
           }
         })
         await subscriber.updateAndSubscribe(workflows)
       } catch (e) {
-        logger.error(e.message)
+        logger.error(e)
       }
     })
     await updating
@@ -137,37 +139,19 @@ export async function start (): Promise<void> {
 
   await update()
 
-  Workflow.afterCreate('eventbus', async (workflow) => {
-    if (workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS')) {
-      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-    }
-  })
+  prisma.$use(async (params, next) => {
+    await next(params)
 
-  Workflow.afterBulkCreate('eventbus', async (workflows) => {
-    if (workflows.some(workflow => workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS'))) {
-      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-    }
-  })
-
-  Workflow.afterDestroy('eventbus', async (workflow) => {
-    if (workflow.triggers.some(trigger => trigger.type === 'TRIGGER_EVENTBUS')) {
-      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-    }
-  })
-
-  Workflow.afterBulkDestroy('eventbus', async () => {
-    await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-  })
-
-  Workflow.afterUpdate('eventbus', async (_, options) => {
-    if (options.fields === undefined || options.fields === null || options.fields.includes('triggers')) {
-      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-    }
-  })
-
-  Workflow.afterBulkUpdate('eventbus', async (options) => {
-    if (options.fields === undefined || options.fields === null || options.fields.includes('triggers')) {
-      await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
+    if (params.model === 'Workflow') {
+      switch (params.action) {
+        case 'create':
+        case 'createMany':
+        case 'delete':
+        case 'deleteMany':
+        case 'update':
+        case 'updateMany':
+          await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
+      }
     }
   })
 

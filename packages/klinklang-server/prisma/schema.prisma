@@ -4,27 +4,28 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../../klinklang-prisma"
+  provider        = "prisma-client-js"
+  output          = "../../klinklang-prisma"
+  previewFeatures = ["filterJson"]
 }
 
 model Action {
-  id            String    @id @default(uuid()) @db.Uuid
+  id            String   @id @default(uuid()) @db.Uuid
   actionType    String
-  inputBuilder  Json      @db.JsonB
+  inputBuilder  Json     @db.JsonB
   isHead        Boolean
   outputContext String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
-  nextActionId  String?   @unique @db.Uuid
-  nextAction    Action?   @relation("NextAction", fields: [nextActionId], references: [id])
-  prevAction    Action?   @relation("NextAction")
-  workflowId    String?   @db.Uuid
-  workflow      Workflow? @relation(fields: [workflowId], references: [id])
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  nextActionId  String?  @unique @db.Uuid
+  nextAction    Action?  @relation("NextAction", fields: [nextActionId], references: [id])
+  prevAction    Action?  @relation("NextAction")
+  workflowId    String   @db.Uuid
+  workflow      Workflow @relation(fields: [workflowId], references: [id])
 }
 
 model Terminology {
-  id        Int      @id
+  id        Int      @id @default(autoincrement())
   textId    Int
   category  String
   lang      String
@@ -37,7 +38,7 @@ model User {
   id        String     @id @default(uuid()) @db.Uuid
   name      String     @unique
   wikiId    BigInt     @unique
-  groups    String
+  groups    String[]
   token     Json       @db.JsonB
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt

@@ -92,5 +92,5 @@ export const verify = async (verifier: string, token: OAuth.Token): Promise<OAut
 export const getIdentity = async (token: OAuth.Token): Promise<OAuthIdentity> => {
   const response = await signedFetch(identifyURL, { token })
   const text = await response.text()
-  return jwt.verify(text, oauth.consumer.secret, { algorithms: ['HS256'], audience: oauth.consumer.key }) as OAuthIdentity
+  return jwt.verify(text, oauth.consumer.secret, { algorithms: ['HS256'], audience: oauth.consumer.key }) as unknown as OAuthIdentity
 }

@@ -10,7 +10,6 @@ import oauth from './routes/oauth'
 import userRouter from './routes/user'
 import workflowRouter from './routes/workflow'
 import terminologyRouter from './routes/terminology'
-import { sequelize } from './lib/database'
 import userMiddleware from './middlewares/user'
 import bootstrap from './commands/bootstrap'
 import { start } from './lib/eventbus'
@@ -18,7 +17,6 @@ import { login } from './lib/discord'
 import './lib/worker'
 
 const launch = async (): Promise<void> => {
-  await sequelize.sync()
   await bootstrap()
   await start()
   await login()

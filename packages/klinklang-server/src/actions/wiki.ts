@@ -3,6 +3,7 @@ import MediaWikiClient from '../lib/mediawiki/client'
 import { Actions } from './interfaces'
 import { defaultClient } from '../lib/wiki'
 import { EditRequest, EditResponse } from '../lib/mediawiki/api'
+import { getWikiClientOfUser } from '../models/user'
 
 export interface GetHTMLActionInput {
   title: string
@@ -27,11 +28,10 @@ export abstract class WikiWorker<T extends Actions> extends ActionWorker<T> {
       return this.#wikiClient
     }
     const workflow = await this.getWorkflow()
-    const user = await workflow?.getUser()
-    if (user === undefined || user === null) {
+    if (workflow?.user === undefined || workflow?.user === null) {
       return defaultClient
     }
-    return user.getWikiClient()
+    return getWikiClientOfUser(workflow.user)
   }
 }
 

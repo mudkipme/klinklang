@@ -3,8 +3,10 @@ import { Job } from 'bullmq'
 import { WorkflowTrigger } from './workflow-type'
 import { redis } from '../lib/redis'
 import { queue } from '../lib/queue'
-import Action from './action'
 import { ActionJobData, ActionJobResult, Actions } from '../actions/interfaces'
+import { prisma } from '../lib/database'
+import { buildJobData } from './action'
+import { Action } from '@mudkipme/klinklang-prisma'
 
 export interface WorkflowInstanceData {
   workflowId: string
@@ -73,7 +75,7 @@ class WorkflowInstance {
   }
 
   public async update<T extends Actions> (currentActionId: string, output: T['output']): Promise<void> {
-    const action = await Action.findByPk(currentActionId)
+    const action = await prisma.action.findUnique({ where: { id: currentActionId } })
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
@@ -97,25 +99,25 @@ class WorkflowInstance {
   }
 
   public async createNextJob<T extends Actions> (currentActionId: string): Promise<Job<ActionJobData<T>, ActionJobResult<T>> | null> {
-    const action = await Action.findByPk(currentActionId)
+    const action = await prisma.action.findUnique({ where: { id: currentActionId }, include: { nextAction: true } })
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
     }
-    const nextAction = await action.getNextAction()
+    const nextAction = action.nextAction
     if (nextAction === null || nextAction === undefined) {
       return null
     }
 
-    const jobData = nextAction.buildJobData(this.instanceId, this.context)
+    const jobData = buildJobData(nextAction, this.instanceId, this.context)
     const jobId = uuidv4()
     const job = await queue.add(nextAction.actionType, jobData, { jobId })
     return job
   }
 
-  public static async create<T extends Actions> (headAction: Action<T>, trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
+  public static async create (headAction: Action, trigger?: WorkflowTrigger, payload?: unknown): Promise<WorkflowInstance> {
     const instanceId = uuidv4()
     const context = { payload }
-    const jobData = headAction.buildJobData(instanceId, context)
+    const jobData = buildJobData(headAction, instanceId, context)
     const jobId = uuidv4()
     await queue.add(headAction.actionType, jobData, { jobId })
 

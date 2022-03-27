@@ -1,13 +1,11 @@
 import { stat, readFile } from 'fs/promises'
 import { join } from 'path'
 import yaml from 'js-yaml'
-import Workflow from '../models/workflow'
-import Action, { ActionAttributes } from '../models/action'
-import { sequelize } from '../lib/database'
-import { Actions } from '../actions/interfaces'
+import { Prisma } from '@mudkipme/klinklang-prisma'
 import { WorkflowTrigger } from '../models/workflow-type'
 import config from '../lib/config'
-import User from '../models/user'
+import { prisma } from '../lib/database'
+import { v4 as uuidv4 } from 'uuid'
 
 export interface WorkflowConfig {
   name: string
@@ -15,48 +13,51 @@ export interface WorkflowConfig {
   enabled: boolean
   user?: string
   triggers: WorkflowTrigger[]
-  actions: Array<Omit<ActionAttributes<Actions>, 'isHead' | 'id'>>
+  actions: Array<Omit<Prisma.ActionCreateInput, 'isHead'>>
 }
 
 export async function setupWorkflow (workflowConfig: WorkflowConfig): Promise<void> {
-  let workflow = await Workflow.findOne({ where: { name: workflowConfig.name } })
+  let workflow = await prisma.workflow.findFirst({ where: { name: workflowConfig.name } })
 
   if (workflow === null || workflow === undefined) {
-    const transaction = await sequelize.transaction()
-
-    workflow = await Workflow.create({
-      name: workflowConfig.name,
-      isPrivate: workflowConfig.isPrivate,
-      enabled: workflowConfig.enabled,
-      triggers: workflowConfig.triggers
-    }, { transaction })
-
-    const actions: Array<Action<Actions>> = []
+    const actions: Prisma.ActionCreateInput[] = []
 
     for (const [index, actionConfig] of workflowConfig.actions.entries()) {
-      actions.push(await Action.create({
+      actions.push({
         ...actionConfig,
-        isHead: index === 0
-      }, { transaction }))
+        isHead: index === 0,
+        id: uuidv4()
+      })
+      if (index > 0) {
+        actions[index - 1].nextAction = {
+          connect: { id: actions[index].id }
+        }
+      }
     }
 
-    for (let index = 0; index < actions.length - 1; index++) {
-      await actions[index].setNextAction(actions[index + 1], { transaction })
-    }
-
-    await workflow.addActions(actions, { transaction })
-
-    try {
-      await transaction.commit()
-    } catch (e) {
-      await transaction.rollback()
-    }
+    workflow = await prisma.workflow.create({
+      data: {
+        name: workflowConfig.name,
+        isPrivate: workflowConfig.isPrivate,
+        enabled: workflowConfig.enabled,
+        triggers: workflowConfig.triggers as Prisma.InputJsonValue,
+        actions: {
+          create: actions
+        }
+      },
+      include: { actions: true }
+    })
   }
 
   if (workflowConfig.user !== undefined) {
-    const user = await User.findOne({ where: { name: workflowConfig.user } })
+    const user = await prisma.user.findUnique({ where: { name: workflowConfig.user } })
     if (user !== null && user !== undefined) {
-      await workflow.setUser(user)
+      await prisma.workflow.update({
+        where: { id: workflow.id },
+        data: {
+          userId: user.id
+        }
+      })
     }
   }
 }

@@ -1,9 +1,9 @@
 import cheerio from 'cheerio'
 import type { GetHTMLActionOutput } from './wiki'
 import { ActionWorker } from './base'
-import { sequelize } from '../lib/database'
-import Terminology from '../models/terminology'
+import { PrismaPromise } from '@mudkipme/klinklang-prisma'
 import notification from '../lib/notification'
+import { prisma } from '../lib/database'
 
 export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
   entrySelector: string
@@ -88,26 +88,23 @@ export interface UpdateTerminologyAction {
 
 export class UpdateTerminologyWorker extends ActionWorker<UpdateTerminologyAction> {
   public async process (): Promise<null> {
-    const transaction = await sequelize.transaction()
+    const transactions: Array<PrismaPromise<unknown>> = []
 
-    try {
-      await Terminology.destroy({ where: { category: this.input.category }, transaction })
-
-      for (const { id, texts } of this.input.list) {
-        for (const lang of Object.keys(texts)) {
-          await Terminology.create({
+    transactions.push(prisma.terminology.deleteMany({ where: { category: this.input.category } }))
+    for (const { id, texts } of this.input.list) {
+      for (const lang of Object.keys(texts)) {
+        transactions.push(prisma.terminology.create({
+          data: {
             textId: id,
             lang,
             category: this.input.category,
             text: texts[lang]
-          }, { transaction })
-        }
+          }
+        }))
       }
-      await transaction.commit()
-    } catch (e) {
-      await transaction.rollback()
-      throw e
     }
+
+    await prisma.$transaction(transactions)
     await notification.sendMessage({ type: 'TERMINOLOGY_UPDATE' })
     return null
   }
