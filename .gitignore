@@ -5,5 +5,4 @@ dist
 web_modules
 node_modules
 /workflow.yml
-lerna-debug.log
 /config.json

@@ -63,14 +63,14 @@ export async function setupWorkflow (workflowConfig: WorkflowConfig): Promise<vo
 
 export default async function bootstrap (): Promise<void> {
   try {
-    const filename = join(process.env.LERNA_ROOT_PATH ?? '.', config.get('app').bootstrap)
+    const filename = join(process.env.WORKSPACE_ROOT_PATH ?? '.', config.get('app').bootstrap)
     const stats = await stat(filename)
     if (!stats.isFile()) {
       return
     }
 
     const content = await readFile(filename, { encoding: 'utf-8' })
-    const workflows: WorkflowConfig[] = yaml.loadAll(content)
+    const workflows = yaml.loadAll(content) as WorkflowConfig[]
     for (const workflowConfig of workflows) {
       await setupWorkflow(workflowConfig)
     }

@@ -35,7 +35,7 @@
     "@material/mwc-select": "^0.20.0",
     "@material/mwc-textarea": "^0.20.0",
     "@material/mwc-top-app-bar": "^0.20.0",
-    "@mudkipme/material-css": "^0.5.0",
+    "@mudkipme/material-css": "workspace:*",
     "@vaadin/router": "^1.7.4",
     "lit-element": "^2.4.0"
   }

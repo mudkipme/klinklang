@@ -37,7 +37,7 @@ const launch = async (): Promise<void> => {
     },
     routes: {
       files: {
-        relativeTo: join(process.env.LERNA_ROOT_PATH !== undefined ? `${process.env.LERNA_ROOT_PATH}/packages/klinklang-client` : '.', 'build')
+        relativeTo: join(process.env.WORKSPACE_ROOT_PATH !== undefined ? `${process.env.WORKSPACE_ROOT_PATH}/packages/klinklang-client` : '.', 'build')
       }
     }
   })

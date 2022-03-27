@@ -107,6 +107,6 @@ const config = convict({
   }
 })
 
-config.loadFile(join(process.env.LERNA_ROOT_PATH ?? '.', 'config.json'))
+config.loadFile(join(process.env.WORKSPACE_ROOT_PATH ?? '.', 'config.json'))
 
 export default config
