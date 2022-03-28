@@ -23,7 +23,7 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 */
-import {css} from 'lit-element';
+import {css} from 'lit';
 
 export const layoutGrid = css\`${layoutGrid}\`;
 export const typography = css\`${typography}\`;

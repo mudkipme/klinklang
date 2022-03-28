@@ -9,7 +9,7 @@ COPY . /app
 RUN pnpm install
 
 ENV NODE_ENV production
-RUN pnpm build
+RUN pnpm --filter @mudkipme/klinklang-server run generate-prisma && pnpm build
 
 EXPOSE 3000
 VOLUME ["/app/config.json", "/app/workflow.yml"]

@@ -140,7 +140,7 @@ export async function start (): Promise<void> {
   await update()
 
   prisma.$use(async (params, next) => {
-    await next(params)
+    const result = await next(params)
 
     if (params.model === 'Workflow') {
       switch (params.action) {
@@ -153,6 +153,8 @@ export async function start (): Promise<void> {
           await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
       }
     }
+
+    return result
   })
 
   notification.on('notification', (e: MessageType) => {

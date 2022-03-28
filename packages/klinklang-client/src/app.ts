@@ -1,4 +1,5 @@
-import { html, TemplateResult, customElement, LitElement, internalProperty } from 'lit-element'
+import { html, TemplateResult, LitElement } from 'lit'
+import { customElement, state } from 'lit/decorators.js'
 import { User } from './interfaces'
 import '@material/mwc-drawer'
 import './components/header'
@@ -7,10 +8,10 @@ import './components/footer'
 
 @customElement('klinklang-app')
 export class KlinklangApp extends LitElement {
-  @internalProperty()
+  @state()
   private user?: User | null
 
-  @internalProperty()
+  @state()
   private open = false
 
   constructor () {

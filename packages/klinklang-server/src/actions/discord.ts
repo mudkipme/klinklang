@@ -19,7 +19,6 @@ export interface DiscordMessageAction {
 
 export class DiscordMessageWorker extends WikiWorker<DiscordMessageAction> {
   public async process (): Promise<DiscordMessageActionOutput> {
-    console.log(this.input)
     const channel = await defaultClient.channels.fetch(this.input.channel)
     if (channel instanceof TextChannel) {
       const message = await channel.send(this.input.message)

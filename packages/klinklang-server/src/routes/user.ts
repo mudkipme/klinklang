@@ -1,4 +1,6 @@
 import { ServerRoute } from '@hapi/hapi'
+import { User } from '@mudkipme/klinklang-prisma'
+import { outputUser } from '../models/user'
 
 const userRouter: ServerRoute[] = [
   {
@@ -11,7 +13,7 @@ const userRouter: ServerRoute[] = [
     },
     handler: async (request) => {
       return {
-        user: request.auth.credentials?.user ?? null
+        user: request.auth.credentials?.user != null ? outputUser(request.auth.credentials.user as User) : null
       }
     }
   }

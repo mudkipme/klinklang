@@ -29,10 +29,10 @@
     "url": "https://github.com/mudkipme/klinklang/issues"
   },
   "devDependencies": {
-    "@material/layout-grid": "^10.0.0",
-    "@material/typography": "^10.0.0"
+    "@material/layout-grid": "^13.0.0",
+    "@material/typography": "^13.0.0"
   },
   "dependencies": {
-    "lit-element": "^2.4.0"
+    "lit": "^2.2.1"
   }
 }

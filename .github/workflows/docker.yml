@@ -2,7 +2,8 @@ name: Build Docker image and publish to GitHub Container Registry
 
 on:
   push:
-    branches: main
+    branches:
+    - main
 
 jobs:
   build:
