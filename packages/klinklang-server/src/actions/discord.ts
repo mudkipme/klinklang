@@ -1,10 +1,10 @@
-import { MessageOptions, MessagePayload, TextChannel } from 'discord.js'
+import { MessageCreateOptions, MessagePayload, TextChannel } from 'discord.js'
 import { defaultClient } from '../lib/discord'
 import { WikiWorker } from './wiki'
 
 export interface DiscordMessageActionInput {
   channel: string
-  message: string | MessagePayload | MessageOptions
+  message: string | MessagePayload | MessageCreateOptions
 }
 
 export interface DiscordMessageActionOutput {

@@ -22,8 +22,7 @@ export class KlinklangHeader extends LitElement {
     `
   }
 
-  @property({ attribute: false })
-  currentUser?: User | null
+  @property({ attribute: false }) currentUser?: User | null
 
   @state()
   private open = false
