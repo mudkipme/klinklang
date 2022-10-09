@@ -7,19 +7,18 @@
   "scripts": {
     "format": "eslint . --fix",
     "lint": "eslint .",
-    "start": "WORKSPACE_ROOT_PATH=`pwd` concurrently -k -p \"[{name}]\" -n \"Snowpack,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"pnpm --filter @mudkipme/klinklang-client run start\" \"pnpm --filter @mudkipme/klinklang-server run watch\" \"pnpm --filter @mudkipme/klinklang-server run serve-debug\"",
-    "serve": "WORKSPACE_ROOT_PATH=`pwd` pnpm --filter @mudkipme/klinklang-server run --stream serve",
+    "start": "pnpm run -r start",
+    "serve": "pnpm --filter @mudkipme/klinklang-server run --stream serve",
     "build": "pnpm run -r build"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^5.39.0",
-    "@typescript-eslint/parser": "^5.39.0",
-    "concurrently": "^7.4.0",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
     "eslint": "^8.25.0",
     "eslint-config-standard-with-typescript": "^23.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.3.0",
-    "eslint-plugin-promise": "^6.0.1",
+    "eslint-plugin-promise": "^6.1.0",
     "typescript": "^4.8.4"
   }
 }

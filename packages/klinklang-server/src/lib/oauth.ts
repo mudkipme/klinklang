@@ -2,7 +2,7 @@ import OAuth from 'oauth-1.0a'
 import crypto from 'crypto'
 import { fetch, BodyInit, Response } from 'undici'
 import jwt from 'jsonwebtoken'
-import config from './config'
+import { Config } from './config'
 
 export interface OAuthIdentity {
   iss: string
@@ -21,76 +21,87 @@ export interface OAuthIdentity {
   grants: string[]
 }
 
-export const oauth = new OAuth({
-  consumer: {
-    key: config.get('mediawiki').oauthKey,
-    secret: config.get('mediawiki').oauthSecret
-  },
-  signature_method: 'HMAC-SHA1',
-  hash_function: (baseString, key) => crypto.createHmac('sha1', key).update(baseString).digest('base64')
-})
+export class MediaWikiOAuth {
+  readonly oauth: OAuth
+  #requestTokenURL: string
+  #accessTokenURL: string
+  #userAuthorizationURL: string
+  #callbackURL: string
+  #identifyURL: string
 
-const requestTokenURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/initiate'
-const accessTokenURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/token'
-const userAuthorizationURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/authorize'
-const callbackURL = config.get('mediawiki').oauthCallback
-const identifyURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/identify'
+  constructor ({ config }: { config: Config }) {
+    this.oauth = new OAuth({
+      consumer: {
+        key: config.get('mediawiki').oauthKey,
+        secret: config.get('mediawiki').oauthSecret
+      },
+      signature_method: 'HMAC-SHA1',
+      hash_function: (baseString, key) => crypto.createHmac('sha1', key).update(baseString).digest('base64')
+    })
 
-const signedFetch = async (url: string, { body, method = 'GET', token }: {body?: BodyInit, method?: string, token?: OAuth.Token} = {}): Promise<Response> => {
-  const headers = oauth.toHeader(oauth.authorize({
-    url: url.toString(),
-    data: body,
-    method
-  }, token))
-
-  const response = await fetch(url.toString(), {
-    headers: { ...headers }
-  })
-
-  if (response.status >= 300 || response.status < 200) {
-    throw new Error(await response.text())
+    this.#requestTokenURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/initiate'
+    this.#accessTokenURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/token'
+    this.#userAuthorizationURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/authorize'
+    this.#callbackURL = config.get('mediawiki').oauthCallback
+    this.#identifyURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/identify'
   }
 
-  return response
-}
+  async fetch (url: string, { body, method = 'GET', token }: { body?: BodyInit, method?: string, token?: OAuth.Token } = {}): Promise<Response> {
+    const headers = this.oauth.toHeader(this.oauth.authorize({
+      url: url.toString(),
+      data: body,
+      method
+    }, token))
 
-const getToken = async (): Promise<OAuth.Token> => {
-  const url = new URL(requestTokenURL)
-  url.searchParams.append('oauth_callback', callbackURL)
+    const response = await fetch(url.toString(), {
+      headers: { ...headers }
+    })
 
-  const response = await signedFetch(url.toString())
-  const params = new URLSearchParams(await response.text())
-  return {
-    key: params.get('oauth_token') ?? '',
-    secret: params.get('oauth_token_secret') ?? ''
+    if (response.status >= 300 || response.status < 200) {
+      throw new Error(await response.text())
+    }
+
+    return response
   }
-}
 
-export const getRedirectURL = async (): Promise<{url: string, token: OAuth.Token}> => {
-  const token = await getToken()
-  const url = new URL(userAuthorizationURL)
-  url.searchParams.append('oauth_consumer_key', oauth.consumer.key)
-  url.searchParams.append('oauth_token', token.key)
-  return {
-    url: url.toString(),
-    token
+  async getToken (): Promise<OAuth.Token> {
+    const url = new URL(this.#requestTokenURL)
+    url.searchParams.append('oauth_callback', this.#callbackURL)
+
+    const response = await this.fetch(url.toString())
+    const params = new URLSearchParams(await response.text())
+    return {
+      key: params.get('oauth_token') ?? '',
+      secret: params.get('oauth_token_secret') ?? ''
+    }
   }
-}
 
-export const verify = async (verifier: string, token: OAuth.Token): Promise<OAuth.Token> => {
-  const url = new URL(accessTokenURL)
-  url.searchParams.append('oauth_verifier', verifier)
-
-  const response = await signedFetch(url.toString(), { token })
-  const params = new URLSearchParams(await response.text())
-  return {
-    key: params.get('oauth_token') ?? '',
-    secret: params.get('oauth_token_secret') ?? ''
+  async getRedirectURL (): Promise<{ url: string, token: OAuth.Token }> {
+    const token = await this.getToken()
+    const url = new URL(this.#userAuthorizationURL)
+    url.searchParams.append('oauth_consumer_key', this.oauth.consumer.key)
+    url.searchParams.append('oauth_token', token.key)
+    return {
+      url: url.toString(),
+      token
+    }
   }
-}
 
-export const getIdentity = async (token: OAuth.Token): Promise<OAuthIdentity> => {
-  const response = await signedFetch(identifyURL, { token })
-  const text = await response.text()
-  return jwt.verify(text, oauth.consumer.secret, { algorithms: ['HS256'], audience: oauth.consumer.key }) as unknown as OAuthIdentity
+  async verify (verifier: string, token: OAuth.Token): Promise<OAuth.Token> {
+    const url = new URL(this.#accessTokenURL)
+    url.searchParams.append('oauth_verifier', verifier)
+
+    const response = await this.fetch(url.toString(), { token })
+    const params = new URLSearchParams(await response.text())
+    return {
+      key: params.get('oauth_token') ?? '',
+      secret: params.get('oauth_token_secret') ?? ''
+    }
+  }
+
+  async getIdentity (token: OAuth.Token): Promise<OAuthIdentity> {
+    const response = await this.fetch(this.#identifyURL, { token })
+    const text = await response.text()
+    return jwt.verify(text, this.oauth.consumer.secret, { algorithms: ['HS256'], audience: this.oauth.consumer.key }) as unknown as OAuthIdentity
+  }
 }

@@ -6,4 +6,3 @@ node_modules
 /workflow.yml
 /config.json
 .env
-.DS_Store

@@ -1,10 +1,10 @@
 import { stat, readFile } from 'fs/promises'
 import { join } from 'path'
 import yaml from 'js-yaml'
-import { Prisma } from '@mudkipme/klinklang-prisma'
+import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
+import { Prisma, PrismaClient } from '.prisma/client'
 import { WorkflowTrigger } from '../models/workflow-type'
-import config from '../lib/config'
-import { prisma } from '../lib/database'
+import { Config } from '../lib/config'
 import { v4 as uuidv4 } from 'uuid'
 
 export interface WorkflowConfig {
@@ -16,7 +16,7 @@ export interface WorkflowConfig {
   actions: Array<Omit<Prisma.ActionCreateInput, 'isHead'>>
 }
 
-export async function setupWorkflow (workflowConfig: WorkflowConfig): Promise<void> {
+export async function setupWorkflow (prisma: PrismaClient, workflowConfig: WorkflowConfig): Promise<void> {
   let workflow = await prisma.workflow.findFirst({ where: { name: workflowConfig.name } })
 
   if (workflow === null || workflow === undefined) {
@@ -62,9 +62,10 @@ export async function setupWorkflow (workflowConfig: WorkflowConfig): Promise<vo
   }
 }
 
-export default async function bootstrap (): Promise<void> {
+export default async function bootstrap ({ config, prisma }: { config: Config, prisma: PrismaClient }): Promise<void> {
   try {
-    const filename = join(process.env.WORKSPACE_ROOT_PATH ?? '.', config.get('app').bootstrap)
+    const workspaceRoot = await findWorkspaceDir(process.cwd())
+    const filename = join(workspaceRoot ?? '.', config.get('app').bootstrap)
     const stats = await stat(filename)
     if (!stats.isFile()) {
       return
@@ -73,7 +74,7 @@ export default async function bootstrap (): Promise<void> {
     const content = await readFile(filename, { encoding: 'utf-8' })
     const workflows = yaml.loadAll(content) as WorkflowConfig[]
     for (const workflowConfig of workflows) {
-      await setupWorkflow(workflowConfig)
+      await setupWorkflow(prisma, workflowConfig)
     }
   } catch (e) {
     console.log(e)

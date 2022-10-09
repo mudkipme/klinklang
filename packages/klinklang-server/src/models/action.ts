@@ -2,7 +2,7 @@ import { render } from 'micromustache'
 import { mapValues } from 'lodash'
 import { query } from 'jsonpath'
 import { Actions, ActionJobData } from '../actions/interfaces'
-import { Action } from '@mudkipme/klinklang-prisma'
+import { Action } from '.prisma/client'
 
 type InputBuildType<T> =
 | {
@@ -22,7 +22,7 @@ type InputBuildType<T> =
   jsonPath: string
 } : never)
 
-type InputBuilder<T> = T extends object ? {[P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]>} : InputBuildType<T>
+type InputBuilder<T> = T extends object ? { [P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]> } : InputBuildType<T>
 
 function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknown>): T {
   const directBuilder = builder as InputBuildType<T>
@@ -36,7 +36,7 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
     return render(directBuilder.template, context) as unknown as T
   }
 
-  const nestedBuilder = builder as {[P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]>}
+  const nestedBuilder = builder as { [P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]> }
   return mapValues(nestedBuilder, (value: InputBuilder<any>) => buildInput(value, context))
 }
 
@@ -45,7 +45,7 @@ export function buildJobData<T extends Actions> (action: Action, instanceId: str
     actionId: action.id,
     actionType: action.actionType as T['actionType'],
     workflowId: action.workflowId,
-    instanceId: instanceId,
+    instanceId,
     input: buildInput(action.inputBuilder as InputBuilder<T['input']>, context)
   }
 }

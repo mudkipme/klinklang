@@ -21,24 +21,24 @@ class TermReplacer extends LitElement {
 
   @state()
   private readonly languages: ReadonlyArray<{ value: string, text: string }> = [
-    { value: 'en', text: 'English' },
-    { value: 'ja', text: '日本語' },
-    { value: 'zh-hans', text: '简体中文' },
-    { value: 'zh-hant', text: '繁体中文' }
-  ]
+      { value: 'en', text: 'English' },
+      { value: 'ja', text: '日本語' },
+      { value: 'zh-hans', text: '简体中文' },
+      { value: 'zh-hant', text: '繁体中文' }
+    ]
 
   @state()
   private categories: ReadonlyArray<{ value: string, text: string, selected: boolean }> = [
-    { value: 'pokemon', text: 'Pokémon', selected: false },
-    { value: 'ability', text: 'Ability', selected: false },
-    { value: 'move', text: 'Move', selected: false },
-    { value: 'item', text: 'Item', selected: false },
-    { value: 'location', text: 'Location', selected: false },
-    { value: 'nature', text: 'Nature', selected: false },
-    { value: 'trainer-type', text: 'Trainer Type', selected: false },
-    { value: 'warrior', text: 'Warrior', selected: false },
-    { value: 'character', text: 'Character', selected: false }
-  ]
+      { value: 'pokemon', text: 'Pokémon', selected: false },
+      { value: 'ability', text: 'Ability', selected: false },
+      { value: 'move', text: 'Move', selected: false },
+      { value: 'item', text: 'Item', selected: false },
+      { value: 'location', text: 'Location', selected: false },
+      { value: 'nature', text: 'Nature', selected: false },
+      { value: 'trainer-type', text: 'Trainer Type', selected: false },
+      { value: 'warrior', text: 'Warrior', selected: false },
+      { value: 'character', text: 'Character', selected: false }
+    ]
 
   @state()
   private resultText = ''

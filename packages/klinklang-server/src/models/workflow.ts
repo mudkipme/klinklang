@@ -1,14 +1,15 @@
 import { keyBy } from 'lodash'
-import { prisma } from '../lib/database'
 import { WorkflowTrigger } from './workflow-type'
 import WorkflowInstance from './workflow-instance'
-import { Workflow, Action } from '@mudkipme/klinklang-prisma'
+import { Workflow, Action } from '.prisma/client'
+import { diContainer } from '@fastify/awilix'
 
 export async function getWorkflowInstances (workflow: Workflow, start = 0, stop = 100): Promise<WorkflowInstance[]> {
   return await WorkflowInstance.getInstancesOfWorkflow(workflow.id, start, stop)
 }
 
 export async function getHeadActionOfWorkflow (workflow: Workflow): Promise<Action | null> {
+  const { prisma } = diContainer.cradle
   return await prisma.action.findFirst({ where: { workflowId: workflow.id, isHead: true } })
 }
 
@@ -21,6 +22,7 @@ export async function createInstanceWithWorkflow (workflow: Workflow, trigger?: 
 }
 
 export async function getLinkedActionsOfWorkflow (workflow: Workflow): Promise<Action[]> {
+  const { prisma } = diContainer.cradle
   const actions = await prisma.action.findMany({ where: { workflowId: workflow.id } })
   let current = actions.find(action => action.isHead)
   if (current === undefined || current === null) {
@@ -29,7 +31,7 @@ export async function getLinkedActionsOfWorkflow (workflow: Workflow): Promise<A
 
   const actionMap = keyBy(actions, 'id')
   const linkedActions = []
-  const visited: {[id: string]: boolean} = {}
+  const visited: { [id: string]: boolean } = {}
   while (current !== undefined) {
     if (visited[current.id]) {
       throw new Error('CIRCULAR_ACTION_FOUND')

@@ -4,9 +4,8 @@ datasource db {
 }
 
 generator client {
-  provider        = "prisma-client-js"
-  output          = "../../klinklang-prisma"
-  previewFeatures = ["filterJson"]
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
 }
 
 model Action {

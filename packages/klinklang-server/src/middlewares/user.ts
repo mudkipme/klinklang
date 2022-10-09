@@ -1,21 +1,24 @@
-import { ValidateFunction } from '@hapi/cookie'
-import logger from '../lib/logger'
-import { prisma } from '../lib/database'
+import { FastifyRequest, RouteGenericInterface, FastifyReply } from 'fastify'
+import { unauthorizedError } from '../lib/errors'
 
-const userMiddleware = (): ValidateFunction => async (_, session) => {
-  const sessionData = session as { userId: string } | undefined
-  if (sessionData?.userId !== undefined) {
+const userMiddleware = <T extends RouteGenericInterface>(requireLogin: boolean) => async function (request: FastifyRequest<T>, reply: FastifyReply) {
+  if (request.session.userId !== undefined) {
     try {
-      const user = await prisma.user.findUnique({ where: { id: sessionData?.userId } })
+      const user = await request.diScope.resolve('prisma').user.findUnique({ where: { id: request.session.userId } })
       if (user === null || user === undefined) {
-        return { valid: false }
+        if (requireLogin) {
+          throw unauthorizedError()
+        }
       }
-      return { valid: true, credentials: { user } }
+      request.user = user
     } catch (e) {
-      logger.warn(e)
+      request.log.error(e)
+      throw e
     }
   }
-  return { valid: false }
+  if (requireLogin) {
+    throw unauthorizedError()
+  }
 }
 
 export default userMiddleware

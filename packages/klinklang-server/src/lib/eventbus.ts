@@ -1,21 +1,26 @@
-import { promisify } from 'util'
 import { isEqual } from 'lodash'
-import { KafkaConsumer, Message } from 'node-rdkafka'
+import { ConsumerConfig, Consumer, Kafka, KafkaConfig, EachMessagePayload } from 'kafkajs'
 import { test as jsonTest } from 'json-predicate'
-import config from './config'
-import logger from './logger'
-import { Workflow } from '@mudkipme/klinklang-prisma'
-import notification, { MessageType } from './notification'
-import { prisma } from './database'
+import { setTimeout } from 'timers/promises'
+import { Logger } from 'pino'
+import { Config } from './config'
+import { Workflow, PrismaClient } from '.prisma/client'
+import { MessageType, Notification } from './notification'
 import { WorkflowTrigger } from '../models/workflow-type'
 import { createInstanceWithWorkflow } from '../models/workflow'
 
-const delay = async (ms: number): Promise<NodeJS.Timeout> => await new Promise(resolve => setTimeout(resolve, ms))
-
 export default class Subscriber {
-  #consumer: KafkaConsumer | undefined
+  #kafka: Kafka
+  #consumerConfig: ConsumerConfig
+  #consumer: Consumer | undefined
   #topics = new Map<string, Workflow[]>()
-  #stopped = true
+  #logger: Logger
+
+  constructor ({ kafkaConfig, consumerConfig, logger }: { kafkaConfig: KafkaConfig, consumerConfig: ConsumerConfig, logger: Logger }) {
+    this.#kafka = new Kafka(kafkaConfig)
+    this.#consumerConfig = consumerConfig
+    this.#logger = logger
+  }
 
   public async updateAndSubscribe (workflows: Workflow[]): Promise<void> {
     const topics = new Map<string, Workflow[]>()
@@ -32,7 +37,7 @@ export default class Subscriber {
 
     await this.subscribe(Array.from(topics.keys()))
     this.#topics = topics
-    logger.info('updated eventbus subscription.', Array.from(this.#topics.entries()))
+    this.#logger.info('updated eventbus subscription.', Array.from(this.#topics.entries()))
   }
 
   private async subscribe (topics: string[]): Promise<void> {
@@ -42,49 +47,24 @@ export default class Subscriber {
     }
     if (this.#consumer !== undefined) {
       await this.disconnect()
-      await delay(1000)
+      await setTimeout(1000)
     }
-    this.#consumer = new KafkaConsumer(config.get('kafka'), {})
-    this.#stopped = false
-    this.#consumer.on('ready', () => {
-      if (this.#consumer === undefined) {
-        return
-      }
-      logger.info('consumer ready to subscribe ' + topics.join(','))
-      this.#consumer.subscribe(topics)
-      this.loopMessage().catch(e => logger.error(e))
+    this.#consumer = this.#kafka.consumer(this.#consumerConfig)
+    await this.#consumer.connect()
+    this.#logger.info('consumer ready to subscribe ' + topics.join(','))
+    await this.#consumer.subscribe({ topics })
+    await this.#consumer.run({
+      eachMessage: this.handleMessage.bind(this)
     })
-    this.#consumer.on('event.error', (e) => {
-      logger.error(e)
-    })
-    await promisify(this.#consumer.connect.bind(this.#consumer))(undefined)
   }
 
-  private async loopMessage (): Promise<void> {
-    do {
-      if (this.#consumer === undefined) {
-        return
-      }
-      try {
-        const msgs = await promisify<Message[]>(this.#consumer.consume.bind(this.#consumer, 1))()
-        if (msgs.length === 0) {
-          continue
-        }
-        await this.handleMessage(msgs[0])
-      } catch (e) {
-        logger.error(e)
-        await delay(1000)
-      }
-    } while (!this.#stopped)
-  }
-
-  private async handleMessage (msg: Message): Promise<void> {
-    const data = msg.value?.toString()
+  private async handleMessage ({ topic, message }: EachMessagePayload): Promise<void> {
+    const data = message.value?.toString()
     if (data === undefined) {
       return
     }
     const event = JSON.parse(data)
-    const workflows = this.#topics.get(msg.topic)
+    const workflows = this.#topics.get(topic)
 
     if (workflows === undefined) {
       return
@@ -96,7 +76,7 @@ export default class Subscriber {
         return
       }
       for (const trigger of workflow.triggers as WorkflowTrigger[]) {
-        if (trigger.type === 'TRIGGER_EVENTBUS' && trigger.topic === msg.topic && (trigger.predicate === undefined || jsonTest(event, trigger.predicate))) {
+        if (trigger.type === 'TRIGGER_EVENTBUS' && trigger.topic === topic && (trigger.predicate === undefined || jsonTest(event, trigger.predicate))) {
           await createInstanceWithWorkflow(workflow, trigger, event)
           triggered[workflow.id] = true
           break
@@ -109,14 +89,22 @@ export default class Subscriber {
     if (this.#consumer === undefined) {
       return
     }
-    this.#stopped = true
-    await promisify(this.#consumer.disconnect.bind(this.#consumer))()
+    await this.#consumer.disconnect()
     this.#consumer = undefined
   }
 }
 
-export async function start (): Promise<void> {
-  const subscriber = new Subscriber()
+export async function start ({ config, prisma, notification, logger }: {
+  config: Config
+  prisma: PrismaClient
+  notification: Notification
+  logger: Logger
+}): Promise<void> {
+  const subscriber = new Subscriber({
+    kafkaConfig: { brokers: config.get('kafka').brokers },
+    consumerConfig: { groupId: config.get('kafka').groupId },
+    logger
+  })
 
   let updating = Promise.resolve()
   const update = async (): Promise<void> => {

@@ -1,18 +1,11 @@
-import { ServerRoute } from '@hapi/hapi'
-import { replace, TerminologyReplaceInput } from '../services/terminology'
+import { FastifyPluginAsync, FastifyRequest } from 'fastify'
+import { TerminologyReplaceInput } from '../services/terminology'
 
-const terminologyRouter: ServerRoute[] = [
-  {
-    method: 'POST',
-    path: '/api/terminology/replace',
-    options: {
-      auth: false
-    },
-    handler: async (request) => {
-      const text = await replace(request.payload as TerminologyReplaceInput)
-      return { text }
-    }
-  }
-]
+const terminologyRoutes: FastifyPluginAsync = async (fastify) => {
+  fastify.post('/api/terminology/replace', async (request: FastifyRequest<{ Body: TerminologyReplaceInput }>) => {
+    const text = await fastify.diContainer.cradle.terminologyService.replace(request.body)
+    return { text }
+  })
+}
 
-export default terminologyRouter
+export default terminologyRoutes

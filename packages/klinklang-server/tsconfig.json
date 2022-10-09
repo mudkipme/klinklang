@@ -1,10 +1,8 @@
 {
   "extends": "../../tsconfig.json",
   "include": ["./src"],
-  "exclude": ["node_modules", "**/node_modules/**"],
   "compilerOptions": {
     "module": "commonjs",
-    "paths": { "*": ["src/types/*"] },
     "outDir": "dist"
   }
 }

@@ -1,9 +1,8 @@
 import { ActionWorker } from './base'
 import MediaWikiClient from '../lib/mediawiki/client'
 import { Actions } from './interfaces'
-import { defaultClient } from '../lib/wiki'
 import { EditRequest, EditResponse } from '../lib/mediawiki/api'
-import { getWikiClientOfUser } from '../models/user'
+import { diContainer } from '@fastify/awilix'
 
 export interface GetHTMLActionInput {
   title: string
@@ -12,7 +11,7 @@ export interface GetHTMLActionInput {
 
 export interface GetHTMLActionOutput {
   text: string
-  variants?: {'zh-hans'?: string, 'zh-hant'?: string}
+  variants?: { 'zh-hans'?: string, 'zh-hant'?: string }
 }
 
 export interface GetHTMLAction {
@@ -24,14 +23,16 @@ export interface GetHTMLAction {
 export abstract class WikiWorker<T extends Actions> extends ActionWorker<T> {
   #wikiClient?: MediaWikiClient
   protected async getWikiClient (): Promise<MediaWikiClient> {
+    const { wikiService } = diContainer.cradle
+
     if (this.#wikiClient !== undefined) {
       return this.#wikiClient
     }
     const workflow = await this.getWorkflow()
     if (workflow?.user === undefined || workflow?.user === null) {
-      return defaultClient
+      return wikiService.defaultClient
     }
-    return getWikiClientOfUser(workflow.user)
+    return wikiService.getWikiClientOfUser(workflow.user)
   }
 }
 

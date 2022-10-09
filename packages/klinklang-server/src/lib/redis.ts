@@ -1,7 +1,7 @@
 import Redis from 'ioredis'
-import config from './config'
+import { Config } from './config'
 
-export const redis = new Redis({
+export const getRedis = ({ config }: { config: Config }): Redis => new Redis({
   ...config.get('redis'),
   keyPrefix: config.get('app').prefix
 })

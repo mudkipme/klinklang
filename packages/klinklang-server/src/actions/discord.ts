@@ -1,5 +1,5 @@
+import { diContainer } from '@fastify/awilix'
 import { MessageCreateOptions, MessagePayload, TextChannel } from 'discord.js'
-import { defaultClient } from '../lib/discord'
 import { WikiWorker } from './wiki'
 
 export interface DiscordMessageActionInput {
@@ -19,7 +19,7 @@ export interface DiscordMessageAction {
 
 export class DiscordMessageWorker extends WikiWorker<DiscordMessageAction> {
   public async process (): Promise<DiscordMessageActionOutput> {
-    const channel = await defaultClient.channels.fetch(this.input.channel)
+    const channel = await diContainer.cradle.discordClient.channels.fetch(this.input.channel)
     if (channel instanceof TextChannel) {
       const message = await channel.send(this.input.message)
       return {

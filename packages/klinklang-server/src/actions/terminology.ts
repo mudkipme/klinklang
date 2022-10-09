@@ -1,17 +1,16 @@
 import cheerio from 'cheerio'
 import type { GetHTMLActionOutput } from './wiki'
 import { ActionWorker } from './base'
-import { PrismaPromise } from '@mudkipme/klinklang-prisma'
-import notification from '../lib/notification'
-import { prisma } from '../lib/database'
+import { PrismaPromise } from '.prisma/client'
+import { diContainer } from '@fastify/awilix'
 
 export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
   entrySelector: string
   idSelector?: string
-  langSelectorMap: {zh: string, [lang: string]: string}
+  langSelectorMap: { zh: string, [lang: string]: string }
 }
 
-export type ParseTerminologyListOutput = Array<{id: number, texts: {[lang: string]: string}}>
+export type ParseTerminologyListOutput = Array<{ id: number, texts: { [lang: string]: string } }>
 
 export interface ParseTerminologyListAction {
   actionType: 'PARSE_TERMINOLOGY_LIST'
@@ -21,7 +20,7 @@ export interface ParseTerminologyListAction {
 
 export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAction> {
   public async process (): Promise<ParseTerminologyListOutput> {
-    const dict = new Map<number, {[lang: string]: string}>()
+    const dict = new Map<number, { [lang: string]: string }>()
 
     // load non-zh terminologies
     let $ = cheerio.load(this.input.text)
@@ -34,7 +33,7 @@ export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAct
         return
       }
 
-      const texts: {[lang: string]: string} = {}
+      const texts: { [lang: string]: string } = {}
 
       for (const lang of Object.keys(this.input.langSelectorMap)) {
         if (hasVariants && lang === 'zh') {
@@ -88,6 +87,7 @@ export interface UpdateTerminologyAction {
 
 export class UpdateTerminologyWorker extends ActionWorker<UpdateTerminologyAction> {
   public async process (): Promise<null> {
+    const { prisma, notification } = diContainer.cradle
     const transactions: Array<PrismaPromise<unknown>> = []
 
     transactions.push(prisma.terminology.deleteMany({ where: { category: this.input.category } }))

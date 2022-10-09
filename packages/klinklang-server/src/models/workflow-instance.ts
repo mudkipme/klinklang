@@ -1,12 +1,10 @@
 import { v4 as uuidv4 } from 'uuid'
 import { Job } from 'bullmq'
 import { WorkflowTrigger } from './workflow-type'
-import { redis } from '../lib/redis'
-import { queue } from '../lib/queue'
 import { ActionJobData, ActionJobResult, Actions } from '../actions/interfaces'
-import { prisma } from '../lib/database'
 import { buildJobData } from './action'
-import { Action } from '@mudkipme/klinklang-prisma'
+import { Action } from '.prisma/client'
+import { diContainer } from '@fastify/awilix'
 
 export interface WorkflowInstanceData {
   workflowId: string
@@ -61,6 +59,7 @@ class WorkflowInstance {
   }
 
   public async save (): Promise<void> {
+    const { redis } = diContainer.cradle
     const data = this.toJSON()
     await Promise.all([
       redis.set(`workflow-instance:${this.workflowId}:${this.instanceId}`, JSON.stringify(data)),
@@ -75,6 +74,7 @@ class WorkflowInstance {
   }
 
   public async update<T extends Actions> (currentActionId: string, output: T['output']): Promise<void> {
+    const { prisma } = diContainer.cradle
     const action = await prisma.action.findUnique({ where: { id: currentActionId } })
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
@@ -99,6 +99,7 @@ class WorkflowInstance {
   }
 
   public async createNextJob<T extends Actions> (currentActionId: string): Promise<Job<ActionJobData<T>, ActionJobResult<T>> | null> {
+    const { prisma, queue } = diContainer.cradle
     const action = await prisma.action.findUnique({ where: { id: currentActionId }, include: { nextAction: true } })
     if (action === null || action === undefined) {
       throw new Error('ERR_ACTION_NOT_FOUND')
@@ -119,7 +120,7 @@ class WorkflowInstance {
     const context = { payload }
     const jobData = buildJobData(headAction, instanceId, context)
     const jobId = uuidv4()
-    await queue.add(headAction.actionType, jobData, { jobId })
+    await diContainer.cradle.queue.add(headAction.actionType, jobData, { jobId })
 
     const data: WorkflowInstanceData = {
       workflowId: headAction.workflowId,
@@ -136,12 +137,14 @@ class WorkflowInstance {
   }
 
   public static async getInstancesOfWorkflow (workflowId: string, start: number, stop: number): Promise<WorkflowInstance[]> {
+    const { redis } = diContainer.cradle
     const instanceIds = await redis.zrevrange(`workflow-instances:${workflowId}`, start, stop)
     const instances = await redis.mget(...instanceIds.map(id => `workflow-instance:${workflowId}:${id}`))
     return instances.filter(instance => instance !== null).map(data => new WorkflowInstance(JSON.parse(data as string)))
   }
 
   public static async getInstance (workflowId: string, instanceId: string): Promise<WorkflowInstance | null> {
+    const { redis } = diContainer.cradle
     const instance = await redis.get(`workflow-instance:${workflowId}:${instanceId}`)
     return instance !== null ? new WorkflowInstance(JSON.parse(instance)) : null
   }

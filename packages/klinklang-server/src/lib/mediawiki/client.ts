@@ -1,5 +1,5 @@
 import { fetch, BodyInit } from 'undici'
-import { internal } from '@hapi/boom'
+import createError from '@fastify/error'
 import OAuth, { Token } from 'oauth-1.0a'
 import { ParseResponse, QueryRevisionResponse, QueryTokenResponse, EditRequest, EditResponse } from './api'
 
@@ -14,6 +14,8 @@ interface RequestOptions {
   method: 'GET' | 'POST'
   form?: object
 }
+
+const mediaWikiError = createError('MEDIAWIKI_ERROR', 'MediaWiki Error')
 
 class MediaWikiClient {
   readonly #apiRoot: string
@@ -66,7 +68,7 @@ class MediaWikiClient {
     })
 
     if (response.status >= 300 || response.status < 200) {
-      throw internal(await response.text(), undefined, response.status)
+      throw mediaWikiError(response.status, await response.text())
     }
 
     return await response.json() as Response

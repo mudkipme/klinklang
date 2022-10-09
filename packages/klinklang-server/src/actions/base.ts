@@ -1,8 +1,8 @@
 import { Job } from 'bullmq'
 import { ActionJobData, ActionJobResult, Actions } from './interfaces'
 import WorkflowInstance from '../models/workflow-instance'
-import { User, Workflow } from '@mudkipme/klinklang-prisma'
-import { prisma } from '../lib/database'
+import { User, Workflow } from '.prisma/client'
+import { diContainer } from '@fastify/awilix'
 
 export type WorkerType<T extends Actions> = new (job: Job<ActionJobData<T>, ActionJobResult<T>>) => ActionWorker<T>
 
@@ -30,7 +30,7 @@ export abstract class ActionWorker<T extends Actions> {
     if (this.#workflow !== undefined && this.#workflow !== null) {
       return this.#workflow
     }
-    const workflow = await prisma.workflow.findUnique({ where: { id: this.workflowId }, include: { user: true } })
+    const workflow = await diContainer.cradle.prisma.workflow.findUnique({ where: { id: this.workflowId }, include: { user: true } })
     this.#workflow = workflow
     return workflow
   }
