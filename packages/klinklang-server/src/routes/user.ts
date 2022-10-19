@@ -1,20 +1,13 @@
-import { ServerRoute } from '@hapi/hapi'
+import { FastifyPluginAsync } from 'fastify'
+import userMiddleware from '../middlewares/user'
+import { outputUser } from '../models/user'
 
-const userRouter: ServerRoute[] = [
-  {
-    method: 'GET',
-    path: '/api/user/me',
-    options: {
-      auth: {
-        mode: 'try'
-      }
-    },
-    handler: async (request) => {
-      return {
-        user: request.auth.credentials?.user ?? null
-      }
-    }
-  }
-]
+const userRoutes: FastifyPluginAsync = async (fastify) => {
+  fastify.get('/api/user/me', { preHandler: userMiddleware(false) }, async (request, reply) => {
+    await reply.send({
+      user: request.user != null ? outputUser(request.user) : null
+    })
+  })
+}
 
-export default userRouter
+export default userRoutes

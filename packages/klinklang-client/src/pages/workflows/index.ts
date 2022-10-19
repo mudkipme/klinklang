@@ -1,4 +1,5 @@
-import { customElement, html, LitElement, TemplateResult, css, CSSResultArray } from 'lit-element'
+import { html, LitElement, TemplateResult, css, CSSResultArray } from 'lit'
+import { customElement } from 'lit/decorators.js'
 import { typography } from '@mudkipme/material-css'
 
 @customElement('workflows-page')

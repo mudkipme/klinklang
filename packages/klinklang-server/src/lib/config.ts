@@ -1,5 +1,6 @@
 import convict from 'convict'
 import { join } from 'path'
+import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
 
 const config = convict({
   app: {
@@ -23,6 +24,13 @@ const config = convict({
       doc: 'Bootstrap workflow config',
       format: String,
       default: './workflow.yml'
+    }
+  },
+  db: {
+    url: {
+      doc: 'Database URL',
+      format: String,
+      default: ''
     }
   },
   mediawiki: {
@@ -49,30 +57,6 @@ const config = convict({
       default: 'oob'
     }
   },
-  db: {
-    host: {
-      doc: 'Database hostname or IP address',
-      format: String,
-      default: 'postgresql'
-    },
-    database: {
-      doc: 'Database name',
-      format: String,
-      default: 'klinklang'
-    },
-    username: {
-      doc: 'Database user name',
-      format: String,
-      default: '',
-      env: 'DATABASE_USERNAME'
-    },
-    password: {
-      doc: 'Database password',
-      format: String,
-      default: '',
-      env: 'DATABASE_PASSWORD'
-    }
-  },
   redis: {
     host: {
       doc: 'Redis host',
@@ -86,12 +70,12 @@ const config = convict({
     }
   },
   kafka: {
-    'metadata.broker.list': {
+    brokers: {
       doc: 'Kafka broker list',
-      format: String,
-      default: 'kafka:9092'
+      format: Array,
+      default: ['kafka:9092']
     },
-    'group.id': {
+    groupId: {
       doc: 'Kafka consumer group id',
       format: String,
       default: 'klinklang'
@@ -107,6 +91,8 @@ const config = convict({
   }
 })
 
-config.loadFile(join(process.env.LERNA_ROOT_PATH ?? '.', 'config.json'))
+export type Config = typeof config
 
-export default config
+export async function loadConfig (): Promise<Config> {
+  return config.loadFile(join(await findWorkspaceDir(process.cwd()) ?? '.', 'config.json'))
+}

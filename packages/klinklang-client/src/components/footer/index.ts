@@ -1,4 +1,5 @@
-import { customElement, LitElement, html, TemplateResult, css, CSSResultArray } from 'lit-element'
+import { LitElement, html, TemplateResult, css, CSSResultArray } from 'lit'
+import { customElement } from 'lit/decorators.js'
 import { typography } from '@mudkipme/material-css'
 @customElement('klinklang-footer')
 export class KlinklangFooter extends LitElement {

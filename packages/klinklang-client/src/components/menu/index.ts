@@ -1,4 +1,5 @@
-import { LitElement, html, TemplateResult, customElement } from 'lit-element'
+import { LitElement, html, TemplateResult } from 'lit'
+import { customElement } from 'lit/decorators.js'
 import '@material/mwc-list'
 import '@material/mwc-list/mwc-list-item'
 import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation'

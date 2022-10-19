@@ -1,9 +1,10 @@
-import { Sequelize } from 'sequelize'
-import config from './config'
+import { PrismaClient } from '.prisma/client'
+import { Config } from './config'
 
-const { database, username, password, host } = config.get('db')
+export type { PrismaClient }
 
-export const sequelize = new Sequelize(database, username, password, {
-  dialect: 'postgres',
-  host
+export const getClient = ({ config }: { config: Config }): PrismaClient => new PrismaClient({
+  datasources: {
+    db: config.get('db')
+  }
 })

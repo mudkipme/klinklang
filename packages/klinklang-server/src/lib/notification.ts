@@ -1,7 +1,5 @@
 import { EventEmitter } from 'events'
-import Redis from 'ioredis'
-import config from './config'
-import { redis } from './redis'
+import type Redis from 'ioredis'
 
 export type MessageType =
   | {
@@ -11,10 +9,10 @@ export type MessageType =
     type: 'WORKFLOW_EVENTBUS_UPDATE'
   }
 
-class Notification extends EventEmitter {
-  #subscriber: Redis.Redis
-  #publisher: Redis.Redis
-  public constructor (subscriber: Redis.Redis, publisher: Redis.Redis) {
+export class Notification extends EventEmitter {
+  #subscriber: Redis
+  #publisher: Redis
+  public constructor (subscriber: Redis, publisher: Redis) {
     super()
     this.#subscriber = subscriber
     this.#publisher = publisher
@@ -35,7 +33,4 @@ class Notification extends EventEmitter {
   }
 }
 
-export default new Notification(new Redis({
-  ...config.get('redis'),
-  keyPrefix: config.get('app').prefix
-}), redis)
+export const getNotification = ({ redis, subscriberRedis }: { redis: Redis, subscriberRedis: Redis }): Notification => new Notification(subscriberRedis, redis)

@@ -1,8 +1,8 @@
 import Discord from 'discord.js'
-import config from './config'
 
-export const defaultClient = new Discord.Client()
-
-export async function login (): Promise<void> {
-  await defaultClient.login(config.get('discord').token)
+export function getClient (): Discord.Client {
+  const client = new Discord.Client({
+    intents: ['GuildMessages']
+  })
+  return client
 }

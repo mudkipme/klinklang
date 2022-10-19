@@ -3,15 +3,15 @@ FROM node:lts
 RUN mkdir -p /app
 WORKDIR /app
 
-RUN npm i lerna -g
+RUN npm i pnpm -g
 
 COPY . /app
-RUN lerna bootstrap
+RUN pnpm install
 
 ENV NODE_ENV production
-RUN yarn build
+RUN pnpm build
 
 EXPOSE 3000
 VOLUME ["/app/config.json", "/app/workflow.yml"]
 
-CMD [ "yarn", "serve" ]
+CMD [ "pnpm", "serve" ]

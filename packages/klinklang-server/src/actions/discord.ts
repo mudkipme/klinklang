@@ -1,10 +1,10 @@
-import { APIMessageContentResolvable, MessageAdditions, MessageOptions, TextChannel } from 'discord.js'
-import { defaultClient } from '../lib/discord'
+import { diContainer } from '@fastify/awilix'
+import { MessageCreateOptions, MessagePayload, TextChannel } from 'discord.js'
 import { WikiWorker } from './wiki'
 
 export interface DiscordMessageActionInput {
   channel: string
-  message: APIMessageContentResolvable | (MessageOptions & { split?: false }) | MessageAdditions
+  message: string | MessagePayload | MessageCreateOptions
 }
 
 export interface DiscordMessageActionOutput {
@@ -19,8 +19,7 @@ export interface DiscordMessageAction {
 
 export class DiscordMessageWorker extends WikiWorker<DiscordMessageAction> {
   public async process (): Promise<DiscordMessageActionOutput> {
-    console.log(this.input)
-    const channel = await defaultClient.channels.fetch(this.input.channel)
+    const channel = await diContainer.cradle.discordClient.channels.fetch(this.input.channel)
     if (channel instanceof TextChannel) {
       const message = await channel.send(this.input.message)
       return {

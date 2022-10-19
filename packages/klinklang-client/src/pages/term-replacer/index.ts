@@ -1,4 +1,5 @@
-import { customElement, internalProperty, LitElement, css, CSSResultArray, html, TemplateResult } from 'lit-element'
+import { LitElement, css, CSSResultArray, html, TemplateResult } from 'lit'
+import { customElement, state } from 'lit/decorators.js'
 import '@material/mwc-button'
 import '@material/mwc-select'
 import type { Select } from '@material/mwc-select'
@@ -12,34 +13,34 @@ import { layoutGrid } from '@mudkipme/material-css'
 
 @customElement('term-replacer')
 class TermReplacer extends LitElement {
-  @internalProperty()
+  @state()
   private sourceLng = 'en'
 
-  @internalProperty()
+  @state()
   private resultLng = 'zh-hans'
 
-  @internalProperty()
+  @state()
   private readonly languages: ReadonlyArray<{ value: string, text: string }> = [
-    { value: 'en', text: 'English' },
-    { value: 'ja', text: '日本語' },
-    { value: 'zh-hans', text: '简体中文' },
-    { value: 'zh-hant', text: '繁体中文' }
-  ]
+      { value: 'en', text: 'English' },
+      { value: 'ja', text: '日本語' },
+      { value: 'zh-hans', text: '简体中文' },
+      { value: 'zh-hant', text: '繁体中文' }
+    ]
 
-  @internalProperty()
+  @state()
   private categories: ReadonlyArray<{ value: string, text: string, selected: boolean }> = [
-    { value: 'pokemon', text: 'Pokémon', selected: false },
-    { value: 'ability', text: 'Ability', selected: false },
-    { value: 'move', text: 'Move', selected: false },
-    { value: 'item', text: 'Item', selected: false },
-    { value: 'location', text: 'Location', selected: false },
-    { value: 'nature', text: 'Nature', selected: false },
-    { value: 'trainer-type', text: 'Trainer Type', selected: false },
-    { value: 'warrior', text: 'Warrior', selected: false },
-    { value: 'character', text: 'Character', selected: false }
-  ]
+      { value: 'pokemon', text: 'Pokémon', selected: false },
+      { value: 'ability', text: 'Ability', selected: false },
+      { value: 'move', text: 'Move', selected: false },
+      { value: 'item', text: 'Item', selected: false },
+      { value: 'location', text: 'Location', selected: false },
+      { value: 'nature', text: 'Nature', selected: false },
+      { value: 'trainer-type', text: 'Trainer Type', selected: false },
+      { value: 'warrior', text: 'Warrior', selected: false },
+      { value: 'character', text: 'Character', selected: false }
+    ]
 
-  @internalProperty()
+  @state()
   private resultText = ''
 
   static get styles (): CSSResultArray {

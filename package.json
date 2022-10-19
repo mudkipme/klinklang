@@ -7,20 +7,18 @@
   "scripts": {
     "format": "eslint . --fix",
     "lint": "eslint .",
-    "start": "LERNA_ROOT_PATH=`pwd` concurrently -k -p \"[{name}]\" -n \"Snowpack,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"lerna run --stream --scope @mudkipme/klinklang-client start\" \"lerna run --stream --scope @mudkipme/klinklang-server watch\" \"lerna run --stream --scope @mudkipme/klinklang-server serve-debug\"",
-    "serve": "LERNA_ROOT_PATH=`pwd` lerna run --stream --scope @mudkipme/klinklang-server serve",
-    "build": "lerna run build"
+    "start": "pnpm run -r start",
+    "serve": "pnpm --filter @mudkipme/klinklang-server run --stream serve",
+    "build": "pnpm run -r build"
   },
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^4.21.0",
-    "@typescript-eslint/parser": "^4.21.0",
-    "concurrently": "^6.0.1",
-    "eslint": "^7.23.0",
-    "eslint-config-standard-with-typescript": "^20.0.0",
-    "eslint-plugin-import": "^2.22.1",
-    "eslint-plugin-node": "^11.1.0",
-    "eslint-plugin-promise": "^4.3.1",
-    "lerna": "^4.0.0",
-    "typescript": "^4.2.3"
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@typescript-eslint/parser": "^5.40.1",
+    "eslint": "^8.25.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-promise": "^6.1.0",
+    "typescript": "^4.8.4"
   }
 }

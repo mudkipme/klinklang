@@ -1,7 +1,8 @@
 import { Job } from 'bullmq'
 import { ActionJobData, ActionJobResult, Actions } from './interfaces'
 import WorkflowInstance from '../models/workflow-instance'
-import Workflow from '../models/workflow'
+import { User, Workflow } from '.prisma/client'
+import { diContainer } from '@fastify/awilix'
 
 export type WorkerType<T extends Actions> = new (job: Job<ActionJobData<T>, ActionJobResult<T>>) => ActionWorker<T>
 
@@ -11,7 +12,7 @@ export abstract class ActionWorker<T extends Actions> {
   protected readonly workflowId: string
   protected readonly instanceId: string
   protected readonly actionId: string
-  #workflow?: Workflow | null
+  #workflow?: Workflow & { user: User | null } | null
 
   public constructor (job: Job<ActionJobData<T>, ActionJobResult<T>>) {
     this.jobId = job.id
@@ -25,11 +26,11 @@ export abstract class ActionWorker<T extends Actions> {
     return await WorkflowInstance.getInstance(this.workflowId, this.instanceId)
   }
 
-  protected async getWorkflow (): Promise<Workflow | null> {
+  protected async getWorkflow (): Promise<Workflow & { user: User | null } | null> {
     if (this.#workflow !== undefined && this.#workflow !== null) {
       return this.#workflow
     }
-    const workflow = await Workflow.findByPk(this.workflowId)
+    const workflow = await diContainer.cradle.prisma.workflow.findUnique({ where: { id: this.workflowId }, include: { user: true } })
     this.#workflow = workflow
     return workflow
   }

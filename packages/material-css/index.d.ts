@@ -1,4 +1,4 @@
-import { CSSResult } from 'lit-element'
+import { CSSResult } from 'lit'
 
 declare const layoutGrid: CSSResult
 declare const typography: CSSResult

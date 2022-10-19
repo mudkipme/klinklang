@@ -1,4 +1,5 @@
-import { customElement, internalProperty, LitElement, property, html, TemplateResult, css, CSSResult } from 'lit-element'
+import { LitElement, html, TemplateResult, css, CSSResult } from 'lit'
+import { customElement, state, property } from 'lit/decorators.js'
 import '@material/mwc-top-app-bar'
 import '@material/mwc-icon-button'
 import '@material/mwc-menu'
@@ -21,10 +22,9 @@ export class KlinklangHeader extends LitElement {
     `
   }
 
-  @property({ attribute: false })
-  currentUser?: User | null
+  @property({ attribute: false }) currentUser?: User | null
 
-  @internalProperty()
+  @state()
   private open = false
 
   private openDrawer (): void {

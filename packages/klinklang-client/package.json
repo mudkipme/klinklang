@@ -1,6 +1,6 @@
 {
   "name": "@mudkipme/klinklang-client",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "A collection of utilities of 52Poké Wiki.",
   "author": "Mudkip <i@mudkip.me>",
   "homepage": "https://github.com/mudkipme/klinklang#readme",
@@ -13,30 +13,29 @@
     "url": "git+https://github.com/mudkipme/klinklang.git"
   },
   "scripts": {
-    "build": "snowpack build",
-    "start": "snowpack dev"
+    "build": "vite build",
+    "start": "vite"
   },
   "bugs": {
     "url": "https://github.com/mudkipme/klinklang/issues"
   },
   "devDependencies": {
-    "http-proxy": "^1.18.1",
-    "snowpack": "^3.2.2"
+    "vite": "^3.1.8"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.20.0",
-    "@material/mwc-checkbox": "^0.20.0",
-    "@material/mwc-drawer": "^0.20.0",
-    "@material/mwc-formfield": "^0.20.0",
-    "@material/mwc-icon": "^0.20.0",
-    "@material/mwc-icon-button": "^0.20.0",
-    "@material/mwc-list": "^0.20.0",
-    "@material/mwc-menu": "^0.20.0",
-    "@material/mwc-select": "^0.20.0",
-    "@material/mwc-textarea": "^0.20.0",
-    "@material/mwc-top-app-bar": "^0.20.0",
-    "@mudkipme/material-css": "^0.5.0",
+    "@material/mwc-button": "^0.27.0",
+    "@material/mwc-checkbox": "^0.27.0",
+    "@material/mwc-drawer": "^0.27.0",
+    "@material/mwc-formfield": "^0.27.0",
+    "@material/mwc-icon": "^0.27.0",
+    "@material/mwc-icon-button": "^0.27.0",
+    "@material/mwc-list": "^0.27.0",
+    "@material/mwc-menu": "^0.27.0",
+    "@material/mwc-select": "^0.27.0",
+    "@material/mwc-textarea": "^0.27.0",
+    "@material/mwc-top-app-bar": "^0.27.0",
+    "@mudkipme/material-css": "workspace:*",
     "@vaadin/router": "^1.7.4",
-    "lit-element": "^2.4.0"
+    "lit": "^2.4.0"
   }
 }

@@ -1,11 +1,3 @@
-import winston from 'winston'
+import pino, { Logger } from 'pino'
 
-const logger = winston.createLogger({
-  transports: [
-    new winston.transports.Console({
-      format: winston.format.simple()
-    })
-  ]
-})
-
-export default logger
+export const getLogger = (): Logger => pino()

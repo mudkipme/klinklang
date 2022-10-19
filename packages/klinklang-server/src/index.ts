@@ -1,104 +1,65 @@
 import { join } from 'path'
-import Hapi from '@hapi/hapi'
-import Cookie, { Options } from '@hapi/cookie'
-import Yar from '@hapi/yar'
-import Inert from '@hapi/inert'
-import CatboxRedis from '@hapi/catbox-redis'
-import config from './lib/config'
-import logger from './lib/logger'
+import { fastify } from 'fastify'
+import fastifyCookie from '@fastify/cookie'
+import fastifySession from '@fastify/session'
+import fastifyStatic from '@fastify/static'
+import { diContainer, fastifyAwilixPlugin } from '@fastify/awilix'
 import oauth from './routes/oauth'
-import userRouter from './routes/user'
-import workflowRouter from './routes/workflow'
-import terminologyRouter from './routes/terminology'
-import { sequelize } from './lib/database'
-import userMiddleware from './middlewares/user'
+import userRoutes from './routes/user'
+import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
+import workflowRoutes from './routes/workflow'
+import terminologyRoutes from './routes/terminology'
 import bootstrap from './commands/bootstrap'
 import { start } from './lib/eventbus'
-import { login } from './lib/discord'
 import './lib/worker'
+import { register } from './lib/register'
+import patchBigInt from './lib/ext'
 
 const launch = async (): Promise<void> => {
-  await sequelize.sync()
-  await bootstrap()
-  await start()
-  await login()
-
-  const port = process.env.PORT ?? config.get('app').port
-  const server = Hapi.server({
-    port,
-    cache: {
-      provider: {
-        constructor: CatboxRedis,
-        options: {
-          ...config.get('redis'),
-          partition: config.get('app').prefix
-        }
-      }
-    },
-    routes: {
-      files: {
-        relativeTo: join(process.env.LERNA_ROOT_PATH !== undefined ? `${process.env.LERNA_ROOT_PATH}/packages/klinklang-client` : '.', 'build')
-      }
+  await register()
+  const { config, discordClient, prisma, notification, logger, worker } = diContainer.cradle
+  try {
+    if (config.get('discord').token !== '') {
+      await discordClient.login(config.get('discord').token)
     }
-  })
-
-  await server.register(Cookie)
-  const strategyOptions: Options = {
-    cookie: {
-      name: 'sid',
-      password: config.get('app').secret,
-      path: '/',
-      isSecure: process.env.NODE_ENV === 'production'
-    },
-    validateFunc: userMiddleware()
+  } catch (e) {
+    logger.error('discord login failed', e)
+    throw e
   }
-  server.auth.strategy('session', 'cookie', strategyOptions)
-  server.auth.default('session')
 
-  await server.register({
-    plugin: Yar,
-    options: {
-      storeBlank: false,
-      cookieOptions: {
-        isSecure: process.env.NODE_ENV === 'production',
-        password: config.get('app').secret
-      }
-    }
+  await bootstrap({ config, prisma })
+  await start({ config, prisma, notification, logger })
+  worker.run().catch(e => logger.error(e))
+  patchBigInt()
+
+  const port = process.env.PORT !== undefined ? parseInt(process.env.PORT, 10) : config.get('app').port
+  const workspaceRoot = await findWorkspaceDir(process.cwd())
+  const buildPath = join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
+  const server = fastify({ logger })
+
+  await server.register(fastifyCookie)
+  await server.register(fastifySession, {
+    secret: config.get('app').secret,
+    cookie: { secure: process.env.NODE_ENV === 'production' }
   })
 
-  await server.register(Inert)
+  await server.register(fastifyAwilixPlugin)
 
-  server.route(oauth)
-  server.route(userRouter)
-  server.route(workflowRouter)
-  server.route(terminologyRouter)
+  server.decorateRequest('user', null)
+  await server.register(oauth)
+  await server.register(userRoutes)
+  await server.register(workflowRoutes)
+  await server.register(terminologyRoutes)
 
-  server.route({
-    method: 'GET',
-    path: '/{any*}',
-    options: {
-      auth: false
-    },
-    handler: {
-      directory: {
-        path: '.',
-        redirectToSlash: true
-      }
-    }
+  await server.register(fastifyStatic, {
+    root: join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
   })
 
-  server.route({
-    method: 'GET',
-    path: '/pages/{any*}',
-    options: {
-      auth: false
-    },
-    handler: function (_, h) {
-      return h.file('index.html')
-    }
+  server.setNotFoundHandler(async (request, reply) => {
+    await reply.sendFile(join(buildPath, 'index.html'))
   })
 
-  await server.start()
+  await server.listen({ port })
   logger.info(`Klinklang server listening on ${port}`)
 }
 
@@ -109,5 +70,4 @@ process.on('unhandledRejection', (err) => {
 
 launch().catch(e => {
   console.log(e)
-  logger.error(e)
 })

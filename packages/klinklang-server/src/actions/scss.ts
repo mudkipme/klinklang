@@ -1,5 +1,4 @@
-import { promisify } from 'util'
-import sass from 'node-sass'
+import sass from 'sass'
 import { ActionWorker } from './base'
 
 export interface SCSSActionInput {
@@ -20,12 +19,9 @@ export interface SCSSAction {
 export class SCSSWorker extends ActionWorker<SCSSAction> {
   public async process (): Promise<SCSSActionOutput> {
     const variableText = Object.keys(this.input.variables).map(key => `$${key}: "${this.input.variables[key]}";\n`).join('')
-    const result = await promisify(sass.render.bind(sass))({
-      data: variableText + this.input.scss,
-      outputStyle: 'compact'
-    })
+    const result = await sass.compileStringAsync(variableText + this.input.scss)
     return {
-      css: result.css.toString('utf-8')
+      css: result.css
     }
   }
 }
