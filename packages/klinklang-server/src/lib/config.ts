@@ -30,7 +30,8 @@ const config = convict({
     url: {
       doc: 'Database URL',
       format: String,
-      default: ''
+      default: '',
+      env: 'DB_URL'
     }
   },
   mediawiki: {
