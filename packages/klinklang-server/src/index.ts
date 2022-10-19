@@ -32,7 +32,7 @@ const launch = async (): Promise<void> => {
   worker.run().catch(e => logger.error(e))
   patchBigInt()
 
-  const port = process.env.PORT !== undefined ? parseInt(process.env.PORT, 10) : config.get('app').port
+  const { host, port } = config.get('app')
   const workspaceRoot = await findWorkspaceDir(process.cwd())
   const buildPath = join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
   const server = fastify({ logger })
@@ -59,7 +59,7 @@ const launch = async (): Promise<void> => {
     await reply.sendFile(join(buildPath, 'index.html'))
   })
 
-  await server.listen({ port })
+  await server.listen({ host, port })
   logger.info(`Klinklang server listening on ${port}`)
 }
 

@@ -15,10 +15,16 @@ const config = convict({
       format: String,
       default: 'klinklang'
     },
+    host: {
+      doc: 'Server host',
+      format: String,
+      default: '0.0.0.0'
+    },
     port: {
       doc: 'Server port',
       format: 'int',
-      default: 3000
+      default: 3000,
+      env: 'PORT'
     },
     bootstrap: {
       doc: 'Bootstrap workflow config',
