@@ -1,6 +1,6 @@
 import { render } from 'micromustache'
 import { mapValues } from 'lodash'
-import { query } from 'jsonpath'
+import { JSONPath } from 'jsonpath-plus'
 import { Actions, ActionJobData } from '../actions/interfaces'
 import { Action } from '.prisma/client'
 
@@ -29,9 +29,9 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
   if (directBuilder.mode === 'rawValue') {
     return directBuilder.value
   } else if (directBuilder.mode === 'jsonPath') {
-    return query(context, directBuilder.jsonPath, 1)[0]
+    return JSONPath<T[]>({ json: context, path: directBuilder.jsonPath })[0]
   } else if (directBuilder.mode === 'jsonPathArray') {
-    return query(context, directBuilder.jsonPath) as unknown as T
+    return JSONPath<T>({ json: context, path: directBuilder.jsonPath })
   } else if (directBuilder.mode === 'template') {
     return render(directBuilder.template, context) as unknown as T
   }

@@ -15,8 +15,7 @@ const userMiddleware = <T extends RouteGenericInterface>(requireLogin: boolean) 
       request.log.error(e)
       throw e
     }
-  }
-  if (requireLogin) {
+  } else if (requireLogin) {
     throw unauthorizedError()
   }
 }

@@ -139,6 +139,9 @@ class WorkflowInstance {
   public static async getInstancesOfWorkflow (workflowId: string, start: number, stop: number): Promise<WorkflowInstance[]> {
     const { redis } = diContainer.cradle
     const instanceIds = await redis.zrevrange(`workflow-instances:${workflowId}`, start, stop)
+    if (instanceIds.length === 0) {
+      return []
+    }
     const instances = await redis.mget(...instanceIds.map(id => `workflow-instance:${workflowId}:${id}`))
     return instances.filter(instance => instance !== null).map(data => new WorkflowInstance(JSON.parse(data as string)))
   }

@@ -13,12 +13,15 @@ import bootstrap from './commands/bootstrap'
 import { start } from './lib/eventbus'
 import './lib/worker'
 import { register } from './lib/register'
+import patchBigInt from './lib/ext'
 
 const launch = async (): Promise<void> => {
   await register()
-  const { config, discordClient, prisma, notification, logger } = diContainer.cradle
+  const { config, discordClient, prisma, notification, logger, worker } = diContainer.cradle
   try {
-    await discordClient.login(config.get('discord').token)
+    if (config.get('discord').token !== '') {
+      await discordClient.login(config.get('discord').token)
+    }
   } catch (e) {
     logger.error('discord login failed', e)
     throw e
@@ -26,6 +29,8 @@ const launch = async (): Promise<void> => {
 
   await bootstrap({ config, prisma })
   await start({ config, prisma, notification, logger })
+  worker.run().catch(e => logger.error(e))
+  patchBigInt()
 
   const port = process.env.PORT !== undefined ? parseInt(process.env.PORT, 10) : config.get('app').port
   const workspaceRoot = await findWorkspaceDir(process.cwd())
@@ -51,8 +56,6 @@ const launch = async (): Promise<void> => {
   })
 
   server.setNotFoundHandler(async (request, reply) => {
-    request.log.info('hello world')
-
     await reply.sendFile(join(buildPath, 'index.html'))
   })
 

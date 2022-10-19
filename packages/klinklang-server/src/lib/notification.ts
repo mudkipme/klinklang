@@ -33,4 +33,4 @@ export class Notification extends EventEmitter {
   }
 }
 
-export const getNotification = ({ redis }: { redis: Redis }): Notification => new Notification(redis, redis)
+export const getNotification = ({ redis, subscriberRedis }: { redis: Redis, subscriberRedis: Redis }): Notification => new Notification(subscriberRedis, redis)

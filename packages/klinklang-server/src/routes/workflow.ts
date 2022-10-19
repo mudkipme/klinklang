@@ -1,4 +1,4 @@
-import { createInstanceWithWorkflow, getWorkflowInstances } from '../models/workflow'
+import { createInstanceWithWorkflow, getLinkedActionsOfWorkflow, getWorkflowInstances } from '../models/workflow'
 import { FastifyPluginAsync, FastifyRequest } from 'fastify'
 import { forbiddenError, workflowNotFoundError } from '../lib/errors'
 import userMiddleware from '../middlewares/user'
@@ -29,11 +29,9 @@ const workflowRoutes: FastifyPluginAsync = async (fastify) => {
       if (workflow === null || workflow === undefined) {
         throw workflowNotFoundError()
       }
-      const start = request.query.start !== undefined ? parseInt(request.query.start, 10) : 0
-      const stop = request.query.stop !== undefined ? Math.max(parseInt(request.query.stop, 10), 200) : 20
-      const instances = await getWorkflowInstances(workflow, start, stop)
+      const actions = await getLinkedActionsOfWorkflow(workflow)
       return {
-        instances
+        actions
       }
     }
   })
@@ -68,12 +66,13 @@ const workflowRoutes: FastifyPluginAsync = async (fastify) => {
 
       if (workflow.isPrivate) {
         const workflowOwner = workflow.user
-        if (workflowOwner !== null && workflowOwner !== undefined && workflowOwner.id !== request.user?.id && workflow.isPrivate) {
+        if (workflowOwner !== null && workflowOwner !== undefined && workflowOwner.id !== request.user?.id) {
           throw forbiddenError()
         }
       }
 
       const instance = await createInstanceWithWorkflow(workflow)
+
       return {
         workflow,
         instance

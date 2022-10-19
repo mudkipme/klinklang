@@ -9,7 +9,8 @@ export const getWorker = ({ config, logger }: { config: Config, logger: Logger }
   const worker = new Worker(queueName, async (job: Job) => {
     return await processAction(job)
   }, {
-    connection: config.get('redis')
+    connection: config.get('redis'),
+    autorun: false
   })
 
   worker.on('failed', (job: Job, err: Error) => {

@@ -19,6 +19,7 @@ export async function register (): Promise<void> {
     wikiService: asClass(WikiService).singleton(),
     mediaWikiOAuth: asClass(MediaWikiOAuth).singleton(),
     redis: asFunction(getRedis).singleton(),
+    subscriberRedis: asFunction(getRedis).singleton(),
     notification: asFunction(getNotification).singleton(),
     terminologyService: asClass(TerminologyService).singleton().disposer(service => service.dispose()),
     discordClient: asFunction(getDiscordClient).singleton(),

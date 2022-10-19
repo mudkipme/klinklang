@@ -26,6 +26,7 @@ declare module '@fastify/awilix' {
     wikiService: WikiService
     mediaWikiOAuth: MediaWikiOAuth
     redis: Redis
+    subscriberRedis: Redis
     notification: Notification
     terminologyService: TerminologyService
     discordClient: Discord.Client
