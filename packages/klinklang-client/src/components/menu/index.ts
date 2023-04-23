@@ -1,8 +1,8 @@
-import { LitElement, html, TemplateResult } from 'lit'
+import { LitElement, html, type TemplateResult } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import '@material/mwc-list'
 import '@material/mwc-list/mwc-list-item'
-import { SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation'
+import { type SingleSelectedEvent } from '@material/mwc-list/mwc-list-foundation'
 import { Router } from '@vaadin/router'
 
 /**

@@ -1,7 +1,8 @@
-import { fetch, BodyInit } from 'undici'
+import { fetch, type BodyInit } from 'undici'
 import createError from '@fastify/error'
-import OAuth, { Token } from 'oauth-1.0a'
-import { ParseResponse, QueryRevisionResponse, QueryTokenResponse, EditRequest, EditResponse } from './api'
+import { type Token } from 'oauth-1.0a'
+import type OAuth from 'oauth-1.0a'
+import { type ParseResponse, type QueryRevisionResponse, type QueryTokenResponse, type EditRequest, type EditResponse } from './api'
 
 export interface MediaWikiClientOptions {
   apiRoot: string

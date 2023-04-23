@@ -20,7 +20,7 @@
     "url": "https://github.com/mudkipme/klinklang/issues"
   },
   "devDependencies": {
-    "vite": "^3.1.8"
+    "vite": "^4.3.1"
   },
   "dependencies": {
     "@material/mwc-button": "^0.27.0",
@@ -35,7 +35,7 @@
     "@material/mwc-textarea": "^0.27.0",
     "@material/mwc-top-app-bar": "^0.27.0",
     "@mudkipme/material-css": "workspace:*",
-    "@vaadin/router": "^1.7.4",
-    "lit": "^2.4.0"
+    "@vaadin/router": "^1.7.5",
+    "lit": "^2.7.2"
   }
 }

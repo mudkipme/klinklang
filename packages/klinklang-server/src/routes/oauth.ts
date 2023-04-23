@@ -1,6 +1,6 @@
 import createError from '@fastify/error'
-import { Prisma } from '.prisma/client'
-import { FastifyPluginAsync, FastifyRequest } from 'fastify'
+import { type Prisma } from '@mudkipme/klinklang-prisma'
+import { type FastifyPluginAsync, type FastifyRequest } from 'fastify'
 
 const oauthRoutes: FastifyPluginAsync = async (fastify) => {
   fastify.get('/oauth/login', async (request, reply) => {

@@ -1,4 +1,4 @@
-import { FastifyPluginAsync } from 'fastify'
+import { type FastifyPluginAsync } from 'fastify'
 import userMiddleware from '../middlewares/user'
 import { outputUser } from '../models/user'
 

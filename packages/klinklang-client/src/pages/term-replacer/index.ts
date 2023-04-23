@@ -1,4 +1,4 @@
-import { LitElement, css, CSSResultArray, html, TemplateResult } from 'lit'
+import { LitElement, css, type CSSResultArray, html, type TemplateResult } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import '@material/mwc-button'
 import '@material/mwc-select'
@@ -127,7 +127,7 @@ class TermReplacer extends LitElement {
           ${this.categories.map(category => html`
             <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2">
               <mwc-formfield .label=${category.text} nowrap>
-                <mwc-checkbox .checked=${category.selected} @change=${(e: Event) => this.toggleCheck(category.value, (e.target as Checkbox).checked)}></mwc-checkbox>
+                <mwc-checkbox .checked=${category.selected} @change=${(e: Event) => { this.toggleCheck(category.value, (e.target as Checkbox).checked) }}></mwc-checkbox>
               </mwc-formfield>
             </div>
           `)}

@@ -33,6 +33,6 @@
     "@material/typography": "^14.0.0"
   },
   "dependencies": {
-    "lit": "^2.4.0"
+    "lit": "^2.7.2"
   }
 }

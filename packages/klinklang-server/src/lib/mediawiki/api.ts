@@ -18,11 +18,11 @@ export interface QueryRevisionResponse {
       ns: number
       title: string
       revisions: Array<{
-        slots: { [slot: string]: {
+        slots: Record<string, {
           contentmodel: string
           contentformat: string
           content: string
-        } }
+        }>
       }>
     }>
   }

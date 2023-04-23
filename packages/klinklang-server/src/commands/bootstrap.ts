@@ -2,9 +2,9 @@ import { stat, readFile } from 'fs/promises'
 import { join } from 'path'
 import yaml from 'js-yaml'
 import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
-import { Prisma, PrismaClient } from '.prisma/client'
-import { WorkflowTrigger } from '../models/workflow-type'
-import { Config } from '../lib/config'
+import { type Prisma, type PrismaClient } from '@mudkipme/klinklang-prisma'
+import { type WorkflowTrigger } from '../models/workflow-type'
+import { type Config } from '../lib/config'
 import { v4 as uuidv4 } from 'uuid'
 
 export interface WorkflowConfig {

@@ -29,7 +29,7 @@ const launch = async (): Promise<void> => {
 
   await bootstrap({ config, prisma })
   await start({ config, prisma, notification, logger })
-  worker.run().catch(e => logger.error(e))
+  worker.run().catch(e => { logger.error(e) })
   patchBigInt()
 
   const { host, port } = config.get('app')

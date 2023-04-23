@@ -1,7 +1,7 @@
-import { Job } from 'bullmq'
-import { ActionJobData, ActionJobResult, Actions } from './interfaces'
+import { type Job } from 'bullmq'
+import { type ActionJobData, type ActionJobResult, type Actions } from './interfaces'
 import WorkflowInstance from '../models/workflow-instance'
-import { User, Workflow } from '.prisma/client'
+import { type User, type Workflow } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 
 export type WorkerType<T extends Actions> = new (job: Job<ActionJobData<T>, ActionJobResult<T>>) => ActionWorker<T>

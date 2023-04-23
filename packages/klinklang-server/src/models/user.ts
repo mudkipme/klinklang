@@ -1,5 +1,5 @@
 import { omit } from 'lodash'
-import { User } from '.prisma/client'
+import { type User } from '@mudkipme/klinklang-prisma'
 
 export function outputUser (user: User): Omit<User, 'token' | 'wikiId'> & { wikiId: string } {
   return {

@@ -1,7 +1,7 @@
 import { keyBy } from 'lodash'
-import { WorkflowTrigger } from './workflow-type'
+import { type WorkflowTrigger } from './workflow-type'
 import WorkflowInstance from './workflow-instance'
-import { Workflow, Action } from '.prisma/client'
+import { type Workflow, type Action } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 
 export async function getWorkflowInstances (workflow: Workflow, start = 0, stop = 100): Promise<WorkflowInstance[]> {
@@ -31,7 +31,7 @@ export async function getLinkedActionsOfWorkflow (workflow: Workflow): Promise<A
 
   const actionMap = keyBy(actions, 'id')
   const linkedActions = []
-  const visited: { [id: string]: boolean } = {}
+  const visited: Record<string, boolean> = {}
   while (current !== undefined) {
     if (visited[current.id]) {
       throw new Error('CIRCULAR_ACTION_FOUND')

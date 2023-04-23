@@ -21,7 +21,7 @@ export async function register (): Promise<void> {
     redis: asFunction(getRedis).singleton(),
     subscriberRedis: asFunction(getRedis).singleton(),
     notification: asFunction(getNotification).singleton(),
-    terminologyService: asClass(TerminologyService).singleton().disposer(service => service.dispose()),
+    terminologyService: asClass(TerminologyService).singleton().disposer(service => { service.dispose() }),
     discordClient: asFunction(getDiscordClient).singleton(),
     worker: asFunction(getWorker).singleton(),
     queue: asFunction(getQueue).singleton(),
