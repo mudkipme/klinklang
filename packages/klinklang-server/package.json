@@ -46,7 +46,7 @@
     "js-yaml": "^4.1.0",
     "json-predicate": "^0.9.5",
     "jsonpath-plus": "^7.2.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "kafkajs": "^2.2.2",
     "lodash": "^4.17.21",
     "micromustache": "^8.0.3",
