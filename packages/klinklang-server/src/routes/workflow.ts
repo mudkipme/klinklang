@@ -1,5 +1,5 @@
 import { createInstanceWithWorkflow, getLinkedActionsOfWorkflow, getWorkflowInstances } from '../models/workflow'
-import { FastifyPluginAsync, FastifyRequest } from 'fastify'
+import { type FastifyPluginAsync, type FastifyRequest } from 'fastify'
 import { forbiddenError, workflowNotFoundError } from '../lib/errors'
 import userMiddleware from '../middlewares/user'
 

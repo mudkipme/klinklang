@@ -1,4 +1,4 @@
-import { LitElement, html, TemplateResult, css, CSSResult } from 'lit'
+import { LitElement, html, type TemplateResult, css } from 'lit'
 import { customElement, state, property } from 'lit/decorators.js'
 import '@material/mwc-top-app-bar'
 import '@material/mwc-icon-button'
@@ -6,7 +6,7 @@ import '@material/mwc-menu'
 import '@material/mwc-list/mwc-list-item'
 import '@material/mwc-icon'
 import type { Menu } from '@material/mwc-menu'
-import { User } from '../../interfaces'
+import { type User } from '../../interfaces'
 
 /**
  * @fires open-drawer
@@ -14,13 +14,11 @@ import { User } from '../../interfaces'
  */
 @customElement('klinklang-header')
 export class KlinklangHeader extends LitElement {
-  static get styles (): CSSResult {
-    return css`
+  static readonly styles = css`
       .action-items {
         position: relative;
       }
     `
-  }
 
   @property({ attribute: false }) currentUser?: User | null
 

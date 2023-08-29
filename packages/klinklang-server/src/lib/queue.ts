@@ -1,5 +1,5 @@
 import { Queue } from 'bullmq'
-import { Config } from './config'
+import { type Config } from './config'
 
 const queueName = 'klinklang-queue'
 

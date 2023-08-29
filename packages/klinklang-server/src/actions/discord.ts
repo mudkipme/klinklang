@@ -1,5 +1,6 @@
 import { diContainer } from '@fastify/awilix'
-import { APIEmbed, MessageCreateOptions, MessagePayload, TextChannel } from 'discord.js'
+import { TextChannel } from 'discord.js'
+import type { APIEmbed, MessageCreateOptions, MessagePayload } from 'discord.js'
 import { WikiWorker } from './wiki'
 
 export interface DiscordMessageActionInput {

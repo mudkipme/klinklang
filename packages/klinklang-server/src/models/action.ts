@@ -1,8 +1,8 @@
 import { render } from 'micromustache'
 import { mapValues } from 'lodash'
 import { JSONPath } from 'jsonpath-plus'
-import { Actions, ActionJobData } from '../actions/interfaces'
-import { Action } from '.prisma/client'
+import { type Actions, type ActionJobData } from '../actions/interfaces'
+import { type Action } from '@mudkipme/klinklang-prisma'
 
 type InputBuildType<T> =
 | {

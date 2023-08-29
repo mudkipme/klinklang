@@ -11,7 +11,6 @@ import workflowRoutes from './routes/workflow'
 import terminologyRoutes from './routes/terminology'
 import bootstrap from './commands/bootstrap'
 import { start } from './lib/eventbus'
-import './lib/worker'
 import { register } from './lib/register'
 import patchBigInt from './lib/ext'
 
@@ -29,7 +28,7 @@ const launch = async (): Promise<void> => {
 
   await bootstrap({ config, prisma })
   await start({ config, prisma, notification, logger })
-  worker.run().catch(e => logger.error(e))
+  worker.run().catch(e => { logger.error(e) })
   patchBigInt()
 
   const { host, port } = config.get('app')
@@ -52,11 +51,11 @@ const launch = async (): Promise<void> => {
   await server.register(terminologyRoutes)
 
   await server.register(fastifyStatic, {
-    root: join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
+    root: buildPath
   })
 
   server.setNotFoundHandler(async (request, reply) => {
-    await reply.sendFile(join(buildPath, 'index.html'))
+    await reply.sendFile('index.html')
   })
 
   await server.listen({ host, port })

@@ -1,7 +1,7 @@
 import { ActionWorker } from './base'
-import MediaWikiClient from '../lib/mediawiki/client'
-import { Actions } from './interfaces'
-import { EditRequest, EditResponse } from '../lib/mediawiki/api'
+import type MediaWikiClient from '../lib/mediawiki/client'
+import { type Actions } from './interfaces'
+import { type EditRequest, type EditResponse } from '../lib/mediawiki/api'
 import { diContainer } from '@fastify/awilix'
 
 export interface GetHTMLActionInput {

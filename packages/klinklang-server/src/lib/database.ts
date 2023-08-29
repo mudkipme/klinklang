@@ -1,5 +1,5 @@
-import { PrismaClient } from '.prisma/client'
-import { Config } from './config'
+import { PrismaClient } from '@mudkipme/klinklang-prisma'
+import { type Config } from './config'
 
 export type { PrismaClient }
 

@@ -1,4 +1,4 @@
-import { html, LitElement, TemplateResult, css, CSSResultArray } from 'lit'
+import { html, LitElement, type TemplateResult, css, type CSSResultArray } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { typography } from '@mudkipme/material-css'
 

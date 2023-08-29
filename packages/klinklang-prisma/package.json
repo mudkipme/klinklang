@@ -1,0 +1,15 @@
+{
+  "name": "@mudkipme/klinklang-prisma",
+  "scripts": {
+    "db:generate": "prisma generate",
+    "build": "pnpm run db:generate"
+  },
+  "main": "./index.js",
+  "types": "./index.ts",
+  "dependencies": {
+    "@prisma/client": "^5.2.0"
+  },
+  "devDependencies": {
+    "prisma": "^5.2.0"
+  }
+}

@@ -1,7 +1,7 @@
-import cheerio from 'cheerio'
+import { load } from 'cheerio'
 import type { GetHTMLActionOutput } from './wiki'
 import { ActionWorker } from './base'
-import { PrismaPromise } from '.prisma/client'
+import { type PrismaPromise } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 
 export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
@@ -10,7 +10,7 @@ export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
   langSelectorMap: { zh: string, [lang: string]: string }
 }
 
-export type ParseTerminologyListOutput = Array<{ id: number, texts: { [lang: string]: string } }>
+export type ParseTerminologyListOutput = Array<{ id: number, texts: Record<string, string> }>
 
 export interface ParseTerminologyListAction {
   actionType: 'PARSE_TERMINOLOGY_LIST'
@@ -20,10 +20,10 @@ export interface ParseTerminologyListAction {
 
 export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAction> {
   public async process (): Promise<ParseTerminologyListOutput> {
-    const dict = new Map<number, { [lang: string]: string }>()
+    const dict = new Map<number, Record<string, string>>()
 
     // load non-zh terminologies
-    let $ = cheerio.load(this.input.text)
+    let $ = load(this.input.text)
     const variants = this.input.variants
     const hasVariants = variants !== undefined && Object.keys(variants).length > 0
 
@@ -33,7 +33,7 @@ export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAct
         return
       }
 
-      const texts: { [lang: string]: string } = {}
+      const texts: Record<string, string> = {}
 
       for (const lang of Object.keys(this.input.langSelectorMap)) {
         if (hasVariants && lang === 'zh') {
@@ -53,7 +53,7 @@ export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAct
     // load zh terminologies
     if (hasVariants) {
       for (const variant of ['zh-hant', 'zh-hans']) {
-        $ = cheerio.load(variants?.[variant as 'zh-hant' | 'zh-hans'] ?? this.input.text)
+        $ = load(variants?.[variant as 'zh-hant' | 'zh-hans'] ?? this.input.text)
 
         $(this.input.entrySelector).each((index, line) => {
           const textId = this.input.idSelector !== undefined ? parseInt($(line).find(this.input.idSelector).text().trim(), 10) : index + 1

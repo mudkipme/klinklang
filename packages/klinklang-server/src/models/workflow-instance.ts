@@ -1,9 +1,9 @@
 import { v4 as uuidv4 } from 'uuid'
-import { Job } from 'bullmq'
-import { WorkflowTrigger } from './workflow-type'
-import { ActionJobData, ActionJobResult, Actions } from '../actions/interfaces'
+import { type Job } from 'bullmq'
+import { type WorkflowTrigger } from './workflow-type'
+import { type ActionJobData, type ActionJobResult, type Actions } from '../actions/interfaces'
 import { buildJobData } from './action'
-import { Action } from '.prisma/client'
+import { type Action } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 
 export interface WorkflowInstanceData {

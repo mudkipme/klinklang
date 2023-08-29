@@ -1,6 +1,6 @@
-import { html, TemplateResult, LitElement } from 'lit'
+import { html, type TemplateResult, LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
-import { User } from './interfaces'
+import { type User } from './interfaces'
 import '@material/mwc-drawer'
 import './components/header'
 import './components/menu'
