@@ -1,4 +1,4 @@
-import { render } from 'micromustache'
+import { render } from '../lib/template'
 import { mapValues } from 'lodash'
 import { JSONPath } from 'jsonpath-plus'
 import { type Actions, type ActionJobData } from '../actions/interfaces'
@@ -33,7 +33,7 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
   } else if (directBuilder.mode === 'jsonPathArray') {
     return JSONPath<T>({ json: context, path: directBuilder.jsonPath })
   } else if (directBuilder.mode === 'template') {
-    return render(directBuilder.template, context) as unknown as T
+    return render(directBuilder.template, context) as T
   }
 
   const nestedBuilder = builder as { [P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]> }
