@@ -1,9 +1,9 @@
-import type { GetHTMLAction, GetTextAction, EditWikiAction } from './wiki'
-import type { ParseTerminologyListAction, UpdateTerminologyAction } from './terminology'
-import type { RegExpAction } from './string'
-import type { SCSSAction } from './scss'
-import type { DiscordMessageAction } from './discord'
-import { type RequestAction } from './request'
+import type { GetHTMLAction, GetTextAction, EditWikiAction } from './wiki.js'
+import type { ParseTerminologyListAction, UpdateTerminologyAction } from './terminology.js'
+import type { RegExpAction } from './string.js'
+import type { SCSSAction } from './scss.js'
+import type { DiscordMessageAction } from './discord.js'
+import { type RequestAction } from './request.js'
 
 export type Actions =
   | GetHTMLAction | ParseTerminologyListAction | UpdateTerminologyAction | GetTextAction

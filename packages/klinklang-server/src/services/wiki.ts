@@ -1,9 +1,9 @@
 import { type User } from '@mudkipme/klinklang-prisma'
 import { type Token } from 'oauth-1.0a'
 import type OAuth from 'oauth-1.0a'
-import { type Config } from '../lib/config'
-import MediaWikiClient from '../lib/mediawiki/client'
-import { type MediaWikiOAuth } from '../lib/oauth'
+import { type Config } from '../lib/config.js'
+import MediaWikiClient from '../lib/mediawiki/client.js'
+import { type MediaWikiOAuth } from '../lib/oauth.js'
 
 export class WikiService {
   #apiRoot: string

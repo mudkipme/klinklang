@@ -2,7 +2,7 @@ import OAuth from 'oauth-1.0a'
 import crypto from 'crypto'
 import { fetch, type BodyInit, type Response } from 'undici'
 import jwt from 'jsonwebtoken'
-import { type Config } from './config'
+import { type Config } from './config.js'
 
 export interface OAuthIdentity {
   iss: string

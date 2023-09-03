@@ -1,12 +1,13 @@
-import type { PrismaClient } from '../lib/database'
-import type { Config } from '../lib/config'
-import type { MediaWikiOAuth } from '../lib/oauth'
-import type { WikiService } from '../services/wiki'
-import type Redis from 'ioredis'
-import type { Notification } from '../lib/notification'
-import type { TerminologyService } from '../services/terminology'
+import type { PrismaClient } from '../lib/database.js'
+import type { Config } from '../lib/config.js'
+import type { MediaWikiOAuth } from '../lib/oauth.js'
+import type { WikiService } from '../services/wiki.js'
+import type { Redis } from 'ioredis'
+import type { Notification } from '../lib/notification.js'
+import type { TerminologyService } from '../services/terminology.js'
 import type { Queue, Worker } from 'bullmq'
 import type { Logger } from 'pino'
+import type Discord from 'discord.js'
 
 declare module 'fastify' {
   interface Session {

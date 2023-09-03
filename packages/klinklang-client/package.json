@@ -1,6 +1,7 @@
 {
   "name": "@mudkipme/klinklang-client",
   "version": "0.6.0",
+  "type": "module",
   "description": "A collection of utilities of 52Poké Wiki.",
   "author": "Mudkip <i@mudkip.me>",
   "homepage": "https://github.com/mudkipme/klinklang#readme",

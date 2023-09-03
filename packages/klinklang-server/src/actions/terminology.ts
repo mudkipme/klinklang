@@ -1,6 +1,6 @@
 import { load } from 'cheerio'
-import type { GetHTMLActionOutput } from './wiki'
-import { ActionWorker } from './base'
+import type { GetHTMLActionOutput } from './wiki.js'
+import { ActionWorker } from './base.js'
 import { type PrismaPromise } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 

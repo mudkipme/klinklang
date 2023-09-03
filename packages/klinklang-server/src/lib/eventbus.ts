@@ -1,13 +1,13 @@
-import { isEqual } from 'lodash'
+import { isEqual } from 'lodash-es'
 import { type ConsumerConfig, type Consumer, Kafka, type KafkaConfig, type EachMessagePayload } from 'kafkajs'
 import { test as jsonTest } from 'json-predicate'
 import { setTimeout } from 'timers/promises'
 import { type Logger } from 'pino'
-import { type Config } from './config'
+import { type Config } from './config.js'
 import { type Workflow, type PrismaClient } from '@mudkipme/klinklang-prisma'
-import { type MessageType, type Notification } from './notification'
-import { type WorkflowTrigger } from '../models/workflow-type'
-import { createInstanceWithWorkflow } from '../models/workflow'
+import { type MessageType, type Notification } from './notification.js'
+import { type WorkflowTrigger } from '../models/workflow-type.js'
+import { createInstanceWithWorkflow } from '../models/workflow.js'
 
 export default class Subscriber {
   #kafka: Kafka
