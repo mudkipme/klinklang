@@ -6,6 +6,7 @@ import { ParseTerminologyWorker, UpdateTerminologyWorker } from './terminology'
 import { RegexWorker } from './string'
 import { SCSSWorker } from './scss'
 import { DiscordMessageWorker } from './discord'
+import { RequestWorker } from './request'
 
 interface ActionRegisterMap {
   set: <T extends Actions>(key: T['actionType'], value: WorkerType<T>) => void
@@ -35,3 +36,4 @@ register('EDIT_WIKI', EditWikiWorker)
 register('REGEXP_MATCH', RegexWorker)
 register('SCSS_COMPILE', SCSSWorker)
 register('DISCORD_MESSAGE', DiscordMessageWorker)
+register('REQUEST', RequestWorker)

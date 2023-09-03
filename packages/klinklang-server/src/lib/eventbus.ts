@@ -127,24 +127,6 @@ export async function start ({ config, prisma, notification, logger }: {
 
   await update()
 
-  prisma.$use(async (params, next) => {
-    const result = await next(params)
-
-    if (params.model === 'Workflow') {
-      switch (params.action) {
-        case 'create':
-        case 'createMany':
-        case 'delete':
-        case 'deleteMany':
-        case 'update':
-        case 'updateMany':
-          await notification.sendMessage({ type: 'WORKFLOW_EVENTBUS_UPDATE' })
-      }
-    }
-
-    return result
-  })
-
   notification.on('notification', (e: MessageType) => {
     if (e.type === 'WORKFLOW_EVENTBUS_UPDATE') {
       update().catch(err => {

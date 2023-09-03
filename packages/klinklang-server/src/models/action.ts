@@ -1,4 +1,4 @@
-import { render } from 'micromustache'
+import { render } from '../lib/template'
 import { mapValues } from 'lodash'
 import { JSONPath } from 'jsonpath-plus'
 import { type Actions, type ActionJobData } from '../actions/interfaces'
@@ -22,7 +22,8 @@ type InputBuildType<T> =
   jsonPath: string
 } : never)
 
-type InputBuilder<T> = T extends object ? { [P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]> } : InputBuildType<T>
+type InputBuilder<T> = T extends any[] ? Array<InputBuilder<T[number]>> :
+    (T extends object ? { [P in keyof T]: InputBuilder<T[P]> } : InputBuildType<T>)
 
 function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknown>): T {
   const directBuilder = builder as InputBuildType<T>
@@ -33,7 +34,11 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
   } else if (directBuilder.mode === 'jsonPathArray') {
     return JSONPath<T>({ json: context, path: directBuilder.jsonPath })
   } else if (directBuilder.mode === 'template') {
-    return render(directBuilder.template, context) as unknown as T
+    return render(directBuilder.template, context) as T
+  }
+
+  if (Array.isArray(builder)) {
+    return builder.map(value => buildInput(value, context)) as T
   }
 
   const nestedBuilder = builder as { [P in keyof T]: InputBuilder<T[P]> | InputBuildType<T[P]> }
