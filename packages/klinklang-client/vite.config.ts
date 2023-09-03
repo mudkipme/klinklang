@@ -6,7 +6,8 @@ export default defineConfig({
       '^/(api|oauth)/.*': {
         target: 'http://localhost:3001'
       }
-    }
+    },
+    host: '0.0.0.0'
   },
   build: {
     outDir: 'build'

@@ -1,8 +1,8 @@
 import { v4 as uuidv4 } from 'uuid'
 import { type Job } from 'bullmq'
-import { type WorkflowTrigger } from './workflow-type'
-import { type ActionJobData, type ActionJobResult, type Actions } from '../actions/interfaces'
-import { buildJobData } from './action'
+import { type WorkflowTrigger } from './workflow-type.js'
+import { type ActionJobData, type ActionJobResult, type Actions } from '../actions/interfaces.js'
+import { buildJobData } from './action.js'
 import { type Action } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 

@@ -1,5 +1,5 @@
 import { EventEmitter } from 'events'
-import type Redis from 'ioredis'
+import { type Redis } from 'ioredis'
 
 export type MessageType =
   | {

@@ -3,8 +3,8 @@ import { join } from 'path'
 import yaml from 'js-yaml'
 import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
 import { type Prisma, type PrismaClient } from '@mudkipme/klinklang-prisma'
-import { type WorkflowTrigger } from '../models/workflow-type'
-import { type Config } from '../lib/config'
+import { type WorkflowTrigger } from '../models/workflow-type.js'
+import { type Config } from '../lib/config.js'
 import { v4 as uuidv4 } from 'uuid'
 
 export interface WorkflowConfig {

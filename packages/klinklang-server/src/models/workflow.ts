@@ -1,6 +1,6 @@
-import { keyBy } from 'lodash'
-import { type WorkflowTrigger } from './workflow-type'
-import WorkflowInstance from './workflow-instance'
+import { keyBy } from 'lodash-es'
+import { type WorkflowTrigger } from './workflow-type.js'
+import WorkflowInstance from './workflow-instance.js'
 import { type Workflow, type Action } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 

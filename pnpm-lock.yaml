@@ -124,9 +124,9 @@ importers:
       '@types/jsonwebtoken':
         specifier: ^9.0.2
         version: 9.0.2
-      '@types/lodash':
-        specifier: ^4.14.197
-        version: 4.14.197
+      '@types/lodash-es':
+        specifier: ^4.17.9
+        version: 4.17.9
       '@types/safe-regex':
         specifier: ^1.1.4
         version: 1.1.4
@@ -172,7 +172,7 @@ importers:
       kafkajs:
         specifier: ^2.2.4
         version: 2.2.4
-      lodash:
+      lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
       oauth-1.0a:
@@ -1317,6 +1317,12 @@ packages:
     resolution: {integrity: sha512-drE6uz7QBKq1fYqqoFKTDRdFCPHd5TCub75BM+D+cMx7NU9hUz7SESLfC2fSCXVFMO5Yj8sOWHuGqPgjc+fz0Q==}
     dependencies:
       '@types/node': 17.0.23
+    dev: false
+
+  /@types/lodash-es@4.17.9:
+    resolution: {integrity: sha512-ZTcmhiI3NNU7dEvWLZJkzG6ao49zOIjEgIE0RgV7wbPxU0f2xT3VSAHw2gmst8swH6V0YkLRGp4qPlX/6I90MQ==}
+    dependencies:
+      '@types/lodash': 4.14.197
     dev: false
 
   /@types/lodash@4.14.197:
@@ -3267,6 +3273,10 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       p-locate: 5.0.0
+
+  /lodash-es@4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.clonedeep@4.5.0:
     resolution: {integrity: sha512-H5ZhCF25riFd9uB5UCkVKo61m3S/xZk1x4wA6yp/L3RFP6Z/eHH1ymQcGLo7J3GMPfm0V/7m1tryHuGVxpqEBQ==}

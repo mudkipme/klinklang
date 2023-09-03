@@ -1,6 +1,6 @@
 import { type Job } from 'bullmq'
-import { type ActionJobData, type ActionJobResult, type Actions } from './interfaces'
-import WorkflowInstance from '../models/workflow-instance'
+import { type ActionJobData, type ActionJobResult, type Actions } from './interfaces.js'
+import WorkflowInstance from '../models/workflow-instance.js'
 import { type User, type Workflow } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
 

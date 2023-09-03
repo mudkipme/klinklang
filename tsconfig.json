@@ -3,7 +3,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "esModuleInterop": true,
     "paths": {
       "@mudkipme/*": ["packages/*/src"]
@@ -13,9 +13,7 @@
     "sourceMap": true,
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
-    "experimentalDecorators": true,
     "skipLibCheck": true,
-    "useDefineForClassFields": false,
     "isolatedModules": true
   } 
 }

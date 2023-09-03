@@ -1,7 +1,7 @@
-import { createInstanceWithWorkflow, getLinkedActionsOfWorkflow, getWorkflowInstances } from '../models/workflow'
+import { createInstanceWithWorkflow, getLinkedActionsOfWorkflow, getWorkflowInstances } from '../models/workflow.js'
 import { type FastifyPluginAsync, type FastifyRequest } from 'fastify'
-import { forbiddenError, workflowNotFoundError } from '../lib/errors'
-import userMiddleware from '../middlewares/user'
+import { forbiddenError, workflowNotFoundError } from '../lib/errors.js'
+import userMiddleware from '../middlewares/user.js'
 
 const workflowRoutes: FastifyPluginAsync = async (fastify) => {
   const prisma = fastify.diContainer.cradle.prisma
