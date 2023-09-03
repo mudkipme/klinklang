@@ -10,7 +10,9 @@ export const getWorker = ({ config, logger }: { config: Config, logger: Logger }
     return await processAction(job)
   }, {
     connection: config.get('redis'),
-    autorun: false
+    autorun: false,
+    removeOnComplete: { count: 1000 },
+    removeOnFail: { count: 1000 }
   })
 
   worker.on('failed', (job, err) => {
