@@ -1,8 +1,10 @@
 import Handlebars from 'handlebars'
 
-Handlebars.registerHelper('encodeURICompoonent', encodeURIComponent)
-Handlebars.registerHelper('decodeURICompoonent', decodeURIComponent)
-Handlebars.registerHelper('stripHTML', (text: string) => text.replace(/<[^>]*>?/gm, ''))
+Handlebars.registerHelper('encodeURIComponent', encodeURIComponent)
+Handlebars.registerHelper('decodeURIComponent', decodeURIComponent)
+Handlebars.registerHelper('encodeURI', encodeURI)
+Handlebars.registerHelper('decodeURI', decodeURI)
+Handlebars.registerHelper('stripHTML', (text: string | undefined) => text?.replace(/<[^>]*>?/gm, ''))
 
 export function render (template: string, context: Record<string, unknown>): string {
   const render = Handlebars.compile(template)
