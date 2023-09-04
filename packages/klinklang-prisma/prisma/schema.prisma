@@ -33,14 +33,15 @@ model Terminology {
 }
 
 model User {
-  id        String     @id @default(uuid()) @db.Uuid
-  name      String     @unique
-  wikiId    BigInt     @unique
-  groups    String[]
-  token     Json       @db.JsonB
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
-  workflows Workflow[]
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String        @unique
+  wikiId       BigInt        @unique
+  groups       String[]
+  token        Json          @db.JsonB
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  workflows    Workflow[]
+  fediAccounts FediAccount[]
 }
 
 model Workflow {
@@ -54,4 +55,27 @@ model Workflow {
   userId    String?  @db.Uuid
   user      User?    @relation(fields: [userId], references: [id])
   actions   Action[]
+}
+
+model FediInstance {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String
+  domain       String        @unique
+  clientID     String
+  clientSecret String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  accounts     FediAccount[]
+}
+
+model FediAccount {
+  id             String       @id @default(uuid()) @db.Uuid
+  subject        String       @unique
+  fediInstanceId String       @db.Uuid
+  fediInstance   FediInstance @relation(fields: [fediInstanceId], references: [id])
+  userId         String       @db.Uuid
+  user           User         @relation(fields: [userId], references: [id])
+  accessToken    String
+  createdAt      DateTime     @default(now())
+  updatedAt      DateTime     @updatedAt
 }
