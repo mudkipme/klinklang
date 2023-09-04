@@ -4,8 +4,9 @@
     "db:generate": "prisma generate",
     "build": "pnpm run db:generate"
   },
+  "type": "module",
   "main": "./index.js",
-  "types": "./index.ts",
+  "typings": "./index.d.ts",
   "dependencies": {
     "@prisma/client": "^5.2.0"
   },

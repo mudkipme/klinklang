@@ -24,19 +24,16 @@
     "vite": "^4.4.9"
   },
   "dependencies": {
-    "@material/mwc-button": "^0.27.0",
-    "@material/mwc-checkbox": "^0.27.0",
-    "@material/mwc-drawer": "^0.27.0",
-    "@material/mwc-formfield": "^0.27.0",
-    "@material/mwc-icon": "^0.27.0",
-    "@material/mwc-icon-button": "^0.27.0",
-    "@material/mwc-list": "^0.27.0",
-    "@material/mwc-menu": "^0.27.0",
-    "@material/mwc-select": "^0.27.0",
-    "@material/mwc-textarea": "^0.27.0",
-    "@material/mwc-top-app-bar": "^0.27.0",
-    "@mudkipme/material-css": "workspace:*",
-    "@vaadin/router": "^1.7.5",
-    "lit": "^2.8.0"
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.7",
+    "@mui/material": "^5.14.7",
+    "@types/react": "^18.2.21",
+    "@types/react-dom": "^18.2.7",
+    "@vitejs/plugin-react": "^4.0.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.15.0",
+    "zustand": "^4.4.1"
   }
 }

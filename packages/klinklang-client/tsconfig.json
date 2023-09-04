@@ -4,7 +4,9 @@
   "exclude": ["node_modules", "**/node_modules/**"],
   "compilerOptions": {
     "baseUrl": ".",
-    "useDefineForClassFields": false,
-    "experimentalDecorators": true
+    "noEmit": true,
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "jsx": "react-jsx"
   }
 }
