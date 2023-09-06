@@ -62,8 +62,9 @@ const launch = async (): Promise<void> => {
     await reply.sendFile('index.html')
   })
 
-  await server.listen({ host, port: process.env.NODE_ENV === 'production' ? port : (devPort === 0 ? port : devPort) })
-  logger.info(`Klinklang server listening on ${port}`)
+  const listenPort = process.env.NODE_ENV === 'production' ? port : (devPort === 0 ? port : devPort)
+  await server.listen({ host, port: listenPort })
+  logger.info(`Klinklang server listening on ${listenPort}`)
 }
 
 process.on('unhandledRejection', (err) => {

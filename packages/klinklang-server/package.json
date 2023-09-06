@@ -13,7 +13,7 @@
   "scripts": {
     "build": "tsc",
     "start": "tsx watch src/index.ts",
-    "serve": "node dist/index.js"
+    "serve": "NODE_ENV=production node dist/index.js"
   },
   "bugs": {
     "url": "https://github.com/mudkipme/klinklang/issues"
