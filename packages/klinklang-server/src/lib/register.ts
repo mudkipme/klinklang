@@ -11,6 +11,7 @@ import { getRedis } from './redis.js'
 import { WikiService } from '../services/wiki.js'
 import { getWorker } from './worker.js'
 import { getLogger } from './logger.js'
+import { FediverseService } from '../services/fediverse.js'
 
 export async function register (): Promise<void> {
   diContainer.register({
@@ -25,6 +26,7 @@ export async function register (): Promise<void> {
     discordClient: asFunction(getDiscordClient).singleton(),
     worker: asFunction(getWorker).singleton(),
     queue: asFunction(getQueue).singleton(),
-    logger: asFunction(getLogger).singleton()
+    logger: asFunction(getLogger).singleton(),
+    fediverseService: asClass(FediverseService).singleton()
   })
 }

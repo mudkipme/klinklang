@@ -8,6 +8,8 @@ import type { TerminologyService } from '../services/terminology.js'
 import type { Queue, Worker } from 'bullmq'
 import type { Logger } from 'pino'
 import type Discord from 'discord.js'
+import { type FediverseService } from '../services/fediverse.ts'
+import { type User } from '@mudkipme/klinklang-prisma'
 
 declare module 'fastify' {
   interface Session {
@@ -34,6 +36,7 @@ declare module '@fastify/awilix' {
     worker: Worker
     queue: Queue
     logger: Logger
+    fediverseService: FediverseService
   }
 }
 

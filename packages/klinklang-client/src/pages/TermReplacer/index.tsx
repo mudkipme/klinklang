@@ -1,4 +1,4 @@
-import { Button, Select, Grid, MenuItem, FormControl, InputLabel, Box, FormControlLabel, Checkbox, Divider, TextField } from '@mui/material'
+import { Button, Select, Grid, MenuItem, FormControl, InputLabel, FormControlLabel, Checkbox, Divider, TextField, Container } from '@mui/material'
 import React, { useCallback, useRef, useState } from 'react'
 
 const languages: ReadonlyArray<{ value: string, text: string }> = [
@@ -24,7 +24,7 @@ export const TermReplacer: React.FC = () => {
   const [sourceLng, setSourceLng] = useState('en')
   const [targetLng, setTargetLng] = useState('zh-hans')
   const [selectedCategories, setSelectedCategories] = useState<Set<string>>(() => new Set())
-  const source = useRef('')
+  const sourceEl = useRef<HTMLTextAreaElement | null>(null)
   const [result, setResult] = useState('')
   const toggleCategory = useCallback((category: string, checked: boolean): void => {
     setSelectedCategories(current => {
@@ -37,24 +37,21 @@ export const TermReplacer: React.FC = () => {
     })
   }, [])
   const toggleAllChecked = useCallback((checked: boolean) => {
-    setSelectedCategories(current => {
-      if (!checked) {
-        return new Set()
-      } else {
-        return new Set(categories.map(category => category.value))
-      }
-    })
+    setSelectedCategories(!checked ? new Set() : new Set(categories.map(category => category.value)))
   }, [])
 
   const replace = useCallback(() => {
     const load = async (): Promise<void> => {
+      if (sourceEl.current === null || sourceEl.current.value === '') {
+        return
+      }
       const response = await fetch('/api/terminology/replace', {
         method: 'POST',
         body: JSON.stringify({
           sourceLng,
           resultLng: targetLng,
           categories: Array.from(selectedCategories),
-          text: source.current
+          text: sourceEl.current.value
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -67,11 +64,8 @@ export const TermReplacer: React.FC = () => {
   }, [sourceLng, targetLng, selectedCategories])
 
   return (
-    <Box sx={{
-      maxWidth: '62.5rem',
-      margin: '0 auto'
-    }}>
-      <Grid container padding={2} spacing={2}>
+    <Container>
+      <Grid container my={2} spacing={2}>
         <Grid item xs={6} sm={5}>
           <FormControl fullWidth>
             <InputLabel id="label-from">From</InputLabel>
@@ -97,7 +91,7 @@ export const TermReplacer: React.FC = () => {
         </Grid>
       </Grid>
 
-      <Grid container padding={2} spacing={2}>
+      <Grid container my={2} spacing={2}>
         {categories.map((category) => (
           <Grid item xs={6} sm={3} md={2} key={category.value}>
             <FormControlLabel
@@ -116,7 +110,7 @@ export const TermReplacer: React.FC = () => {
 
       <Divider />
 
-      <Grid container padding={2} spacing={2}>
+      <Grid container my={2} spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
             label="Source"
@@ -124,7 +118,7 @@ export const TermReplacer: React.FC = () => {
             multiline
             fullWidth
             rows={10}
-            onChange={(e) => { source.current = e.target.value }}
+            inputRef={sourceEl}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -138,6 +132,6 @@ export const TermReplacer: React.FC = () => {
           />
         </Grid>
       </Grid>
-    </Box>
+    </Container>
   )
 }

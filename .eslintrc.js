@@ -3,10 +3,11 @@ module.exports = {
     'standard-with-typescript',
     'plugin:react-hooks/recommended'
   ],
-  ignorePatterns: ['build', 'dist', 'web_modules', 'node_modules', 'klinklang-prisma', '.eslintrc.js'],
+  ignorePatterns: ['build', 'dist', 'web_modules', 'node_modules', '.eslintrc.js'],
   parserOptions: {
-    project: './tsconfig.json'
+    project: ['./packages/*/tsconfig.json'],
   },
+  root: true,
   rules: {
     '@typescript-eslint/no-misused-promises': [
       'error',
