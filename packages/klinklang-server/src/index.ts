@@ -4,6 +4,7 @@ import fastifyCookie from '@fastify/cookie'
 import fastifySession from '@fastify/session'
 import fastifyStatic from '@fastify/static'
 import { diContainer, fastifyAwilixPlugin } from '@fastify/awilix'
+import RedisStore from 'connect-redis'
 import oauth from './routes/oauth.js'
 import userRoutes from './routes/user.js'
 import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
@@ -13,10 +14,11 @@ import bootstrap from './commands/bootstrap.js'
 import { start } from './lib/eventbus.js'
 import { register } from './lib/register.js'
 import patchBigInt from './lib/ext.js'
+import { fediRoutes } from './routes/fedi.js'
 
 const launch = async (): Promise<void> => {
   await register()
-  const { config, discordClient, prisma, notification, logger, worker } = diContainer.cradle
+  const { config, discordClient, prisma, notification, logger, worker, redis } = diContainer.cradle
   try {
     if (config.get('discord').token !== '') {
       await discordClient.login(config.get('discord').token)
@@ -27,11 +29,11 @@ const launch = async (): Promise<void> => {
   }
 
   await bootstrap({ config, prisma })
-  await start({ config, prisma, notification, logger })
+  await start({ config, prisma, notification, logger, redis })
   worker.run().catch(e => { logger.error(e) })
   patchBigInt()
 
-  const { host, port } = config.get('app')
+  const { host, port, devPort } = config.get('app')
   const workspaceRoot = await findWorkspaceDir(process.cwd())
   const buildPath = join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
   const server = fastify({ logger })
@@ -39,7 +41,8 @@ const launch = async (): Promise<void> => {
   await server.register(fastifyCookie)
   await server.register(fastifySession, {
     secret: config.get('app').secret,
-    cookie: { secure: process.env.NODE_ENV === 'production' }
+    cookie: { secure: process.env.NODE_ENV === 'production' },
+    store: new RedisStore({ client: redis })
   })
 
   await server.register(fastifyAwilixPlugin)
@@ -49,6 +52,7 @@ const launch = async (): Promise<void> => {
   await server.register(userRoutes)
   await server.register(workflowRoutes)
   await server.register(terminologyRoutes)
+  await server.register(fediRoutes)
 
   await server.register(fastifyStatic, {
     root: buildPath
@@ -58,7 +62,7 @@ const launch = async (): Promise<void> => {
     await reply.sendFile('index.html')
   })
 
-  await server.listen({ host, port })
+  await server.listen({ host, port: process.env.NODE_ENV === 'production' ? port : (devPort === 0 ? port : devPort) })
   logger.info(`Klinklang server listening on ${port}`)
 }
 

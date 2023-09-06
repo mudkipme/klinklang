@@ -7,6 +7,7 @@ import { App } from './App'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { TermReplacer } from './pages/TermReplacer'
 import { Workflows } from './pages/Workflows'
+import { Settings } from './pages/Settings'
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: '/pages/workflows',
         element: <Workflows />
+      },
+      {
+        path: '/pages/settings',
+        element: <Settings />
       },
       {
         index: true,

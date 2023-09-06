@@ -5,11 +5,12 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      '^/(api|oauth)/.*': {
-        target: 'http://localhost:3001'
+      '^/(api|oauth|fedi)/.*': {
+        target: 'http://localhost:3000'
       }
     },
-    host: '0.0.0.0'
+    host: '0.0.0.0',
+    port: 3001
   },
   build: {
     outDir: 'build'

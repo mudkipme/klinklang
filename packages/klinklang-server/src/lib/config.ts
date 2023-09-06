@@ -18,13 +18,24 @@ const config = convict({
     host: {
       doc: 'Server host',
       format: String,
-      default: '0.0.0.0'
+      default: '::'
     },
     port: {
       doc: 'Server port',
       format: 'int',
       default: 3000,
       env: 'PORT'
+    },
+    devPort: {
+      doc: 'Server port in development',
+      format: 'int',
+      default: 0,
+      env: 'DEV_PORT'
+    },
+    url: {
+      doc: 'App URL',
+      format: String,
+      default: 'http://localhost:3000'
     },
     bootstrap: {
       doc: 'Bootstrap workflow config',

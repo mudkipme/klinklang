@@ -1,8 +1,9 @@
 {
   "exclude": ["node_modules"],
   "compilerOptions": {
-    "module": "esnext",
     "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "paths": {
       "@mudkipme/*": ["packages/*/src"]

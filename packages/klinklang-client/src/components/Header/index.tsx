@@ -6,6 +6,7 @@ import Face from '@mui/icons-material/Face'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
 import { useUserStore } from '../../store/user'
+import { useNavigate } from 'react-router-dom'
 
 export interface KlinklangHeaderProps {
   onDrawerOpen: () => void
@@ -13,8 +14,8 @@ export interface KlinklangHeaderProps {
 
 export const KlinklangHeader: React.FC<KlinklangHeaderProps> = ({ onDrawerOpen }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
-
   const { currentUser, logout } = useUserStore()
+  const navigate = useNavigate()
 
   const login = useCallback(() => {
     window.location.href = '/oauth/login'
@@ -57,23 +58,22 @@ export const KlinklangHeader: React.FC<KlinklangHeaderProps> = ({ onDrawerOpen }
             onClose={() => { setAnchorEl(null) }}
           >
             {currentUser !== null
-              ? <>
-                <MenuItem>
+              ? [
+                <MenuItem onClick={() => { navigate('/pages/settings'); setAnchorEl(null) }} key="settings">
                   <ListItemIcon><Face /></ListItemIcon>
                   <ListItemText>{currentUser.name}</ListItemText>
-                </MenuItem>
-                <Divider />
-                <MenuItem onClick={() => { logout() }}>
+                </MenuItem>,
+                <Divider key="divider" />,
+                <MenuItem onClick={() => { logout().catch(console.log) }} key="logout">
                   <ListItemIcon><LogoutIcon /></ListItemIcon>
                   <ListItemText>Logout</ListItemText>
                 </MenuItem>
-              </>
-              : <>
-                <MenuItem onClick={login}>
+                ]
+              : <MenuItem onClick={login}>
                   <ListItemIcon><LoginIcon /></ListItemIcon>
                   <ListItemText>Login</ListItemText>
                 </MenuItem>
-              </>}
+                }
           </Menu>
         </div>
       </Toolbar>

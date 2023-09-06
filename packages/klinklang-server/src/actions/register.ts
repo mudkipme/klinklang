@@ -7,6 +7,7 @@ import { RegexWorker } from './string.js'
 import { SCSSWorker } from './scss.js'
 import { DiscordMessageWorker } from './discord.js'
 import { RequestWorker } from './request.js'
+import { FediPostWorker } from './fedi.js'
 
 interface ActionRegisterMap {
   set: <T extends Actions>(key: T['actionType'], value: WorkerType<T>) => void
@@ -37,3 +38,4 @@ register('REGEXP_MATCH', RegexWorker)
 register('SCSS_COMPILE', SCSSWorker)
 register('DISCORD_MESSAGE', DiscordMessageWorker)
 register('REQUEST', RequestWorker)
+register('FEDI_POST', FediPostWorker)
