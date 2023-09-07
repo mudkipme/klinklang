@@ -94,7 +94,7 @@ export default class Subscriber {
             const key = `workflow:throttle:${workflow.id}:${createHash('sha256').update(valueStr).digest('hex')}`
             const ok = await this.#redis.set(key, '1', 'EX', trigger.throttle, 'NX')
             if (ok === null) {
-              return
+              continue
             }
           }
         }
