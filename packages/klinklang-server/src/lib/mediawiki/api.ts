@@ -59,8 +59,35 @@ export type EditRequest = ({ title: string } | { pageid: number }) & {
   undo?: number
   undoafter?: number
   redirect?: boolean
-  contentformat?: 'application/json' | 'application/octet-stream' | 'application/unknown' | 'application/x-binary' | 'text/css' | 'text/javascript' | 'text/plain' | 'text/unknown' | 'text/x-wiki' | 'unknown/unknown'
-  contentmodel?: 'GadgetDefinition' | 'Json.JsonConfig' | 'JsonSchema' | 'Map.JsonConfig' | 'MassMessageListContent' | 'NewsletterContent' | 'Scribunto' | 'SecurePoll' | 'Tabular.JsonConfig' | 'css' | 'flow-board' | 'javascript' | 'json' | 'sanitized-css' | 'text' | 'unknown' | 'wikitext'
+  contentformat?:
+    | 'application/json'
+    | 'application/octet-stream'
+    | 'application/unknown'
+    | 'application/x-binary'
+    | 'text/css'
+    | 'text/javascript'
+    | 'text/plain'
+    | 'text/unknown'
+    | 'text/x-wiki'
+    | 'unknown/unknown'
+  contentmodel?:
+    | 'GadgetDefinition'
+    | 'Json.JsonConfig'
+    | 'JsonSchema'
+    | 'Map.JsonConfig'
+    | 'MassMessageListContent'
+    | 'NewsletterContent'
+    | 'Scribunto'
+    | 'SecurePoll'
+    | 'Tabular.JsonConfig'
+    | 'css'
+    | 'flow-board'
+    | 'javascript'
+    | 'json'
+    | 'sanitized-css'
+    | 'text'
+    | 'unknown'
+    | 'wikitext'
 }
 
 export interface EditResponse {

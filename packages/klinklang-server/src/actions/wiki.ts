@@ -1,8 +1,8 @@
-import { ActionWorker } from './base.js'
-import type MediaWikiClient from '../lib/mediawiki/client.js'
-import { type Actions } from './interfaces.js'
-import { type EditRequest, type EditResponse } from '../lib/mediawiki/api.js'
 import { diContainer } from '@fastify/awilix'
+import { type EditRequest, type EditResponse } from '../lib/mediawiki/api.js'
+import type MediaWikiClient from '../lib/mediawiki/client.js'
+import { ActionWorker } from './base.js'
+import { type Actions } from './interfaces.js'
 
 export interface GetHTMLActionInput {
   title: string
@@ -11,7 +11,7 @@ export interface GetHTMLActionInput {
 
 export interface GetHTMLActionOutput {
   text: string
-  variants?: { 'zh-hans'?: string, 'zh-hant'?: string }
+  variants?: { 'zh-hans'?: string; 'zh-hant'?: string }
 }
 
 export interface GetHTMLAction {
@@ -21,7 +21,7 @@ export interface GetHTMLAction {
 }
 
 export abstract class WikiWorker<T extends Actions> extends ActionWorker<T> {
-  #wikiClient?: MediaWikiClient
+  readonly #wikiClient?: MediaWikiClient
   protected async getWikiClient (): Promise<MediaWikiClient> {
     const { wikiService } = diContainer.cradle
 
@@ -40,8 +40,12 @@ export class GetHTMLWorker extends WikiWorker<GetHTMLAction> {
   public async process (): Promise<GetHTMLActionOutput> {
     const client = await this.getWikiClient()
     const promise = client.parse(this.input.title)
-    const hansPromise = this.input.variants?.includes('zh-hans') === true ? client.parse(this.input.title, 'zh-hans') : undefined
-    const hantPromise = this.input.variants?.includes('zh-hant') === true ? client.parse(this.input.title, 'zh-hant') : undefined
+    const hansPromise = this.input.variants?.includes('zh-hans') === true
+      ? client.parse(this.input.title, 'zh-hans')
+      : undefined
+    const hantPromise = this.input.variants?.includes('zh-hant') === true
+      ? client.parse(this.input.title, 'zh-hant')
+      : undefined
     const [pageDefault, pageHant, pageHans] = await Promise.all([
       promise,
       hantPromise,
@@ -76,7 +80,10 @@ export class GetTextWorker extends WikiWorker<GetTextAction> {
     const client = await this.getWikiClient()
     const response = await client.queryRevision([this.input.title])
     let text = ''
-    if (response.query.pages.length > 0 && response.query.pages[0].revisions.length > 0 && response.query.pages[0].revisions[0].slots.main !== undefined) {
+    if (
+      response.query.pages.length > 0 && response.query.pages[0].revisions.length > 0
+      && response.query.pages[0].revisions[0].slots.main !== undefined
+    ) {
       text = response.query.pages[0].revisions[0].slots.main.content
     }
     return {

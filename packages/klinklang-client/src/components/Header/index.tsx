@@ -1,12 +1,22 @@
-import { AppBar, Divider, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Toolbar, Typography } from '@mui/material'
-import React, { useCallback, useState } from 'react'
-import MenuIcon from '@mui/icons-material/Menu'
 import AccountCircle from '@mui/icons-material/AccountCircle'
 import Face from '@mui/icons-material/Face'
 import LoginIcon from '@mui/icons-material/Login'
 import LogoutIcon from '@mui/icons-material/Logout'
-import { useUserStore } from '../../store/user'
+import MenuIcon from '@mui/icons-material/Menu'
+import {
+  AppBar,
+  Divider,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Toolbar,
+  Typography
+} from '@mui/material'
+import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUserStore } from '../../store/user'
 
 export interface KlinklangHeaderProps {
   onDrawerOpen: () => void
@@ -25,21 +35,23 @@ export const KlinklangHeader: React.FC<KlinklangHeaderProps> = ({ onDrawerOpen }
     <AppBar>
       <Toolbar>
         <IconButton
-          color="inherit"
-          edge="start"
+          color='inherit'
+          edge='start'
           sx={{ mr: 2 }}
           onClick={onDrawerOpen}
         >
           <MenuIcon />
         </IconButton>
-        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        <Typography variant='h6' component='div' sx={{ flexGrow: 1 }}>
           52Poké Wiki Utilities
         </Typography>
         <div>
           <IconButton
-            color="inherit"
-            size="large"
-            onClick={(e) => { setAnchorEl(e.currentTarget) }}
+            color='inherit'
+            size='large'
+            onClick={(e) => {
+              setAnchorEl(e.currentTarget)
+            }}
           >
             <AccountCircle />
           </IconButton>
@@ -55,25 +67,45 @@ export const KlinklangHeader: React.FC<KlinklangHeaderProps> = ({ onDrawerOpen }
               horizontal: 'right'
             }}
             open={anchorEl !== null}
-            onClose={() => { setAnchorEl(null) }}
+            onClose={() => {
+              setAnchorEl(null)
+            }}
           >
             {currentUser !== null
               ? [
-                <MenuItem onClick={() => { navigate('/pages/settings'); setAnchorEl(null) }} key="settings">
-                  <ListItemIcon><Face /></ListItemIcon>
+                <MenuItem
+                  onClick={() => {
+                    navigate('/pages/settings')
+                    setAnchorEl(null)
+                  }}
+                  key='settings'
+                >
+                  <ListItemIcon>
+                    <Face />
+                  </ListItemIcon>
                   <ListItemText>{currentUser.name}</ListItemText>
                 </MenuItem>,
-                <Divider key="divider" />,
-                <MenuItem onClick={() => { logout().catch(console.log) }} key="logout">
-                  <ListItemIcon><LogoutIcon /></ListItemIcon>
+                <Divider key='divider' />,
+                <MenuItem
+                  onClick={() => {
+                    logout().catch(console.log)
+                  }}
+                  key='logout'
+                >
+                  <ListItemIcon>
+                    <LogoutIcon />
+                  </ListItemIcon>
                   <ListItemText>Logout</ListItemText>
                 </MenuItem>
-                ]
-              : <MenuItem onClick={login}>
-                  <ListItemIcon><LoginIcon /></ListItemIcon>
+              ]
+              : (
+                <MenuItem onClick={login}>
+                  <ListItemIcon>
+                    <LoginIcon />
+                  </ListItemIcon>
                   <ListItemText>Login</ListItemText>
                 </MenuItem>
-                }
+              )}
           </Menu>
         </div>
       </Toolbar>

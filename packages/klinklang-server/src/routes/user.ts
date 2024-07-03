@@ -9,7 +9,9 @@ const userRoutes: FastifyPluginAsync = async (fastify) => {
     })
   })
 
-  fastify.delete<{ Params: { fediAccountId: string } }>('/api/fedi-account/:fediAccountId', { preHandler: userMiddleware(false) }, async (request, reply) => {
+  fastify.delete<{ Params: { fediAccountId: string } }>('/api/fedi-account/:fediAccountId', {
+    preHandler: userMiddleware(false)
+  }, async (request, reply) => {
     if (request.user === null) {
       throw new Error('User is not logged in')
     }

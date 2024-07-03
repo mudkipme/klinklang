@@ -1,29 +1,31 @@
-import { render } from '../lib/template.js'
-import { mapValues } from 'lodash-es'
-import { JSONPath } from 'jsonpath-plus'
-import { type Actions, type ActionJobData } from '../actions/interfaces.js'
 import { type Action } from '@mudkipme/klinklang-prisma'
+import { JSONPath } from 'jsonpath-plus'
+import { mapValues } from 'lodash-es'
+import { type ActionJobData, type Actions } from '../actions/interfaces.js'
+import { render } from '../lib/template.js'
 
 type InputBuildType<T> =
-| {
-  mode: 'rawValue'
-  value: T
-}
-| {
-  mode: 'jsonPath'
-  jsonPath: string
-}
-| (T extends string ? {
-  mode: 'template'
-  template: string
-} : never)
-| (T extends any[] ? {
-  mode: 'jsonPathArray'
-  jsonPath: string
-} : never)
+  | {
+    mode: 'rawValue'
+    value: T
+  }
+  | {
+    mode: 'jsonPath'
+    jsonPath: string
+  }
+  | (T extends string ? {
+      mode: 'template'
+      template: string
+    }
+    : never)
+  | (T extends any[] ? {
+      mode: 'jsonPathArray'
+      jsonPath: string
+    }
+    : never)
 
-type InputBuilder<T> = T extends any[] ? Array<InputBuilder<T[number]>> :
-    (T extends object ? { [P in keyof T]: InputBuilder<T[P]> } : InputBuildType<T>)
+type InputBuilder<T> = T extends any[] ? Array<InputBuilder<T[number]>>
+  : (T extends object ? { [P in keyof T]: InputBuilder<T[P]> } : InputBuildType<T>)
 
 function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknown>): T {
   const directBuilder = builder as InputBuildType<T>
@@ -45,7 +47,11 @@ function buildInput<T> (builder: InputBuilder<T>, context: Record<string, unknow
   return mapValues(nestedBuilder, (value: InputBuilder<any>) => buildInput(value, context))
 }
 
-export function buildJobData<T extends Actions> (action: Action, instanceId: string, context: Record<string, unknown>): ActionJobData<T> {
+export function buildJobData<T extends Actions> (
+  action: Action,
+  instanceId: string,
+  context: Record<string, unknown>
+): ActionJobData<T> {
   return {
     actionId: action.id,
     actionType: action.actionType as T['actionType'],

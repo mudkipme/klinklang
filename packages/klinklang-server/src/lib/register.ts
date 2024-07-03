@@ -1,17 +1,17 @@
 import { diContainer } from '@fastify/awilix'
 import { asClass, asFunction, asValue } from 'awilix'
+import { FediverseService } from '../services/fediverse.js'
 import { TerminologyService } from '../services/terminology.js'
+import { WikiService } from '../services/wiki.js'
 import { loadConfig } from './config.js'
 import { getClient as getDatabaseClient } from './database.js'
 import { getClient as getDiscordClient } from './discord.js'
+import { getLogger } from './logger.js'
 import { getNotification } from './notification.js'
 import { MediaWikiOAuth } from './oauth.js'
 import { getQueue } from './queue.js'
 import { getRedis } from './redis.js'
-import { WikiService } from '../services/wiki.js'
 import { getWorker } from './worker.js'
-import { getLogger } from './logger.js'
-import { FediverseService } from '../services/fediverse.js'
 
 export async function register (): Promise<void> {
   diContainer.register({
@@ -22,7 +22,9 @@ export async function register (): Promise<void> {
     redis: asFunction(getRedis).singleton(),
     subscriberRedis: asFunction(getRedis).singleton(),
     notification: asFunction(getNotification).singleton(),
-    terminologyService: asClass(TerminologyService).singleton().disposer(service => { service.dispose() }),
+    terminologyService: asClass(TerminologyService).singleton().disposer(service => {
+      service.dispose()
+    }),
     discordClient: asFunction(getDiscordClient).singleton(),
     worker: asFunction(getWorker).singleton(),
     queue: asFunction(getQueue).singleton(),

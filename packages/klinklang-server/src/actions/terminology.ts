@@ -1,16 +1,16 @@
-import { load } from 'cheerio'
-import type { GetHTMLActionOutput } from './wiki.js'
-import { ActionWorker } from './base.js'
-import { type PrismaPromise } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
+import { type PrismaPromise } from '@mudkipme/klinklang-prisma'
+import { load } from 'cheerio'
+import { ActionWorker } from './base.js'
+import type { GetHTMLActionOutput } from './wiki.js'
 
 export type ParseTerminologyListActionInput = GetHTMLActionOutput & {
   entrySelector: string
   idSelector?: string
-  langSelectorMap: { zh: string, [lang: string]: string }
+  langSelectorMap: { zh: string; [lang: string]: string }
 }
 
-export type ParseTerminologyListOutput = Array<{ id: number, texts: Record<string, string> }>
+export type ParseTerminologyListOutput = Array<{ id: number; texts: Record<string, string> }>
 
 export interface ParseTerminologyListAction {
   actionType: 'PARSE_TERMINOLOGY_LIST'
@@ -28,7 +28,9 @@ export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAct
     const hasVariants = variants !== undefined && Object.keys(variants).length > 0
 
     $(this.input.entrySelector).each((index, line) => {
-      const textId = this.input.idSelector !== undefined ? parseInt($(line).find(this.input.idSelector).text().trim(), 10) : index + 1
+      const textId = this.input.idSelector !== undefined
+        ? parseInt($(line).find(this.input.idSelector).text().trim(), 10)
+        : index + 1
       if (isNaN(textId)) {
         return
       }
@@ -56,7 +58,9 @@ export class ParseTerminologyWorker extends ActionWorker<ParseTerminologyListAct
         $ = load(variants?.[variant as 'zh-hant' | 'zh-hans'] ?? this.input.text)
 
         $(this.input.entrySelector).each((index, line) => {
-          const textId = this.input.idSelector !== undefined ? parseInt($(line).find(this.input.idSelector).text().trim(), 10) : index + 1
+          const textId = this.input.idSelector !== undefined
+            ? parseInt($(line).find(this.input.idSelector).text().trim(), 10)
+            : index + 1
           if (isNaN(textId)) {
             return
           }

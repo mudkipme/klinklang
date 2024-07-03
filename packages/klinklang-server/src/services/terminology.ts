@@ -1,4 +1,4 @@
-import { type Terminology, type PrismaClient } from '@mudkipme/klinklang-prisma'
+import { type PrismaClient, type Terminology } from '@mudkipme/klinklang-prisma'
 import { type Logger } from 'pino'
 import { type MessageType, type Notification } from '../lib/notification.js'
 
@@ -11,19 +11,20 @@ export interface TerminologyReplaceInput {
 
 export class TerminologyService {
   #terminologyDataCache: Terminology[] | undefined
-  #prisma: PrismaClient
-  #notification: Notification
-  #logger: Logger
+  readonly #prisma: PrismaClient
+  readonly #notification: Notification
+  readonly #logger: Logger
 
-  constructor ({ prisma, notification, logger }: { prisma: PrismaClient, notification: Notification, logger: Logger }) {
+  constructor ({ prisma, notification, logger }: { prisma: PrismaClient; notification: Notification; logger: Logger }) {
     this.#prisma = prisma
     this.#notification = notification
     this.#logger = logger
-    notification.on('notification', this.#handleMessage)
+    notification.addEventListener('notification', this.#handleMessage)
   }
 
-  #handleMessage = (e: MessageType): void => {
-    if (e.type === 'TERMINOLOGY_UPDATE' && this.#terminologyDataCache !== undefined) {
+  readonly #handleMessage = (e: Event): void => {
+    const evt = e as CustomEvent<MessageType>
+    if (evt.detail.type === 'TERMINOLOGY_UPDATE' && this.#terminologyDataCache !== undefined) {
       this.updateTerminologyCache().catch(err => {
         this.#logger.error(err)
       })
@@ -31,7 +32,7 @@ export class TerminologyService {
   }
 
   dispose (): void {
-    this.#notification.off('notification', this.#handleMessage)
+    this.#notification.removeEventListener('notification', this.#handleMessage)
   }
 
   async updateTerminologyCache (): Promise<void> {
@@ -42,10 +43,12 @@ export class TerminologyService {
     if (this.#terminologyDataCache === undefined || this.#terminologyDataCache === null) {
       await this.updateTerminologyCache()
     }
-    const terms = (this.#terminologyDataCache ?? []).filter(term => input.categories.includes(term.category) &&
-      (term.lang === input.sourceLng || term.lang === input.resultLng))
+    const terms = (this.#terminologyDataCache ?? []).filter(term =>
+      input.categories.includes(term.category)
+      && (term.lang === input.sourceLng || term.lang === input.resultLng)
+    )
 
-    const texts = new Map<string, { source: string, result: string }>()
+    const texts = new Map<string, { source: string; result: string }>()
     for (const term of terms) {
       const key = `${term.category}:${term.textId}`
       const item = texts.get(key) ?? { source: '', result: '' }

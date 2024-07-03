@@ -6,11 +6,11 @@ import MediaWikiClient from '../lib/mediawiki/client.js'
 import { type MediaWikiOAuth } from '../lib/oauth.js'
 
 export class WikiService {
-  #apiRoot: string
-  #oauth: OAuth
+  readonly #apiRoot: string
+  readonly #oauth: OAuth
   readonly defaultClient: MediaWikiClient
 
-  constructor ({ config, mediaWikiOAuth }: { config: Config, mediaWikiOAuth: MediaWikiOAuth }) {
+  constructor ({ config, mediaWikiOAuth }: { config: Config; mediaWikiOAuth: MediaWikiOAuth }) {
     this.#apiRoot = config.get('mediawiki').scriptPath + 'api.php'
     this.#oauth = mediaWikiOAuth.oauth
     this.defaultClient = new MediaWikiClient({ apiRoot: config.get('mediawiki').scriptPath + 'api.php' })

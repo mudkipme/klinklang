@@ -1,20 +1,20 @@
-import { join } from 'path'
-import { fastify } from 'fastify'
+import { diContainer, fastifyAwilixPlugin } from '@fastify/awilix'
 import fastifyCookie from '@fastify/cookie'
 import fastifySession from '@fastify/session'
 import fastifyStatic from '@fastify/static'
-import { diContainer, fastifyAwilixPlugin } from '@fastify/awilix'
-import RedisStore from 'connect-redis'
-import oauth from './routes/oauth.js'
-import userRoutes from './routes/user.js'
 import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
-import workflowRoutes from './routes/workflow.js'
-import terminologyRoutes from './routes/terminology.js'
+import RedisStore from 'connect-redis'
+import { fastify } from 'fastify'
+import { join } from 'path'
 import bootstrap from './commands/bootstrap.js'
 import { start } from './lib/eventbus.js'
-import { register } from './lib/register.js'
 import patchBigInt from './lib/ext.js'
+import { register } from './lib/register.js'
 import { fediRoutes } from './routes/fedi.js'
+import oauth from './routes/oauth.js'
+import terminologyRoutes from './routes/terminology.js'
+import userRoutes from './routes/user.js'
+import workflowRoutes from './routes/workflow.js'
 
 const launch = async (): Promise<void> => {
   await register()
@@ -25,12 +25,14 @@ const launch = async (): Promise<void> => {
     }
   } catch (e) {
     logger.error('discord login failed', e)
-    throw e
+    throw e as Error
   }
 
   await bootstrap({ config, prisma })
   await start({ config, prisma, notification, logger, redis })
-  worker.run().catch(e => { logger.error(e) })
+  worker.run().catch(e => {
+    logger.error(e)
+  })
   patchBigInt()
 
   const { host, port, devPort } = config.get('app')

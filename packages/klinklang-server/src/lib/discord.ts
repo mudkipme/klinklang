@@ -1,7 +1,7 @@
-import Discord from 'discord.js'
+import { Client } from 'discord.js'
 
-export function getClient (): Discord.Client {
-  const client = new Discord.Client({
+export function getClient (): Client {
+  const client = new Client({
     intents: ['GuildMessages']
   })
   return client

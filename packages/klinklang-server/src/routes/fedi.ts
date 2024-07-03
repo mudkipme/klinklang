@@ -14,7 +14,7 @@ export const fediRoutes: FastifyPluginAsync = async (fastify) => {
     })
   })
 
-  fastify.get<{ Params: { domain: string }, Querystring: { code: string } }>('/fedi/callback/:domain', {
+  fastify.get<{ Params: { domain: string }; Querystring: { code: string } }>('/fedi/callback/:domain', {
     preHandler: userMiddleware(true)
   }, async (request, reply) => {
     if (request.user === null) {

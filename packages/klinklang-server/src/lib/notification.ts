@@ -1,4 +1,3 @@
-import { EventEmitter } from 'events'
 import { type Redis } from 'ioredis'
 
 export type MessageType =
@@ -9,22 +8,22 @@ export type MessageType =
     type: 'WORKFLOW_EVENTBUS_UPDATE'
   }
 
-export class Notification extends EventEmitter {
-  #subscriber: Redis
-  #publisher: Redis
+export class Notification extends EventTarget {
+  readonly #subscriber: Redis
+  readonly #publisher: Redis
   public constructor (subscriber: Redis, publisher: Redis) {
     super()
     this.#subscriber = subscriber
     this.#publisher = publisher
     this.#subscriber.on('message', this.#handleMessage)
     this.#subscriber.subscribe('notification').catch(error => {
-      this.emit('error', { error })
+      this.dispatchEvent(new CustomEvent('error', { detail: { error } }))
     })
   }
 
-  #handleMessage = (channel: string, message: string): void => {
+  readonly #handleMessage = (channel: string, message: string): void => {
     if (channel === 'notification') {
-      this.emit('notification', JSON.parse(message))
+      this.dispatchEvent(new CustomEvent('notification', { detail: JSON.parse(message) }))
     }
   }
 
@@ -33,4 +32,5 @@ export class Notification extends EventEmitter {
   }
 }
 
-export const getNotification = ({ redis, subscriberRedis }: { redis: Redis, subscriberRedis: Redis }): Notification => new Notification(subscriberRedis, redis)
+export const getNotification = ({ redis, subscriberRedis }: { redis: Redis; subscriberRedis: Redis }): Notification =>
+  new Notification(subscriberRedis, redis)

@@ -1,8 +1,13 @@
-import { fetch, type BodyInit } from 'undici'
 import createError from '@fastify/error'
 import { type Token } from 'oauth-1.0a'
 import type OAuth from 'oauth-1.0a'
-import { type ParseResponse, type QueryRevisionResponse, type QueryTokenResponse, type EditRequest, type EditResponse } from './api.js'
+import {
+  type EditRequest,
+  type EditResponse,
+  type ParseResponse,
+  type QueryRevisionResponse,
+  type QueryTokenResponse
+} from './api.js'
 
 export interface MediaWikiClientOptions {
   apiRoot: string
@@ -28,7 +33,7 @@ class MediaWikiClient {
     this.#token = options.token
   }
 
-  private async makeRequest<Response>({ params, method, form }: RequestOptions): Promise<Response> {
+  private async makeRequest<Response> ({ params, method, form }: RequestOptions): Promise<Response> {
     const url = new URL(this.#apiRoot)
 
     url.searchParams.set('format', 'json')

@@ -1,10 +1,10 @@
-import { type Job } from 'bullmq'
-import { type ActionJobData, type ActionJobResult, type Actions } from './interfaces.js'
-import WorkflowInstance from '../models/workflow-instance.js'
-import { type User, type Workflow } from '@mudkipme/klinklang-prisma'
 import { diContainer } from '@fastify/awilix'
+import { type User, type Workflow } from '@mudkipme/klinklang-prisma'
+import { type Job } from 'bullmq'
+import WorkflowInstance from '../models/workflow-instance.js'
+import { type ActionJobData, type ActionJobResult, type Actions } from './interfaces.js'
 
-export type WorkerType<T extends Actions> = new (job: Job<ActionJobData<T>, ActionJobResult<T>>) => ActionWorker<T>
+export type WorkerType<T extends Actions> = new(job: Job<ActionJobData<T>, ActionJobResult<T>>) => ActionWorker<T>
 
 export abstract class ActionWorker<T extends Actions> {
   protected readonly jobId?: string
@@ -30,7 +30,10 @@ export abstract class ActionWorker<T extends Actions> {
     if (this.#workflow !== undefined && this.#workflow !== null) {
       return this.#workflow
     }
-    const workflow = await diContainer.cradle.prisma.workflow.findUnique({ where: { id: this.workflowId }, include: { user: true } })
+    const workflow = await diContainer.cradle.prisma.workflow.findUnique({
+      where: { id: this.workflowId },
+      include: { user: true }
+    })
     this.#workflow = workflow
     return workflow
   }

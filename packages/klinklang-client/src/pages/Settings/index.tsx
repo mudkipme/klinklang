@@ -1,7 +1,20 @@
-import { Button, Card, CardContent, Container, Grid, IconButton, List, ListItem, ListItemText, Stack, TextField, Typography } from '@mui/material'
+import { Delete } from '@mui/icons-material'
+import {
+  Button,
+  Card,
+  CardContent,
+  Container,
+  Grid,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Stack,
+  TextField,
+  Typography
+} from '@mui/material'
 import React, { useCallback, useRef } from 'react'
 import { useUserStore } from '../../store/user'
-import { Delete } from '@mui/icons-material'
 
 export const Settings: React.FC = () => {
   const domainEl = useRef<HTMLInputElement | null>(null)
@@ -44,14 +57,23 @@ export const Settings: React.FC = () => {
           <Grid item xs={12} sm={6}>
             <Card>
               <CardContent>
-                <Typography variant="h5">Linked ActivityPub accounts</Typography>
+                <Typography variant='h5'>Linked ActivityPub accounts</Typography>
                 <List>
                   {currentUser?.fediAccounts?.map((account) => (
-                    <ListItem key={account.subject} disablePadding secondaryAction={(
-                      <IconButton edge="end" onClick={() => { deleteFediAccount(account.id).catch(console.log) }}>
-                        <Delete />
-                      </IconButton>
-                    )}>
+                    <ListItem
+                      key={account.subject}
+                      disablePadding
+                      secondaryAction={
+                        <IconButton
+                          edge='end'
+                          onClick={() => {
+                            deleteFediAccount(account.id).catch(console.log)
+                          }}
+                        >
+                          <Delete />
+                        </IconButton>
+                      }
+                    >
                       <ListItemText>{account.subject}</ListItemText>
                     </ListItem>
                   ))}
@@ -63,10 +85,17 @@ export const Settings: React.FC = () => {
         <Grid item xs={12} sm={6}>
           <Card>
             <CardContent>
-              <Typography variant="h5" mb={2}>Link to a new ActivityPub account</Typography>
-              <Stack direction="row" spacing={2}>
-                <TextField inputRef={domainEl} label="Your instance domain" size="small" />
-                <Button variant="contained" onClick={() => { fediConnect().catch(console.log) }}>Connect</Button>
+              <Typography variant='h5' mb={2}>Link to a new ActivityPub account</Typography>
+              <Stack direction='row' spacing={2}>
+                <TextField inputRef={domainEl} label='Your instance domain' size='small' />
+                <Button
+                  variant='contained'
+                  onClick={() => {
+                    fediConnect().catch(console.log)
+                  }}
+                >
+                  Connect
+                </Button>
               </Stack>
             </CardContent>
           </Card>

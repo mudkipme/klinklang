@@ -1,0 +1,16 @@
+{
+  "typescript": {
+    "semiColons": "asi",
+    "quoteStyle": "preferSingle",
+    "trailingCommas": "never",
+    "functionDeclaration.spaceBeforeParentheses": true,
+    "constructor.spaceBeforeParentheses": true,
+    "method.spaceBeforeParentheses": true
+  },
+  "excludes": [
+    "**/node_modules"
+  ],
+  "plugins": [
+    "https://plugins.dprint.dev/typescript-0.91.2.wasm"
+  ]
+}

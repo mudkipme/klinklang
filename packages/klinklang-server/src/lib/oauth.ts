@@ -1,7 +1,6 @@
-import OAuth from 'oauth-1.0a'
 import crypto from 'crypto'
-import { fetch, type BodyInit, type Response } from 'undici'
 import jwt from 'jsonwebtoken'
+import OAuth from 'oauth-1.0a'
 import { type Config } from './config.js'
 
 export interface OAuthIdentity {
@@ -23,11 +22,11 @@ export interface OAuthIdentity {
 
 export class MediaWikiOAuth {
   readonly oauth: OAuth
-  #requestTokenURL: string
-  #accessTokenURL: string
-  #userAuthorizationURL: string
-  #callbackURL: string
-  #identifyURL: string
+  readonly #requestTokenURL: string
+  readonly #accessTokenURL: string
+  readonly #userAuthorizationURL: string
+  readonly #callbackURL: string
+  readonly #identifyURL: string
 
   constructor ({ config }: { config: Config }) {
     this.oauth = new OAuth({
@@ -46,7 +45,10 @@ export class MediaWikiOAuth {
     this.#identifyURL = config.get('mediawiki').scriptPath + 'index.php?title=Special:OAuth/identify'
   }
 
-  async fetch (url: string, { body, method = 'GET', token }: { body?: BodyInit, method?: string, token?: OAuth.Token } = {}): Promise<Response> {
+  async fetch (
+    url: string,
+    { body, method = 'GET', token }: { body?: BodyInit; method?: string; token?: OAuth.Token } = {}
+  ): Promise<Response> {
     const headers = this.oauth.toHeader(this.oauth.authorize({
       url: url.toString(),
       data: body,
@@ -76,7 +78,7 @@ export class MediaWikiOAuth {
     }
   }
 
-  async getRedirectURL (): Promise<{ url: string, token: OAuth.Token }> {
+  async getRedirectURL (): Promise<{ url: string; token: OAuth.Token }> {
     const token = await this.getToken()
     const url = new URL(this.#userAuthorizationURL)
     url.searchParams.append('oauth_consumer_key', this.oauth.consumer.key)
@@ -102,6 +104,9 @@ export class MediaWikiOAuth {
   async getIdentity (token: OAuth.Token): Promise<OAuthIdentity> {
     const response = await this.fetch(this.#identifyURL, { token })
     const text = await response.text()
-    return jwt.verify(text, this.oauth.consumer.secret, { algorithms: ['HS256'], audience: this.oauth.consumer.key }) as unknown as OAuthIdentity
+    return jwt.verify(text, this.oauth.consumer.secret, {
+      algorithms: ['HS256'],
+      audience: this.oauth.consumer.key
+    }) as unknown as OAuthIdentity
   }
 }

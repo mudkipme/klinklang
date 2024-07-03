@@ -1,16 +1,15 @@
-import { createOAuthAPIClient, createRestAPIClient } from 'masto'
-import { fetch } from 'undici'
-import type { Logger } from 'pino'
-import { type PrismaClient } from '../lib/database.js'
-import { type Config } from '../lib/config.js'
 import { type FediAccount, type FediInstance } from '@mudkipme/klinklang-prisma'
+import { createOAuthAPIClient, createRestAPIClient } from 'masto'
+import type { Logger } from 'pino'
+import { type Config } from '../lib/config.js'
+import { type PrismaClient } from '../lib/database.js'
 
 export class FediverseService {
-  #prisma: PrismaClient
-  #config: Config
-  #logger: Logger
+  readonly #prisma: PrismaClient
+  readonly #config: Config
+  readonly #logger: Logger
 
-  constructor ({ prisma, config, logger }: { prisma: PrismaClient, config: Config, logger: Logger }) {
+  constructor ({ prisma, config, logger }: { prisma: PrismaClient; config: Config; logger: Logger }) {
     this.#prisma = prisma
     this.#config = config
     this.#logger = logger
@@ -28,7 +27,9 @@ export class FediverseService {
   }
 
   redirectURL (instance: FediInstance): string {
-    return `https://${instance.domain}/oauth/authorize?client_id=${instance.clientID}&response_type=code&redirect_uri=${encodeURIComponent(this.#redirectURI(instance.domain))}&scope=read+write`
+    return `https://${instance.domain}/oauth/authorize?client_id=${instance.clientID}&response_type=code&redirect_uri=${
+      encodeURIComponent(this.#redirectURI(instance.domain))
+    }&scope=read+write`
   }
 
   async createApp (url: string): Promise<FediInstance> {
@@ -49,7 +50,6 @@ export class FediverseService {
       //   clientId: fediInstance.clientID,
       //   clientSecret: fediInstance.clientSecret,
       //   redirectUri,
-      //   // @ts-expect-error - this is a valid grant type
       //   grantType: 'client_credentials'
       // })
 
@@ -68,7 +68,10 @@ export class FediverseService {
       redirectUris: redirectUri
     })
 
-    if (resp.clientId === null || resp.clientSecret === null || resp.clientId === undefined || resp.clientSecret === undefined) {
+    if (
+      resp.clientId === null || resp.clientSecret === null || resp.clientId === undefined
+      || resp.clientSecret === undefined
+    ) {
       throw new Error('Failed to create app')
     }
 
@@ -94,7 +97,6 @@ export class FediverseService {
     const token = await oauthClient.token.create({
       clientId: fediInstance.clientID,
       clientSecret: fediInstance.clientSecret,
-      // @ts-expect-error - this is a valid grant type
       grantType: 'authorization_code',
       code,
       redirectUri: this.#redirectURI(domain),
@@ -123,7 +125,10 @@ export class FediverseService {
   }
 
   async revoke (userId: string, fediAccountId: string): Promise<void> {
-    const fediAccount = await this.#prisma.fediAccount.findUnique({ where: { id: fediAccountId }, include: { fediInstance: true } })
+    const fediAccount = await this.#prisma.fediAccount.findUnique({
+      where: { id: fediAccountId },
+      include: { fediInstance: true }
+    })
     if (fediAccount === null) {
       return
     }
@@ -150,7 +155,10 @@ export class FediverseService {
   }
 
   async getClient (userId: string, subject: string): Promise<ReturnType<typeof createRestAPIClient>> {
-    const fediAccount = await this.#prisma.fediAccount.findUnique({ where: { subject, userId }, include: { fediInstance: true } })
+    const fediAccount = await this.#prisma.fediAccount.findUnique({
+      where: { subject, userId },
+      include: { fediInstance: true }
+    })
     if (fediAccount === null) {
       throw new Error('Invalid account')
     }

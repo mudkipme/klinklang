@@ -1,26 +1,33 @@
-import { createHash } from 'node:crypto'
-import { isEqual } from 'lodash-es'
-import { type ConsumerConfig, type Consumer, Kafka, type KafkaConfig, type EachMessagePayload } from 'kafkajs'
+import { type PrismaClient, type Workflow } from '@mudkipme/klinklang-prisma'
+import { type Redis } from 'ioredis'
 import { test as jsonTest } from 'json-predicate'
 import { JSONPath } from 'jsonpath-plus'
-import { setTimeout } from 'timers/promises'
+import { type Consumer, type ConsumerConfig, type EachMessagePayload, Kafka, type KafkaConfig } from 'kafkajs'
+import { isEqual } from 'lodash-es'
+import { createHash } from 'node:crypto'
 import { type Logger } from 'pino'
-import { type Config } from './config.js'
-import { type Workflow, type PrismaClient } from '@mudkipme/klinklang-prisma'
-import { type MessageType, type Notification } from './notification.js'
+import { setTimeout } from 'timers/promises'
 import { type WorkflowTrigger } from '../models/workflow-type.js'
 import { createInstanceWithWorkflow } from '../models/workflow.js'
-import { type Redis } from 'ioredis'
+import { type Config } from './config.js'
+import { type MessageType, type Notification } from './notification.js'
 
 export default class Subscriber {
-  #kafka: Kafka
-  #consumerConfig: ConsumerConfig
+  readonly #kafka: Kafka
+  readonly #consumerConfig: ConsumerConfig
   #consumer: Consumer | undefined
   #topics = new Map<string, Workflow[]>()
-  #logger: Logger
-  #redis: Redis
+  readonly #logger: Logger
+  readonly #redis: Redis
 
-  constructor ({ kafkaConfig, consumerConfig, logger, redis }: { kafkaConfig: KafkaConfig, consumerConfig: ConsumerConfig, logger: Logger, redis: Redis }) {
+  constructor (
+    { kafkaConfig, consumerConfig, logger, redis }: {
+      kafkaConfig: KafkaConfig
+      consumerConfig: ConsumerConfig
+      logger: Logger
+      redis: Redis
+    }
+  ) {
     this.#kafka = new Kafka(kafkaConfig)
     this.#consumerConfig = consumerConfig
     this.#logger = logger
@@ -89,7 +96,9 @@ export default class Subscriber {
         }
         if (trigger.throttle !== undefined && trigger.throttleKeyPath !== undefined) {
           const value = JSONPath({ json: event, path: trigger.throttleKeyPath })
-          const valueStr = (value === undefined || value === null) ? '' : (typeof value === 'string' ? value : JSON.stringify(value))
+          const valueStr = (value === undefined || value === null)
+            ? ''
+            : (typeof value === 'string' ? value : JSON.stringify(value))
           if (valueStr !== '') {
             const key = `workflow:throttle:${workflow.id}:${createHash('sha256').update(valueStr).digest('hex')}`
             const ok = await this.#redis.set(key, '1', 'EX', trigger.throttle, 'NX')
@@ -150,8 +159,9 @@ export async function start ({ config, prisma, notification, logger, redis }: {
 
   await update()
 
-  notification.on('notification', (e: MessageType) => {
-    if (e.type === 'WORKFLOW_EVENTBUS_UPDATE') {
+  notification.addEventListener('notification', (e: Event) => {
+    const evt = e as CustomEvent<MessageType>
+    if (evt.detail.type === 'WORKFLOW_EVENTBUS_UPDATE') {
       update().catch(err => {
         logger.error(err)
       })

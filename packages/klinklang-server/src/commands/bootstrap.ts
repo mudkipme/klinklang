@@ -1,11 +1,11 @@
-import { stat, readFile } from 'fs/promises'
-import { join } from 'path'
-import yaml from 'js-yaml'
-import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
 import { type Prisma, type PrismaClient } from '@mudkipme/klinklang-prisma'
-import { type WorkflowTrigger } from '../models/workflow-type.js'
+import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
+import yaml from 'js-yaml'
+import { randomUUID } from 'node:crypto'
+import { readFile, stat } from 'node:fs/promises'
+import { join } from 'node:path'
 import { type Config } from '../lib/config.js'
-import { v4 as uuidv4 } from 'uuid'
+import { type WorkflowTrigger } from '../models/workflow-type.js'
 
 export interface WorkflowConfig {
   name: string
@@ -26,7 +26,7 @@ export async function setupWorkflow (prisma: PrismaClient, workflowConfig: Workf
       actions.push({
         ...actionConfig,
         isHead: index === 0,
-        id: uuidv4()
+        id: randomUUID()
       })
       if (index > 0) {
         actions[index - 1].nextAction = {
@@ -62,7 +62,7 @@ export async function setupWorkflow (prisma: PrismaClient, workflowConfig: Workf
   }
 }
 
-export default async function bootstrap ({ config, prisma }: { config: Config, prisma: PrismaClient }): Promise<void> {
+export default async function bootstrap ({ config, prisma }: { config: Config; prisma: PrismaClient }): Promise<void> {
   try {
     const workspaceRoot = await findWorkspaceDir(process.cwd())
     const filename = join(workspaceRoot ?? '.', config.get('app').bootstrap)
