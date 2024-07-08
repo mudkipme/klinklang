@@ -5,7 +5,7 @@ import fastifyStatic from '@fastify/static'
 import { findWorkspaceDir } from '@pnpm/find-workspace-dir'
 import RedisStore from 'connect-redis'
 import { fastify } from 'fastify'
-import { join } from 'path'
+import { join } from 'node:path'
 import bootstrap from './commands/bootstrap.js'
 import { start } from './lib/eventbus.js'
 import patchBigInt from './lib/ext.js'
@@ -38,7 +38,7 @@ const launch = async (): Promise<void> => {
   const { host, port, devPort } = config.get('app')
   const workspaceRoot = await findWorkspaceDir(process.cwd())
   const buildPath = join(workspaceRoot !== undefined ? `${workspaceRoot}/packages/klinklang-client` : '.', 'build')
-  const server = fastify({ logger })
+  const server = fastify({ logger, trustProxy: true })
 
   await server.register(fastifyCookie)
   await server.register(fastifySession, {
